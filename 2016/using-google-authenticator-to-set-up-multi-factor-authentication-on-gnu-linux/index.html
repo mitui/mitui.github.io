@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.39" />
+<meta name="generator" content="Hugo 0.40.3" />
 
 
 <link rel="canonical" href="/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/" />
@@ -1826,7 +1826,7 @@ session  optional       pam_lastlog.so   silent noupdate showfailed</code></pre>
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
 </span><span class="c1"></span>auth        requisite   pam_nologin.so
 auth        include     common-auth
-auth        required pam_google_authenticator.so nullok
+auth 		required pam_google_authenticator.so nullok
 account     requisite   pam_nologin.so
 account     include     common-account
 password    include     common-password

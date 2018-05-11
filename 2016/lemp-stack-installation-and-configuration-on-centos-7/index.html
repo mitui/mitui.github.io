@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>在CentOS 7中配置LEMP開發環境全記錄 - MetaDefine - A super concise theme for Hugo</title>
+  <title>LEMP Stack Installation And Configuration On CentOS 7 - MetaDefine - A super concise theme for Hugo</title>
   <link rel="alternate" hreflang="en" href="/" />
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="mitui" /><meta name="description" content="如何在CentOS 7中安裝、配置LEMP開發環境" />
+<meta name="author" content="mitui" /><meta name="description" content="Full recording of LEMP stacker installation and configuration on CentOS 7" />
 <meta name="keywords" content="AxdLog, LEMP, PHP, Nginx, MySQL, SELinux, Firewalld, Shell Script" />
 
 
@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.39" />
+<meta name="generator" content="Hugo 0.40.3" />
 
 
 <link rel="canonical" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/" />
@@ -56,8 +56,8 @@
 
 
 
-<meta property="og:title" content="在CentOS 7中配置LEMP開發環境全記錄" />
-<meta property="og:description" content="如何在CentOS 7中安裝、配置LEMP開發環境" />
+<meta property="og:title" content="LEMP Stack Installation And Configuration On CentOS 7" />
+<meta property="og:description" content="Full recording of LEMP stacker installation and configuration on CentOS 7" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2016/lemp-stack-installation-and-configuration-on-centos-7/" />
 
@@ -77,20 +77,20 @@
 
 
 
-<meta itemprop="name" content="在CentOS 7中配置LEMP開發環境全記錄">
-<meta itemprop="description" content="如何在CentOS 7中安裝、配置LEMP開發環境">
+<meta itemprop="name" content="LEMP Stack Installation And Configuration On CentOS 7">
+<meta itemprop="description" content="Full recording of LEMP stacker installation and configuration on CentOS 7">
 
 
 <meta itemprop="datePublished" content="2016-03-11T18:31:58&#43;08:00" />
 <meta itemprop="dateModified" content="2016-03-11T18:31:58&#43;08:00" />
-<meta itemprop="wordCount" content="4829">
+<meta itemprop="wordCount" content="3142">
 
 
 
-<meta itemprop="keywords" content="PHP,Nginx,MySQL," />
+<meta itemprop="keywords" content="PHP,Nginx,MySQL,Shell Script," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="在CentOS 7中配置LEMP開發環境全記錄"/>
-<meta name="twitter:description" content="如何在CentOS 7中安裝、配置LEMP開發環境"/>
+<meta name="twitter:title" content="LEMP Stack Installation And Configuration On CentOS 7"/>
+<meta name="twitter:description" content="Full recording of LEMP stacker installation and configuration on CentOS 7"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -280,7 +280,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">在CentOS 7中配置LEMP開發環境全記錄</h1>
+      <h1 class="post-title">LEMP Stack Installation And Configuration On CentOS 7</h1>
       
       <div class="post-meta">
         <span class="post-time"> 2016-03-11 </span>
@@ -289,8 +289,8 @@
               <a href="/categories/php/"> PHP </a>
             
           </div>
-        <span class="more-meta"> 4829 words </span>
-        <span class="more-meta"> 10 min read </span>
+        <span class="more-meta"> 3142 words </span>
+        <span class="more-meta"> 7 min read </span>
       </div>
     </header>
 
@@ -303,34 +303,34 @@
 <ul>
 <li>
 <ul>
-<li><a href="#概要">概要</a></li>
-<li><a href="#系統初始化">系統初始化</a></li>
-<li><a href="#軟件源">軟件源</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#system-initialization">System Initialization</a></li>
+<li><a href="#repository">Repository</a></li>
 <li><a href="#nginx">Nginx</a>
 <ul>
-<li><a href="#安裝-nginx">安裝 Nginx</a></li>
+<li><a href="#nginx-installation">Nginx Installation</a></li>
 </ul></li>
 <li><a href="#mysql">MySQL</a>
 <ul>
-<li><a href="#安裝-mysql">安裝 MySQL</a></li>
-<li><a href="#創建遠程登錄用戶">創建遠程登錄用戶</a></li>
+<li><a href="#mysql-installation">MySQL Installation</a></li>
+<li><a href="#create-remote-login-user">Create Remote Login User</a></li>
 </ul></li>
 <li><a href="#php">PHP</a>
 <ul>
-<li><a href="#配置-remi-倉庫">配置 REMI 倉庫</a></li>
-<li><a href="#安裝-php">安裝 PHP</a></li>
-<li><a href="#配置-php">配置 PHP</a></li>
-<li><a href="#配置-php-fpm">配置 PHP-FPM</a></li>
-<li><a href="#配置-nginx">配置 Nginx</a></li>
+<li><a href="#remi-repo">REMI Repo</a></li>
+<li><a href="#php-installation">PHP Installation</a></li>
+<li><a href="#php-configuration">PHP Configuration</a></li>
+<li><a href="#php-fpm-configuration">PHP-FPM Configuration</a></li>
+<li><a href="#nginx-configuration">Nginx Configuration</a></li>
 <li><a href="#phpinfo">phpinfo()</a></li>
 </ul></li>
-<li><a href="#連接測試">連接測試</a>
+<li><a href="#connection-testing">Connection Testing</a>
 <ul>
-<li><a href="#數據庫連接">數據庫連接</a></li>
-<li><a href="#web-服務器">Web 服務器</a></li>
-<li><a href="#nginx-日誌">Nginx 日誌</a></li>
+<li><a href="#database-connection">Database Connection</a></li>
+<li><a href="#web-server">Web Server</a></li>
+<li><a href="#nginx-log">Nginx Log</a></li>
 </ul></li>
-<li><a href="#更新日誌">更新日誌</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -339,21 +339,21 @@
 
     
     <div class="post-content">
-      <p>本文記錄如何在已啓用<code>SELinux</code>、<code>Firewalld</code>防火牆的<code>CentOS 7</code>系統中安裝、配置 <strong>LEMP</strong> (<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>、<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>)套件。</p>
+      <p>This article documents how to install, configure <strong>LEMP</strong> (<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>、<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>) stack in <code>CentOS 7</code> which <code>SELinux</code>、<code>Firewalld</code> has been enabled.</p>
 
-<p>本人寫了一些Shell腳本用以實現操作的自動化，項目代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript" title="axd Shell Script">GitHub</a>。已實現 系統初始化，<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>的腳本化操作，但<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>暫時仍需要手動安裝。</p>
+<p>I wrote some shell script to automate operation, the project is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript" title="axd Shell Script">GitHub</a>. But <a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a> is still need to installed manually currently.</p>
 
 <p></p>
 
-<p>通常如果<code>SELinux</code>設爲<code>enabled</code>，會導致<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>無法正常使用，本人已在Shell腳本中處理好相關問題。</p>
+<p>If <code>SELinux</code> is <code>enabled</code>, it may causes <a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a> not work properly. I have solved these problems in my shell script.</p>
 
-<p><strong>注意</strong>：如果是普通用戶，則須通過<code>sudo</code>執行相關命令。</p>
+<p><strong>Attention</strong>: If your current user is a normal user, you need to use <code>sudo</code> to execute the following commands.</p>
 
-<h2 id="概要">概要</h2>
+<h2 id="overview">Overview</h2>
 
-<p>VPS主機外網地址 <code>104.236.100.67</code></p>
+<p>VPS public ip <code>104.236.100.67</code></p>
 
-<p>版本信息</p>
+<p>Version info</p>
 
 <table>
 <thead>
@@ -391,7 +391,7 @@
 </tbody>
 </table>
 
-<p>配置文件默認安裝路徑</p>
+<p>Default config file path</p>
 
 <table>
 <thead>
@@ -424,7 +424,7 @@
 </tbody>
 </table>
 
-<p>版本檢查</p>
+<p>Version Check Command</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -451,7 +451,7 @@ sudo nginx -V <span class="m">2</span>&gt;<span class="p">&amp;</span><span clas
 </span><span class="c1"></span>php -v <span class="m">2</span>&gt; /dev/null <span class="p">|</span> awk <span class="s1">&#39;{print $2;exit}&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>配置文件路徑檢查</p>
+<p>Conf Path Check Command</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -476,9 +476,9 @@ mysqladmin --help <span class="p">|</span> awk <span class="s1">&#39;$0~/Default
 </span><span class="c1"></span>php -i <span class="m">2</span>&gt; /dev/null <span class="p">|</span> awk <span class="s1">&#39;$0~/^Loaded Configuration File/{print $NF}&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="系統初始化">系統初始化</h2>
+<h2 id="system-initialization">System Initialization</h2>
 
-<p>系統初始化操作通過Shell腳本實現，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>，通過如下命令執行</p>
+<p>System initialization is through Shell script, the code is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>, usage info</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -495,9 +495,9 @@ mysqladmin --help <span class="p">|</span> awk <span class="s1">&#39;$0~/Default
 </div>
 <script src="https://asciinema.org/a/176585.js" id="asciicast-176585" async></script>
 
-<p>通過指令<code>-Z</code>設置<code>SELinux</code>的類型(<code>permissive/enforcing/disabled</code>)，默認啓用<code>Firewalld</code>防火牆並開放SSH端口。</p>
+<p>Using flag <code>-Z</code> to choose the type of <code>SELinux</code> (<code>permissive/enforcing/disabled</code>). <code>Firewalld</code> is enabled and open SSH port by default.</p>
 
-<p>系統初始化後<code>SELinux</code>和<code>Firewalld</code>防火牆的狀態</p>
+<p>The status of <code>SELinux</code>和<code>Firewalld</code></p>
 
 <p>SELinux status</p>
 <div class="highlight"><div class="chroma">
@@ -561,13 +561,13 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
   rich rules:</code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="軟件源">軟件源</h2>
+<h2 id="repository">Repository</h2>
 
-<p>安裝各組件需要用到的Repo</p>
+<p>These repositories are used by LEMP stack.</p>
 
 <ul>
 <li><a href="https://fedoraproject.org/wiki/EPEL">EPEL Repo</a></li>
-<li><a href="http://rpms.famillecollet.com">REMI Repo</a> (依賴epel，用於安裝PHP)</li>
+<li><a href="http://rpms.famillecollet.com">REMI Repo</a> (rely on eple， use to install PHP)</li>
 <li><a href="https://dev.mysql.com/downloads/repo/">MySQL</a></li>
 <li><a href="https://downloads.mariadb.org/mariadb/repositories/">MariaDB Repo</a></li>
 <li><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">Nginx Repo</a></li>
@@ -575,11 +575,11 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 
 <h2 id="nginx">Nginx</h2>
 
-<p><a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>安裝、配置</p>
+<p>Installing and configuing <a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a></p>
 
-<h3 id="安裝-nginx">安裝 Nginx</h3>
+<h3 id="nginx-installation">Nginx Installation</h3>
 
-<p>Nginx通過Shell腳本安裝，已包含常規的設置、優化，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/NginxWebServer.sh">GitHub</a>。</p>
+<p>Installing Nginx via shell script, including common configuration, optimization, the code is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/NginxWebServer.sh">GitHub</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -596,9 +596,9 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </div>
 <script src="https://asciinema.org/a/176158.js" id="asciicast-176158" async></script>
 
-<p>此處安裝<code>mainline</code>版本，故指定參數<code>-t m</code>，默認安裝的是<code>stable</code>版本。若要在防火牆中開放Web服務器端口(80)，只需在Shell腳本中指定參數<code>-f</code>即可。</p>
+<p>Here choosing <code>mainline</code> version via flag <code>-t m</code>, default is <code>stable</code> version. If you wanna open web server port (80) in firewall, just specify flag <code>-f</code>.</p>
 
-<p>Nginx 版本信息</p>
+<p>Nginx Version Info</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -609,7 +609,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </span><span class="c1"></span>nginx version: nginx/1.13.12</code></pre></td></tr></table>
 </div>
 </div>
-<p>防火牆規則</p>
+<p>Firewall rule</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -644,7 +644,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
   rich rules:</code></pre></td></tr></table>
 </div>
 </div>
-<p>Nginx的Root目錄默認爲<code>/usr/share/nginx/html/</code>，確保<code>owner</code>、<code>group</code>都是<code>nginx</code>，否則可能會出現<code>403 Forbidden</code>。</p>
+<p>The default root directory of Nginx is <code>/usr/share/nginx/html/</code>. Make sure the <code>owner</code>、<code>group</code> is <code>nginx</code>， or it may occurs error <code>403 Forbidden</code>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -655,11 +655,11 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </div>
 <h2 id="mysql">MySQL</h2>
 
-<p><a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>安裝、配置</p>
+<p>Installing and configuing <a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a></p>
 
-<h3 id="安裝-mysql">安裝 MySQL</h3>
+<h3 id="mysql-installation">MySQL Installation</h3>
 
-<p>MySQL通過Shell腳本安裝，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/MySQLVariants.sh">GitHub</a>，腳本同時支持在Debian/Ubuntu/CentOS/Fedora/OpenSUSE/SLES等發行版中安裝<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>、<a href="https://mariadb.org/" title="One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.">MariaDB</a>、<a href="https://www.percona.com/" title="The Database Performance Experts">Percona</a>。</p>
+<p>Installing MySQL via shell script, including common configuration, optimization, the code is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/MySQLVariants.sh">GitHub</a>. This script supports distro Debian/Ubuntu/CentOS/Fedora/OpenSUSE/SLES, database variant <a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>、<a href="https://mariadb.org/" title="One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.">MariaDB</a>、<a href="https://www.percona.com/" title="The Database Performance Experts">Percona</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -676,9 +676,9 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </div>
 <script src="https://asciinema.org/a/176162.js" id="asciicast-176162" async></script>
 
-<p>此處安裝 <strong>MySQL 5.7</strong>，故在Shell腳本中指定參數<code>-t mysql</code>、<code>-v 5.7</code>。如需在防火牆中開啓端口(默認爲<code>3306</code>)，加上參數<code>-f</code>即可。</p>
+<p>Here choosing <strong>MySQL 5.7</strong> via flag <code>-t mysql</code>、<code>-v 5.7</code>. If you wanna MySQL server port (<code>3306</code>) in firewall, just specify flag <code>-f</code>.</p>
 
-<p>如果服務未啓動，執行如下命令啓動服務</p>
+<p>Starting service if it is not started.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -693,7 +693,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </span><span class="c1"></span>sudo systemctl start mysqld.service</code></pre></td></tr></table>
 </div>
 </div>
-<p>MySQL 版本信息</p>
+<p>MySQL Version Info</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -704,7 +704,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </span><span class="c1"></span>mysql  Ver <span class="m">14</span>.14 Distrib <span class="m">5</span>.7.21, <span class="k">for</span> Linux <span class="o">(</span>x86_64<span class="o">)</span> using  EditLine wrapper</code></pre></td></tr></table>
 </div>
 </div>
-<p>用戶名、密碼保存在文件<code>~/.my.cnf</code>，密碼是通過自定義函數隨機生成的強密碼。</p>
+<p>User name, password is stores in file <code>~/.my.cnf</code>， password is strong random password generated by custom function.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -725,7 +725,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <span class="nv">prompt</span><span class="o">=</span>MySQL <span class="o">[</span><span class="se">\d</span><span class="o">]</span>&gt;<span class="se">\_</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>通過命令<code>mysql</code>直接登入MySQL交互界面</p>
+<p>Directly logging into MySQL interactive interface via command <code>mysql</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
@@ -790,9 +790,9 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="創建遠程登錄用戶">創建遠程登錄用戶</h3>
+<h3 id="create-remote-login-user">Create Remote Login User</h3>
 
-<p>對於數據庫而言，不建議使用<code>root</code>賬戶進行遠程登錄操作。此處以創建用戶<code>axdlog</code>爲例，密碼<code>AxdLog_MySQL@2018</code>。</p>
+<p>It is not recommended to use account <code>root</code> to login remotely. Here I create a normal user <code>axdlog</code> with password <code>AxdLog_MySQL@2018</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
@@ -821,13 +821,13 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 創建用戶
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- create new user
 </span><span class="c1"></span><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="s1">&#39;axdlog&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;AxdLog_MySQL@2018&#39;</span><span class="p">;</span>
 <span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
-<span class="c1">-- 授權
+<span class="c1">-- grant privilege
 </span><span class="c1"></span><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;axdlog&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
 <span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
-<span class="c1">-- 刷新權限
+<span class="c1">-- flush privilege
 </span><span class="c1"></span><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
 <span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
 
@@ -849,11 +849,11 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </div>
 <h2 id="php">PHP</h2>
 
-<p><a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>安裝、配置</p>
+<p>Installing and configuing <a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a></p>
 
-<h3 id="配置-remi-倉庫">配置 REMI 倉庫</h3>
+<h3 id="remi-repo">REMI Repo</h3>
 
-<p>初始化腳本已經安裝了<code>epel</code>源，如果還沒有安裝，須先安裝，可通過如下命令安裝：</p>
+<p>My initialization script has install <code>epel</code> repo. If you have not installed it, using the following command to install it:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -862,7 +862,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install -y epel-release</code></pre></td></tr></table>
 </div>
 </div>
-<p>通過如下命令安裝<code>REMI</code></p>
+<p>Installing <code>REMI</code> repo</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -871,11 +871,11 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</code></pre></td></tr></table>
 </div>
 </div>
-<p>安裝完成後，目錄<code>/etc/yum.repos.d/</code>中出現如下若干以<code>remi</code>開頭的repo：<code>remi-php54.repo</code>、<code>remi-php70.repo</code>、<code>remi-php71.repo</code>、<code>remi-php72.repo</code>、<code>remi.repo</code>、<code>remi-safe.repo</code>。</p>
+<p>There are some repo file prefixing with <code>remi</code> in directory <code>/etc/yum.repos.d/</code> after installation is finished: <code>remi-php54.repo</code>、<code>remi-php70.repo</code>、<code>remi-php71.repo</code>、<code>remi-php72.repo</code>、<code>remi.repo</code>、<code>remi-safe.repo</code>。</p>
 
-<p>其中<code>PHP 5.5</code>、<code>PHP 5.6</code>的配置信息在文件<code>remi.repo</code>中。</p>
+<p>The configuration directives of <code>PHP 5.5</code>、<code>PHP 5.6</code> are listed in file <code>remi.repo</code>.</p>
 
-<p>此處安裝最新版本<code>7.2.4</code>，故選擇啓用<code>remi-php72.repo</code>，將該文件中<code>[remi-php72]</code>中的<code>enabled</code>設置爲<code>1</code>即可。(這些文件默認是禁用的，即<code>enabled=0</code>)</p>
+<p>Here installing the latest release version <code>7.2.4</code>, so I need to enable file <code>remi-php72.repo</code> first. What I need to do is change the value of <code>enabled</code> to <code>1</code> (default is <code>enabled=0</code> meaning disable) .</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -889,20 +889,18 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -r -i <span class="s1">&#39;/^\[remi-php72\]$/,/^$/{/^enabled=/{s@^([^=]+=).*@\11@g;}}&#39;</span> /etc/yum.repos.d/remi-php72.repo
 
-<span class="c1"># 更新緩存
+<span class="c1"># update cache
 </span><span class="c1"></span>sudo yum makecache fast
 
-<span class="c1"># 獲取以 php72- 開頭的可用安裝包列表
+<span class="c1"># extract available pack list prefixing with php72-
 </span><span class="c1"></span>yum info php72-* <span class="p">|</span> awk <span class="s1">&#39;match($0,/^Name[[:space:]]+:/){print gensub(/^[^:]+:[[:space:]]*(.*)$/,&#34;\\1&#34;,&#34;g&#34;,$0)}&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="安裝-php">安裝 PHP</h3>
+<h3 id="php-installation">PHP Installation</h3>
 
-<p>PHP相關安裝包都是以<code>php72-</code>爲前綴(如<code>php72-php-mysqlnd</code>)，逐個指定太過麻煩，可通過<code>--enablerepo</code>參數指定目標repo來規避該問題(包名仍指定<code>php-mysqlnd</code>即可)。</p>
+<p>The prefix of PHP packages is <code>php72-</code> (e.g. <code>php72-php-mysqlnd</code>). If listing them one by one is too troublesome. Directive <code>--enablerepo</code> can solve this problem (pack name still is <code>php-mysqlnd</code>).</p>
 
-<p>PHP使用<code>PHP-FPM</code>來管理，故需安裝<code>php-fpm</code>，數據庫驅動使用<code>php-mysqlnd</code>。</p>
-
-<p>安裝命令如下</p>
+<p>Choosing <code>PHP-FPM</code> to manage PHP, so it is need to install <code>php-fpm</code>, database drive chooses <code>php-mysqlnd</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -911,7 +909,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum --enablerepo<span class="o">=</span>remi-php72 install -y php php-common php-devel php-fpm php-mysqlnd php-mbstring php-xml php-pecl-mcrypt php-pecl-apc php-cli php-pear php-pdo php-bcmath php-ctype php-opcache php-gd php-json</code></pre></td></tr></table>
 </div>
 </div>
-<p>相關配置文件路徑</p>
+<p>Config file path</p>
 
 <ul>
 <li><code>/etc/php.ini</code></li>
@@ -920,9 +918,9 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 <li><code>/etc/php-fpm.d/</code></li>
 </ul>
 
-<h3 id="配置-php">配置 PHP</h3>
+<h3 id="php-configuration">PHP Configuration</h3>
 
-<p>PHP配置文件 <code>/etc/php.ini</code>，進行修改</p>
+<p>Modifing PHP config file <code>/etc/php.ini</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -933,7 +931,7 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </span><span class="c1"></span>sudo cp -p /etc/php.ini<span class="o">{</span>,.bak<span class="o">}</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>修改 <code>/etc/php.ini</code></p>
+<p>Directive list</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -948,19 +946,19 @@ Max kernel policy version:      <span class="m">28</span></code></pre></td></tr>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#關閉Nginx文件類型錯誤解析
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Close Nginx file type error resolve
 </span><span class="c1"></span>cgi.fix_pathinfo<span class="o">=</span><span class="m">0</span>
-<span class="c1">#設置時區
+<span class="c1"># timezone
 </span><span class="c1"></span>date.timezone <span class="o">=</span> Asia/Singapore
-<span class="c1">#禁止顯示PHP版本信息
+<span class="c1"># Disable show PHP version info
 </span><span class="c1"></span><span class="nv">expose_php</span> <span class="o">=</span> Off
-<span class="c1">#支持PHP短標籤
+<span class="c1"># Disable PHP short tag
 </span><span class="c1"></span><span class="nv">short_open_tag</span> <span class="o">=</span> Off
-<span class="c1">#禁用的功能函數
+<span class="c1"># Disable function list
 </span><span class="c1"></span><span class="nv">disable_functions</span> <span class="o">=</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>可通過如下方式進行快速修改</p>
+<p>You may consider using the following method to operate quickly</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -995,7 +993,7 @@ funcPHPConfiguration <span class="s1">&#39;short_open_tag&#39;</span> <span clas
 funcPHPConfiguration <span class="s1">&#39;disable_functions&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">disable_function_list</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p><strong>注意</strong>：<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>依賴函數<code>proc_open</code>、<code>proc_get_status</code>，需從<code>disable_functions</code>的列表中移除。執行如下命令即可啓用：</p>
+<p><strong>Attention</strong>: <a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a> relies on function <code>proc_open</code>、<code>proc_get_status</code>, using the following command to enable them</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1004,9 +1002,9 @@ funcPHPConfiguration <span class="s1">&#39;disable_functions&#39;</span> <span c
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -r -i <span class="s1">&#39;/disable_functions[[:space:]]*=/{s@(proc_open|proc_get_status),?@@g;}&#39;</span> /etc/php.ini</code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="配置-php-fpm">配置 PHP-FPM</h3>
+<h3 id="php-fpm-configuration">PHP-FPM Configuration</h3>
 
-<p>通過如下命令管理<code>PHP-FPM</code>服務</p>
+<p>Using the following commands to manage <code>PHP-FPM</code> service</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1015,9 +1013,9 @@ funcPHPConfiguration <span class="s1">&#39;disable_functions&#39;</span> <span c
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl status/start/stop/enable/disable php-fpm.service</code></pre></td></tr></table>
 </div>
 </div>
-<p>服務啓動後，會在目錄<code>/var/run/</code>中生成臨時目錄<code>/var/run/php-fpm/</code>(Debian中生成的目錄名爲<code>/var/run/php/</code>)，設置<code>socket</code>監聽時會用到該路徑。</p>
+<p>If the server is started successfully, <code>PHP-FPM</code> will generate a temporary sub-directory <code>/var/run/php-fpm/</code> (On Debian the directory path is <code>/var/run/php/</code>). This path will be used while setting socket path in Nginx.</p>
 
-<p><strong>注意</strong>：目錄<code>/var/lib/php/session/</code>默認的屬主、屬組爲<code>root</code>，建議更改爲<code>nginx</code>，執行如下命令更改</p>
+<p><strong>Attention</strong>： The default user, group of directory <code>/var/lib/php/session/</code> is <code>root</code>. It is  recommended that changing them to <code>nginx</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1026,7 +1024,7 @@ funcPHPConfiguration <span class="s1">&#39;disable_functions&#39;</span> <span c
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span> -d /var/lib/php/session <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo chown -R nginx:nginx /var/lib/php/session</code></pre></td></tr></table>
 </div>
 </div>
-<p>PHP-FPM配置文件 <code>/etc/php-fpm.d/www.conf</code>，修改相關指令</p>
+<p>PHP-FPM configuration file <code>/etc/php-fpm.d/www.conf</code>, modifing these directives</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1050,7 +1048,7 @@ funcPHPConfiguration <span class="s1">&#39;disable_functions&#39;</span> <span c
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">;</span><span class="nv">listen</span> <span class="o">=</span> <span class="m">127</span>.0.0.1:9000
 <span class="nv">listen</span> <span class="o">=</span> /var/run/php-fpm/php-fpm.sock
 
-<span class="c1">#如果不指定爲nginx，無法正常監聽php-fpm.sock
+<span class="c1"># if not specify Nginx, Nginx can not listen php-fpm.sock
 </span><span class="c1"></span><span class="p">;</span>listen.owner <span class="o">=</span> nobody
 <span class="p">;</span>listen.group <span class="o">=</span> nobody
 <span class="p">;</span>listen.mode <span class="o">=</span> <span class="m">0660</span>
@@ -1065,7 +1063,7 @@ listen.mode <span class="o">=</span> <span class="m">0660</span>
 <span class="nv">group</span> <span class="o">=</span> nginx</code></pre></td></tr></table>
 </div>
 </div>
-<p>通過自定義函數修改</p>
+<p>You may consider using the following method to operate quickly</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1098,7 +1096,7 @@ funcPHPConfiguration <span class="s1">&#39;user&#39;</span> <span class="s1">&#3
 funcPHPConfiguration <span class="s1">&#39;group&#39;</span> <span class="s1">&#39;nginx&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>啓動PHP-FPM服務 (務必確認Nginx已經安裝，否則PHP-FPM無法正常啓動)。如果啓動失敗，可在日誌文件<code>/var/log/messages</code>查看錯誤信息。</p>
+<p>Please make sure Nginx has been installed， or PHP-FPM will fail to start. Error log info is stored in file <code>/var/log/messages</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1109,7 +1107,7 @@ funcPHPConfiguration <span class="s1">&#39;group&#39;</span> <span class="s1">&#
 sudo systemctl <span class="nb">enable</span> php-fpm</code></pre></td></tr></table>
 </div>
 </div>
-<p>PHP-FPM服務已成功啓動</p>
+<p>PHP-FPM is running now</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1154,13 +1152,13 @@ Apr <span class="m">12</span> <span class="m">15</span>:04:07 centos7 systemd<sp
 Apr <span class="m">12</span> <span class="m">15</span>:04:07 centos7 systemd<span class="o">[</span><span class="m">1</span><span class="o">]</span>: Started The PHP FastCGI Process Manager.</code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="配置-nginx">配置 Nginx</h3>
+<h3 id="nginx-configuration">Nginx Configuration</h3>
 
-<p>Shell腳本中已配置有PHP相關指令，取消註釋即可。</p>
+<p>There are directives about PHP existed in shell script, just uncomment them.</p>
 
-<p>打開文件 <code>/etc/nginx/conf.d/default.conf</code>，找到<code>PHP FPM Start</code>、<code>PHP FPM End</code>部分，將<code>location</code>部分的指令取消註釋，同時將<code>fastcgi_pass</code>的socket地址更改爲上文在文件<code>/etc/php-fpm.d/www.conf</code>的路徑，即 <code>/var/run/php-fpm/php72-fpm.sock</code>。</p>
+<p>Searching <code>PHP FPM Start</code>、<code>PHP FPM End</code> in  file <code>/etc/nginx/conf.d/default.conf</code>, uncommenting the section <code>location</code>, changing the socket address of <code>fastcgi_pass</code> to <code>/var/run/php-fpm/php72-fpm.sock</code> which is defined in file <code>/etc/php-fpm.d/www.conf</code>.</p>
 
-<p>可通過如下命令修改</p>
+<p>You may consider using the following method to operate quickly</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1175,7 +1173,7 @@ Apr <span class="m">12</span> <span class="m">15</span>:04:07 centos7 systemd<sp
 sudo sed -r -i <span class="s1">&#39;/PHP FPM Start/,/PHP FPM End/{/PHP FPM/!{s@# @@g}; /fastcgi_pass/{s@^([^:]+:)[^\;]*(.*)$@\1&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">php_fpm_socket_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;\2@g;};}&#39;</span> /etc/nginx/conf.d/default.conf</code></pre></td></tr></table>
 </div>
 </div>
-<p>最終格式如下</p>
+<p>The final directives</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1202,9 +1200,9 @@ sudo sed -r -i <span class="s1">&#39;/PHP FPM Start/,/PHP FPM End/{/PHP FPM/!{s@
 # PHP FPM End</code></pre></td></tr></table>
 </div>
 </div>
-<p><strong>注意</strong>: <code>$document_root</code>默認指向<code>/etc/nginx/html/</code>，需在<code>location ~ \.php$</code>指定root路徑</p>
+<p><strong>Attention</strong>: <code>$document_root</code> is default point to <code>/etc/nginx/html/</code>, you need to specify root path in <code>location ~ \.php$</code>.</p>
 
-<p>使用<code>nginx -t</code>檢測配置文件是否有語法錯誤(需要<code>root</code>權限)</p>
+<p>Using <code>nginx -t</code> to check Nginx config file syntax (need <code>root</code> privilege).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1217,24 +1215,24 @@ sudo sed -r -i <span class="s1">&#39;/PHP FPM Start/,/PHP FPM End/{/PHP FPM/!{s@
 nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is successful</code></pre></td></tr></table>
 </div>
 </div>
-<p><strong>重要</strong>：配置修改後，務必重啓Nginx、PHP-FPM服務，否則會 <strong>出現Web服務器無法解釋執行PHP代碼，直接將目標PHP文件下載到本地</strong> 的情況。</p>
-
-<p>執行如下命令重啓服務</p>
+<p><strong>Important</strong>: Must restart Nginx, PHP-FPM service to make configuration change effect. Or Nginx will fails to interpret PHP code, and the PHP file will by downloaded directly.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart nginx
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># restart service
+</span><span class="c1"></span>sudo systemctl restart nginx
 sudo systemctl restart php-fpm</code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="phpinfo">phpinfo()</h3>
 
-<p>PHP的詳細配置信息可通過函數<code>phpinfo()</code>查看。</p>
+<p>PHP has a function <code>phpinfo()</code> to list all PHP releated info.</p>
 
-<p>通過如下命令創建文件<code>/usr/share/nginx/html/index.php</code></p>
+<p>Creating file <code>/usr/share/nginx/html/index.php</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -1249,15 +1247,15 @@ sudo chown nginx:nginx <span class="s2">&#34;</span><span class="si">${</span><s
 sudo chmod <span class="m">640</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>通過Web瀏覽器查看</p>
+<p>Viewing via web browser</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-03-11_LEMP_Stack_On_Centos7/2018-04-12_16-11-58_php_info.png" alt="" /></p>
 
-<h2 id="連接測試">連接測試</h2>
+<h2 id="connection-testing">Connection Testing</h2>
 
-<h3 id="數據庫連接">數據庫連接</h3>
+<h3 id="database-connection">Database Connection</h3>
 
-<p>測試MySQL能否正常連接，如果是遠程連接，確保<code>/etc/my.cnf</code>中指令<code>bind_address</code>是否綁定本地地址(<code>bind_address = 127.0.0.1</code>)，如果是，則無法成功連接。</p>
+<p>If you&rsquo;re remotely connect MySQL, please make sure directive <code>bind_address</code> in file <code>/etc/my.cnf</code> is not bind local address <code>127.0.0.1</code> or <code>localhost</code>. Or it will refuse to connect.</p>
 
 <p>Local Login</p>
 <div class="highlight"><div class="chroma">
@@ -1341,9 +1339,11 @@ sudo chmod <span class="m">640</span> <span class="s2">&#34;</span><span class="
 <span class="n">Bye</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="web-服務器">Web 服務器</h3>
+<h3 id="web-server">Web Server</h3>
 
-<p>在Nginx的Root目錄<code>/usr/share/nginx/html/</code>下創建<code>db.php</code>文件（確保Nginx對文件有讀權限），測試LEMP能否正常工作，包括PHP和數據庫連接。</p>
+<p>Creating file <code>db.php</code> under Nginx root directory <code>/usr/share/nginx/html/</code> (Make sure user nginx has read privilege) to test if LEMP stack is working well or not.</p>
+
+<p>You may consider using the following method to operate quickly</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1402,7 +1402,7 @@ sudo chown nginx:nginx <span class="s2">&#34;</span><span class="si">${</span><s
 sudo chmod <span class="m">640</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>文件內代碼如下</p>
+<p>Details</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1447,16 +1447,16 @@ sudo chmod <span class="m">640</span> <span class="s2">&#34;</span><span class="
 </span><span class="c1"></span>?&gt;</code></pre></td></tr></table>
 </div>
 </div>
-<p>在瀏覽器地址欄中輸入 <code>http://{IPADDR}(:PORT)/info.php</code>，其中的<code>{IPADDR}</code>即主機IP地址</p>
+<p>Inputing url <code>http://{IPADDR}(:PORT)/info.php</code> in browser (<code>{IPADDR}</code> is target host ip address).</p>
 
 <ul>
-<li>如果是本機，則可用<code>localhost</code>或<code>127.0.0.1</code>；</li>
-<li>如果是遠程主機，則使用遠程主機的地址，如果不是<code>80</code>端口，則須手動指定端口；</li>
+<li>Local host, specify <code>localhost</code>或<code>127.0.0.1</code>；</li>
+<li>Remote host, specify public ip of remote hsot， if default port is not <code>80</code>, manually specify it;</li>
 </ul>
 
-<p>此處遠程訪問地址爲 <code>http://104.236.100.67/info.php</code></p>
+<p>Here the url is <code>http://104.236.100.67/info.php</code></p>
 
-<p>通過Shell終端連接</p>
+<p>Connecting via Shell terminal</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -1525,19 +1525,19 @@ Array
 └──╼ $</code></pre></td></tr></table>
 </div>
 </div>
-<p>通過瀏覽器訪問</p>
+<p>Connecting via web browser</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-03-11_LEMP_Stack_On_Centos7/2018-04-12_16-13-39_database_conn.png" alt="" /></p>
 
-<h3 id="nginx-日誌">Nginx 日誌</h3>
+<h3 id="nginx-log">Nginx Log</h3>
 
-<p>Nginx中訪問日誌格式</p>
+<p>Nginx log format in Nginx access log</p>
 
 <blockquote>
 <p>&ldquo;12/Apr/2018:16:11:37 -0400&rdquo; remote_addr=18.233.165.46 request_method=GET request=&ldquo;GET /info.php HTTP/1.1&rdquo; request_length=354 status=200 bytes_sent=347 body_bytes_sent=137 http_referer=&ldquo;-&rdquo; http_user_agent=&ldquo;Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0&rdquo; request_time=0.002 upstream_addr=unix:/var/run/php-fpm/php72-fpm.sock upstream_status=200 upstream_cache_status=- upstream_response_time=0.002 upstream_connect_time=0.000 upstream_header_time=0.002 msec=1523563897.481 pipe=.gzip_ratio=3.26</p>
 </blockquote>
 
-<h2 id="更新日誌">更新日誌</h2>
+<h2 id="change-logs">Change Logs</h2>
 
 <ul>
 <li>2016.03.11 18:18 Fri Asia/Beijing
@@ -1615,19 +1615,21 @@ Array
           
           <a href="/tags/mysql/">MySQL</a>
           
+          <a href="/tags/shell-script/">Shell Script</a>
+          
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/">
+          <a class="prev" href="/2016/crawling-china-administrative-division-code/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">LEMP Stack Installation And Configuration On CentOS 7</span>
+            <span class="prev-text nav-default">Crawling China Administrative Division Code</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/2016/a-complete-intrduction-to-markdown-syntax/">
-            <span class="next-text nav-default">A Complete Intrduction To Markdown Syntax</span>
+          <a class="next" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/">
+            <span class="next-text nav-default">在CentOS 7中配置LEMP開發環境全記錄</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

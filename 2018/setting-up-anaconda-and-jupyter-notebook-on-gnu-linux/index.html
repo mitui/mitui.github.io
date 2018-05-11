@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Setting Up Anaconda And Jupyter Notebook On GNU/Linux - MetaDefine - A super concise theme for Hugo</title>
+  <title>在GNU/Linux中安裝配置Anaconda和Jupyter Notebook - MetaDefine - A super concise theme for Hugo</title>
   <link rel="alternate" hreflang="en" href="/" />
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="mitui" /><meta name="description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script" />
+<meta name="author" content="mitui" /><meta name="description" content="如何在GNU/Linux中安裝配置Anaconda和Jupyter Notebook，並通過Shell腳本實現整個操作過程。" />
 <meta name="keywords" content="AxdLog, Anaconda, Jupyter, Jupyter notebook, SSL, Shell script" />
 
 
@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.39" />
+<meta name="generator" content="Hugo 0.40.3" />
 
 
 <link rel="canonical" href="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/" />
@@ -56,8 +56,8 @@
 
 
 
-<meta property="og:title" content="Setting Up Anaconda And Jupyter Notebook On GNU/Linux" />
-<meta property="og:description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script" />
+<meta property="og:title" content="在GNU/Linux中安裝配置Anaconda和Jupyter Notebook" />
+<meta property="og:description" content="如何在GNU/Linux中安裝配置Anaconda和Jupyter Notebook，並通過Shell腳本實現整個操作過程。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/" />
 
@@ -77,20 +77,20 @@
 
 
 
-<meta itemprop="name" content="Setting Up Anaconda And Jupyter Notebook On GNU/Linux">
-<meta itemprop="description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script">
+<meta itemprop="name" content="在GNU/Linux中安裝配置Anaconda和Jupyter Notebook">
+<meta itemprop="description" content="如何在GNU/Linux中安裝配置Anaconda和Jupyter Notebook，並通過Shell腳本實現整個操作過程。">
 
 
 <meta itemprop="datePublished" content="2018-04-19T10:42:53-04:00" />
 <meta itemprop="dateModified" content="2018-04-19T10:42:53-04:00" />
-<meta itemprop="wordCount" content="1583">
+<meta itemprop="wordCount" content="3071">
 
 
 
 <meta itemprop="keywords" content="Python,Anaconda,Jupyter,SSL,Shell Script," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Setting Up Anaconda And Jupyter Notebook On GNU/Linux"/>
-<meta name="twitter:description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script"/>
+<meta name="twitter:title" content="在GNU/Linux中安裝配置Anaconda和Jupyter Notebook"/>
+<meta name="twitter:description" content="如何在GNU/Linux中安裝配置Anaconda和Jupyter Notebook，並通過Shell腳本實現整個操作過程。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -280,7 +280,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Setting Up Anaconda And Jupyter Notebook On GNU/Linux</h1>
+      <h1 class="post-title">在GNU/Linux中安裝配置Anaconda和Jupyter Notebook</h1>
       
       <div class="post-meta">
         <span class="post-time"> 2018-04-19 </span>
@@ -289,8 +289,8 @@
               <a href="/categories/python/"> Python </a>
             
           </div>
-        <span class="more-meta"> 1583 words </span>
-        <span class="more-meta"> 8 min read </span>
+        <span class="more-meta"> 3071 words </span>
+        <span class="more-meta"> 7 min read </span>
       </div>
     </header>
 
@@ -303,33 +303,33 @@
 <ul>
 <li>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#official-document">Official Document</a></li>
-<li><a href="#shell-script">Shell Script</a></li>
+<li><a href="#簡介">簡介</a></li>
+<li><a href="#官方文檔">官方文檔</a></li>
+<li><a href="#shell-腳本">Shell 腳本</a></li>
 <li><a href="#anaconda">Anaconda</a>
 <ul>
-<li><a href="#release-version">Release Version</a></li>
-<li><a href="#verification">Verification</a></li>
-<li><a href="#installation">Installation</a></li>
+<li><a href="#版本信息">版本信息</a></li>
+<li><a href="#校驗">校驗</a></li>
+<li><a href="#安裝">安裝</a></li>
 <li><a href="#path">$PATH</a></li>
 </ul></li>
 <li><a href="#jupyter">Jupyter</a>
 <ul>
-<li><a href="#password-generation">Password Generation</a>
+<li><a href="#生成密碼">生成密碼</a>
 <ul>
-<li><a href="#interactive-mode">Interactive mode</a></li>
-<li><a href="#silent-mode">Silent Mode</a></li>
+<li><a href="#交互模式">交互模式</a></li>
+<li><a href="#靜默模式">靜默模式</a></li>
 </ul></li>
-<li><a href="#ssl">SSL</a></li>
+<li><a href="#ssl證書">SSL證書</a></li>
 </ul></li>
-<li><a href="#testing">Testing</a>
+<li><a href="#測試">測試</a>
 <ul>
-<li><a href="#command-line">Command Line</a></li>
-<li><a href="#web-browser">Web Browser</a></li>
-<li><a href="#private-ssl">Private SSL</a></li>
+<li><a href="#命令行">命令行</a></li>
+<li><a href="#web-瀏覽器">Web 瀏覽器</a></li>
+<li><a href="#私有-ssl">私有 SSL</a></li>
 </ul></li>
-<li><a href="#reference">Reference</a></li>
-<li><a href="#change-logs">Change Logs</a></li>
+<li><a href="#參考資料">參考資料</a></li>
+<li><a href="#更新日誌">更新日誌</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -338,11 +338,11 @@
 
     
     <div class="post-content">
-      <p>The <a href="https://jupyter.org">Jupyter Notebook</a> is an open-source interactive web application developed by <a href="https://www.python.org">Python</a> language. The official recommends installing <a href="https://www.python.org">Python</a> and <a href="https://jupyter.org">Jupyter Notebook</a> using the <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda Distribution</a>. This article documents how to set up <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> and <a href="https://jupyter.org">Jupyter Notebook</a>, and implement the entire process through a shell script.</p>
+      <p><a href="https://jupyter.org">Jupyter Notebook</a>是一款開源的交互式Web應用，使用<a href="https://www.python.org">Python</a>語言開發。其官方建議通過<a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>安裝<a href="https://www.python.org">Python</a>和<a href="https://jupyter.org">Jupyter Notebook</a>。本文記錄如何通過<a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>安裝、配置<a href="https://jupyter.org">Jupyter Notebook</a>，並通過Shell腳本實現整個過程。</p>
 
 <p></p>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="簡介">簡介</h2>
 
 <blockquote>
 <p>We strongly recommend installing Python and Jupyter using the <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda Distribution</a>, which includes Python, the Jupyter Notebook, and other commonly used packages for scientific computing and data science. &ndash; <a href="https://jupyter.org/install.html">Installing Jupyter</a></p>
@@ -360,7 +360,7 @@
 <p>The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.  &ndash; <a href="https://jupyter.org/">https://jupyter.org/</a></p>
 </blockquote>
 
-<h2 id="official-document">Official Document</h2>
+<h2 id="官方文檔">官方文檔</h2>
 
 <ul>
 <li>Anaconda <a href="https://docs.anaconda.com/anaconda/">https://docs.anaconda.com/anaconda/</a></li>
@@ -373,9 +373,9 @@
 </ul></li>
 </ul>
 
-<h2 id="shell-script">Shell Script</h2>
+<h2 id="shell-腳本">Shell 腳本</h2>
 
-<p>The entire installation and configuration process has been implemented through a shell script, the code is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>, usage info</p>
+<p>整個安裝、配置過程已通過Shell腳本實現，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/Anaconda.sh">GitHub</a>，通過如下命令執行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -392,7 +392,7 @@
 </div>
 <script src="https://asciinema.org/a/175225.js" id="asciicast-175225" async></script>
 
-<p>To facilitate managing <a href="https://jupyter.org">Jupyter Notebook</a>, I set up some command aliases in <code>~/.bashrc</code>, as follows</p>
+<p>爲方便管理<a href="https://jupyter.org">Jupyter Notebook</a>，本人在腳本中設置了一些命令別名，存放在文件<code>~/.bashrc</code>中，具體如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -414,22 +414,22 @@
 </div>
 </div>
 <ul>
-<li><code>jnl</code>：list running server；</li>
-<li><code>jnb</code>：start new server；</li>
-<li><code>jne</code>：stop all started server；</li>
-<li><code>jni</code>：search, install, update package via <code>conda</code>， use command <code>jni a</code> to update entire conda environment;</li>
-<li><code>jnr</code>: remove package via <code>conda</code></li>
+<li><code>jnl</code>：查看系統中已運行的server；</li>
+<li><code>jnb</code>：啓動新的server；</li>
+<li><code>jne</code>：關閉所有已啓動的server；</li>
+<li><code>jni</code>：用於安裝包的搜索、安裝和更新，<code>jni a</code>可對所有已安裝的包進行更新。</li>
+<li><code>jnr</code>：移除安裝包</li>
 </ul>
 
 <h2 id="anaconda">Anaconda</h2>
 
-<p>Official download page is <a href="https://www.anaconda.com/download">https://www.anaconda.com/download</a>, it supports both  Python <strong>3.6</strong> and <strong>2.7</strong>. Choosing the corresponding version according to your needs.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> 下載頁面爲 <a href="https://www.anaconda.com/download">https://www.anaconda.com/download</a>，同時支持Python <strong>3.6</strong> 和 <strong>2.7</strong>，根據需要選擇下載對應版本的<a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>。</p>
 
-<h3 id="release-version">Release Version</h3>
+<h3 id="版本信息">版本信息</h3>
 
-<p>The latest release version of <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> is <code>5.1</code>.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>當前最新釋出版本爲<code>5.1</code>。</p>
 
-<p>You can use the following command to extract the latest version information</p>
+<p>可通過如下命令提取最新版本信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -438,7 +438,7 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL https://www.anaconda.com/download/ <span class="p">|</span> sed -r -n <span class="s1">&#39;/&gt;Release Date:/{s@[[:space:]]*&lt;[^&gt;]*&gt;[[:space:]]*@@g;s@^[^:]*:[[:space:]]*(.*)@\1@g;p}; /Anaconda.*Linux-x86_64/{/Installer/{s@.*href=&#34;([^&#34;]*)&#34;.*@\1@g;s@.*Anaconda[^-]*-([^-]*).*$@\1@g;p;q}}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;:a;N;$!ba;s@\n@|@g&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Output results</p>
+<p>輸出結果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -447,11 +447,11 @@
 <pre class="chroma">February 15, 2018|5.1.0</pre></td></tr></table>
 </div>
 </div>
-<h3 id="verification">Verification</h3>
+<h3 id="校驗">校驗</h3>
 
-<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> doesn&rsquo;t provide hash verification info for the package directly on its download page. The relevant information is stored on the page <a href="https://docs.anaconda.com/anaconda/install/hashes/">Anaconda installer file hashes</a>. The page <a href="https://docs.anaconda.com/anaconda/install/hashes/all">Hashes for all files</a> lists the sha256 hash values of the historical versions of <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> 並未直接在下載頁面提供安裝包的hash校驗信息，相關信息存放在頁面 <a href="https://docs.anaconda.com/anaconda/install/hashes/">Anaconda installer file hashes</a>。其中頁面 <a href="https://docs.anaconda.com/anaconda/install/hashes/all">Hashes for all files</a> 列出了<a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>各歷史版本的sha256hash值。</p>
 
-<p>Here use <code>Anaconda3-5.1.0-Linux-x86_64.sh</code> as an example, the page <a href="https://docs.anaconda.com/anaconda/install/hashes/Anaconda3-5.1.0-Linux-x86_64.sh-hash">Hashes for Anaconda3-5.1.0-Linux-x86_64.sh</a> lists the installation package information.</p>
+<p>此處以<code>Anaconda3-5.1.0-Linux-x86_64.sh</code>爲例，頁面 <a href="https://docs.anaconda.com/anaconda/install/hashes/Anaconda3-5.1.0-Linux-x86_64.sh-hash">Hashes for Anaconda3-5.1.0-Linux-x86_64.sh</a>列出了安裝包的相關信息。</p>
 
 <table>
 <thead>
@@ -484,7 +484,7 @@
 </tbody>
 </table>
 
-<p>Hash check can be performed by the following command</p>
+<p>可通過如下命令進行Hash校驗</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -505,7 +505,7 @@
 </span><span class="c1"></span>openssl dgst -sha256 <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Demonstration example</p>
+<p>演示示例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -528,11 +528,11 @@ SHA256<span class="o">(</span>Anaconda3-5.1.0-Linux-x86_64.sh<span class="o">)=<
 └──╼ $</code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="installation">Installation</h3>
+<h3 id="安裝">安裝</h3>
 
-<p>After the sha256 check is passed, refer to the official document <a href="https://docs.anaconda.com/anaconda/install/">https://docs.anaconda.com/anaconda/install/</a> for installation.</p>
+<p>sha256校驗通過後，參照官方文檔 <a href="https://docs.anaconda.com/anaconda/install/">https://docs.anaconda.com/anaconda/install/</a> 進行安裝。</p>
 
-<p>Run the following command to install</p>
+<p>執行如下命令進行安裝</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -541,9 +541,9 @@ SHA256<span class="o">(</span>Anaconda3-5.1.0-Linux-x86_64.sh<span class="o">)=<
 <pre class="chroma"><code class="language-bash" data-lang="bash">bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh</code></pre></td></tr></table>
 </div>
 </div>
-<p>By default, the installing process of <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> is <strong>interactive</strong> which requires user interaction , details in <a href="https://docs.anaconda.com/anaconda/install/linux">Installing on Linux</a>.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>默認採用的是 <strong>交互式</strong> 安裝，需要用戶參與，詳細說明見官方文檔 <a href="https://docs.anaconda.com/anaconda/install/linux">Installing on Linux</a>。</p>
 
-<p>It also supports <strong>silent mode</strong> installation, according to official documents</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>同樣支持 <strong>無交互式</strong> 安裝，根據官方文檔</p>
 
 <ul>
 <li><a href="https://conda.io/docs/user-guide/install/index.html#installing-in-silent-mode">https://conda.io/docs/user-guide/install/index.html#installing-in-silent-mode</a></li>
@@ -551,7 +551,7 @@ SHA256<span class="o">(</span>Anaconda3-5.1.0-Linux-x86_64.sh<span class="o">)=<
 <li><a href="https://conda.io/docs/user-guide/install/macos.html#install-macos-silent">https://conda.io/docs/user-guide/install/macos.html#install-macos-silent</a></li>
 </ul>
 
-<p>Specifing flag <code>-b</code> to make it into silent mode, you can also specify flag <code>-p</code> to custom installation path, as explained below:</p>
+<p>安裝時添加參數<code>-b</code>即可實現 <strong>靜默</strong> 安裝，如果需要自定義安裝路徑，添加參數<code>-p</code>，具體說明如下：</p>
 
 <ol>
 <li><strong>-b</strong>： Batch mode with no PATH modifications to <code>~/.bashrc</code>. Assumes that you agree to the license agreement. Does not edit the <code>.bashrc</code> or <code>.bash_profile</code> files.</li>
@@ -559,7 +559,7 @@ SHA256<span class="o">(</span>Anaconda3-5.1.0-Linux-x86_64.sh<span class="o">)=<
 <li><strong>-f</strong>： Force installation even if prefix -p already exists.</li>
 </ol>
 
-<p>Here use installation path <code>/opt/Anaconda</code> as an example, the installation command is</p>
+<p>此處以安裝路徑爲<code>/opt/Anaconda</code>爲例，安裝命令爲</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -572,9 +572,9 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 </div>
 <h3 id="path">$PATH</h3>
 
-<p>After <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> is installed, it still can&rsquo;t directly execute the command <code>conda</code>. The reason is that the executable path <code>${installation_dir}/bin/</code> is not in the environment variable <code>$PATH.</code> You need to use <code>${installation_dir}/bin/activateadd</code> to add into <code>$PATH</code>.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>安裝完成後，仍無法直接執行命令<code>conda</code>。原因是可執行文件路徑<code>${installation_dir}/bin/</code>不在環境變量<code>$PATH</code>中。需要通過文件<code>${installation_dir}/bin/activate</code>將其添加到<code>$PATH</code>中。</p>
 
-<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> just adds the following directive into file <code>~/.bashrc</code>.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>給出的方案是在文件<code>~/.bashrc</code>中添加如下設置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -583,9 +583,9 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">installation_dir</span><span class="si">}</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>But personal advice is place it under directory <code>/etc/profile.d/</code>, so that other users can also use <code>conda</code>.</p>
+<p>但個人建議將其放置在目錄<code>/etc/profile.d/</code>中，這樣其他用戶也可以使用<code>conda</code>。</p>
 
-<p>Run the following command to update</p>
+<p>執行如下命令進行更新</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -602,11 +602,11 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 </div>
 <h2 id="jupyter">Jupyter</h2>
 
-<p>As <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> includes <a href="https://jupyter.org">Jupyter Notebook</a>, what you need to do is change its default configuration.</p>
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>中已集成有<a href="https://jupyter.org">Jupyter Notebook</a>，稍作配置即可使用。</p>
 
-<p><a href="https://jupyter.org">Jupyter Notebook</a> listens on the default port <code>8888</code>, logging in via a password or token.</p>
+<p><a href="https://jupyter.org">Jupyter Notebook</a>默認監聽端口<code>8888</code>，採用密碼或token方式登入。</p>
 
-<p>Generate the configuration file through the following command</p>
+<p>通過如下命令生成配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -615,7 +615,7 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 <pre class="chroma"><code class="language-bash" data-lang="bash">jupyter notebook --generate-config</code></pre></td></tr></table>
 </div>
 </div>
-<p>The generated configuration file path</p>
+<p>生成的配置文件路徑爲</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -624,9 +624,9 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 <pre class="chroma">~/.jupyter/jupyter_notebook_config.py</pre></td></tr></table>
 </div>
 </div>
-<p>Details in <a href="https://jupyter-notebook.readthedocs.io/en/stable/config_overview.html">Configuration Overview</a></p>
+<p>配置文檔 <a href="https://jupyter-notebook.readthedocs.io/en/stable/config_overview.html">Configuration Overview</a></p>
 
-<p>The important directive</p>
+<p>需要設置的主要有以下指令</p>
 
 <ul>
 <li><code>NotebookApp.allow_root</code></li>
@@ -640,21 +640,21 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 <li><code>NotebookApp.disable_check_xsrf</code></li>
 </ul>
 
-<p>For remote access, you need to open the Jupyter port (default is <code>8888</code>) in firewall rule.</p>
+<p>如果是遠程訪問，則需要在防火牆中開啓Jupyter端口(默認爲<code>8888</code>)。</p>
 
-<h3 id="password-generation">Password Generation</h3>
+<h3 id="生成密碼">生成密碼</h3>
 
-<p><a href="https://jupyter.org">Jupyter Notebook</a> uses an interactive way to generate hashed password.</p>
+<p><a href="https://jupyter.org">Jupyter Notebook</a>採用的是交互式方式生成Hash密碼。</p>
 
-<h4 id="interactive-mode">Interactive mode</h4>
+<h4 id="交互模式">交互模式</h4>
 
-<p>Official document <a href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication">Alternatives to token authentication</a> mentioned</p>
+<p>官方文檔 <a href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication">Alternatives to token authentication</a> 提到</p>
 
 <blockquote>
 <p>New in version 5.0: <strong>jupyter notebook password</strong> command is added.</p>
 </blockquote>
 
-<p>The generated hashed password stores in file</p>
+<p>生成的Hash密碼存儲路徑爲</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -663,7 +663,7 @@ bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</s
 <pre class="chroma">~.jupyter/jupyter_notebook_config.json</pre></td></tr></table>
 </div>
 </div>
-<p>The demo process is as follows (raw password <code>Axdlog@2018_Python</code>)</p>
+<p>演示過程如下 (密碼<code>Axdlog@2018_Python</code>)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -696,11 +696,11 @@ Verify password:
 └──╼ $</code></pre></td></tr></table>
 </div>
 </div>
-<h4 id="silent-mode">Silent Mode</h4>
+<h4 id="靜默模式">靜默模式</h4>
 
-<p>But the interactive mode is not conducive to the automatic operation of the shell script. If there is a possibility to generate hashed password in silent mode?</p>
+<p>但交互式方式不利於Shell腳本的自動化操作， 能否實現非交互式生成密碼呢？</p>
 
-<p>Here use <a href="https://www.python.org">Python 3</a> as an example, the functions used by <a href="https://jupyter.org">Jupyter Notebook</a> to generated hashed password are <code>passwd</code>、<code>passwd_check</code>、<code>set_password</code>、<code>persist_config</code>, they lists in file</p>
+<p>此處以<a href="https://www.python.org">Python 3</a>爲例，<a href="https://jupyter.org">Jupyter Notebook</a>生成密碼使用到如下文件，裏面定義了相關函數，如<code>passwd</code>、<code>passwd_check</code>、<code>set_password</code>、<code>persist_config</code>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -709,7 +709,7 @@ Verify password:
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="si">${</span><span class="nv">installation_dir</span><span class="si">}</span>/lib/python3.6/site-packages/notebook/auth/security.py</code></pre></td></tr></table>
 </div>
 </div>
-<p>Extracting the core codes into file <code>/tmp/passwd.py</code>, here still use the raw password <code>Axdlog@2018_Python</code> as an example.</p>
+<p>提取其中部分代碼，寫入文件<code>/tmp/passwd.py</code>，仍以密碼<code>Axdlog@2018_Python</code>爲例。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -760,7 +760,7 @@ def passwd<span class="o">(</span>password,algorithm<span class="o">=</span><spa
 </span><span class="c1"></span>print<span class="o">(</span>passwd_check<span class="o">(</span>result_str,pass_str<span class="o">))</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>executing the following command to generated hashed password</p>
+<p>執行如下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bsah" data-lang="bsah"><span class="lnt">1
@@ -769,7 +769,7 @@ def passwd<span class="o">(</span>password,algorithm<span class="o">=</span><spa
 <pre class="chroma"><code class="language-bsah" data-lang="bsah">jupyter run /tmp/test.py</code></pre></td></tr></table>
 </div>
 </div>
-<p>operating process</p>
+<p>操作過程</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -788,17 +788,17 @@ True
 └──╼ $</code></pre></td></tr></table>
 </div>
 </div>
-<p>The verification result is <code>True</code>.</p>
+<p>可以看到驗證結果爲<code>True</code>。</p>
 
-<p>However, there is a problem with this: <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> supports both <a href="https://www.python.org">Python</a> 3 and 2, there are 2 <code>security.py</code> copies need to be processed separately. If <a href="https://jupyter.org">Jupyter Notebook</a> changes the code, the shell script must also be changed accordingly. I&rsquo;m not ensure that the script can be updated in time. Based on this consideration, this function (custom password setting) was not added to the shell script.</p>
+<p>但這樣做會有一個問題：<a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>同時支持<a href="https://www.python.org">Python</a> 3 和 2，文件<code>security.py</code>有2份，需要分別處理；如果<a href="https://jupyter.org">Jupyter Notebook</a>更新了其中的代碼，則Shell腳本也須作出相應更改，本人無法確保能夠及時作出相應響應。基於此考慮，未將自定義密碼功能加入Shell腳本。</p>
 
-<h3 id="ssl">SSL</h3>
+<h3 id="ssl證書">SSL證書</h3>
 
-<p>To improve the security of data transmission, SSL certificates can be configured. More details in <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-ssl-for-encrypted-communication">Using SSL for encrypted communication</a>.</p>
+<p>爲提高數據傳輸安全，可配置SSL證書，官方文檔見 <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-ssl-for-encrypted-communication">Using SSL for encrypted communication</a>。</p>
 
-<p>Here I use command <code>openssl</code> to create a self-signed SSL certificate. This process is also in interactive mode. However, you can disable it by flag <code>-subj</code>.</p>
+<p>通過<code>openssl</code>創建自簽SSL證書，該過程是一個交互式過程。但可以通過指令<code>-subj</code>實現免交互操作。</p>
 
-<p>Shell code sample</p>
+<p>Shell代碼示例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -855,7 +855,7 @@ True
 <span class="k">fi</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>The testing process is as follows</p>
+<p>執行過程如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -902,9 +902,9 @@ True
 + chmod <span class="m">644</span> /tmp/Jupyter/Jupyter.pem</code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="testing">Testing</h2>
+<h2 id="測試">測試</h2>
 
-<h3 id="command-line">Command Line</h3>
+<h3 id="命令行">命令行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -955,7 +955,7 @@ https://127.0.0.1:33525/Jupyter/?token<span class="o">=</span>2709e9966fe2772e00
 └──╼ $</code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="web-browser">Web Browser</h3>
+<h3 id="web-瀏覽器">Web 瀏覽器</h3>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-22-24.png" alt="" /></p>
 
@@ -967,7 +967,7 @@ https://127.0.0.1:33525/Jupyter/?token<span class="o">=</span>2709e9966fe2772e00
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-23-47.png" alt="" /></p>
 
-<h3 id="private-ssl">Private SSL</h3>
+<h3 id="私有-ssl">私有 SSL</h3>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-24-22.png" alt="" /></p>
 
@@ -977,20 +977,20 @@ https://127.0.0.1:33525/Jupyter/?token<span class="o">=</span>2709e9966fe2772e00
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-25-03.png" alt="" /></p>
 
-<h2 id="reference">Reference</h2>
+<h2 id="參考資料">參考資料</h2>
 
 <ul>
 <li><a href="https://testnb.readthedocs.io/en/stable/examples/Notebook/Configuring%20the%20Notebook%20and%20Server.html">Configuring the Notebook and Server</a></li>
 <li><a href="http://jupyter-notebook.readthedocs.io/en/latest/examples/Notebook/examples_index.html">Examples</a></li>
 </ul>
 
-<h2 id="change-logs">Change Logs</h2>
+<h2 id="更新日誌">更新日誌</h2>
 
 <ul>
 <li>2018.04.19 10:42 Wed America/Boston
 
 <ul>
-<li>first draft</li>
+<li>初稿完成</li>
 </ul></li>
 </ul>
 
@@ -1036,14 +1036,14 @@ https://127.0.0.1:33525/Jupyter/?token<span class="o">=</span>2709e9966fe2772e00
       
       <nav class="post-nav">
         
-          <a class="prev" href="/2018/setting-up-oracle-jdk-on-gnu-linux/">
+          <a class="prev" href="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">在GNU/Linux中安裝配置Oracle JDK</span>
+            <span class="prev-text nav-default">Setting Up Anaconda And Jupyter Notebook On GNU/Linux</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/">
-            <span class="next-text nav-default">在GNU/Linux中安裝配置Anaconda和Jupyter Notebook</span>
+          <a class="next" href="/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/">
+            <span class="next-text nav-default">Setting Up Slack Build Notification in Travis CI for Github Project</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

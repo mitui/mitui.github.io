@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.39" />
+<meta name="generator" content="Hugo 0.40.3" />
 
 
 <link rel="canonical" href="/2017/splitting-nginx-log-by-date-via-gnu-awk/" />
@@ -590,9 +590,9 @@ awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">real    40m45.080s
-user    39m59.076s
-sys 0m21.479s</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">real	40m45.080s
+user	39m59.076s
+sys	0m21.479s</code></pre></td></tr></table>
 </div>
 </div>
 <p>將近8G的日誌，操作耗時超過<code>40</code>分鐘，原因是awk默認只使用單核心處理器。</p>

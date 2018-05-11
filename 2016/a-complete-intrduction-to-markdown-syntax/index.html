@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.39" />
+<meta name="generator" content="Hugo 0.40.3" />
 
 
 <link rel="canonical" href="/2016/a-complete-intrduction-to-markdown-syntax/" />
@@ -83,7 +83,7 @@
 
 <meta itemprop="datePublished" content="2016-01-25T22:04:52&#43;08:00" />
 <meta itemprop="dateModified" content="2016-01-25T22:04:52&#43;08:00" />
-<meta itemprop="wordCount" content="5556">
+<meta itemprop="wordCount" content="5580">
 
 
 
@@ -289,7 +289,7 @@
               <a href="/categories/tutorial/"> Tutorial </a>
             
           </div>
-        <span class="more-meta"> 5556 words </span>
+        <span class="more-meta"> 5580 words </span>
         <span class="more-meta"> 12 min read </span>
       </div>
     </header>
@@ -902,10 +902,10 @@ Thursday</li>
 </span><span class="lnt">4
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">    flag=1
-    while $flag;do
-        echo &#34;I love you, my lover&#34;
-    done</pre></td></tr></table>
+<pre class="chroma">	flag=1
+	while $flag;do
+		echo &#34;I love you, my lover&#34;
+	done</pre></td></tr></table>
 </div>
 </div>
 <p>Markdown渲染效果如下</p>
@@ -941,7 +941,7 @@ done</pre></td></tr></table>
 <td class="lntd">
 <pre class="chroma">flag=1
 while $flag;do
-    echo &#34;I love you, my lover&#34;
+	echo &#34;I love you, my lover&#34;
 done</pre></td></tr></table>
 </div>
 </div>
@@ -1015,7 +1015,7 @@ done</pre></td></tr></table>
 &lt;/div&gt;
 
 &amp;lt;div class=&#34;footer&#34;&amp;gt;
-    &amp;copy; 2004 Foo Corporation
+	&amp;copy; 2004 Foo Corporation
 &amp;lt;/div&amp;gt;</pre></td></tr></table>
 </div>
 </div>
@@ -1193,9 +1193,13 @@ China|HongKong|HongKong</pre></td></tr></table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">[GitHub][github]</pre></td></tr></table>
+<pre class="chroma">[GitHub][github]
+
+[github]:https://github.com &#34;GitHub Official Site&#34;</pre></td></tr></table>
 </div>
 </div>
 <p>Markdown渲染效果如下</p>
@@ -1205,9 +1209,14 @@ China|HongKong|HongKong</pre></td></tr></table>
 <p>以下三者等效</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"></pre></td>
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
 <td class="lntd">
-<pre class="chroma"></pre></td></tr></table>
+<pre class="chroma">[github]: https://github.com &#34;GitHub Official Site&#34;
+[github]: https://github.com &#39;GitHub Official Site&#39;
+[github]: https://github.com (GitHub Official Site)</pre></td></tr></table>
 </div>
 </div>
 <p><strong>注意</strong>：在某些Markdown工具中，使用單引號形式的可能無法正常渲染。建議使用雙引號<code>&quot;&quot;</code>或<code>()</code>。</p>
