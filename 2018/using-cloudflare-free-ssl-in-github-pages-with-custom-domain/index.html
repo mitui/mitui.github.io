@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>爲GitHub Pages配置Cloudflare的免費SSL數字證書 - MetaDefine - A super concise theme for Hugo</title>
+  <title>Using Cloudflare Free SSL In GitHub Pages With Custom Domain - MetaDefine - A super concise theme for Hugo</title>
   <link rel="alternate" hreflang="en" href="/" />
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="mitui" /><meta name="description" content="如何在GitHub pages中爲自有域名配置Cloudflare提供的免費SSL數字證書" />
+<meta name="author" content="mitui" /><meta name="description" content="How to use Cloudflare free ssl in GitHub pages with custom domain" />
 <meta name="keywords" content="AxdLog, Cloudflare, SSL, Free SSL, GitHub pages, Hugo, Custom domain" />
 
 
@@ -56,8 +56,8 @@
 
 
 
-<meta property="og:title" content="爲GitHub Pages配置Cloudflare的免費SSL數字證書" />
-<meta property="og:description" content="如何在GitHub pages中爲自有域名配置Cloudflare提供的免費SSL數字證書" />
+<meta property="og:title" content="Using Cloudflare Free SSL In GitHub Pages With Custom Domain" />
+<meta property="og:description" content="How to use Cloudflare free ssl in GitHub pages with custom domain" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/" />
 
@@ -77,20 +77,20 @@
 
 
 
-<meta itemprop="name" content="爲GitHub Pages配置Cloudflare的免費SSL數字證書">
-<meta itemprop="description" content="如何在GitHub pages中爲自有域名配置Cloudflare提供的免費SSL數字證書">
+<meta itemprop="name" content="Using Cloudflare Free SSL In GitHub Pages With Custom Domain">
+<meta itemprop="description" content="How to use Cloudflare free ssl in GitHub pages with custom domain">
 
 
 <meta itemprop="datePublished" content="2018-04-11T15:16:42-04:00" />
 <meta itemprop="dateModified" content="2018-04-11T15:16:42-04:00" />
-<meta itemprop="wordCount" content="1364">
+<meta itemprop="wordCount" content="661">
 
 
 
 <meta itemprop="keywords" content="Cloudflare,SSL,Hugo," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="爲GitHub Pages配置Cloudflare的免費SSL數字證書"/>
-<meta name="twitter:description" content="如何在GitHub pages中爲自有域名配置Cloudflare提供的免費SSL數字證書"/>
+<meta name="twitter:title" content="Using Cloudflare Free SSL In GitHub Pages With Custom Domain"/>
+<meta name="twitter:description" content="How to use Cloudflare free ssl in GitHub pages with custom domain"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -280,7 +280,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">爲GitHub Pages配置Cloudflare的免費SSL數字證書</h1>
+      <h1 class="post-title">Using Cloudflare Free SSL In GitHub Pages With Custom Domain</h1>
       
       <div class="post-meta">
         <span class="post-time"> 2018-04-11 </span>
@@ -289,8 +289,8 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 1364 words </span>
-        <span class="more-meta"> 3 min read </span>
+        <span class="more-meta"> 661 words </span>
+        <span class="more-meta"> 4 min read </span>
       </div>
     </header>
 
@@ -303,19 +303,18 @@
 <ul>
 <li>
 <ul>
-<li><a href="#配置-cloudflare">配置 Cloudflare</a>
+<li><a href="#configure-cloudflare">Configure Cloudflare</a>
 <ul>
-<li><a href="#添加站點">添加站點</a></li>
-<li><a href="#選擇cloudflare套餐">選擇CloudFlare套餐</a></li>
-<li><a href="#添加dns記錄">添加DNS記錄</a></li>
-<li><a href="#更換-nameservers">更換 Nameservers</a></li>
-<li><a href="#更新-nameservers">更新 Nameservers</a></li>
-<li><a href="#crypto-配置">Crypto 配置</a></li>
+<li><a href="#add-websites">Add Websites</a></li>
+<li><a href="#add-dns-records">Add DNS Records</a></li>
+<li><a href="#change-your-nameservers">Change Your Nameservers</a></li>
+<li><a href="#update-nameservers">Update Nameservers</a></li>
+<li><a href="#crypto">Crypto</a></li>
 </ul></li>
-<li><a href="#配置-hugo">配置 Hugo</a></li>
-<li><a href="#測試">測試</a></li>
-<li><a href="#參考資料">參考資料</a></li>
-<li><a href="#更新日誌">更新日誌</a></li>
+<li><a href="#configuring-hugo">Configuring Hugo</a></li>
+<li><a href="#test-in-browser">Test in Browser</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#change-log">Change Log</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -324,31 +323,30 @@
 
     
     <div class="post-content">
-      <p>Blog已成功從<a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>遷移到<a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>，新域名<a href="https://axdlog.com"><strong>AxdLog</strong></a>。由於<a href="https://pages.github.com" title="Hosted directly from your GitHub repository. Just edit, push, and your changes are live.">Github Pages</a>對自有域名不提供SSL證書，故須額外部署。<a href="https://www.cloudflare.com">CloudFlare</a>提供免費的SSL證書，並且提供防DDOS攻擊功能。</p>
+      <p>I have succeed in migrating my blog from <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a> to <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> platform, new domain is <a href="https://axdlog.com"><strong>AxdLog</strong></a>. As <a href="https://pages.github.com" title="Hosted directly from your GitHub repository. Just edit, push, and your changes are live.">Github Pages</a> doesn&rsquo;t provide SSL certificate for custom domain, so I need to deploy it separately. <a href="https://www.cloudflare.com">CloudFlare</a> provides free SSL certificate, and it has the ability of anti-ddos.</p>
 
-<p>本文記錄如何配置並使用<a href="https://www.cloudflare.com">CloudFlare</a>的SSL證書。</p>
+<p>This article documents how to configure
+<a href="https://www.cloudflare.com">CloudFlare</a> free SSL certificate in <a href="https://pages.github.com" title="Hosted directly from your GitHub repository. Just edit, push, and your changes are live.">Github Pages</a>.</p>
 
 <p></p>
 
-<h2 id="配置-cloudflare">配置 Cloudflare</h2>
+<h2 id="configure-cloudflare">Configure Cloudflare</h2>
 
-<p>須先註冊<a href="https://www.cloudflare.com">CloudFlare</a>帳號，若已經有，直接登入。</p>
+<p>Registering <a href="https://www.cloudflare.com">CloudFlare</a> account, if you have one, just login.</p>
 
-<h3 id="添加站點">添加站點</h3>
+<h3 id="add-websites">Add Websites</h3>
 
-<p>若是新註冊用戶，登入後，出現 <strong>Add your site</strong> 頁面，輸入需要配置的域名。此處輸入<code>axdlog.com</code>。</p>
+<p>If you&rsquo;re a new registered user. It will show a page <strong>Add your site</strong>. Inputing the target domain, here I input <code>axdlog.com</code>.</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-17-14_add_site.png" alt="" /></p>
 
-<p>點擊<code>Add site</code>按鈕後，出現 <strong>We&rsquo;re querying your DNS records</strong> 頁面</p>
+<p>Clicking button <code>Add site</code>, it shows page <strong>We&rsquo;re querying your DNS records</strong>:</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-18-08_query_dns_records.png" alt="" /></p>
 
-<p>點擊<code>Next</code>按鈕，出現 <strong>Select a Plan</strong> 頁面。</p>
+<p>Clicking button <code>Next</code>, it shows page <strong>Select a Plan</strong></p>
 
-<h3 id="選擇cloudflare套餐">選擇CloudFlare套餐</h3>
-
-<p>套餐價格如下</p>
+<p>The following is price list:</p>
 
 <table>
 <thead>
@@ -383,15 +381,17 @@
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-18-26_select_plan.png" alt="" /></p>
 
-<p>建議有經濟能力的選擇<code>Pro</code>或<code>Business</code>套餐，一是功能更多，二也算支持<a href="https://www.cloudflare.com">Cloudflare</a>發展。此處，選擇<code>Free Website</code>，點擊按鈕<code>Confirm Plan</code>，出現 <strong>DNS query results</strong> 頁面</p>
+<p>It is recommended that you choose  plan <code>Pro</code> or <code>Business</code> if you have the ability to pay. The benefits are more functions and support the development of <a href="https://www.cloudflare.com">Cloudflare</a>.</p>
+
+<p>Here I choose <code>Free Website</code>, clicking button <code>Confirm Plan</code>, it show page <strong>DNS query results</strong>.</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-18-52_dns_query_result.png" alt="" /></p>
 
-<h3 id="添加dns記錄">添加DNS記錄</h3>
+<h3 id="add-dns-records">Add DNS Records</h3>
 
-<p>顯示該域名當前的DNS記錄，刪除所有已有的記錄，新建2個<code>CNAME</code>記錄。</p>
+<p>It list all currently existed DNS records of your domain. Deleteing all existed records, creating 2 new records.</p>
 
-<p>以下是本人的DNS Records</p>
+<p>The following are my DNS records:</p>
 
 <table>
 <thead>
@@ -425,11 +425,11 @@
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-23-30_dns_records_setting.png" alt="" /></p>
 
-<p>操作完成後，出現 <strong>Change your Nameservers</strong> 頁面</p>
+<p>Once operation is completely, it shows page <strong>Change your Nameservers</strong>.</p>
 
-<h3 id="更換-nameservers">更換 Nameservers</h3>
+<h3 id="change-your-nameservers">Change Your Nameservers</h3>
 
-<p><a href="https://www.cloudflare.com">CloudFlare</a>提供了2組DNS地址</p>
+<p><a href="https://www.cloudflare.com">CloudFlare</a> provides 2 DNS address:</p>
 
 <ul>
 <li>dina.ns.cloudflare.com</li>
@@ -438,15 +438,15 @@
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-24-23_change_nameserver.png" alt="" /></p>
 
-<p>本人的域名註冊商是<a href="https://www.namecheap.com/">Namecheap</a>，在<code>Domain List</code>中選擇目標域名，在<code>NAMESERVERS</code>中選擇<code>custom dns</code>，將<a href="https://www.cloudflare.com">CloudFlare</a>提供的2組DNS地址添加進去。</p>
+<p>The domain registrar of my domain is <a href="https://www.namecheap.com/">Namecheap</a>, selecting target domain in <code>Domain List</code>, choosing <code>custom dns</code> in <code>NAMESERVERS</code> section, add the 2 DNS address into the input field.</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-26-23_change_nameserver.png" alt="" /></p>
 
-<p>操作完成後，返回<a href="https://www.cloudflare.com">CloudFlare</a>的 <strong>Change your Nameservers</strong> 頁面，點擊<code>Continue</code>按鈕。</p>
+<p>Once operation is finished, it will return to page <strong>Change your Nameservers</strong>, clicking button <code>Continue</code>.</p>
 
-<h3 id="更新-nameservers">更新 Nameservers</h3>
+<h3 id="update-nameservers">Update Nameservers</h3>
 
-<p>頁面顯示如下信息</p>
+<p>The page shows:</p>
 
 <blockquote>
 <p><strong>Status: Website not active (DNS modification pending)</strong></p>
@@ -463,40 +463,40 @@
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-27-22_panel_overview.png" alt="" /></p>
 
-<p>當在域名提供商處修改好<code>Nameservers</code>後，可點擊右側的<code>Recheck Nameservers</code>檢測是否生效。此處請耐心等待，域名解析需要等一段時間才能生效。</p>
+<p>If you are finished changing <code>Nameservers</code> at domain registrar, client the button <code>Recheck Nameservers</code> at the right of the page. It will check it the configuration is active. It will takes a while to take effect, just be patient.</p>
 
-<p>如果檢測通過，則 <strong><code>Status: Pending</code></strong> 會變成 <strong><code>Status: Active</code></strong>，並提示<code>This website is active on CloudFlare.</code>。</p>
+<p>It it is passed, the state of <strong><code>Status: Pending</code></strong> will be changed to <strong><code>Status: Active</code></strong>, showing <code>This website is active on CloudFlare.</code>。</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-28-57_check_status_result.png" alt="" /></p>
 
-<h3 id="crypto-配置">Crypto 配置</h3>
+<h3 id="crypto">Crypto</h3>
 
 <blockquote>
 <p>Manage Cryptography settings for your website.</p>
 </blockquote>
 
-<p>返回頁面頂部，有<code>Cryptos</code>圖標點擊進入。</p>
+<p>Return to the top of the page, clicking icon <code>Cryptos</code>.</p>
 
-<p><strong><code>SSL</code></strong> 選項有四種選擇<code>Off</code>、<code>Flexible</code>、<code>Full</code>、<code>Strict</code>，點擊下方的<code>Help</code>，可查看相關解釋說明。</p>
+<p><strong><code>SSL</code></strong> has 4 choices: <code>Off</code>、<code>Flexible</code>、<code>Full</code>、<code>Strict</code>. If you wanna view the explanation, just clicking the following <code>Help</code>.</p>
 
-<p>查閱的參考教程大都推薦<code>Flexible</code>，而本人則參考<a href="https://zaicheng.me/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#Setup_github_pages_CNAME_record">Set up cloudflare</a>，選擇<code>Full</code>。</p>
+<p>Commonly choosing <code>Flexible</code>, I choose <code>Full</code> referenced by <a href="https://zaicheng.me/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#Setup_github_pages_CNAME_record">Set up cloudflare</a>.</p>
 
-<p>接下來設置<code>HTTP Strict Transport Security (HSTS)</code>，點擊其右側的<code>Enable HSTS</code>進入，勾選<code>I understand</code>，點擊<code>Nest step</code>，開啓如下兩項</p>
+<p>Next setting up <code>HTTP Strict Transport Security (HSTS)</code>, clicking <code>Enable HSTS</code>, choosing <code>I understand</code>, then clicking <code>Nest step</code>, enabling the  following 2 settings:</p>
 
 <ul>
 <li><code>Apply HSTS policy to subdomains (includeSubDomains)</code></li>
 <li><code>No-Sniff Header</code></li>
 </ul>
 
-<p>點擊<code>Save</code>保存退出。</p>
+<p>Clicking <code>Save</code> to exit.</p>
 
-<p>其餘的功能，可自行設置。</p>
+<p>You can optimize other functions according to personal needs.</p>
 
-<h2 id="配置-hugo">配置 Hugo</h2>
+<h2 id="configuring-hugo">Configuring Hugo</h2>
 
-<p><a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>的設置要比<a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>簡單，只需在repo(maxdsre.github.io)的<code>master</code>分支中添加名爲<code>CNAME</code>的文件即可。將自有域名地址寫入該文件，此處寫入<code>axdlog.com</code>。</p>
+<p>Setting operation in <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> is simpler then <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>. What you need to do is just add a file named <code>CNAME</code> into the branch <code>master</code> of repo (maxdsre.github.io). Adding the custom domain name into the file, here the content is <code>axdlog.com</code>.</p>
 
-<p>因爲是通過<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>進行集成部署，故而只需在<code>.travis.yml</code>文件添加一行設置。</p>
+<p>Due to it is integrated deploying through <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>, I just need to add a new line in config file <code>.travis.yml</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-yml" data-lang="yml"><span class="lnt">1
@@ -507,17 +507,17 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-yml" data-lang="yml">script<span class="p">:</span><span class="w">
 </span><span class="w">    </span>-<span class="w"> </span>hugo<span class="w">
-</span><span class="w">    </span><span class="c"># 添加行</span><span class="w">
+</span><span class="w">    </span><span class="c"># new line</span><span class="w">
 </span><span class="w">    </span>-<span class="w"> </span>echo<span class="w"> </span><span class="s1">&#39;axdlog.com&#39;</span><span class="w"> </span><span class="sd">&gt; public/CNAME</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="測試">測試</h2>
+<h2 id="test-in-browser">Test in Browser</h2>
 
-<p>在瀏覽器中測試，能正常跳轉到<code>https</code>，並顯示綠色小鎖。在<code>Google Chrome</code>和<code>Mozilla Firefox</code>上測試通過。</p>
+<p>Testing in browser, it redirects to <code>https</code> successfully and shows green padlock icon. It is approved in <code>Google Chrome</code> and <code>Mozilla Firefox</code>.</p>
 
-<p>當初爲<a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>配置SSL證書耗費了5個多小時，而現在整個過程不超過半個小時。</p>
+<p>It took me at least 5 hours to configure SSL in <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>. But now the total operation is less then half an hour.</p>
 
-<h2 id="參考資料">參考資料</h2>
+<h2 id="references">References</h2>
 
 <ul>
 <li><a href="https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/">Set Up SSL on Github Pages With Custom Domains for Free</a></li>
@@ -525,13 +525,13 @@
 <li><a href="https://zaicheng.me/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/">Hexo blog with custom domain and cloudflare</a></li>
 </ul>
 
-<h2 id="更新日誌">更新日誌</h2>
+<h2 id="change-log">Change Log</h2>
 
 <ul>
 <li>2018.04.11 16:05 Wed America/Boston
 
 <ul>
-<li>初稿完成</li>
+<li>first draft</li>
 </ul></li>
 </ul>
     </div>
@@ -571,14 +571,14 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/">
+          <a class="prev" href="/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Using Cloudflare Free SSL In GitHub Pages With Custom Domain</span>
+            <span class="prev-text nav-default">爲集成了Travis CI的GitHub項目配置Slack信息推送</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/">
-            <span class="next-text nav-default">Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically</span>
+          <a class="next" href="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/">
+            <span class="next-text nav-default">爲GitHub Pages配置Cloudflare的免費SSL數字證書</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

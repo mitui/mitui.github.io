@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically - MetaDefine - A super concise theme for Hugo</title>
+  <title>利用Travis CI和Hugo將Blog自動部署到Github Pages - MetaDefine - A super concise theme for Hugo</title>
   <link rel="alternate" hreflang="en" href="/" />
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="mitui" /><meta name="description" content="Using Hugo and Travis CI to deploy personal blog to Github pages automatically" />
+<meta name="author" content="mitui" /><meta name="description" content="本文記錄如何通過Travis CI和Hugo將Blog內容自動部署到Github pages" />
 <meta name="keywords" content="AxdLog, Hugo, Travis CI, GitHub Pages, Git, Automatic deployment" />
 
 
@@ -56,8 +56,8 @@
 
 
 
-<meta property="og:title" content="Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically" />
-<meta property="og:description" content="Using Hugo and Travis CI to deploy personal blog to Github pages automatically" />
+<meta property="og:title" content="利用Travis CI和Hugo將Blog自動部署到Github Pages" />
+<meta property="og:description" content="本文記錄如何通過Travis CI和Hugo將Blog內容自動部署到Github pages" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/" />
 
@@ -77,20 +77,20 @@
 
 
 
-<meta itemprop="name" content="Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically">
-<meta itemprop="description" content="Using Hugo and Travis CI to deploy personal blog to Github pages automatically">
+<meta itemprop="name" content="利用Travis CI和Hugo將Blog自動部署到Github Pages">
+<meta itemprop="description" content="本文記錄如何通過Travis CI和Hugo將Blog內容自動部署到Github pages">
 
 
 <meta itemprop="datePublished" content="2018-04-11T00:20:07-04:00" />
 <meta itemprop="dateModified" content="2018-04-11T00:20:07-04:00" />
-<meta itemprop="wordCount" content="1677">
+<meta itemprop="wordCount" content="2908">
 
 
 
 <meta itemprop="keywords" content="Github,Hugo,Travis CI,Git," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically"/>
-<meta name="twitter:description" content="Using Hugo and Travis CI to deploy personal blog to Github pages automatically"/>
+<meta name="twitter:title" content="利用Travis CI和Hugo將Blog自動部署到Github Pages"/>
+<meta name="twitter:description" content="本文記錄如何通過Travis CI和Hugo將Blog內容自動部署到Github pages"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -280,7 +280,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically</h1>
+      <h1 class="post-title">利用Travis CI和Hugo將Blog自動部署到Github Pages</h1>
       
       <div class="post-meta">
         <span class="post-time"> 2018-04-11 </span>
@@ -289,8 +289,8 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 1677 words </span>
-        <span class="more-meta"> 4 min read </span>
+        <span class="more-meta"> 2908 words </span>
+        <span class="more-meta"> 6 min read </span>
       </div>
     </header>
 
@@ -303,31 +303,31 @@
 <ul>
 <li>
 <ul>
-<li><a href="#prerequisite">Prerequisite</a></li>
-<li><a href="#official-docs">Official Docs</a></li>
-<li><a href="#hugo-installation">Hugo Installation</a>
+<li><a href="#準備工作">準備工作</a></li>
+<li><a href="#官方文檔">官方文檔</a></li>
+<li><a href="#安裝-hugo">安裝 Hugo</a>
 <ul>
-<li><a href="#create-a-new-site">Create A New Site</a></li>
+<li><a href="#創建新項目">創建新項目</a></li>
 </ul></li>
-<li><a href="#github-repository-operation">Github Repository Operation</a>
+<li><a href="#配置-github-倉庫">配置 Github 倉庫</a>
 <ul>
-<li><a href="#create-empty-repository">Create Empty Repository</a></li>
-<li><a href="#pushing-repository">Pushing Repository</a>
+<li><a href="#創建空倉庫">創建空倉庫</a></li>
+<li><a href="#分支操作">分支操作</a>
 <ul>
-<li><a href="#branch-code">Branch code</a></li>
-<li><a href="#branch-master">Branch master</a></li>
-<li><a href="#branch-image">Branch image</a></li>
+<li><a href="#code-分支">code 分支</a></li>
+<li><a href="#master-分支">master 分支</a></li>
+<li><a href="#image-分支">image 分支</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#travis-ci-configuration">Travis CI Configuration</a>
+<li><a href="#travis-ci-配置">Travis CI 配置</a>
 <ul>
-<li><a href="#github-access-token-generation">Github Access Token Generation</a></li>
-<li><a href="#environment-variables-setting">Environment Variables Setting</a></li>
-<li><a href="#travis-yml-directives">.travis.yml directives</a></li>
+<li><a href="#生成-github-訪問-token">生成 Github 訪問 Token</a></li>
+<li><a href="#設置環境變量">設置環境變量</a></li>
+<li><a href="#travis-yml-指令">.travis.yml 指令</a></li>
 </ul></li>
-<li><a href="#continuous-integration">Continuous Integration</a></li>
-<li><a href="#references">References</a></li>
-<li><a href="#change-logs">Change logs</a></li>
+<li><a href="#持續集成">持續集成</a></li>
+<li><a href="#參考資料">參考資料</a></li>
+<li><a href="#更新日誌">更新日誌</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -336,26 +336,24 @@
 
     
     <div class="post-content">
-      <p>My personal static blog is hosted on <a href="https://github.com">Github</a>. I used <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a> before, but as its complicated package dependence and cumbersome deployment process, I have to encapsulated the whole deploying environment into Docker image for rapid deployment. But it was still too complex. Now I switch to <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> which is faster, simpler.</p>
+      <p>個人Blog採用靜態Blog形式託管在<a href="https://github.com">Github</a>上。此前使用的是<a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的<a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>。本文記錄如何在GNU/Linux中通過<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>將<a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>生成的Blog內容自動同步到<a href="https://github.com">Github</a>，實現持續集成、部署。</p>
 
-<p>This article documents how to automatically synchronize blog contents generated by <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> to <a href="https://github.com">Github</a> through <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>.</p>
-
-<p><strong>Attention</strong>: The following operation process will not involve account registration, Git configuration.</p>
+<p><strong>注意</strong>：本文旨在記錄關鍵操作，不涉及帳號註冊、Git安裝配置等過程。</p>
 
 <p></p>
 
-<h2 id="prerequisite">Prerequisite</h2>
+<h2 id="準備工作">準備工作</h2>
 
 <ol>
-<li>Registering a <a href="https://github.com">Github</a> account;</li>
-<li>Registering a <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a> account (login with Github account);</li>
-<li>Installing <code>git</code>, <code>hugo</code> in your system;</li>
-<li>Personal domain (optional, here my domain is <code>axdlog.com</code>);</li>
+<li>在<a href="https://github.com">Github</a>註冊帳號；</li>
+<li>在<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>註冊帳號(可通過Github帳號登入)；</li>
+<li>本地系統安裝<code>git</code>，<code>hugo</code>；</li>
+<li>個人域名(可選，此處指定域名<code>axdlog.com</code>)；</li>
 </ol>
 
-<h2 id="official-docs">Official Docs</h2>
+<h2 id="官方文檔">官方文檔</h2>
 
-<p>The relevant operations in this document are based on the official document as the operation credentials:</p>
+<p>本文中的相關操作皆以官方文檔爲操作憑據</p>
 
 <ul>
 <li>Github
@@ -381,17 +379,17 @@
 </ul></li>
 </ul>
 
-<h2 id="hugo-installation">Hugo Installation</h2>
+<h2 id="安裝-hugo">安裝 Hugo</h2>
 
 <ul>
-<li>Github url: <a href="https://github.com/gohugoio/hugo">https://github.com/gohugoio/hugo</a></li>
-<li>Downloading page: <a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a></li>
-<li>Release Info API:  <a href="https://api.github.com/repos/gohugoio/hugo/releases/latest">https://api.github.com/repos/gohugoio/hugo/releases/latest</a></li>
+<li>Github 地址: <a href="https://github.com/gohugoio/hugo">https://github.com/gohugoio/hugo</a></li>
+<li>下載頁: <a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a></li>
+<li>版本信息API:  <a href="https://api.github.com/repos/gohugoio/hugo/releases/latest">https://api.github.com/repos/gohugoio/hugo/releases/latest</a></li>
 </ul>
 
-<p><a href="https://gohugo.io/getting-started/installing/">Install Hugo</a> is the official installation document of <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>. If you&rsquo;re using GNU/Linux, you may consider using my <a href="https://github.com/MaxdSre/Python-learning-quiz/blob/master/LearningQuiz/Hugo-StaticSiteGeneratorInstallation.ipynb">Python script</a> to install it.</p>
+<p><a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>官方的安裝文檔頁<a href="https://gohugo.io/getting-started/installing/">Install Hugo</a>，如果使用的是GNU/Linux，可考慮使用本人寫的<a href="https://github.com/MaxdSre/Python-learning-quiz/blob/master/LearningQuiz/Hugo-StaticSiteGeneratorInstallation.ipynb">Python script</a>安裝。</p>
 
-<p>Current release version info</p>
+<p>當前版本信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -408,17 +406,17 @@
 </span><span class="c1"></span>Hugo Static Site Generator v0.38.2 linux/amd64 BuildDate: <span class="m">2018</span>-04-09T08:17:17Z</code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="create-a-new-site">Create A New Site</h3>
+<h3 id="創建新項目">創建新項目</h3>
 
-<p>You can reference official document <a href="https://gohugo.io/getting-started/">Get Started</a>、<a href="https://gohugo.io/getting-started/quick-start/">Quick Start</a> to know how to create a new site through <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>.</p>
+<p>如何通過<a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>創建一個新的站點，詳見官方文檔 <a href="https://gohugo.io/getting-started/">Get Started</a>、<a href="https://gohugo.io/getting-started/quick-start/">Quick Start</a>。</p>
 
 <blockquote>
 <p>If this is your first time using Hugo and you’ve <a href="https://gohugo.io/getting-started/installing/">already installed Hugo on your machine</a>, we recommend the <a href="https://gohugo.io/getting-started/quick-start/">quick start</a>.</p>
 </blockquote>
 
-<p>Here I name the site to <code>quickstart</code> (it is just the directory name, not the final site name).</p>
+<p>此處且將站點名稱命名爲<code>quickstart</code>(其實就是目錄名，不一定是最終的網站名稱)。</p>
 
-<p>Generated directory structure by Hugo:</p>
+<p>Hugo生成的目錄結構如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -455,11 +453,11 @@
 <span class="m">8</span> directories, <span class="m">3</span> files</code></pre></td></tr></table>
 </div>
 </div>
-<p><strong>Attention</strong>: These files are not the final blog contents, they are just used to generate the blog contents.</p>
+<p><strong>注意</strong>：這些不是最終的Blog內容，是用於生成Blog內容的文件。</p>
 
-<p>Directory <code>content</code> is used to store your blog file (Markdown file).</p>
+<p>目錄<code>content</code>中存放自己需要發佈的Blog (Markdown文件)；</p>
 
-<p>If you wanna preview the final effect, just executing command <code>hugo server</code> to set up a local server which is listening port <code>1313</code>. And opening the link in your browser.</p>
+<p>如果要預覽Blog最終效果，可通過命令<code>hugo server</code>在本地開啓一個Web服務器，端口號<code>1313</code>，在瀏覽器中打開即可。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -470,9 +468,9 @@
 Press Ctrl+C to stop</code></pre></td></tr></table>
 </div>
 </div>
-<p>Executing command <code>hugo</code> in your project directory, it will generate a directory named <code>public</code>. This directory contains the final blog contents. What you need to do is push all the files in this directory to the branch <code>master</code> of your GitHub repository.</p>
+<p>在項目所在目錄中執行命令<code>hugo</code>，會生成名爲<code>public</code>的目錄，該目錄存放着最終的Blog內容文件。將<code>public</code>目錄中的所有內容上傳至Github的<code>master</code>分支中即可。</p>
 
-<p>The demonstration process is as follows:</p>
+<p>演示過程如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -533,26 +531,26 @@ Total in <span class="m">403</span> ms
 <span class="m">7</span> directories, <span class="m">1</span> file</code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="github-repository-operation">Github Repository Operation</h2>
+<h2 id="配置-github-倉庫">配置 Github 倉庫</h2>
 
-<p><strong>Important</strong>: The handling ideas and operations of this section are very important. Not involving Git setting procedure.</p>
+<p><strong>重要</strong>：本部分的處理思路、操作非常重要，Git配置步驟省略。</p>
 
-<p>If you use Github Page to host blog, you need to create a repository named <code>&lt;username&gt;.github.io</code>. Then putting the files generated by Hugo to the branch <code>master</code> of this repository.</p>
+<p>使用Github Page託管Blog內容，需要創建名爲<code>&lt;username&gt;.github.io</code>的倉庫，並將Hugo生成的Blog內容提交到倉庫的<code>master</code>中。</p>
 
-<p>I create 2 branches via command <code>git checkout --orphan</code> to store source files and blog contents in directory <code>public</code> separately.</p>
+<p>因Hugo生成的內容分爲兩部分，源文件和<code>public</code>目錄中的Blog內容。故通過<code>git checkout --orphan</code>在同一倉庫中創建2個分支：</p>
 
 <ul>
-<li>branch <code>code</code> stores source files;</li>
-<li>branch <code>master</code> stores blog contents in directory <code>public</code>;</li>
+<li>分支<code>code</code>用於存放源文件；</li>
+<li>分支<code>master</code>用於存放<code>public</code>目錄中的Blog內容；</li>
 </ul>
 
-<p>Attention please, this method is different from official document <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">Configuring a publishing source for GitHub Pages</a>.</p>
+<p>處理思路與官方文檔 <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">Configuring a publishing source for GitHub Pages</a>不同，需要注意。</p>
 
-<h3 id="create-empty-repository">Create Empty Repository</h3>
+<h3 id="創建空倉庫">創建空倉庫</h3>
 
-<p>My GitHub account is <code>MaxdSre</code>, so I need to create a repository named <code>maxdsre.github.io</code>.</p>
+<p>本人GitHub帳號名爲<code>MaxdSre</code>，故創建倉庫<code>maxdsre.github.io</code>。</p>
 
-<p>After creating the repository, it will prompts</p>
+<p>創建倉庫後，出現如下提示信息</p>
 
 <blockquote>
 <p>or create a new repository on the command line</p>
@@ -588,20 +586,20 @@ git push -u origin master</code></pre></td></tr></table>
 git push -u origin master</code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="pushing-repository">Pushing Repository</h3>
+<h3 id="分支操作">分支操作</h3>
 
-<p>There are 4 steps:</p>
+<p>操作分爲4步：</p>
 
 <ol>
-<li>Initializing Git repository via command <code>git init</code> in project directory;</li>
-<li>Creating branch <code>code</code>, pushing source files to remote repository;</li>
-<li>Executing command <code>hugo</code> to generate <code>public</code> directory; Transferring all the files in this directory to another temporary directory, empty project directory, then move the files store in temporary directory back to project directory;</li>
-<li>Creating branch <code>master</code> via command <code>git checkout --orphan</code>, then pushing all files store in current directory to remote repository.</li>
+<li>初始化Git倉庫(<code>git init</code>)；</li>
+<li>創建<code>code</code>分支，提交源文件代碼到倉庫；</li>
+<li>在目標目錄中執行<code>hugo</code>生成<code>public</code>目錄，將<code>public</code>目錄中內容轉移到臨時目錄中， 清空目標目錄，將臨時目錄中文件複製到該目錄中；</li>
+<li>通過命令<code>git checkout --orphan</code>創建<code>master</code>分支，將目錄中內容提交到倉庫。</li>
 </ol>
 
-<p>Entering the target directory (here is <code>/PATH/quickstart/</code>), then executing the following commands in sequence.</p>
+<p>進入目標目錄（此處爲<code>/PATH/quickstart/</code>）後，順序執行如下操作命令</p>
 
-<h4 id="branch-code">Branch code</h4>
+<h4 id="code-分支">code 分支</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -656,9 +654,9 @@ sed -r -i <span class="s1">&#39;/^\/public\/$/{$!d}&#39;</span> .gitignore
 </span><span class="c1"></span>git push -u origin code</code></pre></td></tr></table>
 </div>
 </div>
-<h4 id="branch-master">Branch master</h4>
+<h4 id="master-分支">master 分支</h4>
 
-<p>Executing command <code>hugo</code> in project directly to generate directly <code>public</code>. If you wanna check the branch info of this repository, just executing command <code>git branch -a</code>.</p>
+<p>在目錄中執行<code>hugo</code>生成<code>public</code>目錄。通過命令<code>git branch -a</code>可查看倉庫的分支信息。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -715,9 +713,9 @@ git push -u origin master
 </span><span class="c1"></span><span class="o">[[</span> -d <span class="s2">&#34;</span><span class="nv">$HUGO_TEMP_DIR</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> rm -rf <span class="s2">&#34;</span><span class="nv">$HUGO_TEMP_DIR</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h4 id="branch-image">Branch image</h4>
+<h4 id="image-分支">image 分支</h4>
 
-<p>This section is optional. In order to store images in GitHub directly, I create the third branch <code>image</code>. All images used in blog will be saved in this branch.</p>
+<p>此操作爲可選操作，本人創建第3個分支<code>image</code>用作圖牀，本文中的圖片即存放在該分支中。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -742,39 +740,39 @@ git commit -m <span class="s1">&#39;initial blog images&#39;</span>
 git push -u origin image</code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="travis-ci-configuration">Travis CI Configuration</h2>
+<h2 id="travis-ci-配置">Travis CI 配置</h2>
 
-<p><a href="https://docs.travis-ci.com/user/deployment/pages/" title="Travis CI - GitHub Pages Deployment">GitHub Pages Deployment</a> is the official document of <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>。</p>
+<p><a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>官方說明文檔 <a href="https://docs.travis-ci.com/user/deployment/pages/" title="Travis CI - GitHub Pages Deployment">GitHub Pages Deployment</a>。</p>
 
-<h3 id="github-access-token-generation">Github Access Token Generation</h3>
+<h3 id="生成-github-訪問-token">生成 Github 訪問 Token</h3>
 
 <blockquote>
 <p>You’ll need to generate a <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">personal access token</a> with the public_repo or repo scope (repo is required for private repositories). Since the token should be private, you’ll want to pass it to Travis securely in your <a href="https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings">repository settings</a> or via <a href="https://docs.travis-ci.com/user/environment-variables#Defining-encrypted-variables-in-.travis.yml">encrypted variables</a> in .travis.yml.</p>
 </blockquote>
 
-<p>Generating <code>personal access tokens</code> in GitHub page <a href="https://github.com/settings/tokens">Developer settings</a>. If it is a private repository, choose <code>repo</code>. Otherwise, just choose <code>public_repo</code>. Here I choose <code>public_repo</code>, <code>repo:status</code>, <code>repo_deployment</code>.</p>
+<p>在Github的<a href="https://github.com/settings/tokens">Developer settings</a>頁面中生成<code>personal access tokens</code>，若是私有倉庫，勾選<code>repo</code>；若是公開倉庫，勾選<code>public_repo</code>。此處本人選擇了 <code>public_repo</code>, <code>repo:status</code>, <code>repo_deployment</code>三項。</p>
 
-<p>The length of the generated token is 40, please keep is private.</p>
+<p>生成的是長度爲<code>40</code>的隨機字符串，注意請勿泄漏。</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-10-go_travisci_github_page/2018-04-11_00-13-54-github-access-token.png" alt="" /></p>
 
-<h3 id="environment-variables-setting">Environment Variables Setting</h3>
+<h3 id="設置環境變量">設置環境變量</h3>
 
-<p>Generated <code>token</code> is used in <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>, the page url of target repository in <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a> is  <a href="https://travis-ci.org/MaxdSre/maxdsre.github.io/settings">https://travis-ci.org/MaxdSre/maxdsre.github.io/settings</a>.</p>
+<p>生成的<code>token</code>須在<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>的目標Repo中設置，頁面地址爲 <a href="https://travis-ci.org/MaxdSre/maxdsre.github.io/settings">https://travis-ci.org/MaxdSre/maxdsre.github.io/settings</a>。</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-10-go_travisci_github_page/2018-04-11_00-11-05-travisci-system-var-setting.png" alt="" /></p>
 
-<p>Don&rsquo;t forget to check <code>Build only if .travis.yml is present</code>, <code>Build pushed branches</code>, <code>Build pushed pull requests</code>.</p>
+<p>確保<code>General</code>中的<code>Build only if .travis.yml is present</code>, <code>Build pushed branches</code>, <code>Build pushed pull requests</code>已啓用。</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-10-go_travisci_github_page/2018-04-11_00-10-39-travisci-general-setting.png" alt="" /></p>
 
-<p>The default name of <code>token</code> defined in official document <a href="https://docs.travis-ci.com/user/deployment/pages/" title="Travis CI - GitHub Pages Deployment">GitHub Pages Deployment</a> is <code>GITHUB_TOKEN</code>, this document alse lists other directives.</p>
+<p>官方文檔<a href="https://docs.travis-ci.com/user/deployment/pages/" title="Travis CI - GitHub Pages Deployment">GitHub Pages Deployment</a>定義的默認<code>token</code>名爲<code>GITHUB_TOKEN</code>，其它指令詳見文檔。</p>
 
 <blockquote>
 <p>Notice that the values are not escaped when your builds are executed. Special characters (for bash) should be escaped accordingly.</p>
 </blockquote>
 
-<p>Defining variables, it will be used in file <code>.travis.yml</code> latter.</p>
+<p>此處定義相關變量，稍後會寫入<code>.travis.yml</code>文件。</p>
 
 <table>
 <thead>
@@ -802,11 +800,11 @@ git push -u origin image</code></pre></td></tr></table>
 </tbody>
 </table>
 
-<h3 id="travis-yml-directives">.travis.yml directives</h3>
+<h3 id="travis-yml-指令">.travis.yml 指令</h3>
 
-<p><a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> is written by Golang. So I chose <code>language: go</code> in <code>.travis.yml</code> primitively, but the process of build Golang environment costed too much time (a few minutes). What worse is the container fail to install <code>hugo</code>. I find someone use Python to deploy successfully, then chose Python as operation environment. As the containers of <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a> is based on Ubuntu, I can use command <code>dpkg</code>, <code>apt-get</code>, but it needs <code>sudo</code> privilege.</p>
+<p><a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>是用Golang構建的，故最開始在<code>.travis.yml</code>中用<code>language: go</code>，但<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>構建Golang環境耗時太長(數分鐘)，且出現<code>hugo</code>安裝失敗的清空。看到他人教程中有用Python的，恰巧最近在學習Python，便選擇Python做爲構建環境。因<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>的容器環境是基於Ubuntu的，故可以使用<code>dpkg</code>、<code>apt-get</code>等命令，但需要添加<code>sudo</code>。</p>
 
-<p>Through repeated tests, the final code is as follow</p>
+<p>經過反復測試，最終指令如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-yml" data-lang="yml"><span class="lnt"> 1
@@ -873,21 +871,21 @@ git push -u origin image</code></pre></td></tr></table>
 </span><span class="w">    </span>branch<span class="p">:</span><span class="w"> </span>code<span class="w">  </span><span class="c"># branch contains Hugo generator code</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Writing it into file <code>.travis.yml</code>, and push file <code>.travis.yml</code> to the branch <code>code</code> of remote repository.</p>
+<p>將指令寫入到文件<code>.travis.yml</code>中，並將該<code>.travis.yml</code>上傳至repo的<code>code</code>分支中。</p>
 
-<h2 id="continuous-integration">Continuous Integration</h2>
+<h2 id="持續集成">持續集成</h2>
 
-<p>After all operations are finished. If you push your changed source file to branch <code>code</code>. <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a> will automatically execute directives defined in file <code>.travis.yml</code>, then pushing the generated blog contents to branch <code>master</code>.</p>
+<p>所有操作完成後，只需將需要發佈的Blog上傳到repo的<code>code</code>分支中，<a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>會自動進行部署操作，將更新的Blog內容更新到repo的<code>master</code>分支中，實現Blog的持續集成，自動部署。</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-10-go_travisci_github_page/2018-04-11_00-35-56-travisci-deploy-status.png" alt="" /></p>
 
-<p>Deploying log</p>
+<p>部署過程日誌</p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-10-go_travisci_github_page/2018-04-11_00-36-29-travisci-deploy-log.png" alt="" /></p>
 
 <p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-10-go_travisci_github_page/2018-04-11_00-36-57-travisci-deploy-log.png" alt="" /></p>
 
-<h2 id="references">References</h2>
+<h2 id="參考資料">參考資料</h2>
 
 <ul>
 <li><a href="https://jellis18.github.io/post/2017-12-03-continuous-integration-hugo/">Continuous Integration of Hugo Website using Travis CI and Github</a></li>
@@ -896,13 +894,13 @@ git push -u origin image</code></pre></td></tr></table>
 <li><a href="https://www.leowkahman.com/2017/09/10/gitlab-ci-remove-priority-zero-from-hugo-sitemap/">GitLab CI remove priority zero from Hugo sitemap</a></li>
 </ul>
 
-<h2 id="change-logs">Change logs</h2>
+<h2 id="更新日誌">更新日誌</h2>
 
 <ul>
 <li>2018-04-11 00:20 Wed America/Boston
 
 <ul>
-<li>first draft</li>
+<li>初稿完成</li>
 </ul></li>
 </ul>
 
@@ -946,14 +944,14 @@ git push -u origin image</code></pre></td></tr></table>
       
       <nav class="post-nav">
         
-          <a class="prev" href="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/">
+          <a class="prev" href="/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">爲GitHub Pages配置Cloudflare的免費SSL數字證書</span>
+            <span class="prev-text nav-default">Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/">
-            <span class="next-text nav-default">利用Travis CI和Hugo將Blog自動部署到Github Pages</span>
+          <a class="next" href="/2018/cleaning-text-data-which-delimiter-is-special-character-using-sed-and-awk/">
+            <span class="next-text nav-default">Cleaning Text Data Which Delimiter Is Special Character Using Sed &amp; Awk</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
