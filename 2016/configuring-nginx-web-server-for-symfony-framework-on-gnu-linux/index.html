@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Configuring Nginx Web Server For Symfony Framework On GNU Linux - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="How to configure Nginx Web Server For Symfony Framework On GNU Linux" />
+<meta name="keywords" content="AxdLog, Symfony, PHP, Nginx" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Configuring Nginx Web Server For Symfony Framework On GNU Linux" />
+<meta property="og:description" content="How to configure Nginx Web Server For Symfony Framework On GNU Linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/" />
+
+
+
+<meta property="article:published_time" content="2016-11-15T17:18:20&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-16T20:55:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Configuring Nginx Web Server For Symfony Framework On GNU Linux">
+<meta itemprop="description" content="How to configure Nginx Web Server For Symfony Framework On GNU Linux">
+
+
+<meta itemprop="datePublished" content="2016-11-15T17:18:20&#43;08:00" />
+<meta itemprop="dateModified" content="2016-11-15T17:18:20&#43;08:00" />
+<meta itemprop="wordCount" content="1143">
+
+
+
+<meta itemprop="keywords" content="PHP,Nginx,Symfony," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Configuring Nginx Web Server For Symfony Framework On GNU Linux"/>
+<meta name="twitter:description" content="How to configure Nginx Web Server For Symfony Framework On GNU Linux"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Configuring Nginx Web Server For Symfony Framework On GNU Linux</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-11-15 </span>
+        <div class="post-category">
+            
+              <a href="/categories/php/"> PHP </a>
+            
+          </div>
+        <span class="more-meta"> 1143 words </span>
+        <span class="more-meta"> 3 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#official-document">Official Document</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#production-deployment">Production Deployment</a>
+<ul>
+<li><a href="#configuration-file">Configuration File</a></li>
+<li><a href="#domain-resolution-checking">Domain Resolution Checking</a></li>
+<li><a href="#snapshot">Snapshot</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>是一款<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>開發框架，具體安裝、配置可參閱本人之前 <a href="/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/">blog</a>。本文記錄如何在<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>中部署<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>項目。</p>
+
+<p><strong>說明</strong>：文中的操作、配置基於<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony 3</a>（2016年11月），不一定適用於<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony 4</a>。此次遷移只做勘誤，不做具體配置的更新（2018年04月16日）。</p>
+
+<p></p>
+
+<h2 id="official-document">Official Document</h2>
+
+<p>配置依據來自2分官方文檔</p>
+
+<ul>
+<li>Symfony - <a href="https://symfony.com/doc/master/setup/web_server_configuration.html">Configuring a Web Server</a></li>
+<li>Nginx - <a href="https://www.nginx.com/resources/wiki/start/topics/recipes/symfony/">Symfony Configuration</a></li>
+</ul>
+
+<h2 id="analysis">Analysis</h2>
+
+<p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>在其官方文檔中提供了在Nginx中的最小化配置，源碼如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    server_name domain.tld www.domain.tld<span class="p">;</span>
+    root /var/www/project/public<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        <span class="c1"># try to serve file directly, fallback to index.php
+</span><span class="c1"></span>        try_files <span class="nv">$uri</span> /index.php<span class="nv">$is_args$args</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    location ~ ^/index<span class="se">\.</span>php<span class="o">(</span>/<span class="p">|</span>$<span class="o">)</span> <span class="o">{</span>
+        fastcgi_pass unix:/var/run/php7.1-fpm.sock<span class="p">;</span>
+        fastcgi_split_path_info ^<span class="o">(</span>.+<span class="se">\.</span>php<span class="o">)(</span>/.*<span class="o">)</span>$<span class="p">;</span>
+        include fastcgi_params<span class="p">;</span>
+
+        <span class="c1"># optionally set the value of the environment variables used in the application
+</span><span class="c1"></span>        <span class="c1"># fastcgi_param APP_ENV prod;
+</span><span class="c1"></span>        <span class="c1"># fastcgi_param APP_SECRET &lt;app-secret-id&gt;;
+</span><span class="c1"></span>        <span class="c1"># fastcgi_param DATABASE_URL &#34;mysql://db_user:db_pass@host:3306/db_name&#34;;
+</span><span class="c1"></span>
+        <span class="c1"># When you are using symlinks to link the document root to the
+</span><span class="c1"></span>        <span class="c1"># current version of your application, you should pass the real
+</span><span class="c1"></span>        <span class="c1"># application path instead of the path to the symlink to PHP
+</span><span class="c1"></span>        <span class="c1"># FPM.
+</span><span class="c1"></span>        <span class="c1"># Otherwise, PHP&#39;s OPcache may not properly detect changes to
+</span><span class="c1"></span>        <span class="c1"># your PHP files (see https://github.com/zendtech/ZendOptimizerPlus/issues/126
+</span><span class="c1"></span>        <span class="c1"># for more information).
+</span><span class="c1"></span>        fastcgi_param SCRIPT_FILENAME <span class="nv">$realpath_root$fastcgi_script_name</span><span class="p">;</span>
+        fastcgi_param DOCUMENT_ROOT <span class="nv">$realpath_root</span><span class="p">;</span>
+        <span class="c1"># Prevents URIs that include the front controller. This will 404:
+</span><span class="c1"></span>        <span class="c1"># http://domain.tld/index.php/some-path
+</span><span class="c1"></span>        <span class="c1"># Remove the internal directive to allow URIs like this
+</span><span class="c1"></span>        internal<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1"># return 404 for all other php files not matching the front controller
+</span><span class="c1"></span>    <span class="c1"># this prevents access to other php files you don&#39;t want to be accessible.
+</span><span class="c1"></span>    location ~ <span class="se">\.</span>php$ <span class="o">{</span>
+        <span class="k">return</span> <span class="m">404</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    error_log /var/log/nginx/project_error.log<span class="p">;</span>
+    access_log /var/log/nginx/project_access.log<span class="p">;</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>說明</p>
+
+<ol>
+<li>Depending on your PHP-FPM config, the <code>fastcgi_pass</code> can also be <code>fastcgi_pass 127.0.0.1:9000</code>.</li>
+<li>This executes only <code>index.php</code> in the public directory. All other files ending in &ldquo;.php&rdquo; will be denied.</li>
+<li>If you have other PHP files in your public directory that need to be executed, be sure to include them in the <code>location</code> block above.</li>
+<li>After you deploy to production, make sure that you cannot access the <code>index.php</code> script (i.e. <a href="http://example.com/index.php">http://example.com/index.php</a>).</li>
+</ol>
+
+<h2 id="production-deployment">Production Deployment</h2>
+
+<p>主機信息 <code>CentOS Linux release 7.2.1511 (Core)</code></p>
+
+<p>Nginx信息</p>
+
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>detail</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>配置文件路徑</td>
+<td><code>/etc/nginx/conf.d</code></td>
+</tr>
+
+<tr>
+<td>Web路徑</td>
+<td><code>/usr/share/nginx/html/</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>在Web路徑中創建子目錄<code>arsenal</code>用於存放Symfony項目，完整路徑</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/usr/share/nginx/html/arsenal</code></pre></td></tr></table>
+</div>
+</div>
+<p>為Symfony項目創建Nginx配置文件，完整路徑</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/nginx/conf.d/arsenal.conf</code></pre></td></tr></table>
+</div>
+</div>
+<p>將代碼部署到目錄/usr/share/nginx/html/arsenal後，<strong>強烈建議</strong> 執行如下操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 更改owner, group為nginx
+</span><span class="c1"></span>sudo chown -R nginx:nginx /usr/share/nginx/html/arsenal
+sudo chown -R nginx:nginx /var/lib/php/session</code></pre></td></tr></table>
+</div>
+</div>
+<p>假設需要綁定的域名為 <code>as.raxtone.com</code></p>
+
+<p>通過<code>php-fpm</code>管理PHP，socket路徑為 <code>/var/run/php-fpm/php-fpm.sock</code></p>
+
+<h3 id="configuration-file">Configuration File</h3>
+
+<p>以下爲生產環境中的配置文件（設置只能公司內網訪問）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># /etc/nginx/conf.d/arsenal.conf
+</span><span class="c1"></span>server <span class="o">{</span>
+    listen <span class="m">80</span><span class="p">;</span>
+    server_name as.raxtone.com<span class="p">;</span>
+    root   /usr/share/nginx/html/arsenal/web<span class="p">;</span>
+    index index.php index.html<span class="p">;</span>
+    error_log /var/log/nginx/arsenal_error.log<span class="p">;</span>
+    access_log /var/log/nginx/arsenal_access.log<span class="p">;</span>
+    charset utf-8<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        try_files <span class="nv">$uri</span> /app.php<span class="nv">$is_args$args</span><span class="p">;</span>
+        allow <span class="m">192</span>.168.0.0/16<span class="p">;</span>
+        allow <span class="m">127</span>.0.0.1<span class="p">;</span>
+        deny all<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1"># PROD
+</span><span class="c1"></span>    location ~ ^/app<span class="se">\.</span>php<span class="o">(</span>/<span class="p">|</span>$<span class="o">)</span> <span class="o">{</span>
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock<span class="p">;</span>
+        fastcgi_split_path_info ^<span class="o">(</span>.+<span class="se">\.</span>php<span class="o">)(</span>/.*<span class="o">)</span>$<span class="p">;</span>
+        include fastcgi_params<span class="p">;</span>
+        fastcgi_param SCRIPT_FILENAME <span class="nv">$realpath_root$fastcgi_script_name</span><span class="p">;</span>
+        fastcgi_param DOCUMENT_ROOT <span class="nv">$realpath_root</span><span class="p">;</span>
+        internal<span class="p">;</span>
+    <span class="o">}</span>
+
+    location ~ <span class="se">\.</span>php$ <span class="o">{</span>
+     <span class="k">return</span> <span class="m">404</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    location ~* .<span class="o">(</span>woff<span class="p">|</span>eot<span class="p">|</span>ttf<span class="p">|</span>svg<span class="p">|</span>mp4<span class="p">|</span>webm<span class="p">|</span>jpg<span class="p">|</span>jpeg<span class="p">|</span>png<span class="p">|</span>gif<span class="p">|</span>bmp<span class="p">|</span>ico<span class="p">|</span>css<span class="p">|</span>js<span class="o">)</span>$ <span class="o">{</span>
+        expires 1d<span class="p">;</span>
+        log_not_found off<span class="p">;</span>
+        access_log off<span class="p">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="domain-resolution-checking">Domain Resolution Checking</h3>
+
+<p>通過<code>dig</code>、<code>ping</code>、<code>curl</code>等命令查看域名解析信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># dig as.raxtone.com
+
+; &lt;&lt;&gt;&gt; DiG 9.9.4-RedHat-9.9.4-29.el7_2.4 &lt;&lt;&gt;&gt; as.raxtone.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 10830
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;as.raxtone.com.            IN  A
+
+;; ANSWER SECTION:
+as.raxtone.com.     552 IN  A   192.168.4.250
+
+;; Query time: 11 msec
+;; SERVER: 114.114.114.114#53(114.114.114.114)
+;; WHEN: Tue Nov 15 17:11:56 CST 2016
+;; MSG SIZE  rcvd: 59
+
+# ping -c 4 as.raxtone.com
+PING as.raxtone.com (192.168.4.250) 56(84) bytes of data.
+64 bytes from arsenal.raxtone.com (192.168.4.250): icmp_seq=1 ttl=63 time=0.638 ms
+64 bytes from arsenal.raxtone.com (192.168.4.250): icmp_seq=2 ttl=63 time=0.326 ms
+64 bytes from arsenal.raxtone.com (192.168.4.250): icmp_seq=3 ttl=63 time=0.549 ms
+64 bytes from arsenal.raxtone.com (192.168.4.250): icmp_seq=4 ttl=63 time=0.536 ms
+
+--- as.raxtone.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3000ms
+rtt min/avg/max/mdev = 0.326/0.512/0.638/0.115 ms
+
+# curl -I as.raxtone.com
+HTTP/1.1 302 Found
+Server: nginx
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Set-Cookie: PHPSESSID=rcd6vek80tctca5a7vfmra0ar6; path=/; HttpOnly
+Cache-Control: no-cache
+Location: /login
+Date: Tue, 15 Nov 2016 09:12:07 GMT</pre></td></tr></table>
+</div>
+</div>
+<h3 id="snapshot">Snapshot</h3>
+
+<p>Login Page</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-22-52_login.png" alt="" /></p>
+
+<p>Dashboard Page</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-23-06_dashboard.png" alt="" /></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://symfony.com/doc/master/setup.html">Installing &amp; Setting up the Symfony Framework</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.11.15 17:21 Tue Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.16 21:15 Mon America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-16</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/php/">PHP</a>
+          
+          <a href="/tags/nginx/">Nginx</a>
+          
+          <a href="/tags/symfony/">Symfony</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/self-developing-asset-management-platform-based-on-symfony-framework/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Self-Developing Asset Management Platform Based On Symfony Framework</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/">
+            <span class="next-text nav-default">Using Doctrine DBAL To Work With Database In Symfony 4</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

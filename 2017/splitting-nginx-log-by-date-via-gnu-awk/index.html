@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Splitting Nginx Log By Date Via GNU Awk - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Using awk to split Nginx log by date" />
+<meta name="keywords" content="AxdLog, awk, Nginx" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2017/splitting-nginx-log-by-date-via-gnu-awk/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Splitting Nginx Log By Date Via GNU Awk" />
+<meta property="og:description" content="Using awk to split Nginx log by date" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/splitting-nginx-log-by-date-via-gnu-awk/" />
+
+
+
+<meta property="article:published_time" content="2017-08-10T16:40:24&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T10:44:24-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Splitting Nginx Log By Date Via GNU Awk">
+<meta itemprop="description" content="Using awk to split Nginx log by date">
+
+
+<meta itemprop="datePublished" content="2017-08-10T16:40:24&#43;08:00" />
+<meta itemprop="dateModified" content="2017-08-10T16:40:24&#43;08:00" />
+<meta itemprop="wordCount" content="1651">
+
+
+
+<meta itemprop="keywords" content="awk," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Splitting Nginx Log By Date Via GNU Awk"/>
+<meta name="twitter:description" content="Using awk to split Nginx log by date"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Splitting Nginx Log By Date Via GNU Awk</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-08-10 </span>
+        <div class="post-category">
+            
+              <a href="/categories/production-case/"> Production Case </a>
+            
+          </div>
+        <span class="more-meta"> 1651 words </span>
+        <span class="more-meta"> 4 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#log-split">Log Split</a>
+<ul>
+<li><a href="#yearly">Yearly</a></li>
+<li><a href="#quarterly">Quarterly</a></li>
+<li><a href="#monthly">Monthly</a></li>
+<li><a href="#weekly">Weekly</a></li>
+<li><a href="#daily">Daily</a></li>
+<li><a href="#hourly">Hourly</a></li>
+<li><a href="#per-minute">Per Minute</a></li>
+<li><a href="#per-second">Per Second</a></li>
+</ul></li>
+<li><a href="#compression">Compression</a>
+<ul>
+<li><a href="#gzip-gz">gzip gz</a></li>
+</ul></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://www.nginx.com/" title="Nginx">Nginx</a>在運行過程中會生成大量<code>access</code>和<code>error</code>日誌，默認情況下日誌文件大小持續增長。爲方便操作(如打開、查詢)，需對Nginx日誌進行切割，如按日期，而<a href="https://www.nginx.com/" title="Nginx">Nginx</a>本身並不提供該功能。</p>
+
+<p>網路上的方案千篇一律：利用<a href="https://www.nginx.com/" title="Nginx">Nginx</a>的<a href="https://www.nginx.com/resources/wiki/start/topics/examples/logrotation/" title="Nginx">Log Rotation</a>功能，操作日誌後，通過<code>USR1</code>信號重新打開日誌；將操作命令寫入腳本，通過cron任務定時執行。對於該種方案，本人不做任何評價。</p>
+
+<p>本文主要記錄如何通過<a href="https://www.gnu.org/software/gawk/" title="GNU awk">awk</a>實現Nginx日誌按年分、月份、周、天、小時等預定方式進行切割。</p>
+
+<p></p>
+
+<h2 id="prerequisite">Prerequisite</h2>
+
+<p><a href="https://www.nginx.com/" title="Nginx">Nginx</a>日誌格式通過指令<a href="https://nginx.org/en/docs/http/ngx_http_log_module.html#log_format">log_format</a>實現，默認的配置文件路徑爲<code>/etc/nginx/nginx.conf</code>。</p>
+
+<p>詳細說明見官方文檔<a href="https://nginx.org/en/docs/http/ngx_http_log_module.html" title="Nginx">Module ngx_http_log_module</a>。</p>
+
+<p><code>log_format</code>的默認格式爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">log_format main  <span class="s1">&#39;$remote_addr - $remote_user [$time_local] &#39;</span>
+                     <span class="s1">&#39;&#34;$request&#34; $status $bytes_sent &#39;</span>
+                     <span class="s1">&#39;&#34;$http_referer&#34; &#34;$http_user_agent&#34; &#34;$gzip_ratio&#34;&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>生成的日誌格式如下</p>
+
+<blockquote>
+<p>75.97.107.190 - - [10/Aug/2017:13:05:50 +0800] &ldquo;GET /smart HTTP/1.1&rdquo; 200 6452 &ldquo;-&rdquo; &ldquo;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36&rdquo;</p>
+</blockquote>
+
+<p>以按日期分割爲例，通過字符串<code>[10/Aug/2017:13:05:50 +0800]</code>作爲分割日誌的依據，日期的處理通過<code>date</code>命令實現，具體見<code>man date</code>。</p>
+
+<p>本文中<a href="https://www.gnu.org/software/gawk/" title="GNU awk">awk</a>的操作命令適用於版本<code>3</code>和版本<code>4</code>。關於<a href="https://www.gnu.org/software/gawk/" title="GNU awk">awk</a>的使用，本文不作說明，可自行查閱官方文檔<a href="https://www.gnu.org/software/gawk/manual/">Gawk: Effective AWK Programming</a>。</p>
+
+<p>文中的操作不做條件判斷，如在某一天之後或某一個IP或某個關鍵詞。</p>
+
+<h2 id="log-split">Log Split</h2>
+
+<p>本文按照日期對日誌進行分割，假設日誌文件名稱爲<code>~/access.log</code>，結果輸出文件保存路徑爲<code>/tmp</code>，命名格式<code>nginx-###.log</code>。</p>
+
+<h3 id="yearly">Yearly</h3>
+
+<p>按年份</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %Y     year
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=&#34;a&#34; +\&#34;%Y\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>此處<code>/.* \[([^:]*):.*/</code>匹配的是<code>10/Aug/2017</code>；建議使用<code>/.* \[([^ ]*) .*/</code>，匹配<code>10/Aug/2017:13:05:50</code>。同時將<code>--date=&quot;a&quot;</code>更改爲<code>--date=\&quot;&quot;a&quot;\&quot;</code>以增強代碼的 <strong>兼容性</strong>。</p>
+
+<p>修改後的代碼如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># match 10/Aug/2017
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log
+
+<span class="c1"># match 10/Aug/2017:13:05:50
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^ ]*) .*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-2017.log</code></p>
+
+<h3 id="quarterly">Quarterly</h3>
+
+<p>按季度</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#  %q     quarter of year (1..4)
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y\&#34;-quarter-\&#34;%q\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-2017-quarter-3.log</code></p>
+
+<h3 id="monthly">Monthly</h3>
+
+<p>按月份</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %b     locale&#39;s abbreviated month name (e.g., Jan)
+</span><span class="c1"># %m     month (01..12)
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y\&#34;-\&#34;%m\&#34;-\&#34;%b\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-2017-08-Aug.log</code></p>
+
+<h3 id="weekly">Weekly</h3>
+
+<p>按周</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %U week number of year, with Sunday as first day of week (00..53)
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y\&#34;-week-\&#34;%U\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-2017-week-32.log</code></p>
+
+<h3 id="daily">Daily</h3>
+
+<p>按天</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#  %F     full date; same as %Y-%m-%d
+</span><span class="c1">#  %a     locale&#39;s abbreviated weekday name (e.g., Sun)
+</span><span class="c1"></span>
+awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%F\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log
+
+<span class="c1"># file name has weekday name
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%F\&#34;-\&#34;%a\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-2017-08-10-Thu.log</code></p>
+
+<h3 id="hourly">Hourly</h3>
+
+<p>按小時</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %H     hour (00..23)
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^ ]*) .*/,&#34;\\1&#34;,&#34;1&#34;,$0);a=gensub(/\:/,&#34; &#34;,&#34;1&#34;,a);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%F\&#34;-hour-\&#34;%H\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-2017-08-10-hour-13.log</code></p>
+
+<h3 id="per-minute">Per Minute</h3>
+
+<p>按分鐘</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %M     minute (00..59)
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^ ]*) .*/,&#34;\\1&#34;,&#34;1&#34;,$0);a=gensub(/\:/,&#34; &#34;,&#34;1&#34;,a);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y%m%d\&#34;-\&#34;%H:%M\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-20170810-13:36.log</code></p>
+
+<h3 id="per-second">Per Second</h3>
+
+<p>按秒</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %S     second (00..60)
+</span><span class="c1"># %T     time; same as %H:%M:%S
+</span><span class="c1"></span>awk <span class="s1">&#39;{a=gensub(/.* \[([^ ]*) .*/,&#34;\\1&#34;,&#34;1&#34;,$0);a=gensub(/\:/,&#34; &#34;,&#34;1&#34;,a);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y%m%d\&#34;-\&#34;%T\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> ~/access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>日誌文件的命名如<code>nginx-20170810-13:36:09.log</code></p>
+
+<h2 id="compression">Compression</h2>
+
+<h3 id="gzip-gz">gzip gz</h3>
+
+<p>如果日誌文件已經被壓縮保存，可先解壓，在通過管道符<code>|</code>將數據傳輸給<code>awk</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># .gz
+</span><span class="c1"></span>zcat ~/access.log.gz <span class="p">|</span> awk <span class="s1">&#39;{a=gensub(/.* \[([^ ]*) .*/,&#34;\\1&#34;,&#34;1&#34;,$0);a=gensub(/\:/,&#34; &#34;,&#34;1&#34;,a);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%F\&#34;-hour-\&#34;%H\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="example">Example</h2>
+
+<p>以日誌<code>/var/log/baseserver_access.log</code>爲例，文件大小<code>7.9G</code>。</p>
+
+<p>按月份分割，操作命令如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;{a=gensub(/.* \[([^:]*):.*/,&#34;\\1&#34;,&#34;1&#34;,$0);gsub(/\//,&#34;-&#34;,a);&#34;date --date=\&#34;&#34;a&#34;\&#34; +\&#34;%Y\&#34;-\&#34;%m\&#34;-\&#34;%b\&#34;&#34; | getline b; print &gt; &#34;/tmp/nginx-&#34;b&#34;.log&#34;}&#39;</span> /var/log/baseserver_access.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>生成的文件如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">-rw-r--r-- <span class="m">1</span> root root  101M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2016-10-Oct.log
+-rw-r--r-- <span class="m">1</span> root root  656M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2016-11-Nov.log
+-rw-r--r-- <span class="m">1</span> root root  729M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2016-12-Dec.log
+-rw-r--r-- <span class="m">1</span> root root  650M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-01-Jan.log
+-rw-r--r-- <span class="m">1</span> root root  735M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-02-Feb.log
+-rw-r--r-- <span class="m">1</span> root root  876M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-03-Mar.log
+-rw-r--r-- <span class="m">1</span> root root  831M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-04-Apr.log
+-rw-r--r-- <span class="m">1</span> root root  937M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-05-May.log
+-rw-r--r-- <span class="m">1</span> root root 1022M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-06-Jun.log
+-rw-r--r-- <span class="m">1</span> root root  <span class="m">1</span>.1G Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-07-Jul.log
+-rw-r--r-- <span class="m">1</span> root root  388M Aug <span class="m">10</span> <span class="m">14</span>:37 /tmp/nginx-2017-08-Aug.log</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過<code>time</code>得到的操作時間如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">real    40m45.080s
+user    39m59.076s
+sys 0m21.479s</code></pre></td></tr></table>
+</div>
+</div>
+<p>將近8G的日誌，操作耗時超過<code>40</code>分鐘，原因是awk默認只使用單核心處理器。</p>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2017.08.10 16:39 Thu Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.11 10:44 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>Wechat</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>Alipay</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/awk/">awk</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/deploying-project-codes-to-multiple-remote-hosts-via-ssh/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Deploying Project Codes To Multiple Remote Hosts Via SSH</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2017/extracting-api-requests-info-from-nginx-access-log/">
+            <span class="next-text nav-default">Extracting API Requests Info From Nginx Access Log</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

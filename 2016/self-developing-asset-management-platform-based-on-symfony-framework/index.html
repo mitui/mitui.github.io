@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Self-Developing Asset Management Platform Based On Symfony Framework - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Self-Developing Asset Management Platform Based On Symfony Framework" />
+<meta name="keywords" content="AxdLog, Symfony, PHP, Nginx" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/self-developing-asset-management-platform-based-on-symfony-framework/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Self-Developing Asset Management Platform Based On Symfony Framework" />
+<meta property="og:description" content="Self-Developing Asset Management Platform Based On Symfony Framework" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/self-developing-asset-management-platform-based-on-symfony-framework/" />
+
+
+
+<meta property="article:published_time" content="2016-11-15T17:54:13&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-16T20:55:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Self-Developing Asset Management Platform Based On Symfony Framework">
+<meta itemprop="description" content="Self-Developing Asset Management Platform Based On Symfony Framework">
+
+
+<meta itemprop="datePublished" content="2016-11-15T17:54:13&#43;08:00" />
+<meta itemprop="dateModified" content="2016-11-15T17:54:13&#43;08:00" />
+<meta itemprop="wordCount" content="7961">
+
+
+
+<meta itemprop="keywords" content="PHP,Nginx,Symfony," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Self-Developing Asset Management Platform Based On Symfony Framework"/>
+<meta name="twitter:description" content="Self-Developing Asset Management Platform Based On Symfony Framework"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Self-Developing Asset Management Platform Based On Symfony Framework</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-11-15 </span>
+        <div class="post-category">
+            
+              <a href="/categories/production-case/"> Production Case </a>
+            
+              <a href="/categories/php/"> PHP </a>
+            
+          </div>
+        <span class="more-meta"> 7961 words </span>
+        <span class="more-meta"> 16 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#sql-design">SQL Design</a></li>
+<li><a href="#snapshots">Snapshots</a>
+<ul>
+<li><a href="#gitlab">GitLab</a></li>
+<li><a href="#login-page">Login Page</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#module">Module</a>
+<ul>
+<li><a href="#sys-user">Sys User</a></li>
+<li><a href="#module-1">Module</a></li>
+<li><a href="#user-role">User Role</a></li>
+<li><a href="#employee">Employee</a></li>
+<li><a href="#department">Department</a></li>
+<li><a href="#asset-category">Asset Category</a></li>
+<li><a href="#inventory">Inventory</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>根據公司直屬領導指示，進行 <strong>資產管理系統平臺</strong> 的開發，整個項目由本人獨立完成，項目週期2個月左右，現已部署上線，可通過公司內網訪問。</p>
+
+<p>因本人此前從事<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>開發，故選擇<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>做爲開發語言，開發框架選擇<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>。如何部署Symfony項目，詳見本人 <a href="/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/">blog</a>。</p>
+
+<p></p>
+
+<p><strong>說明</strong>：此項目爲2016年爲公司運維部門做的內部項目，使用<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony 3</a>開發。因是公司項目，故沒有單獨留存項目代碼。該項目上線後並未得到公司的重視，幾乎沒有使用。運行數據庫、項目代碼的服務器後被騰出給公司其它項目用。之後公司內部的Gitlab奔潰過一次，導致所有數據丟失，包括項目代碼，不得不說是一個遺憾。此次遷移只做勘誤（2018年04月16日）。</p>
+
+<h2 id="sql-design">SQL Design</h2>
+
+<p>數據表設計</p>
+
+<p>創建數據庫</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">drop</span> <span class="k">database</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">arsenal</span><span class="p">;</span>
+
+<span class="c1">-- 創建數據庫
+</span><span class="c1"></span><span class="k">create</span> <span class="k">database</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">arsenal</span>
+    <span class="k">default</span> <span class="nb">character</span> <span class="k">set</span><span class="o">=</span><span class="n">utf8</span>
+    <span class="k">default</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span><span class="p">;</span>
+
+<span class="c1">-- 進入數據庫
+</span><span class="c1"></span><span class="n">use</span> <span class="n">arsenal</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>創建數據表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 存儲用戶session信息
+</span><span class="c1">-- http://symfony.com/doc/current/doctrine/pdo_session_storage.html#preparing-the-database-to-store-sessions
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">sessions</span> <span class="p">(</span>
+    <span class="n">sess_id</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;session id&#39;</span><span class="p">,</span>
+    <span class="n">sess_data</span> <span class="nb">blob</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;session data (dynamic clomumn)json 格式&#39;</span><span class="p">,</span>
+    <span class="n">sess_time</span> <span class="nb">int</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;session create or update time (timestamp)&#39;</span><span class="p">,</span>
+    <span class="n">sess_lifetime</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;session life time，單位s，默認1440s即24小時&#39;</span>
+<span class="p">)</span> <span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_bin</span> <span class="k">comment</span> <span class="s1">&#39;存儲用戶session信息&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 系統模塊表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">sys_module</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;系統模塊表自增id&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;模塊名稱&#39;</span><span class="p">,</span>
+    <span class="n">icon</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;Font Awesome Icons圖標名稱，如fa-archive&#39;</span><span class="p">,</span>
+    <span class="n">route_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該模塊的route名稱&#39;</span><span class="p">,</span>
+    <span class="n">action_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該模塊的action名稱&#39;</span><span class="p">,</span>
+    <span class="k">level</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="s1">&#39;second&#39;</span><span class="p">,</span><span class="s1">&#39;third&#39;</span><span class="p">,</span><span class="s1">&#39;fourth&#39;</span><span class="p">,</span><span class="s1">&#39;fifth&#39;</span><span class="p">,</span><span class="s1">&#39;sixth&#39;</span><span class="p">,</span><span class="s1">&#39;seventh&#39;</span><span class="p">,</span><span class="s1">&#39;eighth&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;top&#39;</span> <span class="k">comment</span> <span class="s1">&#39;模塊等級,默認為top(一級)模塊，即模組,後一級為前一級的子模塊&#39;</span><span class="p">,</span>
+    <span class="n">parent_module</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="mi">0</span> <span class="k">comment</span> <span class="s1">&#39;模塊所屬的上一級模塊，對應表sys_module，默認為0表示一級模塊，即模組，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">is_show</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;yes&#39;</span> <span class="k">comment</span> <span class="s1">&#39;是否顯示該模塊,默認yes顯示&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該模塊備註信息&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,對應表sys_user中的id，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，對應表sys_user中id，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">module_nameLevel</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="k">level</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-模塊名稱,使用唯一索引&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">module_partent_module</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">parent_module</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-上一級模塊索引&#39;</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;系統模塊表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 創建系統用戶角色表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">sys_user_role</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;用戶角色自增id&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶角色名稱&#39;</span><span class="p">,</span>
+    <span class="n">is_allow</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;yes&#39;</span> <span class="k">comment</span> <span class="s1">&#39;是否允許登入系統，默認為yes允許&#39;</span><span class="p">,</span>
+    <span class="n">sys_module_list</span> <span class="nb">text</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶角色所屬的各模塊id，對應表sys_module中id，以json格式存儲&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該模塊備註信息&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，對應表sys_user中id，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">sys_user_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-用戶權限名稱,使用唯一索引&#39;</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;系統用戶角色表(用戶組)&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 創建系統用戶表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">sys_user</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;系統用戶自增id&#39;</span><span class="p">,</span>
+    <span class="n">username</span> <span class="nb">char</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶登陸名稱&#39;</span><span class="p">,</span>
+    <span class="n">sys_user_role</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶角色,表sys_user_role中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">password</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶登陸密碼,md5加密後長度32位,sha1加密後長度40位&#39;</span><span class="p">,</span>
+    <span class="n">initial_password</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶初始密碼&#39;</span><span class="p">,</span>
+    <span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶郵箱地址&#39;</span><span class="p">,</span>
+    <span class="n">gender</span> <span class="n">enum</span> <span class="p">(</span><span class="s1">&#39;male&#39;</span><span class="p">,</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;unknown&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;unknown&#39;</span> <span class="k">comment</span> <span class="s1">&#39;用戶性別,默認unknown&#39;</span><span class="p">,</span>
+    <span class="n">is_allow</span> <span class="n">enum</span> <span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;yes&#39;</span> <span class="k">comment</span> <span class="s1">&#39;用戶是否允許登陸,默認允許&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;備註信息&#39;</span><span class="p">,</span>
+    <span class="n">employee</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該帳號所屬的公司職員，對應表employee中id，默認為空，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，對應表sys_user中id，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">sys_user_employee</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">employee</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-僱員名稱，使用普通索引&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">sys_user_username</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-用戶名稱,使用唯一索引&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_user_sys_userRole</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">sys_user_role</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user_role</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;系統用戶表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 系統用戶登陸記錄表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">sys_user_login_log</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">int</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;系統用戶登陸記錄自增id&#39;</span><span class="p">,</span>
+    <span class="n">sys_user</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;登陸用戶的id,表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">login_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;登入系統時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">logout_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;登出系統時間,格式 YYYY-MM-DD HH:MM:SS,默認為NULL&#39;</span><span class="p">,</span>
+    <span class="n">login_details</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;用戶登陸信息,如瀏覽器信息等&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_sys_user_login_log_sysUser</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">sys_user</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;系統用戶登陸記錄表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 創建子公司表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">company</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;公司自增id&#39;</span><span class="p">,</span>
+    <span class="n">parent_company</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="mi">0</span> <span class="k">comment</span> <span class="s1">&#39;上一級公司id，對應表company中id，默認為0代表總公司，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">is_exists</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;yes&#39;</span> <span class="k">comment</span> <span class="s1">&#39;公司是否存在&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司名稱&#39;</span><span class="p">,</span>
+    <span class="n">short_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司簡稱&#39;</span><span class="p">,</span>
+    <span class="n">internal_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司內部命名，如xx事業部&#39;</span><span class="p">,</span>
+    <span class="k">type</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司類型&#39;</span><span class="p">,</span>
+    <span class="n">address_registed</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">210</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司註冊地址&#39;</span><span class="p">,</span>
+    <span class="n">address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">210</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司目前地址&#39;</span><span class="p">,</span>
+    <span class="n">legal_representative</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司法定代表人&#39;</span><span class="p">,</span>
+    <span class="n">founding_date</span>  <span class="nb">date</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司成立時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">registration_institution</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;登記機關&#39;</span><span class="p">,</span>
+    <span class="n">business_license_number</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;營業執照證照編號(20位)&#39;</span><span class="p">,</span>
+    <span class="n">registration_no</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;營業執照註冊號(15位)&#39;</span><span class="p">,</span>
+    <span class="n">unified_social_credit_code</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;統一社會信用代碼(18位)&#39;</span><span class="p">,</span>
+    <span class="n">business_term_begin</span> <span class="nb">date</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;營業期限起始時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">business_term_end</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;營業期限截止時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">website</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;公司網站&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">company_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-子公司名稱,使用唯一索引&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">company_parent_company</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">parent_company</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-母公司id索引&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_company_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;子公司表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 公司部門表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">department</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;公司部門表自增id&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門名稱&#39;</span><span class="p">,</span>
+    <span class="n">name_old</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門之前所用的名稱&#39;</span><span class="p">,</span>
+    <span class="n">company</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門所屬公司,表company中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">level</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="s1">&#39;second&#39;</span><span class="p">,</span><span class="s1">&#39;third&#39;</span><span class="p">,</span><span class="s1">&#39;fourth&#39;</span><span class="p">,</span><span class="s1">&#39;fifth&#39;</span><span class="p">,</span><span class="s1">&#39;sixth&#39;</span><span class="p">,</span><span class="s1">&#39;seventh&#39;</span><span class="p">,</span><span class="s1">&#39;eighth&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;top&#39;</span> <span class="k">comment</span> <span class="s1">&#39;部門等級,默認為top(一級)部門,後一級為前一級的子部門&#39;</span><span class="p">,</span>
+    <span class="n">parent_department</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="mi">0</span> <span class="k">comment</span> <span class="s1">&#39;部門所屬上級部門，對應表department中id，默認為0表示一級部門，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">instruction</span> <span class="nb">text</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門情況簡介&#39;</span><span class="p">,</span>
+    <span class="n">founding_date</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門成立時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">is_exist</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;yes&#39;</span> <span class="k">comment</span> <span class="s1">&#39;部門是否仍存在,未被撤銷,默認存在&#39;</span><span class="p">,</span>
+    <span class="n">closed_date</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門撤銷時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">department_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">company</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-公司部門名稱與所屬公司二者確定一條item&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">department_parent_department</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">parent_department</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-上一級部門id索引&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_department_company</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">company</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">company</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_department_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_department_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;raxtone公司部門表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 公司部門負責人表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">department_director</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;部門負責人表自增id&#39;</span><span class="p">,</span>
+    <span class="n">department</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門id，表department中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">director</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;負責人，對應表employee中id，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">text</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;部門負責人信息備註&#39;</span><span class="p">,</span>
+    <span class="n">is_part_time</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">,</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;no&#39;</span> <span class="k">comment</span> <span class="s1">&#39;是否是兼任，默認為no，不是兼任&#39;</span><span class="p">,</span>
+    <span class="n">start_date</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;任職起始時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">end_date</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;任職結束時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">department_director_director</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">director</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-部門負責人id&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_department_director_department</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">department</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">department</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_department_director_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_department_director_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;raxtone公司部門負責人表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 公司僱員表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">employee</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;公司僱員自增id&#39;</span><span class="p">,</span>
+    <span class="n">employee_no</span> <span class="nb">char</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;員工編號&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員姓名&#39;</span><span class="p">,</span>
+    <span class="n">job_title</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員職位名稱&#39;</span><span class="p">,</span>
+    <span class="n">gender</span> <span class="n">enum</span> <span class="p">(</span><span class="s1">&#39;male&#39;</span><span class="p">,</span><span class="s1">&#39;female&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員性別&#39;</span><span class="p">,</span>
+    <span class="n">birth</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員出生時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">department</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員所屬部門,表department中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">identity_no</span> <span class="nb">char</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員身份證號碼&#39;</span><span class="p">,</span>
+    <span class="n">personal_email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員個人郵箱地址&#39;</span><span class="p">,</span>
+    <span class="n">mobile_phone_no</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員個人移動電話號碼&#39;</span><span class="p">,</span>
+    <span class="n">hiredate</span> <span class="nb">date</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員入職時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">leavedate</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員離職時間,格式 YYYY-MM-DD&#39;</span><span class="p">,</span>
+    <span class="n">is_leave</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">,</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;no&#39;</span> <span class="k">comment</span> <span class="s1">&#39;是否離職，默認為no未離職&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;僱員信息備註&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">employee_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">employee_no</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-公司僱員姓名、員工編號,二者同時確定一條item&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_employee_department</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">department</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">department</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_employee_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_employee_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;公司僱員表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 服務器參數信息表
+</span><span class="c1">-- http://stackoverflow.com/questions/23087105/mariadb-dynamic-columns-json
+</span><span class="c1">-- 品牌 server_brand
+</span><span class="c1">-- 具體型號 server_brand_version
+</span><span class="c1">-- 產品類別 機架式 server_product_catagory
+</span><span class="c1">-- 產品結構 2U server_product_mix
+</span><span class="c1">-- CPU型號 Xeon E5-2630 v2 server_cpu_model
+</span><span class="c1">-- CPU頻率 server_cpu_frequency
+</span><span class="c1">-- 標配CPU數量 2顆 standart_cpu_no
+</span><span class="c1">-- 最大CPU數量 max_cpu_no
+</span><span class="c1">-- 主板芯片組  motherboard_chipset_version
+</span><span class="c1">-- 主板擴展槽 motherboard_expansion_slot
+</span><span class="c1">-- 內存類型 memory_tpye
+</span><span class="c1">-- 內存品牌 memory_brand
+</span><span class="c1">-- 內存容量 memory_capacity
+</span><span class="c1">-- 內存插槽數量 memory_slot_no
+</span><span class="c1">-- 硬盤接口類型 hard_disk_interface_type
+</span><span class="c1">-- 標配硬盤容量 hard_disk_capacity
+</span><span class="c1">-- 硬盤架數 hard_disk_tray_no
+</span><span class="c1">-- 硬盤槽位 hard_disk_slot
+</span><span class="c1">-- 網絡控制器個數 network_controller_no
+</span><span class="c1">-- 網絡控制器速度 network_controller_speed
+</span><span class="c1">-- 購買日期 buy_date
+</span><span class="c1">-- 保修期限 warranty_period
+</span><span class="c1"></span>
+<span class="c1">-- server_room根據實際情況設置
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">ops_server</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;服務器自增id&#39;</span><span class="p">,</span>
+    <span class="n">details</span> <span class="nb">blob</span> <span class="k">comment</span> <span class="s1">&#39;服務器參數配置信息,如品牌信號、主板芯片組、CPU、硬盤、內存、網卡等相關信息&#39;</span><span class="p">,</span>
+    <span class="n">server_room</span> <span class="n">enum</span> <span class="p">(</span><span class="s1">&#39;地點1&#39;</span><span class="p">,</span><span class="s1">&#39;地點2&#39;</span><span class="p">,</span><span class="s1">&#39;地點3&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;地點1&#39;</span> <span class="k">comment</span> <span class="s1">&#39;服務器所在機房,默認為空&#39;</span><span class="p">,</span>
+    <span class="n">server_cabinet</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;所屬機櫃的名稱&#39;</span><span class="p">,</span>
+    <span class="n">server_cabinet_order</span> <span class="n">tinyint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;服務器在機櫃中的位置序號&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">server_serverRoom</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">server_room</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-服務器所在機房&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_ops_server_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_ops_server_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;服務器表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 服務器變更記錄表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">ops_server_change_record</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">int</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;服務器變更記錄自增id&#39;</span><span class="p">,</span>
+    <span class="n">server</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;服務器id,表server中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">operator</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;對服務器進行操作，操作者id,表employee中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">operate_time_begin</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;操作起始時間&#39;</span><span class="p">,</span>
+    <span class="n">operate_time_end</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;操作結束時間&#39;</span><span class="p">,</span>
+    <span class="n">description</span> <span class="nb">text</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;操作細節簡述&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_ops_server_change_record_server</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">server</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">ops_server</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_ops_server_change_record_operator</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="k">operator</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">employee</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_ops_server_change_record_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;服務器信息變更記錄表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 域名信息表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">ops_domain</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;域名錶自增id&#39;</span><span class="p">,</span>
+    <span class="n">website</span> <span class="nb">char</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;域名網址&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;域名名稱&#39;</span><span class="p">,</span>
+    <span class="n">company</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;域名所屬的公司,表company中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">responsible_person</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;域名備案負責人,表employee中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">domain_name_registrar</span> <span class="nb">blob</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;域名註冊商,含名稱、地址、網址、聯繫電話等信息&#39;</span><span class="p">,</span>
+    <span class="n">internet_service_provider</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;網絡接入服務商&#39;</span><span class="p">,</span>
+    <span class="n">ip_addr</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">130</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;IP地址,IPV4或IPV6&#39;</span><span class="p">,</span>
+    <span class="n">record_num</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;備案號&#39;</span><span class="p">,</span>
+    <span class="n">audit_time</span> <span class="nb">date</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;備案審核時間&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">domain_website</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">website</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-域名網站索引&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_domain_company</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">company</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">company</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_domain_responsiblePerson</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">responsible_person</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">employee</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_domain_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_domain_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;公司域名錶&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 公司資產分類
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">asset_category</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;資產分類自增id&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產分類名稱&#39;</span><span class="p">,</span>
+    <span class="k">level</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="s1">&#39;second&#39;</span><span class="p">,</span><span class="s1">&#39;third&#39;</span><span class="p">,</span><span class="s1">&#39;fourth&#39;</span><span class="p">,</span><span class="s1">&#39;fifth&#39;</span><span class="p">,</span><span class="s1">&#39;sixth&#39;</span><span class="p">,</span><span class="s1">&#39;seventh&#39;</span><span class="p">,</span><span class="s1">&#39;eighth&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="s1">&#39;top&#39;</span> <span class="k">comment</span> <span class="s1">&#39;資產分類等級,默認為top頂級(一級)分類,後一級為前一級的子分類&#39;</span><span class="p">,</span>
+    <span class="n">parent_category</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="mi">0</span> <span class="k">comment</span> <span class="s1">&#39;該分類的父級分類,頂級分類為0,本表的id，不設置外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">is_show</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="k">default</span> <span class="s1">&#39;yes&#39;</span> <span class="k">comment</span> <span class="s1">&#39;是否顯示,默認為yes顯示&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">text</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該分類備註信息&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;分類的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">asset_category_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="k">level</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-資產分類名稱，使用唯一索引，name和level共同確定一條item&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="o">`</span><span class="n">asset_parent_category</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">parent_category</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-上一級分類id索引&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_category_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_category_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;公司資產分類表,含多個等級的分類&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 公司資產清單
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">asset_inventory</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;資產清單自增id&#39;</span><span class="p">,</span>
+    <span class="n">asset_category</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產所屬分類,表asset_category中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">asset_no</span> <span class="nb">char</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產編號(唯一)&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產名稱&#39;</span><span class="p">,</span>
+    <span class="n">purchase_date</span> <span class="nb">date</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產購置時間&#39;</span><span class="p">,</span>
+    <span class="n">maintenance_state</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;well&#39;</span><span class="p">,</span><span class="s1">&#39;broken&#39;</span><span class="p">)</span> <span class="k">default</span> <span class="s1">&#39;well&#39;</span> <span class="k">comment</span> <span class="s1">&#39;資產保存狀態&#39;</span><span class="p">,</span>
+    <span class="n">maintenance_department</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產負責維護的部門&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">text</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產備註說明&#39;</span><span class="p">,</span>
+    <span class="n">property</span> <span class="nb">blob</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產屬性，json格式存儲&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;分類的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="o">`</span><span class="n">asset_inventory_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">asset_no</span><span class="o">`</span><span class="p">)</span> <span class="k">comment</span> <span class="s1">&#39;index-資產名稱，name和asset_no二者確定一條item&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asswt_inventory_mDepartment</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">maintenance_department</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">department</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_inventory_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_inventory_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;公司資產清單表&#39;</span><span class="p">;</span>
+
+<span class="c1">-- select id,name,asset_no,asset_category,column_list(property) from asset_inventory;
+</span><span class="c1">-- select id,name,asset_no,asset_category,column_json(property) from asset_inventory;
+</span><span class="c1">-- select id,name,asset_no,asset_category,column_get(property,&#39;內存&#39; as char) as &#39;CPU&#39; from asset_inventory;
+</span><span class="c1">-- update asset_inventory set property=column_add(property, &#39;顯卡型號&#39;,&#39;column_add&#39;) where id=3;
+</span><span class="c1">-- update asset_inventory set property=column_delete(property, &#39;顯卡型號&#39;) where id=3;
+</span><span class="c1"></span>
+<span class="c1">-- 資產使用記錄
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">asset_usage_log</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;資產使用記錄自增id&#39;</span><span class="p">,</span>
+    <span class="n">asset</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;使用的資產，表asset_inventory中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">scope</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;個人&#39;</span><span class="p">,</span><span class="s1">&#39;集體&#39;</span><span class="p">)</span> <span class="k">default</span> <span class="s1">&#39;個人&#39;</span> <span class="k">comment</span> <span class="s1">&#39;該資產使用範圍，分配個人使用還是集體使用&#39;</span><span class="p">,</span>
+    <span class="k">user</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產使用者，表employee中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">assigner</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產分配者，表employee中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">remarks</span> <span class="nb">text</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產使用備註說明&#39;</span><span class="p">,</span>
+    <span class="n">start_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;資產開始使用時間&#39;</span><span class="p">,</span>
+    <span class="n">end_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;資產使用結束或歸還時間，默認為null，表示該資產被分配使用，如果有具體時間，表示該資產閒置&#39;</span><span class="p">,</span>
+    <span class="n">adder</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;該item的添加者,表sys_user中的id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="n">create_time</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;item入庫時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">update_time</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">default</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間,格式 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updater</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">default</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;item更新者，表sys_user中id為其外鍵&#39;</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_usage_log_asset</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">asset</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">asset_inventory</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_usage_log_employee</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="k">user</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">employee</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_usage_log_assigner</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">assigner</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">employee</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_usage_log_adder</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">adder</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span><span class="p">,</span>
+    <span class="k">constraint</span> <span class="o">`</span><span class="n">fk_asset_usage_log_updater</span><span class="o">`</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="o">`</span><span class="n">updater</span><span class="o">`</span><span class="p">)</span> <span class="k">references</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span> <span class="s1">&#39;公司資產使用記錄表&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="snapshots">Snapshots</h2>
+
+<p>項目快照</p>
+
+<h3 id="gitlab">GitLab</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-21-53_gitlab.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-22-13_arsenalPHP.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-22-44_README.png" alt="" /></p>
+
+<h3 id="login-page">Login Page</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-22-52_login.png" alt="" /></p>
+
+<h3 id="dashboard">Dashboard</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-23-06_dashboard.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-23-15_menu.png" alt="" /></p>
+
+<h3 id="module">Module</h3>
+
+<h4 id="sys-user">Sys User</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-23-32_sysuser.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-23-50_sysuser_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-24-08_sysuser_create.png" alt="" /></p>
+
+<h4 id="module-1">Module</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-24-18_module.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-24-35_module_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-24-47_module_create.png" alt="" /></p>
+
+<h4 id="user-role">User Role</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-25-05_userrole.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-25-22_userrole_detail.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-25-30_userrole_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-25-40_userrole_create.png" alt="" /></p>
+
+<h4 id="employee">Employee</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-26-19_employee_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-26-30_employee_create.png" alt="" /></p>
+
+<h4 id="department">Department</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-26-48_department.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-27-21_department_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-27-32_department_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-27-46_department_create.png" alt="" /></p>
+
+<h4 id="asset-category">Asset Category</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-27-52_category_edit.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-28-01_category_create.png" alt="" /></p>
+
+<h4 id="inventory">Inventory</h4>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-28-09_inventory.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-28-29_inventor_edit_1.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-28-32_inventory_edit_2.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-11-15_Symfony_Arsenal_Asset_Platform/arsenal2016-11-15_15-28-45_inventory_create.png" alt="" /></p>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.11.15 17:51 Tue Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.16 21:33 Mon America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-16</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/php/">PHP</a>
+          
+          <a href="/tags/nginx/">Nginx</a>
+          
+          <a href="/tags/symfony/">Symfony</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Analying The Change Frequency Of Active Users Tokens From Tomcat Logs</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/">
+            <span class="next-text nav-default">Configuring Nginx Web Server For Symfony Framework On GNU Linux</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

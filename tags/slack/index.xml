@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slack on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/slack/</link>
+    <description>Recent content in Slack on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Apr 2018 13:31:34 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/slack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Slack Build Notification in Travis CI for Github Project</title>
+      <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</guid>
+      <description>&lt;p&gt;By default, &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt; uses email to send build notification, it also support other method, e.g. &lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;. This article documents how to set up &lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt; notification for &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt; project integrated &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲集成了Travis CI的GitHub項目配置Slack信息推送</title>
+      <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;默認通過郵件發送構建信息，&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;也支持通過其它方式發送信息，如&lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;。本文記錄如何已集成&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;的&lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;項目配置&lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;信息推送。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

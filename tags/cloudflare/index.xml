@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloudflare on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/cloudflare/</link>
+    <description>Recent content in Cloudflare on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Apr 2018 15:16:42 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/cloudflare/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Cloudflare Free SSL In GitHub Pages With Custom Domain</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;I have succeed in migrating my blog from &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt; to &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; platform, new domain is &lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;. As &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt; doesn&amp;rsquo;t provide SSL certificate for custom domain, so I need to deploy it separately. &lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; provides free SSL certificate, and it has the ability of anti-ddos.&lt;/p&gt;
+
+&lt;p&gt;This article documents how to configure
+&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; free SSL certificate in &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲GitHub Pages配置Cloudflare的免費SSL數字證書</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;Blog已成功從&lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;遷移到&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;，新域名&lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;。由於&lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;對自有域名不提供SSL證書，故須額外部署。&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;提供免費的SSL證書，並且提供防DDOS攻擊功能。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何配置並使用&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;的SSL證書。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

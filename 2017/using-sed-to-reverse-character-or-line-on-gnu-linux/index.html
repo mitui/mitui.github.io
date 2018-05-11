@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Using Sed To Reverse Character Or Line On GNU/Linux - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Using GNU sed to reverse characters or lines on GNU/Linux" />
+<meta name="keywords" content="AxdLog, sed" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Using Sed To Reverse Character Or Line On GNU/Linux" />
+<meta property="og:description" content="Using GNU sed to reverse characters or lines on GNU/Linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/" />
+
+
+
+<meta property="article:published_time" content="2017-06-15T11:27:01&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-12T09:42:01-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Using Sed To Reverse Character Or Line On GNU/Linux">
+<meta itemprop="description" content="Using GNU sed to reverse characters or lines on GNU/Linux">
+
+
+<meta itemprop="datePublished" content="2017-06-15T11:27:01&#43;08:00" />
+<meta itemprop="dateModified" content="2017-06-15T11:27:01&#43;08:00" />
+<meta itemprop="wordCount" content="1701">
+
+
+
+<meta itemprop="keywords" content="sed," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using Sed To Reverse Character Or Line On GNU/Linux"/>
+<meta name="twitter:description" content="Using GNU sed to reverse characters or lines on GNU/Linux"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Using Sed To Reverse Character Or Line On GNU/Linux</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-06-15 </span>
+        <div class="post-category">
+            
+              <a href="/categories/data-process/"> Data Process </a>
+            
+          </div>
+        <span class="more-meta"> 1701 words </span>
+        <span class="more-meta"> 4 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#character-reverse">Character Reverse</a>
+<ul>
+<li><a href="#command-explanation">Command Explanation</a>
+<ul>
+<li><a href="#step-1">Step 1</a></li>
+<li><a href="#step-2">Step 2</a></li>
+<li><a href="#step-3">Step 3</a></li>
+<li><a href="#step-4">Step 4</a></li>
+</ul></li>
+<li><a href="#divided-process">Divided Process</a></li>
+</ul></li>
+<li><a href="#line-reverse">Line Reverse</a>
+<ul>
+<li><a href="#command-explanation-1">Command Explanation</a></li>
+<li><a href="#divided-process-1">Divided Process</a></li>
+</ul></li>
+<li><a href="#bibliography">Bibliography</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://www.gnu.org/software/sed/" title="GNU sed">GNU sed</a>是一款文本流編輯器(stream editor)，功能強大，官方文檔 <a href="https://www.gnu.org/software/sed/manual/sed.html">sed, a stream editor</a>。網路上也有許多不錯的教程，<a href="http://pement.org/sed/sed1line.txt">USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)</a>便是其中之一。本文主要討論其中 <em>字符串逆序排列</em> (character reverse)和 <em>文本行倒置</em> (line reverse，功能類似<code>tac</code>命令)的實現過程。</p>
+
+<p></p>
+
+<ul>
+<li>字符串逆序排列命令： <code>sed '/\n/!G;s/\(.\)\(.*\n\)/&amp;\2\1/;//D;s/.//'</code>；</li>
+<li>文本行倒置命令：
+
+<ul>
+<li><code>sed '1!G;h;$!d'</code>；</li>
+<li><code>sed -n '1!G;h;$p'</code>；</li>
+</ul></li>
+</ul>
+
+<h2 id="character-reverse">Character Reverse</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed <span class="s1">&#39;/\n/!G;s/\(.\)\(.*\n\)/&amp;\2\1/;//D;s/.//&#39;</span>
+
+<span class="c1"># 改寫後形式
+</span><span class="c1"></span>sed -r <span class="s1">&#39;/\n/!G;s@(.)(.*\n)@&amp;\2\1@;//D;s@.@@&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="command-explanation">Command Explanation</h3>
+
+<p>網路上已有對該命令的解釋</p>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/9703152/sed-d-command#9703275" title="StackOverfoow">sed: &lsquo;//D&rsquo; command</a></li>
+<li><a href="http://www.catonmat.net/blog/sed-one-liners-explained-part-one/">Sed One-Liners Explained, Part I: File Spacing, Numbering and Text Conversion and Substitution</a>的<code>37. Reverse a line (emulates &quot;rev&quot; Unix command).</code>部分</li>
+</ul>
+
+<p>相關指令定義如下：</p>
+
+<ol>
+<li><code>G</code>:  <strong>append</strong> <em>hold space</em> to *pattern space*；</li>
+<li><code>D</code>:  delete text in the pattern space up to the first newline；</li>
+<li><code>!</code>表是取反；</li>
+<li><code>;</code>用於分隔操作，順序執行；</li>
+<li>圓括號<code>()</code>之前的反斜線<code>\</code>表示轉義，如果使用<code>-r</code>，則無需使用<code>\</code>進行轉義；</li>
+<li><code>//</code>表示使用正則匹配，如果<code>//</code>中不包含任何內容，只是單純的<code>//</code>，則表示最近一次使用正則匹配到的內容。官方說明見：</li>
+</ol>
+
+<blockquote>
+<p>The empty regular expression <code>//</code> repeats the last regular expression match (the same holds if the empty regular expression is passed to the s command). Note that modifiers to regular expressions are evaluated when the regular expression is compiled, thus it is invalid to specify them together with the empty regular expression. &ndash; <a href="https://www.gnu.org/software/sed/manual/sed.html#Regexp-Addresses">4.3 selecting lines by text matching</a></p>
+</blockquote>
+
+<h4 id="step-1">Step 1</h4>
+
+<p><code>/\n/!G</code>表示對不含有換行符<code>\n</code>的數據行，將 <em>hold space</em> 中的內容追加到 <em>pattern space</em> ，如果 <em>hold space</em> 爲空，則相當於在每行的下一行添加了一空行。</p>
+
+<h4 id="step-2">Step 2</h4>
+
+<p><code>s/\(.\)\(.*\n\)/&amp;\2\1/</code>表示通過正則查找匹配內容並實現替換。<code>.</code>表示任意不爲<code>\n</code>的單個字符，<code>.*</code>表示任意多個不爲<code>\n</code>的單個字符(&gt;=0)。<code>\(.\)</code>、<code>\(.*\n\)</code>用圓括號包裹起來表示稍後爲用到，分別對應其後的<code>\1</code>、<code>\2</code>，這種使用方式叫<code>back-reference</code>，具體見官方文檔<a href="https://www.gnu.org/software/sed/manual/sed.html#Back_002dreferences-and-Subexpressions">5.7 Back-references and Subexpressions</a>。</p>
+
+<p>此處字符 <strong><code>&amp;</code></strong> 非常重要，表示最近一次使用正則匹配到的內容，即命令中的<code>\(.\)\(.*\n\)</code>(或<code>\1\2</code>)，爲匹配到的內容則仍按最開始的位置顯示。例如字符串<code>dcba</code>，第一次作用後的格式爲<code>dcba\ncba\nd</code>，經過<code>//D</code>作用，第二次的格式是<code>cba\nba\cd</code>，第二次作用後顯示的內容中，最後一個字符<code>d</code>是未用正則匹配到的內容，照常顯示，即第二次的<code>&amp;\2\1</code>是<code>cba\nba\c</code>，輸出的內容加上未被匹配到的字符<code>d</code>，形成<code>cba\nba\cd</code>，這非常重要。</p>
+
+<h4 id="step-3">Step 3</h4>
+
+<p><code>//D</code>是4個步驟中最爲重要的步驟，上文簡要介紹過，單純的<code>//</code>表示最近一次使用正則匹配到的內容<code>\(.\)\(.*\n\)</code>(或<code>\1\2</code>)。即<code>//</code>等同於<code>/\(.\)\(.*\n\)/</code>。字符<code>D</code>表示刪除 <em>pattern space</em> 中第一個<code>\n</code>之前的內容，如<code>dcba\ncba\nd</code>，<code>//</code>爲<code>/dcba\n/</code>，經<code>//D</code>作用後爲<code>cba\nd</code>。</p>
+
+<p><code>//D</code>會對字符串進行 <strong>循環</strong> 操作，操作命令即前一個命令<code>s/\(.\)\(.*\n\)/&amp;\2\1/</code>。當無匹配內容時，則跳出開始執行下一個命令。</p>
+
+<h4 id="step-4">Step 4</h4>
+
+<p><code>s/.//</code>表示刪除行首爲<code>newline</code>字符串的行，可理解爲是空行。</p>
+
+<h3 id="divided-process">Divided Process</h3>
+
+<p>構建文件<code>/tmp/sed.txt</code>，內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">4321</pre></td></tr></table>
+</div>
+</div>
+<p>分解過程如下</p>
+
+<table>
+<thead>
+<tr>
+<th>count</th>
+<th><code>s/\(.\)\(.*\n\)/&amp;\2\1/</code></th>
+<th><code>//D</code></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td><code>4321\n321\n4</code></td>
+<td><code>321\n4</code></td>
+</tr>
+
+<tr>
+<td>2</td>
+<td><code>321\n21\n3</code>+<code>4</code></td>
+<td><code>21\n34</code></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td><code>21\n1\n2</code>+<code>34</code></td>
+<td><code>1\n234</code></td>
+</tr>
+
+<tr>
+<td>4</td>
+<td><code>1\n\n1</code>+<code>234</code></td>
+<td><code>\n1234</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>生成的字符串<code>\n1234</code>經過<code>s/.//</code>處理得到<code>1234</code>。</p>
+
+<p>實例演示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">maxdsre@Stretch:~$ cat /tmp/sed.txt
+dcba
+<span class="m">4321</span>
+erSdxaM
+maxdsre@Stretch:~$ sed <span class="s1">&#39;/\n/!G;s/\(.\)\(.*\n\)/&amp;\2\1/;//D;s/.//&#39;</span> /tmp/sed.txt
+abcd
+<span class="m">1234</span>
+MaxdSre
+maxdsre@Stretch:~$ sed -r <span class="s1">&#39;/\n/!G;s@(.)(.*\n)@&amp;\2\1@;//D;s@.@@&#39;</span> /tmp/sed.txt
+abcd
+<span class="m">1234</span>
+MaxdSre
+maxdsre@Stretch:~$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="line-reverse">Line Reverse</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed <span class="s1">&#39;1!G;h;$!d&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="command-explanation-1">Command Explanation</h3>
+
+<p>相關指令定義如下：</p>
+
+<ol>
+<li><code>G</code>:  <strong>append</strong> <em>hold space</em> to <em>pattern space</em></li>
+<li><code>h</code>:  <strong>copy</strong> <em>pattern space</em> to <em>hold space</em></li>
+<li><code>d</code>:  <strong>delete</strong> <em>pattern space</em>.  start next cycle.</li>
+<li><code>!</code>表是取反；</li>
+<li><code>;</code>用於分隔操作，順序執行。</li>
+</ol>
+
+<h3 id="divided-process-1">Divided Process</h3>
+
+<p>構建文件<code>/tmp/sed.txt</code>，內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">a
+b
+c
+d</pre></td></tr></table>
+</div>
+</div>
+<p>分解過程如下</p>
+
+<table>
+<thead>
+<tr>
+<th>pattern</th>
+<th>hold</th>
+<th>pattern</th>
+<th>hold</th>
+<th>pattern</th>
+<th>hold</th>
+<th>pattern</th>
+<th>hold</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>1!G</code></td>
+<td><code>1!G</code></td>
+<td><code>h</code></td>
+<td><code>h</code></td>
+<td><code>$!d</code></td>
+<td><code>$!d</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>a</td>
+<td></td>
+<td>a</td>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td></td>
+<td>a</td>
+</tr>
+
+<tr>
+<td>b</td>
+<td>a</td>
+<td>b\na</td>
+<td>a</td>
+<td>b\na</td>
+<td>b\na</td>
+<td></td>
+<td>b\na</td>
+</tr>
+
+<tr>
+<td>c</td>
+<td>b\na</td>
+<td>c\nb\na</td>
+<td>b\na</td>
+<td>c\nb\na</td>
+<td>c\nb\na</td>
+<td></td>
+<td>c\nb\na</td>
+</tr>
+
+<tr>
+<td>d</td>
+<td>c\nb\na</td>
+<td>d\nc\nb\na</td>
+<td>c\nb\na</td>
+<td>d\nc\nb\na</td>
+<td>d\nc\nb\na</td>
+<td>d\nc\nb\na</td>
+<td>d\nc\nb\na</td>
+</tr>
+</tbody>
+</table>
+
+<p>完整解釋：</p>
+
+<ol>
+<li>對第一行之外的所有數據行，將當前讀取行的 <em>hold space</em> 中內容追加到 <em>pattern space</em> 中；</li>
+<li>將當前讀取行的 <em>pattern space</em> 中內容複製到 <em>hold space</em> 中；</li>
+<li>除了最後一行，清空其餘的數據行的 *pattern space*；</li>
+<li>到最後一行時，輸出 <em>pattern space</em> 中內容。</li>
+</ol>
+
+<p>實例演示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">maxdsre@Stretch:~$ cat /tmp/sed.txt
+a
+b
+c
+d
+maxdsre@Stretch:~$ <span class="nv">sed</span> <span class="o">=</span> /tmp/sed.txt <span class="p">|</span> sed <span class="s1">&#39;N;s@\n@ @&#39;</span>
+<span class="m">1</span> a
+<span class="m">2</span> b
+<span class="m">3</span> c
+<span class="m">4</span> d
+maxdsre@Stretch:~$ sed <span class="s1">&#39;1!G;h;$!d&#39;</span> /tmp/sed.txt
+d
+c
+b
+a
+maxdsre@Stretch:~$ sed -n <span class="s1">&#39;1!G;h;$p&#39;</span> /tmp/sed.txt
+d
+c
+b
+a
+maxdsre@Stretch:~$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="bibliography">Bibliography</h2>
+
+<ul>
+<li><a href="http://www.catonmat.net/series/sed-one-liners-explained">Sed One-Liners Explained</a></li>
+<li><a href="https://unix.stackexchange.com/questions/233014/how-does-the-command-sed-1ghd-reverse-the-contents-of-a-file" title="StackOverflow">How does the command sed &lsquo;1!G;h;$!d&rsquo; reverse the contents of a file?</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2017.06.15 11:27 Thu Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.12 09:42 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-12</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/sed/">sed</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/extracting-api-requests-info-from-nginx-access-log/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Extracting API Requests Info From Nginx Access Log</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/">
+            <span class="next-text nav-default">Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

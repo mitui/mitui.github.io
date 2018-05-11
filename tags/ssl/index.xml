@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssl on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/ssl/</link>
+    <description>Recent content in Ssl on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Apr 2018 10:42:53 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Anaconda And Jupyter Notebook On GNU/Linux</title>
+      <link>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 10:42:53 -0400</pubDate>
+      
+      <guid>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt; is an open-source interactive web application developed by &lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt; language. The official recommends installing &lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt; and &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt; using the &lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda Distribution&lt;/a&gt;. This article documents how to set up &lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda&lt;/a&gt; and &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;, and implement the entire process through a shell script.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝配置Anaconda和Jupyter Notebook</title>
+      <link>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 10:42:53 -0400</pubDate>
+      
+      <guid>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;是一款開源的交互式Web應用，使用&lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt;語言開發。其官方建議通過&lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda&lt;/a&gt;安裝&lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt;和&lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;。本文記錄如何通過&lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda&lt;/a&gt;安裝、配置&lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;，並通過Shell腳本實現整個過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Cloudflare Free SSL In GitHub Pages With Custom Domain</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;I have succeed in migrating my blog from &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt; to &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; platform, new domain is &lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;. As &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt; doesn&amp;rsquo;t provide SSL certificate for custom domain, so I need to deploy it separately. &lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; provides free SSL certificate, and it has the ability of anti-ddos.&lt;/p&gt;
+
+&lt;p&gt;This article documents how to configure
+&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; free SSL certificate in &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲GitHub Pages配置Cloudflare的免費SSL數字證書</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;Blog已成功從&lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;遷移到&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;，新域名&lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;。由於&lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;對自有域名不提供SSL證書，故須額外部署。&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;提供免費的SSL證書，並且提供防DDOS攻擊功能。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何配置並使用&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;的SSL證書。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

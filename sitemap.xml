@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/2018/setting-up-oracle-jdk-on-gnu-linux/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/setting-up-oracle-jdk-on-gnu-linux/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</loc>
+    <lastmod>2018-04-11T16:05:42-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</loc>
+    <lastmod>2018-04-11T16:05:42-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</loc>
+    <lastmod>2018-04-11T00:20:07-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</loc>
+    <lastmod>2018-04-11T00:20:07-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/about.zh/</loc>
+    <lastmod>2018-03-22T13:28:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2018/cleaning-text-data-which-delimiter-is-special-character-using-sed-and-awk/</loc>
+    <lastmod>2018-04-11T10:31:21-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/extracting-api-requests-counts-from-nginx-access-log-per-week/</loc>
+    <lastmod>2018-04-11T10:21:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/deploying-project-codes-to-multiple-remote-hosts-via-ssh/</loc>
+    <lastmod>2018-04-11T10:11:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2017-08-28T21:41:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/splitting-nginx-log-by-date-via-gnu-awk/</loc>
+    <lastmod>2018-04-11T10:44:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/extracting-api-requests-info-from-nginx-access-log/</loc>
+    <lastmod>2018-04-11T09:59:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/</loc>
+    <lastmod>2018-04-12T09:42:01-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/</loc>
+    <lastmod>2018-04-11T11:09:39-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</loc>
+    <lastmod>2018-04-11T11:41:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</loc>
+    <lastmod>2018-04-11T11:41:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</loc>
+    <lastmod>2018-04-17T14:50:36-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</loc>
+    <lastmod>2018-04-17T14:50:36-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/setting-up-tor-browser-on-gnu-linux/</loc>
+    <lastmod>2018-04-11T11:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/</loc>
+    <lastmod>2018-04-11T09:37:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/self-developing-asset-management-platform-based-on-symfony-framework/</loc>
+    <lastmod>2018-04-16T20:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/</loc>
+    <lastmod>2018-04-16T20:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/</loc>
+    <lastmod>2018-04-14T17:13:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/</loc>
+    <lastmod>2018-04-14T13:28:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/using-awk-to-extract-statistic-results-from-multiple-log-files/</loc>
+    <lastmod>2018-04-12T10:02:42-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/gnu-linux-post-installation-configuration-full-record/</loc>
+    <lastmod>2018-04-24T11:36:54-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/building-docker-private-registry-with-self-signed-certificate/</loc>
+    <lastmod>2018-04-12T11:00:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/crawling-china-administrative-division-code/</loc>
+    <lastmod>2018-04-22T20:22:59-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/lemp-stack-installation-and-configuration-on-centos-7/</loc>
+    <lastmod>2018-04-14T13:20:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/lemp-stack-installation-and-configuration-on-centos-7/</loc>
+    <lastmod>2018-04-14T13:20:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/a-complete-intrduction-to-markdown-syntax/</loc>
+    <lastmod>2018-04-11T22:20:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/</loc>
+    <lastmod>2018-04-11T23:00:52-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/1/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/anaconda/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/awk/</loc>
+    <lastmod>2018-04-11T10:31:21-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/blog/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/cloudflare/</loc>
+    <lastmod>2018-04-11T16:05:42-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/container/</loc>
+    <lastmod>2018-04-11T11:41:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/data-process/</loc>
+    <lastmod>2018-04-12T09:42:01-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/devops/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2018-04-11T11:41:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
+    <lastmod>2018-04-11T00:20:07-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/github/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/gnu/linux/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/gpg/</loc>
+    <lastmod>2018-04-11T11:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/hugo/</loc>
+    <lastmod>2018-04-11T16:05:42-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/java/</loc>
+    <lastmod>2018-04-11T10:11:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/jdk/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/jupyter/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/life-cycle/</loc>
+    <lastmod>2018-04-17T14:50:36-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/markdown/</loc>
+    <lastmod>2018-04-11T22:20:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mysql/</loc>
+    <lastmod>2018-04-11T09:37:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/nginx/</loc>
+    <lastmod>2018-04-16T20:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/openssl/</loc>
+    <lastmod>2018-04-12T11:00:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/oracle/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/pam/</loc>
+    <lastmod>2018-04-11T23:00:52-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/php/</loc>
+    <lastmod>2018-04-16T20:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/php/</loc>
+    <lastmod>2018-04-16T20:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/production-case/</loc>
+    <lastmod>2018-04-11T10:31:21-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/python/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/security/</loc>
+    <lastmod>2018-04-11T23:00:52-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sed/</loc>
+    <lastmod>2018-04-11T10:31:21-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/shell-script/</loc>
+    <lastmod>2018-04-19T15:37:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/slack/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ssh/</loc>
+    <lastmod>2018-04-11T10:11:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ssl/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/symfony/</loc>
+    <lastmod>2018-04-16T20:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-04-19T10:42:53-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tomcat/</loc>
+    <lastmod>2018-04-11T10:11:16-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tor/</loc>
+    <lastmod>2018-04-11T11:55:08-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/travis-ci/</loc>
+    <lastmod>2018-04-18T13:31:34-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/tutorial/</loc>
+    <lastmod>2018-04-11T22:20:02-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/web-crawling/</loc>
+    <lastmod>2018-04-22T20:22:59-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

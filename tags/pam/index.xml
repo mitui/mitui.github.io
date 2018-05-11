@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pam on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/pam/</link>
+    <description>Recent content in Pam on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2016 21:01:52 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/pam/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux</title>
+      <link>/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/</link>
+      <pubDate>Mon, 25 Jan 2016 21:01:52 +0800</pubDate>
+      
+      <guid>/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Linux_PAM&#34; title=&#34;Wikipedia&#34;&gt;PAM&lt;/a&gt;是一種動態認證機制，通過多重認證提升系統安全係數。&lt;a href=&#34;https://en.wikipedia.org/wiki/Google_Authenticator&#34;&gt;Google Authenticator&lt;/a&gt;是基於&lt;a href=&#34;https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm&#34; title=&#34;WikiPedia&#34;&gt;TOTP&lt;/a&gt;和&lt;a href=&#34;https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm&#34; title=&#34;WikiPedia&#34;&gt;HOTP&lt;/a&gt;的2步認證應用，通過移動端的&lt;code&gt;Google Authenticator&lt;/code&gt;應用生成token(存活期30秒)。&lt;/p&gt;
+
+&lt;p&gt;本文記錄利用其為GNU/Linux桌面系統、遠程SSH連接配置2步認證，並通過Shell Script實現相關功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

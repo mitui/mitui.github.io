@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Using Google Authenticator to set up multi-factor authentication on GNU/Linux" />
+<meta name="keywords" content="AxdLog, Google Authenticator, PAM, SSH, Multi-Factor Authentication" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux" />
+<meta property="og:description" content="Using Google Authenticator to set up multi-factor authentication on GNU/Linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/" />
+
+
+
+<meta property="article:published_time" content="2016-01-25T21:01:52&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T23:00:52-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux">
+<meta itemprop="description" content="Using Google Authenticator to set up multi-factor authentication on GNU/Linux">
+
+
+<meta itemprop="datePublished" content="2016-01-25T21:01:52&#43;08:00" />
+<meta itemprop="dateModified" content="2016-01-25T21:01:52&#43;08:00" />
+<meta itemprop="wordCount" content="7725">
+
+
+
+<meta itemprop="keywords" content="PAM,SSH," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux"/>
+<meta name="twitter:description" content="Using Google Authenticator to set up multi-factor authentication on GNU/Linux"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-01-25 </span>
+        <div class="post-category">
+            
+              <a href="/categories/security/"> Security </a>
+            
+          </div>
+        <span class="more-meta"> 7725 words </span>
+        <span class="more-meta"> 16 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#preparation">Preparation</a>
+<ul>
+<li><a href="#conventions">Conventions</a></li>
+<li><a href="#downloading-source-code">Downloading Source Code</a></li>
+<li><a href="#compiling-installing">Compiling &amp; Installing</a></li>
+</ul></li>
+<li><a href="#running-configuring-google-authenticator">Running &amp; Configuring Google Authenticator</a></li>
+<li><a href="#installing-configuring-google-authenticator-app">Installing &amp; Configuring Google Authenticator APP</a></li>
+<li><a href="#configuring-pam">Configuring PAM</a>
+<ul>
+<li><a href="#centos-rhel-sles">CentOS &amp; RHEL &amp; SLES</a></li>
+<li><a href="#debian-ubuntu">Debian &amp; Ubuntu</a></li>
+<li><a href="#opensuse-leap">OpenSUSE Leap</a></li>
+</ul></li>
+<li><a href="#gnu-linux-desktop-authentication">GNU/Linux Desktop Authentication</a>
+<ul>
+<li><a href="#centos-7">CentOS 7</a></li>
+<li><a href="#debian-stretch">Debian Stretch</a></li>
+<li><a href="#ubuntu-xenial">Ubuntu Xenial</a></li>
+<li><a href="#opensuse">OpenSUSE</a></li>
+</ul></li>
+<li><a href="#ssh-authentication">SSH Authentication</a>
+<ul>
+<li><a href="#centos7-with-ssh-key">CentOS7 With SSH Key</a></li>
+<li><a href="#centos7-with-password">CentOS7 With Password</a></li>
+<li><a href="#debian-with-ssh-key">Debian With SSH Key</a></li>
+<li><a href="#debian-with-password">Debian With Password</a></li>
+<li><a href="#opensuse-with-ssh-key">OpenSUSE With SSH Key</a></li>
+<li><a href="#opensuse-with-password">OpenSUSE With Password</a></li>
+</ul></li>
+<li><a href="#shell-script">Shell Script</a></li>
+<li><a href="#error-occuring">Error Occuring</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#bibliography">Bibliography</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://en.wikipedia.org/wiki/Linux_PAM" title="Wikipedia">PAM</a>是一種動態認證機制，通過多重認證提升系統安全係數。<a href="https://en.wikipedia.org/wiki/Google_Authenticator">Google Authenticator</a>是基於<a href="https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm" title="WikiPedia">TOTP</a>和<a href="https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm" title="WikiPedia">HOTP</a>的2步認證應用，通過移動端的<code>Google Authenticator</code>應用生成token(存活期30秒)。</p>
+
+<p>本文記錄利用其為GNU/Linux桌面系統、遠程SSH連接配置2步認證，並通過Shell Script實現相關功能。</p>
+
+<p></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Google官方關於<code>2-Step Verification</code>的介紹頁見 <a href="https://www.google.com/landing/2step/">https://www.google.com/landing/2step/</a>。</p>
+
+<p>安裝說明見 <a href="https://support.google.com/accounts/topic/7189195">2-Step Verification</a>。</p>
+
+<p>Google認證PAM模塊 <strong>google-authenticator-libpam</strong> 的代碼託管在<a href="https://github.com/google/google-authenticator-libpam">GitHub</a>。</p>
+
+<h2 id="preparation">Preparation</h2>
+
+<p>本文操作須滿足以下要求：</p>
+
+<ul>
+<li>運行GNU/Linux系統的主機；</li>
+<li>正常訪問<a href="https://www.google.com/">Google</a> (中國大陸地區可能無法正常訪問)；</li>
+<li>移動設備，用於安裝安裝 <code>Google Authenticator</code> APP，具體支持設備見<a href="https://support.google.com/accounts/answer/1066447?hl=en">Install Google Authenticator</a>；</li>
+<li><code>Google Authenticator</code>的源碼包，GitHub<a href="https://github.com/google/google-authenticator-libpam">地址</a>,採用源碼編譯安裝；</li>
+</ul>
+
+<h3 id="conventions">Conventions</h3>
+
+<p>相關操作將分別在<code>CentOS 6.9</code>、<code>CentOS 7.4</code>、<code>Debian Stretch</code>、<code>Ubuntu Xenial</code>和<code>OpenSUSE Leap</code>中進行，通過<code>chrony</code>同步網路時間</p>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Kernel</th>
+<th>SSHD</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>SUSE Linux Enterprise Server 12 SP3</td>
+<td>4.4.114-94.14</td>
+<td>7.2p2</td>
+</tr>
+
+<tr>
+<td>Red Hat Enterprise Linux Server release 7.4 (Maipo)</td>
+<td>3.10.0-693.21.1</td>
+<td>7.4p1</td>
+</tr>
+
+<tr>
+<td>CentOS Linux release 7.4.1708 (Core)</td>
+<td>3.10.0-693.21.1</td>
+<td>7.4p1</td>
+</tr>
+
+<tr>
+<td>CentOS release 6.9 (Final)</td>
+<td>2.6.32-696.23.1</td>
+<td>5.3p1</td>
+</tr>
+
+<tr>
+<td>Debian GNU/Linux 9 (stretch)</td>
+<td>4.9.0-5</td>
+<td>7.4p1</td>
+</tr>
+
+<tr>
+<td>Ubuntu 16.04.4 LTS</td>
+<td>4.13.0-37</td>
+<td>7.2p2</td>
+</tr>
+
+<tr>
+<td>openSUSE Leap 42.2</td>
+<td>4.4.74-18.20-default</td>
+<td>7.2p2</td>
+</tr>
+</tbody>
+</table>
+
+<p>執行如下命令安裝SSH的<code>client</code>和<code>server</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># CentOS 7
+</span><span class="c1"></span>sudo yum install -y -q openssh-server openssh-clients
+
+<span class="c1"># Debian / Ubuntu
+</span><span class="c1"></span>sudo apt-get update
+sudo apt-get install -yq openssh-client openssh-server openssh-sftp-server
+
+<span class="c1"># OpenSUSE / SLES
+</span><span class="c1"></span>sudo zypper in -yl openssh</code></pre></td></tr></table>
+</div>
+</div>
+<p>定義源碼下載地址<code>/tmp</code>
+定義源碼安裝路徑<code>/opt/googleAuthenticator</code></p>
+
+<p>安裝編譯所需的包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#CentOS
+</span><span class="c1"></span>sudo yum install -y gcc make autoconf automake libtool pam-devel
+
+<span class="c1">#Debian / Ubuntu
+</span><span class="c1"></span>sudo apt-get install -y gcc make autoconf automake libtool libpam0g-dev libqrencode3
+
+<span class="c1">#OpenSUSE
+</span><span class="c1"></span>sudo zypper in -yl gcc make autoconf automake libtool pam-devel</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="downloading-source-code">Downloading Source Code</h3>
+
+<p>本文採用<code>git</code>下載代碼，git地址為</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://github.com/google/google-authenticator-libpam.git</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>如果不想用<code>git</code>下載，可先下載<code>.zip</code>格式的壓縮包，再通過命令<code>unzip</code>解壓縮。需要系統安裝有<code>zip</code>、<code>unzip</code>命令。</p>
+
+<p>執行如下命令下載代碼</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /tmp
+git clone https://github.com/google/google-authenticator-libpam.git</code></pre></td></tr></table>
+</div>
+</div>
+<p>下載完成後目錄為<code>/tmp/google-authenticator-libpam</code>。</p>
+
+<p><strong>註</strong>：如果不想使用git下載，可在項目頁點擊<code>Clone or download</code>&ndash;&gt;<code>Download ZIP</code>下載壓縮包。關於如何安裝<code>git</code>，可參考本人的「<a href="http://lempstacker.com/tw/Compile-Install-And-Configure-Git-On-CentOS7/">Compile Install And Configure Git On CentOS7</a>」。</p>
+
+<h3 id="compiling-installing">Compiling &amp; Installing</h3>
+
+<p>安裝目錄為<code>/opt/googleAuthenticator</code></p>
+
+<p>執行如下命令進行編譯安裝</p>
+
+<p><strong>注意</strong>：如果壓縮包解壓目錄(如<code>/tmp</code>)是一個單獨的分區，且文件系統設置了<code>noexec</code>屬性(<code>/etc/fstab</code>)，會造成<code>./bootstrap.sh</code>、<code>./configure</code>無法執行，通過<code>sudo</code>也會提示無執行權限。此時可以考慮將解壓縮目錄放置到其它目錄中，如用戶家目錄。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#臨時更改umask
+</span><span class="c1"></span><span class="nb">umask</span> <span class="m">022</span>
+
+<span class="c1">#創建安裝目錄
+</span><span class="c1"></span><span class="o">[[</span> -d <span class="s1">&#39;/opt/googleAuthenticator&#39;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo rm -rf /opt/googleAuthenticator
+sudo mkdir -pv /opt/googleAuthenticator
+
+<span class="c1">#切換到libpam目錄下
+</span><span class="c1"></span><span class="nb">cd</span> /tmp/google-authenticator-libpam
+
+<span class="c1">#執行腳本
+</span><span class="c1"></span>./bootstrap.sh
+
+<span class="c1">#配置安裝路徑
+</span><span class="c1"></span>./configure --prefix<span class="o">=</span>/opt/googleAuthenticator
+
+<span class="c1">#並行運行4個任務，構建應用程序
+</span><span class="c1"></span>make -j <span class="m">4</span>
+
+<span class="c1">#安裝
+</span><span class="c1"></span>sudo make install</code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>If you don&rsquo;t have access to &ldquo;sudo&rdquo;, you have to manually become &ldquo;root&rdquo; prior to calling &ldquo;make install&rdquo;. &ndash; <a href="https://github.com/google/google-authenticator-libpam">https://github.com/google/google-authenticator-libpam</a></p>
+</blockquote>
+
+<p>安裝完成後，出現如下信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Libraries have been installed in:
+   /opt/googleAuthenticator/lib/security
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR&#39;
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH&#39; environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH&#39; environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR&#39; linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf&#39;
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+make[1]: Leaving directory `/root/google-authenticator-libpam&#39;</pre></td></tr></table>
+</div>
+</div>
+<p>庫文件路徑<code>/opt/googleAuthenticator/lib/security</code>有可能顯示爲<code>/opt/googleAuthenticator/lib64/security</code>。</p>
+
+<p>稍後配置需要用到的PAM文件<code>pam_google_authenticator.so</code>就存儲在目錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/opt/googleAuthenticator/lib/security
+<span class="c1"># or
+</span><span class="c1"></span>/opt/googleAuthenticator/lib64/security</code></pre></td></tr></table>
+</div>
+</div>
+<p>具體對應關係如下</p>
+
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>dirto list</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/opt/googleAuthenticator/lib/security</td>
+<td>Debian/Ubuntu/CentOS/RHEL/SLES</td>
+</tr>
+
+<tr>
+<td>/opt/googleAuthenticator/lib64/security</td>
+<td>OpenSUSE</td>
+</tr>
+</tbody>
+</table>
+
+<p>目錄<code>/opt/googleAuthenticator</code>下有<code>bin</code>、<code>lib</code>或<code>lib64</code>、<code>share</code>3個子目錄。</p>
+
+<p>接下來為可執行程序<code>google-authenticator</code>配置PATH路徑、庫文件，執行如下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">lib_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">lib_dir</span><span class="k">:-</span><span class="s1">&#39;/opt/googleAuthenticator/lib&#39;</span><span class="si">}</span>
+<span class="o">[[</span> -d <span class="s1">&#39;/opt/googleAuthenticator/lib64&#39;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">lib_dir</span><span class="o">=</span><span class="s1">&#39;/opt/googleAuthenticator/lib64&#39;</span>
+<span class="nv">bin_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">bin_dir</span><span class="k">:-</span><span class="s1">&#39;/opt/googleAuthenticator/bin&#39;</span><span class="si">}</span>
+
+<span class="c1">#導出庫文件
+</span><span class="c1"></span>sudo bash -c <span class="s1">&#39;echo &#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">lib_dir</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39; &gt; /etc/ld.so.conf.d/googleAuthenticator.conf&#39;</span>
+<span class="c1">#讓系統重新生成緩存 Debian中路徑為 /sbin/ldconfig
+</span><span class="c1"></span>sudo ldconfig -v
+
+<span class="c1">#爲可執行程序添加PATH路徑
+</span><span class="c1"></span>sudo bash -c <span class="s1">&#39;echo &#34;export PATH=\$PATH:&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">bin_dir</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;&#34; &gt; /etc/profile.d/googleAuthenticator.sh&#39;</span>
+<span class="nb">source</span> /etc/profile.d/googleAuthenticator.sh</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="running-configuring-google-authenticator">Running &amp; Configuring Google Authenticator</h2>
+
+<p>如想要無交互模式生成(輸出內容存儲在文件<code>~/google_authenticator</code>中)，可執行如下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;y&#39;</span> <span class="p">|</span> google-authenticator -t -d -f -Q UTF8 -r <span class="m">3</span> -R <span class="m">30</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt; ~/google_authenticator</code></pre></td></tr></table>
+</div>
+</div>
+<p>以下操作是交互模式過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">google-authenticator</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作過程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#是否使用基於時間的認證令牌
+</span><span class="c1"></span>Do you want authentication tokens to be time-based <span class="o">(</span>y/n<span class="o">)</span> y
+Warning: pasting the following URL into your browser exposes the OTP secret to Google:
+
+<span class="c1">#生成的二維碼地址
+</span><span class="c1"></span>  https://www.google.com/chart?chs<span class="o">=</span>200x200<span class="p">&amp;</span><span class="nv">chld</span><span class="o">=</span>M<span class="p">|</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">cht</span><span class="o">=</span>qr<span class="p">&amp;</span><span class="nv">chl</span><span class="o">=</span>otpauth://totp/root@centos%3Fsecret%3DQYCY5YLGZJLCXWIUSPJQGVSQSU%26issuer%3Dcentos
+
+<span class="c1">#此處是一個二維碼，可直接使用移動端Google Authenticator APP中的`Scan a barcode`掃描識別
+</span><span class="c1"></span>
+<span class="c1">#安全碼，在手機端Google Authenticator APP中的`Enter provided key`中用到
+</span><span class="c1"></span>Your new secret key is: QYCY5YLGZJLCXWIUSPJQGVSQSU
+
+<span class="c1">#認證碼
+</span><span class="c1"></span>Your verification code is <span class="m">795124</span>
+
+<span class="c1">#5組緊急備用驗證碼，主要用於當手機遺失後找回正確的認證碼
+</span><span class="c1"></span>Your emergency scratch codes are:
+  <span class="m">64621153</span>
+  <span class="m">42898735</span>
+  <span class="m">96729389</span>
+  <span class="m">90142620</span>
+  <span class="m">66573383</span>
+
+<span class="c1">#是否更新文件 ~/.google_authenticator，該文件默認不存在
+</span><span class="c1"></span>Do you want me to update your <span class="s2">&#34;/home/flying/.google_authenticator&#34;</span> file? <span class="o">(</span>y/n<span class="o">)</span> y
+
+<span class="c1">#是否允許同一認證令牌用於多種用途
+</span><span class="c1"></span>Do you want to disallow multiple uses of the same authentication
+token? This restricts you to one login about every 30s, but it increases
+your chances to notice or even prevent man-in-the-middle attacks <span class="o">(</span>y/n<span class="o">)</span> y
+
+<span class="c1">#基於時間登錄，每個令牌默認的有效時間是30秒，足夠抵消客戶端到服務器之間的時間延遲
+</span><span class="c1"></span>By default, a new token is generated every <span class="m">30</span> seconds by the mobile app.
+In order to compensate <span class="k">for</span> possible time-skew between the client and the server,
+we allow an extra token before and after the current time. This allows <span class="k">for</span> a
+<span class="nb">time</span> skew of up to <span class="m">30</span> seconds between authentication server and client. If you
+experience problems with poor <span class="nb">time</span> synchronization, you can increase the window
+from its default size of <span class="m">3</span> permitted codes <span class="o">(</span>one previous code, the current
+code, the next code<span class="o">)</span> to <span class="m">17</span> permitted codes <span class="o">(</span>the <span class="m">8</span> previous codes, the current
+code, and the <span class="m">8</span> next codes<span class="o">)</span>. This will permit <span class="k">for</span> a <span class="nb">time</span> skew of up to <span class="m">4</span> minutes
+between client and server.
+Do you want to <span class="k">do</span> so? <span class="o">(</span>y/n<span class="o">)</span> y
+
+<span class="c1">#單位時間內顯示登錄嘗試的次數，以防暴力破解，默認每30秒內不能超過3次
+</span><span class="c1"></span>If the computer that you are logging into isn<span class="se">\&#39;</span>t hardened against brute-force
+login attempts, you can <span class="nb">enable</span> rate-limiting <span class="k">for</span> the authentication module.
+By default, this limits attackers to no more than <span class="m">3</span> login attempts every 30s.
+Do you want to <span class="nb">enable</span> rate-limiting? <span class="o">(</span>y/n<span class="o">)</span> y</code></pre></td></tr></table>
+</div>
+</div>
+<p>查看文件 <code>~/.google_authenticator</code>，內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">QYCY5YLGZJLCXWIUSPJQGVSQSU
+&#34; RATE_LIMIT 3 30
+&#34; WINDOW_SIZE 17
+&#34; DISALLOW_REUSE
+&#34; TOTP_AUTH
+64621153
+42898735
+96729389
+90142620
+66573383</pre></td></tr></table>
+</div>
+</div>
+<h2 id="installing-configuring-google-authenticator-app">Installing &amp; Configuring Google Authenticator APP</h2>
+
+<p>本人手機運行的是Android系統，參考<a href="https://support.google.com/accounts/answer/1066447?hl=en">Install Google Authenticator</a>中<code>Android devices</code>部分，在<a href="https://play.google.com/store">Google play</a>中搜索安裝<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Google Authenticator APP</a>。</p>
+
+<p>安裝成功後，打開該APP，點擊右下十字紅心圓，有兩種添加方式
+* Scan a barcode: 直接掃描上一步操作生成的二維碼即可
+* Enter provided key
+    * <code>Enter account name</code>: 可自定義
+    * <code>Enter your key</code>: 即上一步操作生成的secret key
+    * 默認是<code>Time based</code>，另一選項是<code>Counter based</code></p>
+
+<p>認證令牌默認每30s更新一次</p>
+
+<h2 id="configuring-pam">Configuring PAM</h2>
+
+<p>Google官方稱在PAM配置文件中添加<code>auth required pam_google_authenticator.so</code>。——「<a href="https://github.com/google/google-authenticator-libpam/blob/master/README.md">PAM Module Instructions</a>」</p>
+
+<p>關於PAM，可參閱
+* <a href="https://en.wikipedia.org/wiki/Linux_PAM" title="Wikipedia">Linux PAM</a>
+* <a href="http://www.linux-pam.org/">Linux-PAM</a>
+* <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System-Level_Authentication_Guide/Pluggable_Authentication_Modules.html" title="Red Hat">CHAPTER 5. USING PLUGGABLE AUTHENTICATION MODULES (PAM) - RedHat</a>
+* <a href="https://wiki.debian.org/LDAP/PAM" title="Debian">LDAP/PAM - Debian</a>
+* <a href="http://www.rjsystems.nl/en/2100-pam-debian.php">PAM configuration guide for Debian</a></p>
+
+<p><strong>重要</strong>： 以下操作非常重要，請務必要執行。</p>
+
+<h3 id="centos-rhel-sles">CentOS &amp; RHEL &amp; SLES</h3>
+
+<p>在CentOS 6、CentOS 7、RHEL 7、SLES 12中，<code>PAM</code>的配置文件如下</p>
+
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>explain</th>
+<th>format</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/lib64/security/</code></td>
+<td>模塊路徑</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>/etc/pam.conf</code></td>
+<td>通用配置文件</td>
+<td><code>application type control module-path module-arguments</code></td>
+</tr>
+
+<tr>
+<td><code>/etc/pam.d/</code></td>
+<td>專用配置文件</td>
+<td><code>type control module-path module-arguments</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><code>auth required pam_google_authenticator.so</code>解釋說明
+* <code>auth</code>: 屬於<code>type</code>中一種{auth|account|passwd|session}，表示帳號的認證與授權
+* <code>required</code>: 屬於<code>control</code>中一種{required|requisite|sufficient|optional|include}，表示必須檢查通過，否則即爲失敗，且不論成功與否，都須繼續由後續同種功能的其它模塊進行檢查。
+* <code>pam_google_authenticator.so</code>: (<strong>重要</strong>)其實是相對於目錄<code>/lib64/security/</code>而言的，該模塊當前的絕對路徑是<code>/opt/googleAuthenticator/lib/security/pam_google_authenticator.so</code>；如果使用要相對路徑，則需要爲其創建符號鏈接至目錄<code>/lib64/security/</code>，也可直接使用絕對路徑。</p>
+
+<p>此處通過創建符號鏈接載入該模塊，執行如下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo ln -fs /opt/googleAuthenticator/lib/security/pam_google_authenticator.so /lib64/security/</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="debian-ubuntu">Debian &amp; Ubuntu</h3>
+
+<p>在Debian Stretch和Ubuntu Xenial中，<code>PAM</code>的配置文件如下</p>
+
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>explain</th>
+<th>format</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/lib/x86_64-linux-gnu/security/</code></td>
+<td>模塊路徑</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>/etc/pam.conf</code></td>
+<td>通用配置文件</td>
+<td><code>application type control module-path module-arguments</code></td>
+</tr>
+
+<tr>
+<td><code>/etc/pam.d/</code></td>
+<td>專用配置文件</td>
+<td><code>type control module-path module-arguments</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><code>auth required pam_google_authenticator.so</code>解釋說明
+* <code>auth</code>: 屬於<code>type</code>中一種{auth|account|passwd|session}，表示帳號的認證與授權
+* <code>required</code>: 屬於<code>control</code>中一種{required|requisite|sufficient|optional|include}，表示必須檢查通過，否則即爲失敗，且不論成功與否，都須繼續由後續同種功能的其它模塊進行檢查。
+* <code>pam_google_authenticator.so</code>: (<strong>重要</strong>)其實是相對於目錄<code>/lib/x86_64-linux-gnu/security/</code>而言的，該模塊當前的絕對路徑是<code>/opt/googleAuthenticator/lib/security/pam_google_authenticator.so</code>；如果使用要相對路徑，則需要爲其創建符號鏈接至目錄<code>/lib/x86_64-linux-gnu/security/</code>，也可直接使用絕對路徑。</p>
+
+<p>此處通過創建符號鏈接載入該模塊，執行如下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo ln -fs /opt/googleAuthenticator/lib/security/pam_google_authenticator.so /lib/x86_64-linux-gnu/security/</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="opensuse-leap">OpenSUSE Leap</h3>
+
+<p>在OpenSUSE Leap中，<code>PAM</code>的配置文件如下</p>
+
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>explain</th>
+<th>format</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/lib64/security/</code></td>
+<td>模塊路徑</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>/etc/pam.d/</code></td>
+<td>專用配置文件</td>
+<td><code>type control module-path module-arguments</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><code>auth required pam_google_authenticator.so</code>解釋說明
+* <code>auth</code>: 屬於<code>type</code>中一種{auth|account|passwd|session}，表示帳號的認證與授權
+* <code>required</code>: 屬於<code>control</code>中一種{required|requisite|sufficient|optional|include}，表示必須檢查通過，否則即爲失敗，且不論成功與否，都須繼續由後續同種功能的其它模塊進行檢查。
+* <code>pam_google_authenticator.so</code>: (<strong>重要</strong>)其實是相對於目錄<code>/lib64/security/</code>而言的，該模塊當前的絕對路徑是<code>/opt/googleAuthenticator/lib64/security/pam_google_authenticator.so</code>；如果使用要相對路徑，則需要爲其創建符號鏈接至目錄<code>/lib64/security/</code>，也可直接使用絕對路徑。</p>
+
+<p>此處通過創建符號鏈接載入該模塊，執行如下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo ln -fs /opt/googleAuthenticator/lib64/security/pam_google_authenticator.so /lib64/security/</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="gnu-linux-desktop-authentication">GNU/Linux Desktop Authentication</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># GNOME Desktop
+</span><span class="c1"></span>/etc/pam.d/gdm-password
+
+<span class="c1"># Unity Desktop for Ubuntu
+</span><span class="c1"></span>/etc/pam.d/lightdm</code></pre></td></tr></table>
+</div>
+</div>
+<p>中進行配置。</p>
+
+<h3 id="centos-7">CentOS 7</h3>
+
+<p>/etc/pam.d/gdm-password</p>
+
+<p>CentOS 7中文件內容格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auth     <span class="o">[</span><span class="nv">success</span><span class="o">=</span><span class="k">done</span> <span class="nv">ignore</span><span class="o">=</span>ignore <span class="nv">default</span><span class="o">=</span>bad<span class="o">]</span> pam_selinux_permit.so
+<span class="c1">#此行爲添加的規則
+</span><span class="c1"></span>auth        required      pam_google_authenticator.so
+auth        substack      password-auth
+auth        optional      pam_gnome_keyring.so
+auth        include       postlogin</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="debian-stretch">Debian Stretch</h3>
+
+<p>/etc/pam.d/gdm-password</p>
+
+<p>Debian Stretch中文件內容格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1">#此行爲添加的規則
+</span><span class="c1"></span>auth    required        pam_google_authenticator.so
+auth    requisite       pam_nologin.so
+auth    required    pam_succeed_if.so user !<span class="o">=</span> root quiet_success
+@include common-auth
+auth    optional        pam_gnome_keyring.so
+@include common-account</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="ubuntu-xenial">Ubuntu Xenial</h3>
+
+<p>/etc/pam.d/lightdm</p>
+
+<p>Ubuntu Xenial中文件內容格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1">#此行爲添加的規則
+</span><span class="c1"></span>auth    required        pam_google_authenticator.so
+auth    requisite       pam_nologin.so
+auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin
+@include common-auth
+auth    optional        pam_gnome_keyring.so
+auth    optional        pam_kwallet.so
+auth    optional        pam_kwallet5.so
+@include common-account
+session <span class="o">[</span><span class="nv">success</span><span class="o">=</span>ok <span class="nv">ignore</span><span class="o">=</span>ignore <span class="nv">module_unknown</span><span class="o">=</span>ignore <span class="nv">default</span><span class="o">=</span>bad<span class="o">]</span> pam_selinux.so close
+<span class="c1">#session required        pam_loginuid.so
+</span><span class="c1"></span>session required        pam_limits.so
+@include common-session
+session <span class="o">[</span><span class="nv">success</span><span class="o">=</span>ok <span class="nv">ignore</span><span class="o">=</span>ignore <span class="nv">module_unknown</span><span class="o">=</span>ignore <span class="nv">default</span><span class="o">=</span>bad<span class="o">]</span> pam_selinux.so open
+session optional        pam_gnome_keyring.so auto_start
+session optional        pam_kwallet.so auto_start
+session optional        pam_kwallet5.so auto_start
+session required        pam_env.so <span class="nv">readenv</span><span class="o">=</span><span class="m">1</span>
+session required        pam_env.so <span class="nv">readenv</span><span class="o">=</span><span class="m">1</span> <span class="nv">user_readenv</span><span class="o">=</span><span class="m">1</span> <span class="nv">envfile</span><span class="o">=</span>/etc/default/locale
+@include common-password</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="opensuse">OpenSUSE</h3>
+
+<p>/etc/pam.d/gdm-password</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"># GDM PAM standard configuration (with passwords)
+</span><span class="c1"></span>auth     required       pam_google_authenticator.so
+auth     include        common-auth
+account  include        common-account
+password include        common-password
+session  required       pam_loginuid.so
+session  include        common-session</code></pre></td></tr></table>
+</div>
+</div>
+<p>保存修改後，退出系統重新登入，會提示輸入<code>Verification code</code>，在Google Authenticator APP中查看當前的認證令牌號碼輸入。令牌驗證有效後，提示照常輸入用戶名、密碼。如果令牌驗證不通過，則會報錯，無法登入。</p>
+
+<h2 id="ssh-authentication">SSH Authentication</h2>
+
+<p><code>ssh</code>是<a href="https://en.wikipedia.org/wiki/OpenSSH">Open SSH</a>的Client(客戶端)，<code>sshd</code>是Server(服務器端)，常用於連接遠程主機。</p>
+
+<p>配置文件如下</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">name</th>
+<th align="left">configurations</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Server</td>
+<td align="left"><code>sshd</code></td>
+<td align="left"><code>/etc/ssh/sshd_config</code></td>
+</tr>
+
+<tr>
+<td align="left">Client</td>
+<td align="left"><code>ssh</code></td>
+<td align="left"><code>/etc/ssh/ssh_config</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><code>sshd</code>在PAM中也有配置文件，路徑<code>/etc/pam.d/sshd</code></p>
+
+<p>爲SSH配置<code>Google Authenticator</code>，需要使用如下配置文件
+* <code>/etc/pam.d/sshd</code>
+* <code>/etc/ssh/sshd_config</code></p>
+
+<p><strong>注意</strong>：此處默認通過key進行SSH通信，如何生成SSH-Kegen Key，可參考本人Blog <a href="https://lempstacker.com/tw/SSH-Configurations-And-Usages/#Generate-Authentication-SSH-Kegen-Keys" title="LempStacker">SSH Configurations And Usages</a>。</p>
+
+<p>操作完成後，須執行如下命令重啟<code>sshd</code>服務使修改生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart sshd
+# sudo systemctl restart sshd.service</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：如果系統已經啓用了<code>SELinux</code>，SSH遠程登錄時會反覆出現要求輸入認證碼的情況，系統日誌輸出類似內容
+&gt;sshd(pam_google_authenticator)[13445]: Failed to update secret file &ldquo;/root/.google_authenticator&rdquo;: Permission denied
+&gt;error: PAM: Authentication failure for root from $IP</p>
+
+<p>可通過在<code>auth required pam_google_authenticator.so</code>後添加<code>secret</code>指令解決。</p>
+
+<p>默認情況下，命令<code>google-authenticator</code>生成的文件路徑爲<code>~/.google_authenticator</code>，爲了能夠讓PAM讀取含有所需key的文件<code>~/.google_authenticator</code>，可先將其複製到<code>~/.ssh/</code>目錄中(同時更改文件owner)，再通過設置指令<code>secret=${HOME}/.ssh/.google_authenticator</code>。這樣即便已經啓用了SELinux，PAM仍可以讀取所需的文件內容，而不會被SELinux攔截。完整指令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auth required pam_google_authenticator.so <span class="nv">secret</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.ssh/.google_authenticator
+<span class="c1"># or
+</span><span class="c1"></span>auth required pam_google_authenticator.so <span class="nv">secret</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.ssh/.google_authenticator <span class="o">[</span><span class="nv">authtok_prompt</span><span class="o">=</span>Verification code: <span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>RHEL、CentOS的配置方式相同，Debian、Ubuntu的配置方式相同，OpenSUSE、SLES的配置方式相同。以下分情況討論</p>
+
+<h3 id="centos7-with-ssh-key">CentOS7 With SSH Key</h3>
+
+<p>此前使用key進行SSH連接</p>
+
+<ul>
+<li>/etc/pam.d/sshd</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"></span>auth       required     pam_sepermit.so
+<span class="c1">#auth       substack     password-auth
+</span><span class="c1"></span>auth       required     pam_google_authenticator.so
+<span class="c1"># auth required pam_google_authenticator.so secret=${HOME}/.ssh/.google_authenticator    # If SELinux Enabled
+</span><span class="c1"></span>auth       include      postlogin</code></pre></td></tr></table>
+</div>
+</div>
+<p>將<code>auth substack password-auth</code>行用符號<code>#</code>註釋掉，在其後添加新行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">auth required pam_google_authenticator.so</pre></td></tr></table>
+</div>
+</div>
+<p>因為是用key登錄，註釋<code>password-auth</code>可跳過密碼認證這一步驟。</p>
+
+<ul>
+<li>/etc/ssh/sshd_config</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">UsePAM yes
+ChallengeResponseAuthentication yes
+AuthenticationMethods publickey,password publickey,keyboard-interactive</pre></td></tr></table>
+</div>
+</div>
+<p><strong>重要</strong>： 因為是用key登錄,請務必添加指令<code>AuthenticationMethods</code>，否則配置不起作用，仍舊是驗證key後直接登錄。</p>
+
+<p>具體操作命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#UsePAM
+</span><span class="c1"></span>sudo sed -i <span class="s1">&#39;/^UsePAM /d;&#39;</span> /etc/ssh/sshd_config
+sudo bash -c <span class="s1">&#39;echo &#34;UsePAM yes&#34; &gt;&gt; /etc/ssh/sshd_config&#39;</span>
+
+<span class="c1">#AuthenticationMethods
+</span><span class="c1"></span>sudo sed -i <span class="s1">&#39;/^AuthenticationMethods /d&#39;</span> /etc/ssh/sshd_config
+sudo bash -c <span class="s1">&#39;echo &#34;AuthenticationMethods publickey,password publickey,keyboard-interactive&#34; &gt;&gt; /etc/ssh/sshd_config&#39;</span>
+
+<span class="c1">#ChallengeResponseAuthentication
+</span><span class="c1"></span>sudo sed -i -r <span class="s1">&#39;s@(ChallengeResponseAuthentication) no@\1 yes@g&#39;</span> /etc/ssh/sshd_config</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作完成後，執行如下命令重啟<code>sshd</code>服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart sshd</code></pre></td></tr></table>
+</div>
+</div>
+<p>演示示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">flying@lempstacker:~$ ssh -C -c blowfish flying@192.168.0.140
+Authenticated with partial success.
+Verification code:
+Last login: Thu Jan <span class="m">12</span> <span class="m">18</span>:34:41 <span class="m">2017</span> from <span class="m">192</span>.168.0.179
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ cat /etc/redhat-release
+CentOS Linux release <span class="m">7</span>.3.1611 <span class="o">(</span>Core<span class="o">)</span>
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+Connection to <span class="m">192</span>.168.0.140 closed.
+flying@lempstacker:~$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="centos7-with-password">CentOS7 With Password</h3>
+
+<p>此前使用密碼進行SSH連接(未執行<code>ssh-copy-id</code>)</p>
+
+<ul>
+<li>/etc/pam.d/sshd</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"></span>auth       required     pam_sepermit.so
+auth       substack     password-auth
+auth       required     pam_google_authenticator.so
+auth       include      postlogin</code></pre></td></tr></table>
+</div>
+</div>
+<p>在<code>auth substack password-auth</code>後添加新行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auth required pam_google_authenticator.so</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>重要</strong>： 因是通過密碼進行遠程連接，請務必保證行<code>auth substack password-auth</code>不被註釋，否則只驗證<code>Google Authenticator</code>的token即可登錄，不建議這麼操作。</p>
+
+<ul>
+<li>/etc/ssh/sshd_config
+務必保證如下配置為<code>yes</code>
+<code>
+UsePAM yes
+ChallengeResponseAuthentication yes
+</code></li>
+</ul>
+
+<p>具體操作命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#UsePAM
+</span><span class="c1"></span>sudo sed -i <span class="s1">&#39;/^UsePAM /d;&#39;</span> /etc/ssh/sshd_config
+sudo bash -c <span class="s1">&#39;echo &#34;UsePAM yes&#34; &gt;&gt; /etc/ssh/sshd_config&#39;</span>
+
+<span class="c1">#ChallengeResponseAuthentication
+</span><span class="c1"></span>sudo sed -i -r <span class="s1">&#39;s@(ChallengeResponseAuthentication) no@\1 yes@g&#39;</span> /etc/ssh/sshd_config</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作完成後，執行如下命令重啟<code>sshd</code>服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart sshd</code></pre></td></tr></table>
+</div>
+</div>
+<p>演示示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">flying@lempstacker:~$ ssh -C -c blowfish flying@192.168.0.140
+Password:
+Verification code:
+Last login: Thu Jan <span class="m">12</span> <span class="m">18</span>:38:01 <span class="m">2017</span> from <span class="m">192</span>.168.0.179
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ cat /etc/redhat-release
+CentOS Linux release <span class="m">7</span>.3.1611 <span class="o">(</span>Core<span class="o">)</span>
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ cat .ssh/authorized_keys <span class="p">|</span>wc -l
+<span class="m">0</span>
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+Connection to <span class="m">192</span>.168.0.140 closed.
+flying@lempstacker:~$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="debian-with-ssh-key">Debian With SSH Key</h3>
+
+<p>此前使用key進行SSH連接</p>
+
+<ul>
+<li>/etc/pam.d/sshd</li>
+</ul>
+
+<p>默認文件末尾是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># Standard Un*x password updating.
+@include common-password</pre></td></tr></table>
+</div>
+</div>
+<p>需要進行的操作：
+1. 在文件末尾添加<code>auth required pam_google_authenticator.so</code>；
+2. 註釋行<code>@include common-auth</code>；</p>
+
+<p>最終內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Standard Un*x authentication.
+</span><span class="c1">#@include common-auth
+</span><span class="c1"></span>
+<span class="c1"># Standard Un*x password updating.
+</span><span class="c1"></span>@include common-password
+auth required pam_google_authenticator.so</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>/etc/ssh/sshd_config</li>
+</ul>
+
+<p>確保設置了如下指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">UsePAM yes
+ChallengeResponseAuthentication yes
+AuthenticationMethods publickey,password publickey,keyboard-interactive</pre></td></tr></table>
+</div>
+</div>
+<p><strong>重要</strong>： 因為是用key登錄,請務必添加指令<code>AuthenticationMethods</code>，否則配置不起作用，仍舊是驗證key後直接登錄。</p>
+
+<p>具體操作命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#UsePAM
+</span><span class="c1"></span>sudo sed -i <span class="s1">&#39;/^UsePAM /d;&#39;</span> /etc/ssh/sshd_config
+sudo bash -c <span class="s1">&#39;echo &#34;UsePAM yes&#34; &gt;&gt; /etc/ssh/sshd_config&#39;</span>
+
+<span class="c1">#AuthenticationMethods
+</span><span class="c1"></span>sudo sed -i <span class="s1">&#39;/^AuthenticationMethods /d&#39;</span> /etc/ssh/sshd_config
+sudo bash -c <span class="s1">&#39;echo &#34;AuthenticationMethods publickey,password publickey,keyboard-interactive&#34; &gt;&gt; /etc/ssh/sshd_config&#39;</span>
+
+<span class="c1">#ChallengeResponseAuthentication
+</span><span class="c1"></span>sudo sed -i -r <span class="s1">&#39;s@(ChallengeResponseAuthentication) no@\1 yes@g&#39;</span> /etc/ssh/sshd_config</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作完成後，執行如下命令重啟<code>sshd</code>服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart sshd</code></pre></td></tr></table>
+</div>
+</div>
+<p>演示示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ cat /etc/redhat-release
+CentOS Linux release <span class="m">7</span>.3.1611 <span class="o">(</span>Core<span class="o">)</span>
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ ssh -C -c aes256-ctr flying@192.168.0.179
+Authenticated with partial success.
+Verification code:
+
+The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+the exact distribution terms <span class="se">\f</span>or each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+You have new mail.
+Last login: Fri Jan <span class="m">13</span> <span class="m">10</span>:07:01 <span class="m">2017</span> from <span class="m">192</span>.168.0.140
+flying@lempstacker:~$ sed -n -r <span class="s1">&#39;1s@.*&#34;(.*)&#34;$@\1@p&#39;</span> /etc/os-release
+Debian GNU/Linux <span class="m">8</span> <span class="o">(</span>jessie<span class="o">)</span>
+flying@lempstacker:~$ cat .ssh/authorized_keys <span class="p">|</span> wc -l
+<span class="m">1</span>
+flying@lempstacker:~$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+Connection to <span class="m">192</span>.168.0.179 closed.
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="debian-with-password">Debian With Password</h3>
+
+<p>此前使用密碼進行SSH連接(未執行<code>ssh-copy-id</code>)</p>
+
+<ul>
+<li>/etc/pam.d/sshd</li>
+</ul>
+
+<p>默認文件末尾是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># Standard Un*x password updating.
+@include common-password</pre></td></tr></table>
+</div>
+</div>
+<p>在文件末尾添加<code>auth required pam_google_authenticator.so</code>；</p>
+
+<p><strong>注意</strong>：請勿註釋行<code>@include common-auth</code>、<code>@include common-password</code>；如果註釋行<code>@include common-auth</code>，會造成只驗證<code>Google Authenticator</code>的token即可登錄，不建議這麼操作。</p>
+
+<p>最終內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Standard Un*x authentication.
+</span><span class="c1"></span>@include common-auth
+
+<span class="c1"># Standard Un*x password updating.
+</span><span class="c1"></span>@include common-password
+auth required pam_google_authenticator.so</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>/etc/ssh/sshd_config
+確保設置了如下指令
+<code>bash
+UsePAM yes
+ChallengeResponseAuthentication yes
+</code></li>
+</ul>
+
+<p><strong>注意</strong>： 不要設置指令<code>AuthenticationMethods</code>，否則會報錯
+&gt;Permission denied (publickey).</p>
+
+<p>演示示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ cat /etc/redhat-release
+CentOS Linux release <span class="m">7</span>.3.1611 <span class="o">(</span>Core<span class="o">)</span>
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$ ssh -C -c aes256-ctr flying@192.168.0.179
+Password:
+Verification code:
+
+The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+the exact distribution terms <span class="se">\f</span>or each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+You have new mail.
+Last login: Fri Jan <span class="m">13</span> <span class="m">10</span>:29:11 <span class="m">2017</span> from <span class="m">192</span>.168.0.140
+flying@lempstacker:~$ sed -n -r <span class="s1">&#39;1s@.*&#34;(.*)&#34;$@\1@p&#39;</span> /etc/os-release
+Debian GNU/Linux <span class="m">8</span> <span class="o">(</span>jessie<span class="o">)</span>
+flying@lempstacker:~$ cat .ssh/authorized_keys <span class="p">|</span> wc -l
+<span class="m">0</span>
+flying@lempstacker:~$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+Connection to <span class="m">192</span>.168.0.179 closed.
+<span class="o">[</span>flying@lempstacker ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="opensuse-with-ssh-key">OpenSUSE With SSH Key</h3>
+
+<p>此前使用key進行SSH連接</p>
+
+<ul>
+<li>/etc/pam.d/sshd</li>
+</ul>
+
+<p>默認文件內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"></span>auth        requisite   pam_nologin.so
+auth        include     common-auth
+account     requisite   pam_nologin.so
+account     include     common-account
+password    include     common-password
+session     required    pam_loginuid.so
+session     include     common-session
+session  optional       pam_lastlog.so   silent noupdate showfailed</code></pre></td></tr></table>
+</div>
+</div>
+<p>需要進行的操作：
+1. 註釋行<code>auth        include     common-auth</code>；
+2. 在該行之後添加<code>auth    required pam_google_authenticator.so nullok</code>；</p>
+
+<p>最終內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"></span>auth        requisite   pam_nologin.so
+<span class="c1">#auth        include     common-auth
+</span><span class="c1"></span>auth       required     pam_google_authenticator.so
+<span class="c1"># auth required pam_google_authenticator.so secret=${HOME}/.ssh/.google_authenticator    # If SELinux Enabled
+</span><span class="c1"></span>account     requisite   pam_nologin.so
+account     include     common-account
+password    include     common-password
+session     required    pam_loginuid.so
+session     include     common-session
+session  optional       pam_lastlog.so   silent noupdate showfailed</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>/etc/ssh/sshd_config</li>
+</ul>
+
+<p>確保設置了如下指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">UsePAM yes
+ChallengeResponseAuthentication yes
+AuthenticationMethods publickey,password publickey,keyboard-interactive</pre></td></tr></table>
+</div>
+</div>
+<p><strong>重要</strong>： 因為是用key登錄,請務必添加指令<code>AuthenticationMethods</code>，否則配置不起作用，仍舊是驗證key後直接登錄。</p>
+
+<h3 id="opensuse-with-password">OpenSUSE With Password</h3>
+
+<p>此前使用密碼進行SSH連接(未執行<code>ssh-copy-id</code>)</p>
+
+<ul>
+<li>/etc/pam.d/sshd</li>
+</ul>
+
+<p>默認文件內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"></span>auth        requisite   pam_nologin.so
+auth        include     common-auth
+account     requisite   pam_nologin.so
+account     include     common-account
+password    include     common-password
+session     required    pam_loginuid.so
+session     include     common-session
+session  optional       pam_lastlog.so   silent noupdate showfailed</code></pre></td></tr></table>
+</div>
+</div>
+<p>在行<code>auth include common-auth</code>之後添加<code>auth required pam_google_authenticator.so</code>；</p>
+
+<p><strong>注意</strong>：請勿註釋行<code>common-auth</code>、<code>common-password</code>；如果註釋行<code>common-auth</code>，會造成只驗證<code>Google Authenticator</code>的token即可登錄，不建議這麼操作。</p>
+
+<p>最終內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#%PAM-1.0
+</span><span class="c1"></span>auth        requisite   pam_nologin.so
+auth        include     common-auth
+auth        required pam_google_authenticator.so nullok
+account     requisite   pam_nologin.so
+account     include     common-account
+password    include     common-password
+session     required    pam_loginuid.so
+session     include     common-session
+session  optional       pam_lastlog.so   silent noupdate showfailed</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>/etc/ssh/sshd_config
+確保設置了如下指令
+<code>bash
+UsePAM yes
+ChallengeResponseAuthentication yes
+</code></li>
+</ul>
+
+<p><strong>注意</strong>： 不要設置指令<code>AuthenticationMethods</code>，否則會報錯
+&gt;Permission denied (publickey).</p>
+
+<h2 id="shell-script">Shell Script</h2>
+
+<p>Shell腳本託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/GoogleAuthenticator.sh">GitHub</a>。</p>
+
+<p>使用方式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/software/GoogleAuthenticator.sh <span class="p">|</span> bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<!-- [![asciicast](https://asciinema.org/a/175735.png)](https://asciinema.org/a/175735?autoplay=1) -->
+
+<script src="https://asciinema.org/a/175735.js" id="asciicast-175735" async></script>
+
+<h2 id="error-occuring">Error Occuring</h2>
+
+<p>編譯安裝過程中出現的報錯</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#./bootstrap.sh 需要安裝 autoconf
+</span><span class="c1"></span>./bootstrap.sh: line <span class="m">15</span>: exec: autoreconf: not found
+
+
+<span class="c1">#./bootstrap.sh http://ask.xmodulo.com/fix-failed-to-run-aclocal.html 需要安裝 automake
+</span><span class="c1"></span>Can<span class="se">\&#39;</span>t <span class="nb">exec</span> <span class="s2">&#34;aclocal&#34;</span>: No such file or directory at /usr/share/autoconf/Autom4te/FileUtils.pm line <span class="m">326</span>.
+autoreconf: failed to run aclocal: No such file or directory
+
+
+<span class="c1">#./bootstrap.sh 需要安裝 libtool
+</span><span class="c1"></span>configure.ac:8: installing <span class="s1">&#39;build/install-sh&#39;</span>
+configure.ac:8: installing <span class="s1">&#39;build/missing&#39;</span>
+Makefile.am:33: error: Libtool library used but <span class="s1">&#39;LIBTOOL&#39;</span> is undefined
+Makefile.am:33:   The usual way to define <span class="s1">&#39;LIBTOOL&#39;</span> is to add <span class="s1">&#39;LT_INIT&#39;</span>
+Makefile.am:33:   to <span class="s1">&#39;configure.ac&#39;</span> and run <span class="s1">&#39;aclocal&#39;</span> and <span class="s1">&#39;autoconf&#39;</span> again.
+Makefile.am:33:   If <span class="s1">&#39;LT_INIT&#39;</span> is in <span class="s1">&#39;configure.ac&#39;</span>, make sure
+Makefile.am:33:   its definition is in aclocal<span class="se">\&#39;</span>s search path.
+Makefile.am: installing <span class="s1">&#39;build/depcomp&#39;</span>
+parallel-tests: installing <span class="s1">&#39;build/test-driver&#39;</span>
+autoreconf: automake failed with <span class="nb">exit</span> status: <span class="m">1</span>
+
+
+<span class="c1">#./configure 需要安裝 pam-devel
+</span><span class="c1"></span>configure: error: Unable to find the PAM library or the PAM header files</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://support.google.com/accounts/topic/28786?hl=en" title="Google">2-Step Verification</a></li>
+<li><a href="https://serverfault.com/questions/629883/trying-to-get-ssh-with-public-key-no-password-google-authenticator-working-o">Trying to get SSH with public key (no password) + google authenticator working on Ubuntu 14.04.1</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-multi-factor-authentication-for-ssh-on-ubuntu-16-04" title="Digital Ocean">How To Set Up Multi-Factor Authentication for SSH on Ubuntu 16.04</a></li>
+<li><a href="http://www.cyberciti.biz/open-source/howto-protect-linux-ssh-login-with-google-authenticator/">Secure Your Linux Desktop and SSH Login Using Two Factor Google Authenticator</a></li>
+<li><a href="https://www.howtoforge.com/tutorial/secure-ssh-with-google-authenticator-on-centos-7/">Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-multi-factor-authentication-for-ssh-on-centos-7" title="Digital Ocean">How To Set Up Multi-Factor Authentication for SSH on CentOS 7</a></li>
+<li><a href="http://www.untrustedconnection.com/2013/06/dual-factor-ssh-google-authenticator.html">Dual factor SSH: Google Authenticator, SElinux, and CentOS</a></li>
+</ul>
+
+<h2 id="bibliography">Bibliography</h2>
+
+<ul>
+<li><a href="http://www.nurdletech.com/linux-notes/agents/keyring.html">Gnome Keyring</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.01.15 21:00 Mon Asia/Beijing
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2017.01.12 18:41 Thu Asia/Shanghai
+
+<ul>
+<li>內容重構，增加各種應用場景的具體配置</li>
+</ul></li>
+<li>2017.01.13 10:41 Fri Asis/Shanghai
+
+<ul>
+<li>增加SSH在Debian中的認證配置</li>
+</ul></li>
+<li>2017.07.17 16:45 Mon Asia/Shanghai
+
+<ul>
+<li>添加對<code>OpenSUSE Leap</code>的認證配置</li>
+</ul></li>
+<li>2018.03.21 11:24 Wed America/Boston
+
+<ul>
+<li>添加SUSE，添加SELinux啓用情況下的處理</li>
+</ul></li>
+<li>2018-04-11 23:00 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/pam/">PAM</a>
+          
+          <a href="/tags/ssh/">SSH</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/a-complete-intrduction-to-markdown-syntax/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">A Complete Intrduction To Markdown Syntax</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/1/">
+            <span class="next-text nav-default"></span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

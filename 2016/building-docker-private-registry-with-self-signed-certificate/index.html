@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Building Docker Private Registry With Self-signed Certificate - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Building docker private registry with self-signed certicficate on GNU/Linux" />
+<meta name="keywords" content="AxdLog, Docker, Private Registry, Self-signed Certificate, OpenSSL" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/building-docker-private-registry-with-self-signed-certificate/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Building Docker Private Registry With Self-signed Certificate" />
+<meta property="og:description" content="Building docker private registry with self-signed certicficate on GNU/Linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/building-docker-private-registry-with-self-signed-certificate/" />
+
+
+
+<meta property="article:published_time" content="2016-06-06T22:06:13&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-12T11:00:02-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Building Docker Private Registry With Self-signed Certificate">
+<meta itemprop="description" content="Building docker private registry with self-signed certicficate on GNU/Linux">
+
+
+<meta itemprop="datePublished" content="2016-06-06T22:06:13&#43;08:00" />
+<meta itemprop="dateModified" content="2016-06-06T22:06:13&#43;08:00" />
+<meta itemprop="wordCount" content="2127">
+
+
+
+<meta itemprop="keywords" content="docker,openssl," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building Docker Private Registry With Self-signed Certificate"/>
+<meta name="twitter:description" content="Building docker private registry with self-signed certicficate on GNU/Linux"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Building Docker Private Registry With Self-signed Certificate</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-06-06 </span>
+        <div class="post-category">
+            
+              <a href="/categories/container/"> Container </a>
+            
+              <a href="/categories/production-case/"> Production Case </a>
+            
+          </div>
+        <span class="more-meta"> 2127 words </span>
+        <span class="more-meta"> 5 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#preparations">Preparations</a>
+<ul>
+<li><a href="#os">OS</a></li>
+<li><a href="#docker-engine">Docker Engine</a></li>
+<li><a href="#docker-distribution">Docker Distribution</a></li>
+<li><a href="#private-registry-storage-path">Private Registry Storage Path</a></li>
+<li><a href="#generate-self-signed-certificate">Generate Self-signed Certificate</a></li>
+<li><a href="#trust-the-certificate">Trust The Certificate</a></li>
+<li><a href="#run-registry-container">Run Registry Container</a></li>
+</ul></li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#other-hosts">Other Hosts</a></li>
+</ul></li>
+<li><a href="#errors">Errors</a>
+<ul>
+<li><a href="#error-1">Error 1</a></li>
+<li><a href="#error-2">Error 2</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#change-log">Change Log</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://www.docker.com" title="Docker">Docker</a>是一款開源的，提供<code>Operating-system-level virtualization</code>(操作系統級別的虛擬化的)容器(container)產品，可實現在軟件容器中自動部署應用。本文主要記錄如何<a href="https://www.docker.com" title="Docker">Docker</a>的<a href="https://hub.docker.com/_/registry/">Registry</a>創建私有倉庫，並通過自簽證書實現通過域名訪問私有倉庫。</p>
+
+<p></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>搭建<a href="https://www.docker.com" title="Docker">Docker</a>私有倉庫需要使用<a href="https://github.com/docker/docker-registry">docker/docker-registry</a>，但該項目已經被Docker官方廢棄。</p>
+
+<p>當前的 <strong>Docker Registry 2.0</strong> 是<a href="https://github.com/docker/distribution">docker/distribution</a>。文檔說明見<a href="https://github.com/docker/distribution/blob/master/README.md">https://github.com/docker/distribution/blob/master/README.md</a></p>
+
+<p>說明文檔也從 <a href="https://github.com/docker/distribution/tree/master/docs">https://github.com/docker/distribution/tree/master/docs</a> 遷移至 <a href="https://github.com/docker/docker.github.io/tree/master/registry">https://github.com/docker/docker.github.io/tree/master/registry</a>。</p>
+
+<h2 id="preparations">Preparations</h2>
+
+<h3 id="os">OS</h3>
+
+<p>根據官方文檔 <a href="https://docs.docker.com/engine/installation/linux/centos/">Installation on CentOS</a>，Docker需要<code>64-bit</code>系統環境，且內核版本不低於<code>3.10</code>。</p>
+
+<p>以下是本人測試環境信息：</p>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Info</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OS</td>
+<td><code>CentOS Linux release 7.2.1511 (Core)</code></td>
+</tr>
+
+<tr>
+<td>Kernel</td>
+<td><code>3.10.0-327.13.1.el7.x86_64</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="docker-engine">Docker Engine</h3>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>的介紹、安裝和配置，可參考本人Blog <a href="/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/">Installing And Configuring Docker Community Edition(CE) On GNU/Linux</a>。</p>
+
+<p>此處假定已經安裝<code>docker-engine</code>，並且啟動該服務。</p>
+
+<h3 id="docker-distribution">Docker Distribution</h3>
+
+<p>Docker Hub的<a href="https://hub.docker.com/_/registry/">registry</a>中有如下說明:</p>
+
+<blockquote>
+<p>The tags &gt;= 2 refer to the <a href="https://github.com/docker/distribution">new registry</a>.</p>
+
+<p>Older tags refer to the <a href="https://github.com/docker/docker-registry">deprecated registry</a>.</p>
+</blockquote>
+
+<p>即要想使用新的<code>registry</code>，需指定<code>tag</code>，且<code>&gt;=2</code>，如<code>registry:2.4</code>。</p>
+
+<p>下載registry鏡像時如果不加tag，則默認為老版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker pull registry:2</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：截至<code>Apr 12, 2018</code>，registry的可用版本號是<code>2.5.2</code>， <code>2.6.2</code>，主版本號皆<code>&gt;=2</code>。直接執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker pull registry</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>： 運行<code>registry</code>須啟動<code>iptables</code>服務，否則會報錯。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install -y iptables-services
+sudo systemctl start  iptables
+sudo systemctl <span class="nb">enable</span> iptables</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="private-registry-storage-path">Private Registry Storage Path</h3>
+
+<p>創建私有鏡像存儲路徑，此處以<code>/data/docker-registry</code>為例</p>
+
+<ul>
+<li><p>創建鏡像存儲路徑</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo mkdir -pv /data/docker-registry</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>將目錄屬組改為Docker</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo chown :docker /data/docker-registry/</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h3 id="generate-self-signed-certificate">Generate Self-signed Certificate</h3>
+
+<p>參考官方文檔 <a href="https://github.com/docker/docker.github.io/blob/master/registry/insecure.md">Using self-signed certificates</a>進行相關操作。</p>
+
+<p>此處建議以root用戶身份運行相關命令</p>
+
+<p>使用<code>openssl</code>命令套件創建自簽署證書，並保存在目錄<code>/etc/docker/certs</code>目錄下，以域名<code>docker.axdlog.com</code>為例</p>
+
+<ul>
+<li><p>創建目錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> ! -d /etc/docker/certs <span class="o">]</span> <span class="o">&amp;&amp;</span> mkdir -pv /etc/docker/certs</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>進入目錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /etc/docker/certs</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>生成自簽證書</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">openssl req -x509 -newkey rsa:4096 -days <span class="m">365</span> -nodes -sha256 -keyout registry.key -out registry.crt</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<p>以下是相關參數</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Country Name (2 letter code) [XX]:CN
+State or Province Name (full name) []:Shanghai
+Locality Name (eg, city) [Default City]:Shanghai
+Organization Name (eg, company) [Default Company Ltd]:AxdLog
+Organizational Unit Name (eg, section) []:AxdLog
+Common Name (eg, your name or your server&#39;s hostname) []:docker.axdlog.com
+Email Address []:test@axdlog.com</pre></td></tr></table>
+</div>
+</div>
+<p>因本機IP為<code>192.168.0.109</code>，故而在<code>/etc/hosts</code>中添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">192.168.0.109 docker.axdlog.com</pre></td></tr></table>
+</div>
+</div>
+<p>其它需要連接私有倉庫的主機也可添加該行記錄，用作域名解析。</p>
+
+<h3 id="trust-the-certificate">Trust The Certificate</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /etc/docker/certs/
+
+mkdir docker.axdlog.com:5000
+
+cp ./registry.crt docker.axdlog.com<span class="se">\:</span><span class="m">5000</span>/ca.crt
+
+cp /etc/docker/certs/registry.crt /etc/pki/ca-trust/source/anchors/docker.axdlog.com.crt
+
+update-ca-trust</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作完成後，重啟Docker服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart docker</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="run-registry-container">Run Registry Container</h3>
+
+<p>啟動容器，使用<code>/var/lib/registry</code>而非<code>/tmp/registry</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p <span class="m">5000</span>:5000 --restart<span class="o">=</span>always --name registry <span class="se">\
+</span><span class="se"></span>  -v /etc/docker/certs:/certs <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">REGISTRY_HTTP_TLS_CERTIFICATE</span><span class="o">=</span>/certs/registry.crt <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">REGISTRY_HTTP_TLS_KEY</span><span class="o">=</span>/certs/registry.key <span class="se">\
+</span><span class="se"></span>  -v /data/docker-registry:/var/lib/registry <span class="se">\
+</span><span class="se"></span>  registry:2</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>使用參數<code>-v</code>將本地磁盤中的<code>/data/docker-registry</code>目錄映射到容器(container)中的<code>/var/lib/registry</code>目錄</li>
+<li>使用參數<code>-v</code>將本地磁盤中的<code>/etc/docker/certs</code>目錄映射到容器中的<code>/certs</code>目錄</li>
+</ul>
+
+<p>可用過<code>docker ps</code>命令查看容器運行情況</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>以鏡像<code>hello-world</code>為例</p>
+
+<ul>
+<li><p>獲取遠程鏡像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker pull hello-world</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>添加標籤</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker tag hello-world docker.axdlog.com:5000/hello-world</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>將新創建的鏡像push到私有倉庫</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker push docker.axdlog.com:5000/hello-world</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<p>以下是操作過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker pull hello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+4276590986f6: Pull <span class="nb">complete</span>
+a3ed95caeb02: Pull <span class="nb">complete</span>
+Digest: sha256:a7d7a8c072a36adb60f5dc932dd5caba8831ab53cbf016bcdd6772b3fbe8c362
+Status: Downloaded newer image <span class="k">for</span> hello-world:latest
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker tag hello-world docker.axdlog.com:5000/hello-world
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker run -d -p <span class="m">5000</span>:5000 --restart<span class="o">=</span>always --name registry <span class="se">\
+</span><span class="se"></span>&gt;   -v /etc/docker/certs:/certs <span class="se">\
+</span><span class="se"></span>&gt;   -e <span class="nv">REGISTRY_HTTP_TLS_CERTIFICATE</span><span class="o">=</span>/certs/registry.crt <span class="se">\
+</span><span class="se"></span>&gt;   -e <span class="nv">REGISTRY_HTTP_TLS_KEY</span><span class="o">=</span>/certs/registry.key <span class="se">\
+</span><span class="se"></span>&gt;   -v /data/docker-registry:/var/lib/registry <span class="se">\
+</span><span class="se"></span>&gt;   registry:2
+f3ea6cd5ef2a266538c7936c0dbaeb06d1b639a8bfd15f2296f6992ba69a3d4c
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker push docker.axdlog.com:5000/hello-world
+The push refers to a repository <span class="o">[</span>docker.axdlog.com:5000/hello-world<span class="o">]</span>
+5f70bf18a086: Pushed
+33e7801ac047: Pushed
+latest: digest: sha256:17372d4bad2fe1355ba3dd9fe5178e2c7ea72c91529c1691e3ab5a75371135b4 size: <span class="m">708</span>
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ ls /data/docker-registry/docker/registry/v2/repositories
+hello-world
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker rmi docker.axdlog.com:5000/hello-world
+Untagged: docker.axdlog.com:5000/hello-world:latest
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker images <span class="p">|</span> grep docker.axdlog.com:5000/hello-world
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker pull docker.axdlog.com:5000/hello-world
+Using default tag: latest
+latest: Pulling from hello-world
+Digest: sha256:17372d4bad2fe1355ba3dd9fe5178e2c7ea72c91529c1691e3ab5a75371135b4
+Status: Downloaded newer image <span class="k">for</span> docker.axdlog.com:5000/hello-world:latest
+
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker images <span class="p">|</span> grep docker.axdlog.com:5000/hello-world
+docker.axdlog.com:5000/hello-world   latest              94df4f0ce8a4        <span class="m">5</span> weeks ago         <span class="m">967</span> B
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="other-hosts">Other Hosts</h3>
+
+<p>其餘主機如果想使用該私有倉庫須進行如下操作：</p>
+
+<p>進行如下操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;192.168.0.109 docker.axdlog.com&#39;</span> &gt;&gt; /etc/hosts
+
+touch /etc/pki/ca-trust/source/anchors/docker.axdlog.com.crt
+
+<span class="c1"># 將registry主機的/etc/docker/certs/registry.crt中內容複製到該文件中或使用scp
+</span><span class="c1"></span>
+update-ca-trust</code></pre></td></tr></table>
+</div>
+</div>
+<p>其它主機測試過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@raxtone ~<span class="o">]</span>$ docker pull docker.axdlog.com:5000/hello-world
+Using default tag: latest
+latest: Pulling from hello-world
+4276590986f6: Pull <span class="nb">complete</span>
+a3ed95caeb02: Pull <span class="nb">complete</span>
+Digest: sha256:17372d4bad2fe1355ba3dd9fe5178e2c7ea72c91529c1691e3ab5a75371135b4
+Status: Downloaded newer image <span class="k">for</span> docker.axdlog.com:5000/hello-world:latest
+<span class="o">[</span>maxdsre@raxtone ~<span class="o">]</span>$ docker run docker.axdlog.com:5000/hello-world
+
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ <span class="m">1</span>. The Docker client contacted the Docker daemon.
+ <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&#34;hello-world&#34;</span> image from the Docker Hub.
+ <span class="m">3</span>. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ <span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker Hub account:
+ https://hub.docker.com
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+
+<span class="o">[</span>maxdsre@raxtone ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="errors">Errors</h2>
+
+<p>遇到的報錯</p>
+
+<h3 id="error-1">Error 1</h3>
+
+<blockquote>
+<p>docker: Error response from daemon: failed to create endpoint registry on network bridge: iptables failed: iptables &ndash;wait -t nat -A DOCKER -p tcp -d 0/0 &ndash;dport 5000 -j DNAT &ndash;to-destination 172.17.0.2:5000 ! -i docker0: iptables: No chain/target/match by that name. (exit status 1).</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$ docker run -d -p <span class="m">5000</span>:5000 --restart<span class="o">=</span>always --name registry <span class="se">\
+</span><span class="se"></span>&gt;   -v /etc/docker/certs:/certs <span class="se">\
+</span><span class="se"></span>&gt;   -e <span class="nv">REGISTRY_HTTP_TLS_CERTIFICATE</span><span class="o">=</span>/certs/registry.crt <span class="se">\
+</span><span class="se"></span>&gt;   -e <span class="nv">REGISTRY_HTTP_TLS_KEY</span><span class="o">=</span>/certs/registry.key <span class="se">\
+</span><span class="se"></span>&gt;   -v /data/docker-registry:/var/lib/registry <span class="se">\
+</span><span class="se"></span>&gt;   registry:2
+0a4712d7a1205f72bd27d0fa83131067b1b69539d057ac53fe0268dbe1847e72
+docker: Error response from daemon: failed to create endpoint registry on network bridge: iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d <span class="m">0</span>/0 --dport <span class="m">5000</span> -j DNAT --to-destination <span class="m">172</span>.17.0.2:5000 ! -i docker0: iptables: No chain/target/match by that name.
+ <span class="o">(</span><span class="nb">exit</span> status <span class="m">1</span><span class="o">)</span>.
+<span class="o">[</span>maxdsre@lemp ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<p>解決方案：安裝並啟用<code>iptables</code></p>
+
+<h3 id="error-2">Error 2</h3>
+
+<blockquote>
+<p>x509: certificate signed by unknown authority</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[root@ptdb/data/docker-registry]
+#docker push docker.axdlog.com:5000/hello-world
+The push refers to a repository [docker.axdlog.com:5000/hello-world]
+Get https://docker.axdlog.com:5000/v1/_ping: x509: certificate signed by unknown authority (possibly because of &#34;crypto/rsa: verification error&#34; while trying to verify candidate authority certificate &#34;docker.axdlog.com&#34;)</pre></td></tr></table>
+</div>
+</div>
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://github.com/docker/distribution/blob/master/docs/deploying.md">Deploying a registry server</a></li>
+<li><a href="https://github.com/docker/distribution/blob/master/docs/insecure.md">Insecure Registry</a></li>
+</ul>
+
+<h2 id="change-log">Change Log</h2>
+
+<ul>
+<li>2016.06.06 22:07 Mon Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018-04-12 11:00 Thu America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-12</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/docker/">docker</a>
+          
+          <a href="/tags/openssl/">openssl</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/gnu-linux-post-installation-configuration-full-record/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">GNU/Linux Post Installation Configuration Full Record</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/crawling-china-administrative-division-code/">
+            <span class="next-text nav-default">Crawling China Administrative Division Code</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

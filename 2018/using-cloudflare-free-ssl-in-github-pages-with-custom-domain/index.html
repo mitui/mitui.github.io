@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Using Cloudflare Free SSL In GitHub Pages With Custom Domain - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="How to use Cloudflare free ssl in GitHub pages with custom domain" />
+<meta name="keywords" content="AxdLog, Cloudflare, SSL, Free SSL, GitHub pages, Hugo, Custom domain" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Using Cloudflare Free SSL In GitHub Pages With Custom Domain" />
+<meta property="og:description" content="How to use Cloudflare free ssl in GitHub pages with custom domain" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/" />
+
+
+
+<meta property="article:published_time" content="2018-04-11T15:16:42-04:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T16:05:42-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Using Cloudflare Free SSL In GitHub Pages With Custom Domain">
+<meta itemprop="description" content="How to use Cloudflare free ssl in GitHub pages with custom domain">
+
+
+<meta itemprop="datePublished" content="2018-04-11T15:16:42-04:00" />
+<meta itemprop="dateModified" content="2018-04-11T15:16:42-04:00" />
+<meta itemprop="wordCount" content="661">
+
+
+
+<meta itemprop="keywords" content="Cloudflare,SSL,Hugo," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using Cloudflare Free SSL In GitHub Pages With Custom Domain"/>
+<meta name="twitter:description" content="How to use Cloudflare free ssl in GitHub pages with custom domain"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Using Cloudflare Free SSL In GitHub Pages With Custom Domain</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-11 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+          </div>
+        <span class="more-meta"> 661 words </span>
+        <span class="more-meta"> 4 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#configure-cloudflare">Configure Cloudflare</a>
+<ul>
+<li><a href="#add-websites">Add Websites</a></li>
+<li><a href="#add-dns-records">Add DNS Records</a></li>
+<li><a href="#change-your-nameservers">Change Your Nameservers</a></li>
+<li><a href="#update-nameservers">Update Nameservers</a></li>
+<li><a href="#crypto">Crypto</a></li>
+</ul></li>
+<li><a href="#configuring-hugo">Configuring Hugo</a></li>
+<li><a href="#test-in-browser">Test in Browser</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#change-log">Change Log</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>I have succeed in migrating my blog from <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a> to <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> platform, new domain is <a href="https://axdlog.com"><strong>AxdLog</strong></a>. As <a href="https://pages.github.com" title="Hosted directly from your GitHub repository. Just edit, push, and your changes are live.">Github Pages</a> doesn&rsquo;t provide SSL certificate for custom domain, so I need to deploy it separately. <a href="https://www.cloudflare.com">CloudFlare</a> provides free SSL certificate, and it has the ability of anti-ddos.</p>
+
+<p>This article documents how to configure
+<a href="https://www.cloudflare.com">CloudFlare</a> free SSL certificate in <a href="https://pages.github.com" title="Hosted directly from your GitHub repository. Just edit, push, and your changes are live.">Github Pages</a>.</p>
+
+<p></p>
+
+<h2 id="configure-cloudflare">Configure Cloudflare</h2>
+
+<p>Registering <a href="https://www.cloudflare.com">CloudFlare</a> account, if you have one, just login.</p>
+
+<h3 id="add-websites">Add Websites</h3>
+
+<p>If you&rsquo;re a new registered user. It will show a page <strong>Add your site</strong>. Inputing the target domain, here I input <code>axdlog.com</code>.</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-17-14_add_site.png" alt="" /></p>
+
+<p>Clicking button <code>Add site</code>, it shows page <strong>We&rsquo;re querying your DNS records</strong>:</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-18-08_query_dns_records.png" alt="" /></p>
+
+<p>Clicking button <code>Next</code>, it shows page <strong>Select a Plan</strong></p>
+
+<p>The following is price list:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">price</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Free Website</td>
+<td align="left">$0/mon</td>
+</tr>
+
+<tr>
+<td align="left">Pro Website</td>
+<td align="left">$20/mon</td>
+</tr>
+
+<tr>
+<td align="left">Business Website</td>
+<td align="left">$200/mon</td>
+</tr>
+
+<tr>
+<td align="left">Enterprise</td>
+<td align="left">Get in touch</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-18-26_select_plan.png" alt="" /></p>
+
+<p>It is recommended that you choose  plan <code>Pro</code> or <code>Business</code> if you have the ability to pay. The benefits are more functions and support the development of <a href="https://www.cloudflare.com">Cloudflare</a>.</p>
+
+<p>Here I choose <code>Free Website</code>, clicking button <code>Confirm Plan</code>, it show page <strong>DNS query results</strong>.</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-18-52_dns_query_result.png" alt="" /></p>
+
+<h3 id="add-dns-records">Add DNS Records</h3>
+
+<p>It list all currently existed DNS records of your domain. Deleteing all existed records, creating 2 new records.</p>
+
+<p>The following are my DNS records:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Name</th>
+<th align="left">Value</th>
+<th align="left">TTL</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>CNAME</strong></td>
+<td align="left"><code>axdlog.com</code></td>
+<td align="left"><code>maxdsre.github.io</code></td>
+<td align="left">Automatic</td>
+<td align="left">On CloudFlare</td>
+</tr>
+
+<tr>
+<td align="left"><strong>CNAME</strong></td>
+<td align="left"><code>www</code></td>
+<td align="left"><code>maxdsre.github.io</code></td>
+<td align="left">Automatic</td>
+<td align="left">On CloudFlare</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-23-30_dns_records_setting.png" alt="" /></p>
+
+<p>Once operation is completely, it shows page <strong>Change your Nameservers</strong>.</p>
+
+<h3 id="change-your-nameservers">Change Your Nameservers</h3>
+
+<p><a href="https://www.cloudflare.com">CloudFlare</a> provides 2 DNS address:</p>
+
+<ul>
+<li>dina.ns.cloudflare.com</li>
+<li>roan.ns.cloudflare.com</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-24-23_change_nameserver.png" alt="" /></p>
+
+<p>The domain registrar of my domain is <a href="https://www.namecheap.com/">Namecheap</a>, selecting target domain in <code>Domain List</code>, choosing <code>custom dns</code> in <code>NAMESERVERS</code> section, add the 2 DNS address into the input field.</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-26-23_change_nameserver.png" alt="" /></p>
+
+<p>Once operation is finished, it will return to page <strong>Change your Nameservers</strong>, clicking button <code>Continue</code>.</p>
+
+<h3 id="update-nameservers">Update Nameservers</h3>
+
+<p>The page shows:</p>
+
+<blockquote>
+<p><strong>Status: Website not active (DNS modification pending)</strong></p>
+
+<p>Please ensure your website is using the nameservers provided:</p>
+
+<ul>
+<li>brianna.ns.cloudflare.com</li>
+<li>kurt.ns.cloudflare.com</li>
+</ul>
+
+<p>Allow up to 24 hours for this change to be processed. There will be no downtime when you switch your name servers. Traffic will gracefully roll from your old name servers to the new name servers without interruption. Your site will remain available throughout the switch</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-27-22_panel_overview.png" alt="" /></p>
+
+<p>If you are finished changing <code>Nameservers</code> at domain registrar, client the button <code>Recheck Nameservers</code> at the right of the page. It will check it the configuration is active. It will takes a while to take effect, just be patient.</p>
+
+<p>It it is passed, the state of <strong><code>Status: Pending</code></strong> will be changed to <strong><code>Status: Active</code></strong>, showing <code>This website is active on CloudFlare.</code>。</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-11_cloudflare_free_ssl/2018-04-11_14-28-57_check_status_result.png" alt="" /></p>
+
+<h3 id="crypto">Crypto</h3>
+
+<blockquote>
+<p>Manage Cryptography settings for your website.</p>
+</blockquote>
+
+<p>Return to the top of the page, clicking icon <code>Cryptos</code>.</p>
+
+<p><strong><code>SSL</code></strong> has 4 choices: <code>Off</code>、<code>Flexible</code>、<code>Full</code>、<code>Strict</code>. If you wanna view the explanation, just clicking the following <code>Help</code>.</p>
+
+<p>Commonly choosing <code>Flexible</code>, I choose <code>Full</code> referenced by <a href="https://zaicheng.me/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#Setup_github_pages_CNAME_record">Set up cloudflare</a>.</p>
+
+<p>Next setting up <code>HTTP Strict Transport Security (HSTS)</code>, clicking <code>Enable HSTS</code>, choosing <code>I understand</code>, then clicking <code>Nest step</code>, enabling the  following 2 settings:</p>
+
+<ul>
+<li><code>Apply HSTS policy to subdomains (includeSubDomains)</code></li>
+<li><code>No-Sniff Header</code></li>
+</ul>
+
+<p>Clicking <code>Save</code> to exit.</p>
+
+<p>You can optimize other functions according to personal needs.</p>
+
+<h2 id="configuring-hugo">Configuring Hugo</h2>
+
+<p>Setting operation in <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a> is simpler then <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>. What you need to do is just add a file named <code>CNAME</code> into the branch <code>master</code> of repo (maxdsre.github.io). Adding the custom domain name into the file, here the content is <code>axdlog.com</code>.</p>
+
+<p>Due to it is integrated deploying through <a href="https://travis-ci.org" title="Test and Deploy with Confidence">Travis CI</a>, I just need to add a new line in config file <code>.travis.yml</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml">script<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>hugo<span class="w">
+</span><span class="w">    </span><span class="c"># new line</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>echo<span class="w"> </span><span class="s1">&#39;axdlog.com&#39;</span><span class="w"> </span><span class="sd">&gt; public/CNAME</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="test-in-browser">Test in Browser</h2>
+
+<p>Testing in browser, it redirects to <code>https</code> successfully and shows green padlock icon. It is approved in <code>Google Chrome</code> and <code>Mozilla Firefox</code>.</p>
+
+<p>It took me at least 5 hours to configure SSL in <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>. But now the total operation is less then half an hour.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/">Set Up SSL on Github Pages With Custom Domains for Free</a></li>
+<li><a href="https://www.goyllo.com/github/pages/free-cloudflare-ssl-for-custom-domain/">How To Add Free Cloudflare SSL in Github Pages with Custom Domain?</a></li>
+<li><a href="https://zaicheng.me/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/">Hexo blog with custom domain and cloudflare</a></li>
+</ul>
+
+<h2 id="change-log">Change Log</h2>
+
+<ul>
+<li>2018.04.11 16:05 Wed America/Boston
+
+<ul>
+<li>first draft</li>
+</ul></li>
+</ul>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/cloudflare/">Cloudflare</a>
+          
+          <a href="/tags/ssl/">SSL</a>
+          
+          <a href="/tags/hugo/">Hugo</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">爲集成了Travis CI的GitHub項目配置Slack信息推送</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/">
+            <span class="next-text nav-default">爲GitHub Pages配置Cloudflare的免費SSL數字證書</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Using sed and awk to print the previous or next line of the matched line" />
+<meta name="keywords" content="AxdLog, awk, sed" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk" />
+<meta property="og:description" content="Using sed and awk to print the previous or next line of the matched line" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/" />
+
+
+
+<meta property="article:published_time" content="2017-03-15T14:57:39&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T11:09:39-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk">
+<meta itemprop="description" content="Using sed and awk to print the previous or next line of the matched line">
+
+
+<meta itemprop="datePublished" content="2017-03-15T14:57:39&#43;08:00" />
+<meta itemprop="dateModified" content="2017-03-15T14:57:39&#43;08:00" />
+<meta itemprop="wordCount" content="4673">
+
+
+
+<meta itemprop="keywords" content="awk,sed," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk"/>
+<meta name="twitter:description" content="Using sed and awk to print the previous or next line of the matched line"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-03-15 </span>
+        <div class="post-category">
+            
+              <a href="/categories/data-process/"> Data Process </a>
+            
+          </div>
+        <span class="more-meta"> 4673 words </span>
+        <span class="more-meta"> 10 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#production-examples">Production Examples</a>
+<ul>
+<li><a href="#previous-line-for-nginx">Previous Line For Nginx</a></li>
+<li><a href="#next-line-for-linux-kernel">Next Line For Linux Kernel</a></li>
+</ul></li>
+<li><a href="#analysis-of-extract-previous-line">Analysis Of Extract Previous Line</a>
+<ul>
+<li><a href="#via-awk">Via awk</a></li>
+<li><a href="#via-sed">Via sed</a></li>
+</ul></li>
+<li><a href="#analysis-of-extract-next-line">Analysis Of Extract Next Line</a>
+<ul>
+<li><a href="#via-awk-1">Via awk</a></li>
+<li><a href="#via-sed-1">Via sed</a></li>
+</ul></li>
+<li><a href="#analysis">Analysis</a>
+<ul>
+<li><a href="#extract-previous-line-via-sed">Extract Previous Line Via Sed</a>
+<ul>
+<li><a href="#testing-x">testing x</a></li>
+<li><a href="#testing-x-h">testing x&amp;h</a></li>
+<li><a href="#testing-x-p-h">testing x&amp;p&amp;h</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#list-release-news">List Release News</a>
+<ul>
+<li><a href="#nginx">Nginx</a></li>
+<li><a href="#linux-kernel">Linux Kernel</a></li>
+</ul></li>
+<li><a href="#further-reading">Further Reading</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>在GNU/Linux中，<a href="https://www.gnu.org/software/gawk/" title="GNU awk">awk(gawk)</a>和<a href="https://www.gnu.org/software/sed/" title="GNU sed">sed</a>可用於處理文本數據。本文討論的是如何使用二者提取匹配數據行的前一行或後一行數據。如果匹配數據行出現多次，則只輸出第一次匹配到的數據行。</p>
+
+<p>本文採用真實案例進行討論</p>
+
+<ul>
+<li>(匹配行的前一行) 提取<a href="https://nginx.org/" title="Nginx Web Server">Nginx</a>的最新版本號；</li>
+<li>(匹配行的後一行) 提取<a href="https://www.kernel.org" title="Linux Kernel">Linux Kernel</a>的最新版本號；</li>
+</ul>
+
+<p></p>
+
+<h2 id="production-examples">Production Examples</h2>
+
+<p>從過軟件的官方網站提取所需數據，使用<code>curl</code>或<code>wget</code>下載官網HTML代碼，分別使用<code>awk</code>和<code>sed</code>從返回的HTML標籤數據中提取所需數據。</p>
+
+<h3 id="previous-line-for-nginx">Previous Line For Nginx</h3>
+
+<p>提取匹配行的前一行，以<a href="https://nginx.org/" title="Nginx Web Server">Nginx</a>爲例，提取最新主線(mainline)版的版本號。版本號在匹配字符串<code>mainline</code>所在行的前一行，最新穩定版版本爲<code>1.13.12</code>(Apr 11, 2018)。</p>
+
+<p>操作命令爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Via awk
+</span><span class="c1"></span>curl -fsL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;$0~/mainline/{print gensub(/.*nginx-(.*)&lt;.*/,&#34;\\1&#34;,&#34;g&#34;,a);exit};{a=$0}&#39;</span>
+
+<span class="c1"># Via sed
+</span><span class="c1"></span>curl -fsL https://nginx.org/ <span class="p">|</span> sed -n -r <span class="s1">&#39;/mainline/{0,/mainline/{x;s@.*nginx-(.*)&lt;.*@\1@p;}};h&#39;</span>
+# curl -fsL https://nginx.org/ <span class="p">|</span> sed -n -r <span class="s1">&#39;0,/mainline/{/mainline/{x;s@.*nginx-(.*)&lt;.*@\1@g;p};h}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>演示過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Via awk
+</span><span class="c1"></span>maxsre@stretch:~$ curl -fsL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;$0~/mainline/{print gensub(/.*nginx-(.*)&lt;.*/,&#34;\\1&#34;,&#34;g&#34;,a);exit};{a=$0}&#39;</span>
+<span class="m">1</span>.13.12
+maxsre@stretch:~$
+
+<span class="c1"># Via sed
+</span><span class="c1"></span>maxsre@stretch:~$ curl -fsL https://nginx.org/ <span class="p">|</span> sed -n -r <span class="s1">&#39;/mainline/{0,/mainline/{x;s@.*nginx-(.*)&lt;.*@\1@p;}};h&#39;</span>
+<span class="m">1</span>.13.12
+maxsre@stretch:~$</code></pre></td></tr></table>
+</div>
+</div>
+<p>HTML標籤片段如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>nginx news<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;news&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-04-10&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-04-10<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/download.html&#34;</span><span class="p">&gt;</span>nginx-1.13.12<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+mainline version has been released.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-04-03&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-04-03<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/docs/njs_about.html&#34;</span><span class="p">&gt;</span>njs-0.2.0<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+version has been released, featuring HTTP subrequest() method support
+and <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/docs/njs/njs_changes.html#njs0.2.0&#34;</span><span class="p">&gt;</span>more<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-04-03&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-04-03<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/download.html&#34;</span><span class="p">&gt;</span>nginx-1.13.11<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+mainline version has been released.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-03-23&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-03-23<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unit.nginx.org/&#34;</span><span class="p">&gt;</span>unit-0.7<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+beta version has been released with
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://mailman.nginx.org/pipermail/unit/2018-March/000040.html&#34;</span><span class="p">&gt;</span>
+Ruby module<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-03-20&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-03-20<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/download.html&#34;</span><span class="p">&gt;</span>nginx-1.13.10<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+mainline version has been released,
+featuring the
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/docs/http/ngx_http_grpc_module.html&#34;</span><span class="p">&gt;</span>gRPC proxy module<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-02-20&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-02-20<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/download.html&#34;</span><span class="p">&gt;</span>nginx-1.13.9<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+mainline version has been released.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-02-09&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-02-09<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unit.nginx.org/&#34;</span><span class="p">&gt;</span>unit-0.6<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+beta version has been released with
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://mailman.nginx.org/pipermail/unit/2018-February/000034.html&#34;</span><span class="p">&gt;</span>
+Perl module and advanced process management<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2018-01-15&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2018-01-15<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unit.nginx.org/&#34;</span><span class="p">&gt;</span>unit-0.4<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+beta version has been released with
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://mailman.nginx.org/pipermail/unit/2018-January/000029.html&#34;</span><span class="p">&gt;</span>
+regression fixes<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2017-12-29&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2017-12-29<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unit.nginx.org/&#34;</span><span class="p">&gt;</span>unit-0.3<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+beta version has been released with HTTP keep-alive support,
+latency optimizations, Python and Go improvements, and
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unit.nginx.org/CHANGES.txt&#34;</span><span class="p">&gt;</span>more<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;date&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;2017-12-26&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>2017-12-26<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;en/download.html&#34;</span><span class="p">&gt;</span>nginx-1.13.8<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+mainline version has been released.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="next-line-for-linux-kernel">Next Line For Linux Kernel</h3>
+
+<p>提取匹配行的後一行，以<a href="https://www.kernel.org" title="Linux Kernel">Linux Kernel</a>爲例，提取最新穩定(stable)版的版本號。版本號在匹配字符串<code>stable:</code>所在行的後一行，最新穩定版版本爲<code>4.16.1</code>(Apr 11, 2018)。</p>
+
+<p>操作命令爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Via awk
+</span><span class="c1"></span>curl -fsL https://www.kernel.org <span class="p">|</span> awk <span class="s1">&#39;match($1,/stable:/){getline;print gensub(/.*strong&gt;(.*)&lt;\/strong.*/,&#34;\\1&#34;,&#34;g&#34;,$0);exit}&#39;</span>
+
+<span class="c1"># Via sed
+</span><span class="c1"></span>curl -fsL https://www.kernel.org <span class="p">|</span> sed -n -r <span class="s1">&#39;/stable:/{0,/stable:/{n;s@ @@g;s@&lt;[^&gt;]*&gt;@@gp}}&#39;</span>
+# curl -fsL https://www.kernel.org <span class="p">|</span> sed -n -r <span class="s1">&#39;/stable:/{0,/stable:/{n;s@ @@g;s@&lt;[^&gt;]*&gt;@@gp}}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>演示過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Via awk
+</span><span class="c1"></span>maxsre@stretch:~$ curl -fsL https://www.kernel.org <span class="p">|</span> awk <span class="s1">&#39;match($1,/stable:/){getline;print gensub(/.*strong&gt;(.*)&lt;\/strong.*/,&#34;\\1&#34;,&#34;g&#34;,$0);exit}&#39;</span>
+<span class="m">4</span>.16.1
+
+<span class="c1"># Via sed
+</span><span class="c1"></span>maxsre@stretch:~$ curl -fsL https://www.kernel.org <span class="p">|</span> sed -n -r <span class="s1">&#39;/stable:/{0,/stable:/{n;s@ @@g;s@&lt;[^&gt;]*&gt;@@gp}}&#39;</span>
+<span class="m">4</span>.16.1
+<span class="c1"># longterm有多個版本
+</span><span class="c1"></span>maxsre@stretch:~$ curl -fsL https://www.kernel.org <span class="p">|</span> sed -n -r <span class="s1">&#39;/longterm:/{0,/longterm:/{n;s@ @@g;s@&lt;[^&gt;]*&gt;@@gp}}&#39;</span>
+<span class="m">4</span>.14.33
+maxsre@stretch:~$</code></pre></td></tr></table>
+</div>
+</div>
+<p>HTML標籤片段如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">        <span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;releases&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>mainline:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.16<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-01<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.16.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.16.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/torvalds/ds/v4.16/v4.15&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/torvalds/h/v4.16&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>stable:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.16.1<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-08<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.16.1.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.16.1.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.16.1.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v4.16.1/v4.16&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v4.16.1&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.16.1&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>stable:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.15.16<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-08<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.15.16.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.15.16.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.15.16.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.15.15-16.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v4.15.16/v4.15.15&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v4.15.16&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.15.16&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.14.33<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-08<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.33.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.33.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.33.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.14.32-33.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v4.14.33/v4.14.32&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v4.14.33&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.14.33&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.9.93<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-08<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.93.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.93.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.9.93.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.9.92-93.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v4.9.93/v4.9.92&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v4.9.93&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.9.93&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.4.127<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-08<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.127.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.127.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.4.127.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.4.126-127.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v4.4.127/v4.4.126&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v4.4.127&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.4.127&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>4.1.51<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-03-27<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.1.51.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.1.51.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.1.51.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.1.50-51.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v4.1.51/v4.1.50&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v4.1.51&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.1.51&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>3.18.104 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;eolkernel&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;This release is End-of-Life&#34;</span><span class="p">&gt;</span>[EOL]<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-10<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.18.104.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.18.104.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/patch-3.18.104.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.18.103-104.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v3.18.104/v3.18.103&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v3.18.104&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.18.104&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>3.16.56<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-03-19<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.16.56.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.16.56.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/patch-3.16.56.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.16.55-56.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v3.16.56/v3.16.55&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v3.16.56&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.16.56&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>longterm:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>3.2.101<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-03-19<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.2.101.tar.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download complete tarball&#34;</span><span class="p">&gt;</span>tarball<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.2.101.tar.sign&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download PGP verification signature&#34;</span><span class="p">&gt;</span>pgp<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/patch-3.2.101.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download patch to previous mainline&#34;</span><span class="p">&gt;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.2.100-101.xz&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Download incremental patch&#34;</span><span class="p">&gt;</span>inc.<span class="ni">&amp;nbsp;</span>patch<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/ds/v3.2.101/v3.2.100&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View diff in cgit&#34;</span><span class="p">&gt;</span>view<span class="ni">&amp;nbsp;</span>diff<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/stable/linux-stable/h/v3.2.101&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.2.101&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;View detailed change logs&#34;</span><span class="p">&gt;</span>changelog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>] <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>linux-next:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>next-20180411<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2018-04-11<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>[<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://git.kernel.org/next/linux-next/h/next-20180411&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Browse the git tree using cgit&#34;</span><span class="p">&gt;</span>browse<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>]  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="analysis-of-extract-previous-line">Analysis Of Extract Previous Line</h2>
+
+<p>以<a href="https://nginx.org/" title="Nginx Web Server">Nginx</a>爲例，以字符串<code>mainline</code>爲匹配關鍵詞，提取匹配行的前一行數據。</p>
+
+<h3 id="via-awk">Via awk</h3>
+
+<p>awk的操作命令爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;$0~/mainline/{print gensub(/.*nginx-(.*)&lt;.*/,&#34;\\1&#34;,&#34;g&#34;,a);exit};{a=$0}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>解釋
+1. <code>curl -fsL https://nginx.org/</code>：獲取<a href="https://nginx.org/" title="Nginx Web Server">Nginx</a>官網的HTML標籤；
+2. <code>awk ''</code>：表示使用awk進行操作；
+3. <code>$0~/mainline/</code>：<code>$0</code>表示從文本中讀取的一整行數據，<code>~</code>表示模糊匹配，<code>/mainline/</code>表示匹配含有關鍵詞<code>mainline</code>的數據行；
+4. <code>{print gensub(/.*nginx-(.*)&lt;.*/,&quot;\\1&quot;,&quot;g&quot;,a);exit};{a=$0}</code>：<code>exit</code>表示只匹配一次就退出awk操作，<code>{a=$0}</code>和<code>gensub()</code>中的最後一個<code>a</code>表示匹配行的前一行數據； <em>暫不理解其實現原理</em>
+5. <code>gensub(/.*nginx-(.*)&lt;.*/,&quot;\\1&quot;,&quot;g&quot;,a)</code>提取具體的版本號；
+6. <code>print</code>爲awk打印命令，輸出指定的數據；</p>
+
+<h3 id="via-sed">Via sed</h3>
+
+<p>sed的操作命令爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL https://nginx.org/ <span class="p">|</span> sed -n -r <span class="s1">&#39;/mainline/{0,/mainline/{x;s@.*nginx-(.*)&lt;.*@\1@p;}};h&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>使用到的選項</p>
+
+<ul>
+<li><code>x</code> - Exchange the contents of the hold and pattern spaces.</li>
+<li><code>h</code> - (hold) Replace the contents of the hold space with the contents of the pattern space.</li>
+<li><code>p</code> - Print the pattern space.</li>
+<li><code>-n, --quiet, --silent</code> - suppress automatic printing of pattern space</li>
+</ul>
+
+<p>解釋</p>
+
+<ol>
+<li><code>curl -fsL https://nginx.org/</code>：獲取<a href="https://nginx.org/" title="Nginx Web Server">Nginx</a>官網的HTML標籤；</li>
+<li><code>sed ''</code>：使用sed命令進行操作；</li>
+<li><code>/mainline/</code>：地址定界，此處使用正則(regular expression)進行匹配，匹配關鍵爲<code>mainline</code>；</li>
+<li><code>/mainline/{x}</code>:<code>x</code>表示將當前hold space和pattern space中的內容進行互換，此處只針對匹配行；</li>
+<li><code>h</code>：將當前hold space中的內容替換爲pattern space中的內容，實現hold space中的內容與pattern space中的內容一致；</li>
+<li><code>-r</code>：使用增強性正則表達式，如支持後向引用(back references)；</li>
+<li><code>-n</code>：表示不輸出當前pattern space中的內容，通常與<code>p</code>組合使用；</li>
+<li><code>/mainline/{x;p}</code>中的<code>p</code>與<code>-n</code>組合使用，表示只輸出匹配行；</li>
+<li><code>0,/mainline/</code>：只針對第一次出現的匹配數據行；</li>
+<li><code>s///g</code>: 替換操作，因使用了<code>-r</code>，此處通過後向引用提取版本號；</li>
+</ol>
+
+<p>完整的解釋：使用sed對獲取的HTML標籤進行處理，對於匹配數據行，先使用<code>x</code>交換當前hold space和pattern space中的內容，再使用<code>p</code>和<code>-n</code>輸出當前pattern space中的內容；對所有數據行使用<code>h</code>，將所有數據行的當前hold space中的內容替換爲pattern space中的內容。經過此操作，匹配數據行的當前pattern space中的內容即前一行數據。</p>
+
+<p>稍後對其處理過程進行演示。</p>
+
+<h2 id="analysis-of-extract-next-line">Analysis Of Extract Next Line</h2>
+
+<p>以<a href="https://www.kernel.org" title="Linux Kernel">Linux Kernel</a>爲例，以字符串<code>stable:</code>爲匹配關鍵詞，提取匹配行的後一行數據。</p>
+
+<h3 id="via-awk-1">Via awk</h3>
+
+<p>awk的操作命令爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL https://www.kernel.org <span class="p">|</span> awk <span class="s1">&#39;match($1,/stable:/){getline;print gensub(/.*strong&gt;(.*)&lt;\/strong.*/,&#34;\\1&#34;,&#34;g&#34;,$0);exit}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>解釋
+1. <code>curl -fsL https://www.kernel.org</code>：獲取<a href="https://www.kernel.org" title="Linux Kernel">Linux Kernel</a>官網的HTML標籤；
+2. <code>awk ''</code>：表示使用awk進行操作；
+3. <code>$0</code>、<code>$1</code>：awk中默認以空格爲字段(field)分隔符，<code>$0</code>表示一整行數據，<code>$1</code>表示數據行中的第一個字段(以空格爲分割符)；
+4. <code>match($1,/stable:/)</code>：數據行第一個字段<code>$1</code>中含有字符串<code>stable:</code>，與<code>$1~/stable:/</code>等效；
+5. <code>getline</code>：表示獲取匹配行的後一行數據，與<code>exit</code>組合使用表示只匹配一次就結束awk操作。
+6. <code>print gensub(/.*strong&gt;(.*)&lt;\/strong.*/,&quot;\\1&quot;,&quot;g&quot;,$0)</code>：根據HTML標籤格式提取並輸出版本號；</p>
+
+<p>即提取匹配數據行的後一行數據，可通過awk的<code>getline</code>實現。</p>
+
+<h3 id="via-sed-1">Via sed</h3>
+
+<p>sed的操作命令爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL https://www.kernel.org <span class="p">|</span> sed -n -r <span class="s1">&#39;/stable:/{0,/stable/{n;s@ @@g;s@&lt;[^&gt;]*&gt;@@gp}}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>使用到的選項</p>
+
+<ul>
+<li><code>n</code> - (next) If auto-print is not disabled, print the pattern space, then, regardless, replace the pattern space with the next line of input. If there is no more input then sed exits without processing any more commands.</li>
+</ul>
+
+<p>解釋</p>
+
+<ol>
+<li><code>curl -fsL https://www.kernel.org</code>：獲取<a href="https://www.kernel.org" title="Linux Kernel">Linux Kernel</a>官網的HTML標籤；</li>
+<li><code>sed ''</code>：使用sed命令進行操作；</li>
+<li><code>/stable:/</code>：地址定界，此處使用正則(regular expression)進行匹配，匹配關鍵爲<code>stable:</code>；</li>
+<li><code>0,/stable/</code>：只針對第一次出現的匹配數據行；</li>
+<li><code>n</code>: 表示將匹配行的當前pattern space中的內容，使用下一行的輸入進行替換；</li>
+<li><code>-r</code>：使用增強性正則表達式，如支持後向引用(back references)；</li>
+<li><code>s///g</code>: 替換操作，因使用了<code>-r</code>，此處通過後向引用提取版本號；</li>
+</ol>
+
+<h2 id="analysis">Analysis</h2>
+
+<h3 id="extract-previous-line-via-sed">Extract Previous Line Via Sed</h3>
+
+<p>測試數據 <code>/tmp/test.txt</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">m1
+mainline version
+s1
+stable flag
+s2
+stable version
+s3
+stable test
+m2
+mainline version</pre></td></tr></table>
+</div>
+</div>
+<h4 id="testing-x">testing x</h4>
+
+<p>執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed <span class="s1">&#39;/stable/{x}&#39;</span> /tmp/test.txt</code></pre></td></tr></table>
+</div>
+</div>
+<p>輸出爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">m1
+mainline version
+s1
+
+s2
+stable flag
+s3
+stable version
+m2
+mainline version</pre></td></tr></table>
+</div>
+</div>
+<p>分析</p>
+
+<table>
+<thead>
+<tr>
+<th>line</th>
+<th>origin</th>
+<th>hold space</th>
+<th>pattern space</th>
+<th>explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>m1</td>
+<td></td>
+<td>m1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>mainline version</td>
+<td></td>
+<td>mainline version</td>
+<td></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>s1</td>
+<td></td>
+<td>s1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>stable flag</td>
+<td>stable flag</td>
+<td></td>
+<td>匹配行，前一行hold space爲空，交換後pattern space爲空</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>s2</td>
+<td>stable flag</td>
+<td>s2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>stable version</td>
+<td>stable version</td>
+<td>stable flag</td>
+<td>匹配行，前一行hold space爲<code>stable flag</code>，交換後pattern space爲<code>stable flag</code></td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>s3</td>
+<td>stable version</td>
+<td>s3</td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>stable test</td>
+<td>stable test</td>
+<td>stable version</td>
+<td>匹配行，前一行hold space爲<code>stable version</code>，交換後pattern space爲<code>stable version</code></td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>m2</td>
+<td>stable test</td>
+<td>m2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>mainline version</td>
+<td>stable test</td>
+<td>mainline version</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="testing-x-h">testing x&amp;h</h4>
+
+<p>執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed <span class="s1">&#39;/stable/{x};h&#39;</span> /tmp/test.txt</code></pre></td></tr></table>
+</div>
+</div>
+<p>輸出爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">m1
+mainline version
+s1
+s1
+s2
+s2
+s3
+s3
+m2
+mainline version</pre></td></tr></table>
+</div>
+</div>
+<p>分析</p>
+
+<table>
+<thead>
+<tr>
+<th>line</th>
+<th>origin</th>
+<th>hold space</th>
+<th>pattern space</th>
+<th>explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>m1</td>
+<td>m1</td>
+<td>m1</td>
+<td>非匹配行，將hold space中內容替換爲pattern space中內容</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>s1</td>
+<td>s1</td>
+<td>s1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>stable flag</td>
+<td>s1</td>
+<td>s1</td>
+<td>匹配行，前一行hold space爲<code>s1</code>，交換後pattern space爲<code>s1</code>；因爲<code>h</code>，當前hold space被替換爲<code>s1</code></td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>s2</td>
+<td>s2</td>
+<td>s2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>stable version</td>
+<td>s2</td>
+<td>s2</td>
+<td>匹配行，前一行hold space爲<code>s2</code>，交換後pattern space爲<code>s2</code>；因爲<code>h</code>，當前hold space被替換爲<code>s2</code></td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>s3</td>
+<td>s3</td>
+<td>s3</td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>stable test</td>
+<td>s3</td>
+<td>s3</td>
+<td>匹配行，前一行hold space爲<code>s3</code>，交換後pattern space爲<code>s3</code>；因爲<code>h</code>，當前hold space被替換爲<code>s3</code></td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>m2</td>
+<td>m2</td>
+<td>m2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="testing-x-p-h">testing x&amp;p&amp;h</h4>
+
+<p>執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed -n <span class="s1">&#39;/stable/{x;p};h&#39;</span> /tmp/test.txt</code></pre></td></tr></table>
+</div>
+</div>
+<p>輸出爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">s1
+s2
+s3</pre></td></tr></table>
+</div>
+</div>
+<p>分析</p>
+
+<table>
+<thead>
+<tr>
+<th>line</th>
+<th>origin</th>
+<th>hold space</th>
+<th>pattern space</th>
+<th>explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>m1</td>
+<td>m1</td>
+<td>m1</td>
+<td>非匹配行不輸出，將hold space中內容替換爲pattern space中內容</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>s1</td>
+<td>s1</td>
+<td>s1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>stable flag</td>
+<td>s1</td>
+<td>s1(輸出)</td>
+<td>匹配行，前一行hold space爲<code>s1</code>，交換後pattern space爲<code>s1</code>；因爲<code>h</code>，當前hold space被替換爲<code>s1</code></td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>s2</td>
+<td>s2</td>
+<td>s2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>stable version</td>
+<td>s2</td>
+<td>s2(輸出)</td>
+<td>匹配行，前一行hold space爲<code>s2</code>，交換後pattern space爲<code>s2</code>；因爲<code>h</code>，當前hold space被替換爲<code>s2</code></td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>s3</td>
+<td>s3</td>
+<td>s3</td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>stable test</td>
+<td>s3</td>
+<td>s3(輸出)</td>
+<td>匹配行，前一行hold space爲<code>s3</code>，交換後pattern space爲<code>s3</code>；因爲<code>h</code>，當前hold space被替換爲<code>s3</code></td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>m2</td>
+<td>m2</td>
+<td>m2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td>mainline version</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="list-release-news">List Release News</h2>
+
+<h3 id="nginx">Nginx</h3>
+
+<p>使用如下命令獲取Release信息，以列表形式顯示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsSL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;$0~/^(stable|mainline)/{$0~/stable/?type=&#34;stable&#34;:type=&#34;mainline&#34;;b=gensub(/[[:space:]]*&lt;[^&gt;]*&gt;/,&#34;&#34;,&#34;g&#34;,a);c=gensub(/nginx-/,&#34; &#34;,&#34;g&#34;,b);printf(&#34;%s %s\n&#34;,c,type)};{a=$0}&#39;</span>
+
+curl -fsSL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;BEGIN{print &#34;Date|Version|Type\n---|---|---&#34;}$0~/^(stable|mainline)/{$0~/stable/?type=&#34;stable&#34;:type=&#34;mainline&#34;;b=gensub(/[[:space:]]*&lt;[^&gt;]*&gt;/,&#34;&#34;,&#34;g&#34;,a);c=gensub(/nginx-/,&#34;|&#34;,&#34;g&#34;,b);printf(&#34;%s|%s\n&#34;,c,type)};{a=$0}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>演示過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">maxdsre@stretch:~$ curl -fsSL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;$0~/^(stable|mainline)/{$0~/stable/?type=&#34;stable&#34;:type=&#34;mainline&#34;;b=gensub(/[[:space:]]*&lt;[^&gt;]*&gt;/,&#34;&#34;,&#34;g&#34;,a);c=gensub(/nginx-/,&#34; &#34;,&#34;g&#34;,b);printf(&#34;%s %s\n&#34;,c,type)};{a=$0}&#39;</span>
+<span class="m">2018</span>-04-10 <span class="m">1</span>.13.12 mainline
+<span class="m">2018</span>-04-03 <span class="m">1</span>.13.11 mainline
+<span class="m">2018</span>-03-20 <span class="m">1</span>.13.10 mainline
+<span class="m">2018</span>-02-20 <span class="m">1</span>.13.9 mainline
+<span class="m">2017</span>-12-26 <span class="m">1</span>.13.8 mainline
+
+maxdsre@stretch:~$ curl -fsSL https://nginx.org/ <span class="p">|</span> awk <span class="s1">&#39;BEGIN{print &#34;Date|Version|Type\n---|---|---&#34;}$0~/^(stable|mainline)/{$0~/stable/?type=&#34;stable&#34;:type=&#34;mainline&#34;;b=gensub(/[[:space:]]*&lt;[^&gt;]*&gt;/,&#34;&#34;,&#34;g&#34;,a);c=gensub(/nginx-/,&#34;|&#34;,&#34;g&#34;,b);printf(&#34;%s|%s\n&#34;,c,type)};{a=$0}&#39;</span>
+Date<span class="p">|</span>Version<span class="p">|</span>Type
+---<span class="p">|</span>---<span class="p">|</span>---
+<span class="m">2018</span>-04-10<span class="p">|</span><span class="m">1</span>.13.12<span class="p">|</span>mainline
+<span class="m">2018</span>-04-03<span class="p">|</span><span class="m">1</span>.13.11<span class="p">|</span>mainline
+<span class="m">2018</span>-03-20<span class="p">|</span><span class="m">1</span>.13.10<span class="p">|</span>mainline
+<span class="m">2018</span>-02-20<span class="p">|</span><span class="m">1</span>.13.9<span class="p">|</span>mainline
+<span class="m">2017</span>-12-26<span class="p">|</span><span class="m">1</span>.13.8<span class="p">|</span>mainline
+
+maxdsre@stretch:~$</code></pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染如下</p>
+
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2018-04-10</td>
+<td>1.13.12</td>
+<td>mainline</td>
+</tr>
+
+<tr>
+<td>2018-04-03</td>
+<td>1.13.11</td>
+<td>mainline</td>
+</tr>
+
+<tr>
+<td>2018-03-20</td>
+<td>1.13.10</td>
+<td>mainline</td>
+</tr>
+
+<tr>
+<td>2018-02-20</td>
+<td>1.13.9</td>
+<td>mainline</td>
+</tr>
+
+<tr>
+<td>2017-12-26</td>
+<td>1.13.8</td>
+<td>mainline</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="linux-kernel">Linux Kernel</h3>
+
+<p>使用如下命令獲取Release信息，以列表形式顯示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsSL https://www.kernel.org <span class="p">|</span> sed -r -n <span class="s1">&#39;/tr align=&#34;left&#34;/,+3{s@[[:space:]]*&lt;[^&gt;]*&gt;@@g;s@^$@_@g;s@:@@g;p}&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;:a;N;$!ba;s@\n@ @g;s@ \_+\ ?@\n@g;s@^_ @@&#39;</span>
+
+curl -fsSL https://www.kernel.org <span class="p">|</span> sed -r -n <span class="s1">&#39;/tr align=&#34;left&#34;/,+3{s@[[:space:]]*&lt;[^&gt;]*&gt;@@g;s@^$@_@g;s@:@@g;p}&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;:a;N;$!ba;s@\n@ @g;s@ \_+\ ?@\n@g;s@^_ @@&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;1i Type|Version|Date\n---|---|---&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>操作過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">maxdsre@stretch:~$ curl -fsSL https://www.kernel.org <span class="p">|</span> sed -r -n <span class="s1">&#39;/tr align=&#34;left&#34;/,+3{s@[[:space:]]*&lt;[^&gt;]*&gt;@@g;s@^$@_@g;s@:@@g;p}&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;:a;N;$!ba;s@\n@|@g;s@\|\_+\|?@\n@g;s@^_\|@@&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;1i Type|Version|Date\n---|---|---&#39;</span>
+Type<span class="p">|</span>Version<span class="p">|</span>Date
+---<span class="p">|</span>---<span class="p">|</span>---
+mainline<span class="p">|</span><span class="m">4</span>.16<span class="p">|</span><span class="m">2018</span>-04-01
+stable<span class="p">|</span><span class="m">4</span>.16.1<span class="p">|</span><span class="m">2018</span>-04-08
+stable<span class="p">|</span><span class="m">4</span>.15.16<span class="p">|</span><span class="m">2018</span>-04-08
+longterm<span class="p">|</span><span class="m">4</span>.14.33<span class="p">|</span><span class="m">2018</span>-04-08
+longterm<span class="p">|</span><span class="m">4</span>.9.93<span class="p">|</span><span class="m">2018</span>-04-08
+longterm<span class="p">|</span><span class="m">4</span>.4.127<span class="p">|</span><span class="m">2018</span>-04-08
+longterm<span class="p">|</span><span class="m">4</span>.1.51<span class="p">|</span><span class="m">2018</span>-03-27
+longterm<span class="p">|</span><span class="m">3</span>.18.104<span class="o">[</span>EOL<span class="o">]</span><span class="p">|</span><span class="m">2018</span>-04-10
+longterm<span class="p">|</span><span class="m">3</span>.16.56<span class="p">|</span><span class="m">2018</span>-03-19
+longterm<span class="p">|</span><span class="m">3</span>.2.101<span class="p">|</span><span class="m">2018</span>-03-19
+linux-next<span class="p">|</span>next-20180411<span class="p">|</span><span class="m">2018</span>-04-11
+
+maxdsre@stretch:~$</code></pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染如下</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>mainline</td>
+<td>4.16</td>
+<td>2018-04-01</td>
+</tr>
+
+<tr>
+<td>stable</td>
+<td>4.16.1</td>
+<td>2018-04-08</td>
+</tr>
+
+<tr>
+<td>stable</td>
+<td>4.15.16</td>
+<td>2018-04-08</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>4.14.33</td>
+<td>2018-04-08</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>4.9.93</td>
+<td>2018-04-08</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>4.4.127</td>
+<td>2018-04-08</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>4.1.51</td>
+<td>2018-03-27</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>3.18.104[EOL]</td>
+<td>2018-04-10</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>3.16.56</td>
+<td>2018-03-19</td>
+</tr>
+
+<tr>
+<td>longterm</td>
+<td>3.2.101</td>
+<td>2018-03-19</td>
+</tr>
+
+<tr>
+<td>linux-next</td>
+<td>next-20180411</td>
+<td>2018-04-11</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+<li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">The GNU Awk User’s Guide</a></li>
+<li><a href="https://www.gnu.org/software/sed/manual/sed.html" title="sed, a stream editor">The GNU Sed User’s Guide</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2017.03.15 14:54 Wed Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2017.05.31 11:26 Wed Asia/Shanghai
+
+<ul>
+<li>添加<code>List Release News</code>，用Markdown形式輸出</li>
+</ul></li>
+<li>2018.04.11 11:09 Wed America/Boston
+
+<ul>
+<li>更新軟件版本號，勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>Wechat</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>Alipay</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/awk/">awk</a>
+          
+          <a href="/tags/sed/">sed</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Using Sed To Reverse Character Or Line On GNU/Linux</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/">
+            <span class="next-text nav-default">Installing And Configuring Docker Community Edition(CE) On GNU/Linux</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Using Doctrine DBAL To Work With Database In Symfony 4 - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" />
+  <meta name="description" content="Web應用通常使用數據庫存儲數據，LEMP中的 M 即指數據庫（默認爲 MySQL）。PHP框架Symfony是通過集成的第三方庫 Doctrine 與數據庫交互（通過Composer安裝）。Doctrine支持2中形式 Doctrine ORM 和 Doctrine DBAL。DBAL是Database Abstraction Layer（數據庫抽象層）的縮寫，Doctrine DBAL支持原生的SQL語句。
+本文記錄如何在Symfony 4中通過Doctrine DBAL進行數據庫的CRUD操作。（與Symfony 3相比，變動很大）
+
+" />
+<meta name="keywords" content="AxdLog, Symfony, PHP, Doctrine, DBAL" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Using Doctrine DBAL To Work With Database In Symfony 4" />
+<meta property="og:description" content="Web應用通常使用數據庫存儲數據，LEMP中的 M 即指數據庫（默認爲 MySQL）。PHP框架Symfony是通過集成的第三方庫 Doctrine 與數據庫交互（通過Composer安裝）。Doctrine支持2中形式 Doctrine ORM 和 Doctrine DBAL。DBAL是Database Abstraction Layer（數據庫抽象層）的縮寫，Doctrine DBAL支持原生的SQL語句。
+
+本文記錄如何在Symfony 4中通過Doctrine DBAL進行數據庫的CRUD操作。（與Symfony 3相比，變動很大）
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/" />
+
+
+
+<meta property="article:published_time" content="2016-08-24T04:38:08&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-14T17:13:16-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Using Doctrine DBAL To Work With Database In Symfony 4">
+<meta itemprop="description" content="Web應用通常使用數據庫存儲數據，LEMP中的 M 即指數據庫（默認爲 MySQL）。PHP框架Symfony是通過集成的第三方庫 Doctrine 與數據庫交互（通過Composer安裝）。Doctrine支持2中形式 Doctrine ORM 和 Doctrine DBAL。DBAL是Database Abstraction Layer（數據庫抽象層）的縮寫，Doctrine DBAL支持原生的SQL語句。
+
+本文記錄如何在Symfony 4中通過Doctrine DBAL進行數據庫的CRUD操作。（與Symfony 3相比，變動很大）
+
+">
+
+
+<meta itemprop="datePublished" content="2016-08-24T04:38:08&#43;08:00" />
+<meta itemprop="dateModified" content="2016-08-24T04:38:08&#43;08:00" />
+<meta itemprop="wordCount" content="3763">
+
+
+
+<meta itemprop="keywords" content="Symfony,PHP," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using Doctrine DBAL To Work With Database In Symfony 4"/>
+<meta name="twitter:description" content="Web應用通常使用數據庫存儲數據，LEMP中的 M 即指數據庫（默認爲 MySQL）。PHP框架Symfony是通過集成的第三方庫 Doctrine 與數據庫交互（通過Composer安裝）。Doctrine支持2中形式 Doctrine ORM 和 Doctrine DBAL。DBAL是Database Abstraction Layer（數據庫抽象層）的縮寫，Doctrine DBAL支持原生的SQL語句。
+
+本文記錄如何在Symfony 4中通過Doctrine DBAL進行數據庫的CRUD操作。（與Symfony 3相比，變動很大）
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Using Doctrine DBAL To Work With Database In Symfony 4</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-08-24 </span>
+        <div class="post-category">
+            
+              <a href="/categories/php/"> PHP </a>
+            
+          </div>
+        <span class="more-meta"> 3763 words </span>
+        <span class="more-meta"> 8 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisite">Prerequisite</a>
+<ul>
+<li><a href="#doctrine-installation">Doctrine Installation</a></li>
+</ul></li>
+<li><a href="#dbal-configuration">DBAL configuration</a>
+<ul>
+<li><a href="#testing-database-info">Testing Database Info</a></li>
+<li><a href="#dbal-configuration-1">DBAL configuration</a></li>
+</ul></li>
+<li><a href="#crud">CRUD</a>
+<ul>
+<li><a href="#retrieve-data">Retrieve Data</a>
+<ul>
+<li><a href="#fetchcolumn">fetchColumn</a></li>
+<li><a href="#fetcharray">fetchArray</a></li>
+<li><a href="#fetchassoc">fetchAssoc</a></li>
+<li><a href="#fetchall">fetchAll</a></li>
+</ul></li>
+<li><a href="#update-data">Update Data</a></li>
+<li><a href="#insert-data">Insert Data</a></li>
+<li><a href="#delete">Delete</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>Web應用通常使用數據庫存儲數據，<a href="https://lemp.io/"><strong>LEMP</strong></a>中的 <strong>M</strong> 即指數據庫（默認爲 <a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>）。PHP框架<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>是通過集成的第三方庫 <a href="https://www.doctrine-project.org" title="The Open-Source PHP ORM and Persistence Tools Project">Doctrine</a> 與數據庫交互（通過<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>安裝）。<a href="https://www.doctrine-project.org" title="The Open-Source PHP ORM and Persistence Tools Project">Doctrine</a>支持2中形式 <a href="https://symfony.com/doc/master/doctrine.html">Doctrine ORM</a> 和 <a href="https://www.doctrine-project.org/projects/dbal.html" title="Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection, schema management and PDO abstraction.">Doctrine DBAL</a>。<code>DBAL</code>是<code>Database Abstraction Layer</code>（數據庫抽象層）的縮寫，<a href="https://www.doctrine-project.org/projects/dbal.html" title="Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection, schema management and PDO abstraction.">Doctrine DBAL</a>支持原生的SQL語句。</p>
+
+<p>本文記錄如何在<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony 4</a>中通過<a href="https://www.doctrine-project.org/projects/dbal.html" title="Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection, schema management and PDO abstraction.">Doctrine DBAL</a>進行數據庫的<a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" title="wikipedia">CRUD</a>操作。（與Symfony 3相比，變動很大）</p>
+
+<p></p>
+
+<h2 id="prerequisite">Prerequisite</h2>
+
+<p>本人Blog <a href="/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/">Installing And Setting Up The Symfony Framework On CentOS 7</a> 詳細記錄了<a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>、<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>的安裝、配置過程。</p>
+
+<p>LEMP環境信息</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Info</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">OS Version</td>
+<td align="left"><code>CentOS Linux release 7.4.1708 (Core)</code></td>
+</tr>
+
+<tr>
+<td align="left">Kernel Version</td>
+<td align="left"><code>3.10.0-693.21.1.el7.x86_64</code></td>
+</tr>
+
+<tr>
+<td align="left">Nginx</td>
+<td align="left"><code>1.13.12</code></td>
+</tr>
+
+<tr>
+<td align="left">MySQL</td>
+<td align="left"><code>5.7.21</code></td>
+</tr>
+
+<tr>
+<td align="left">PHP</td>
+<td align="left"><code>7.2.4</code></td>
+</tr>
+
+<tr>
+<td align="left">Composer</td>
+<td align="left"><code>1.6.4</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>通過<code>annotation</code>配置URL路由規則</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># install annotations package
+</span><span class="c1"></span>composer require annotations
+
+composer require symfony/var-dumper
+# composer require debug</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="doctrine-installation">Doctrine Installation</h3>
+
+<p>操作依據 <a href="https://symfony.com/doc/master/doctrine/dbal.html">How to Use Doctrine DBAL</a></p>
+
+<p>通過如下命令安裝 <a href="https://www.doctrine-project.org" title="The Open-Source PHP ORM and Persistence Tools Project">Doctrine</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">composer require doctrine/doctrine-bundle</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$ composer require doctrine/doctrine-bundle
+Using version ^1.8 <span class="k">for</span> doctrine/doctrine-bundle
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies <span class="o">(</span>including require-dev<span class="o">)</span>
+Nothing to install or update
+Generating autoload files
+ocramius/package-versions:  Generating version class...
+ocramius/package-versions: ...done generating version class
+Executing script cache:clear <span class="o">[</span>OK<span class="o">]</span>
+Executing script assets:install --symlink --relative public <span class="o">[</span>OK<span class="o">]</span>
+Executing script security-checker security:check <span class="o">[</span>OK<span class="o">]</span>
+
+<span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="dbal-configuration">DBAL configuration</h2>
+
+<h3 id="testing-database-info">Testing Database Info</h3>
+
+<p>創建測試帳號、數據庫，具體信息如下</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Item</th>
+<th align="left">Detial</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Host</td>
+<td align="left"><code>127.0.0.1</code></td>
+</tr>
+
+<tr>
+<td align="left">Port</td>
+<td align="left"><code>3306</code></td>
+</tr>
+
+<tr>
+<td align="left">Username</td>
+<td align="left"><code>symfony</code></td>
+</tr>
+
+<tr>
+<td align="left">Password</td>
+<td align="left"><code>Symfony@2018_dbal</code></td>
+</tr>
+
+<tr>
+<td align="left">Database</td>
+<td align="left"><code>dbal</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>SQL語句如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- create database
+</span><span class="c1"></span><span class="k">create</span> <span class="k">database</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">dbal</span><span class="p">;</span>
+<span class="c1">-- create mysql user
+</span><span class="c1"></span><span class="k">create</span> <span class="k">user</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;Symfony@2018_Dbal&#39;</span><span class="p">;</span>
+<span class="c1">-- grant privileges
+</span><span class="c1"></span><span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">dbal</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="c1">-- refresh privileges
+</span><span class="c1"></span><span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>操作過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">database</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">dbal</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="k">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;Symfony@2018_Dbal&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">dbal</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">grants</span> <span class="k">for</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">---------------------------------------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">Grants</span> <span class="k">for</span> <span class="n">symfony</span><span class="o">@%</span>                              <span class="o">|</span>
+<span class="o">+</span><span class="c1">---------------------------------------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span>               <span class="o">|</span>
+<span class="o">|</span> <span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">`</span><span class="n">dbal</span><span class="o">`</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;symfony&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">---------------------------------------------------+
+</span><span class="c1"></span><span class="mi">2</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="dbal-configuration-1">DBAL configuration</h3>
+
+<p>配置數據庫有2種方式：</p>
+
+<ul>
+<li>項目目錄下的文件<code>.env</code></li>
+<li>項目目錄下的文件<code>config/packages/doctrine.yaml</code></li>
+</ul>
+
+<p>按照文檔 <a href="https://symfony.com/doc/current/setup.html">Installing &amp; Setting up the Symfony Framework</a> 創建項目後(此處項目名<code>axdlog</code>)，目錄中生成一個名爲<code>.env</code>的隱藏文件，配置指令是<code>DATABASE_URL</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">###&gt; doctrine/doctrine-bundle ###
+</span><span class="c1"># Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url
+</span><span class="c1"># For an SQLite database, use: &#34;sqlite:///%kernel.project_dir%/var/data.db&#34;
+</span><span class="c1"># Configure your db driver and server_version in config/packages/doctrine.yaml
+</span><span class="c1"></span><span class="nv">DATABASE_URL</span><span class="o">=</span>mysql://db_user:db_password@127.0.0.1:3306/db_name
+###&lt; doctrine/doctrine-bundle ###</code></pre></td></tr></table>
+</div>
+</div>
+<p>此處應爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DATABASE_URL</span><span class="o">=</span>mysql://symfony:Symfony@2018_Dbal@127.0.0.1:3306/dbal</code></pre></td></tr></table>
+</div>
+</div>
+<p>但這種配置方式有一個問題，如果用戶密碼含有<code>:</code>、<code>@</code>等特殊字符，解析時可能會出錯。</p>
+
+<p>通過文件<code>doctrine.yaml</code>配置更爲妥當，具體配置參照官方文檔 <a href="https://symfony.com/doc/master/reference/configuration/doctrine.html#doctrine-dbal-configuration">DoctrineBundle Configuration (&ldquo;doctrine&rdquo;)</a>。</p>
+
+<p>配置信息如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml">parameters<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># Adds a fallback DATABASE_URL if the env var is not set.</span><span class="w">
+</span><span class="w">    </span><span class="c"># This allows you to run cache:warmup even if your</span><span class="w">
+</span><span class="w">    </span><span class="c"># environment variables are not available yet.</span><span class="w">
+</span><span class="w">    </span><span class="c"># You should not need to change this value.</span><span class="w">
+</span><span class="w">    </span>env(DATABASE_URL)<span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>doctrine<span class="p">:</span><span class="w">
+</span><span class="w">    </span>dbal<span class="p">:</span><span class="w">
+</span><span class="w">        </span>dbname<span class="p">:</span><span class="w"> </span>dbal<span class="w">
+</span><span class="w">        </span>host<span class="p">:</span><span class="w"> </span><span class="m">127.0</span>.<span class="m">0.1</span><span class="w">
+</span><span class="w">        </span>port<span class="p">:</span><span class="w"> </span><span class="m">3306</span><span class="w">
+</span><span class="w">        </span>user<span class="p">:</span><span class="w"> </span><span class="s1">&#39;symfony&#39;</span><span class="w">
+</span><span class="w">        </span>password<span class="p">:</span><span class="w"> </span><span class="s1">&#39;Symfony@2018_Dbal&#39;</span><span class="w">
+</span><span class="w">        </span><span class="c"># configure these for your database server</span><span class="w">
+</span><span class="w">        </span>driver<span class="p">:</span><span class="w"> </span><span class="s1">&#39;pdo_mysql&#39;</span><span class="w">
+</span><span class="w">        </span>server_version<span class="p">:</span><span class="w"> </span><span class="s1">&#39;5.7&#39;</span><span class="w">
+</span><span class="w">        </span>charset<span class="p">:</span><span class="w"> </span>utf8mb4<span class="w">
+</span><span class="w">        </span>default_table_options<span class="p">:</span><span class="w">
+</span><span class="w">            </span>charset<span class="p">:</span><span class="w"> </span>utf8mb4<span class="w">
+</span><span class="w">            </span>collate<span class="p">:</span><span class="w"> </span>utf8mb4_unicode_ci<span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="c"># With Symfony 3.3, remove the `resolve:` prefix</span><span class="w">
+</span><span class="w">        </span>url<span class="p">:</span><span class="w"> </span><span class="s1">&#39;%env(resolve:DATABASE_URL)%&#39;</span><span class="w">
+</span><span class="w">    </span>orm<span class="p">:</span><span class="w">
+</span><span class="w">        </span>auto_generate_proxy_classes<span class="p">:</span><span class="w"> </span><span class="s1">&#39;%kernel.debug%&#39;</span><span class="w">
+</span><span class="w">        </span>naming_strategy<span class="p">:</span><span class="w"> </span>doctrine.orm.naming_strategy.underscore<span class="w">
+</span><span class="w">        </span>auto_mapping<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">        </span>mappings<span class="p">:</span><span class="w">
+</span><span class="w">            </span>App<span class="p">:</span><span class="w">
+</span><span class="w">                </span>is_bundle<span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">                </span>type<span class="p">:</span><span class="w"> </span>annotation<span class="w">
+</span><span class="w">                </span>dir<span class="p">:</span><span class="w"> </span><span class="s1">&#39;%kernel.project_dir%/src/Entity&#39;</span><span class="w">
+</span><span class="w">                </span>prefix<span class="p">:</span><span class="w"> </span><span class="s1">&#39;App\Entity&#39;</span><span class="w">
+</span><span class="w">                </span>alias<span class="p">:</span><span class="w"> </span>App</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">// <span class="cp">&lt;?php</span>
+<span class="c1">// src/Controller/DatabaseController.php
+</span><span class="c1"></span><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Routing\Annotation\Route</span><span class="p">;</span>
+<span class="c1">// 數據庫連接驅動
+</span><span class="c1"></span><span class="k">use</span> <span class="nx">Doctrine\DBAL\Driver\Connection</span><span class="p">;</span>
+
+<span class="c1">// class name is same to file name
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">DatabaseController</span>
+<span class="p">{</span>
+    <span class="sd">/**
+</span><span class="sd">    * @Route(&#34;/dbal&#34;)
+</span><span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">(</span><span class="nx">Connection</span> <span class="nv">$connection</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// $users = $connection-&gt;fetchAll(&#39;SELECT * FROM users&#39;);
+</span><span class="c1"></span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="s1">&#39;SELECT id,name,region FROM province&#39;</span><span class="p">);</span>
+        <span class="nx">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+        <span class="c1">// return new Response(dump($result));
+</span><span class="c1"></span>        <span class="c1">// Error: The Response content must be a string or object implementing __toString(), &#34;array&#34; given.
+</span><span class="c1"></span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>在項目所在目錄中執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">php bin/console server:run</code></pre></td></tr></table>
+</div>
+</div>
+<p>在瀏覽器URL中輸入對應的URL地址即可看到相關輸出信息。</p>
+
+<h2 id="crud">CRUD</h2>
+
+<p>以下操作命令參考自Doctrine官方文檔 <a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/data-retrieval-and-manipulation.html">4. Data Retrieval And Manipulation</a>。</p>
+
+<p><strong>說明</strong>:<code>return new Response()</code>只能返回字符串，無法返回數組，故而使用<code>var_dump()</code>打印。</p>
+
+<p>數據庫增刪改查，以測試數據庫<code>dbal</code>中的<code>province</code>數據表為例:</p>
+
+<p>插入測試數據</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">province</span><span class="o">`</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">province</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;省級列表自增id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">char</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;省份名稱&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">region</span><span class="o">`</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;華北&#39;</span><span class="p">,</span><span class="s1">&#39;東北&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;省所屬區域:1華北、2東北、3華東、4中南(華中,華南)、5西南、6西北&#39;</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">ind_name</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span> <span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;中國大陸省份列表&#39;</span><span class="p">;</span>
+
+<span class="k">LOCK</span> <span class="n">TABLES</span> <span class="o">`</span><span class="n">province</span><span class="o">`</span> <span class="k">WRITE</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">province</span><span class="o">`</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;北京市&#39;</span><span class="p">,</span><span class="s1">&#39;華北&#39;</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;天津市&#39;</span><span class="p">,</span><span class="s1">&#39;華北&#39;</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;河北省&#39;</span><span class="p">,</span><span class="s1">&#39;華北&#39;</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;山西省&#39;</span><span class="p">,</span><span class="s1">&#39;華北&#39;</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;内蒙古自治区&#39;</span><span class="p">,</span><span class="s1">&#39;華北&#39;</span><span class="p">),(</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;辽宁省&#39;</span><span class="p">,</span><span class="s1">&#39;東北&#39;</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="s1">&#39;吉林省&#39;</span><span class="p">,</span><span class="s1">&#39;東北&#39;</span><span class="p">),(</span><span class="mi">8</span><span class="p">,</span><span class="s1">&#39;黑龙江省&#39;</span><span class="p">,</span><span class="s1">&#39;東北&#39;</span><span class="p">),(</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;上海市&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;江苏省&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">11</span><span class="p">,</span><span class="s1">&#39;浙江省&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">12</span><span class="p">,</span><span class="s1">&#39;安徽省&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">13</span><span class="p">,</span><span class="s1">&#39;福建省&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">14</span><span class="p">,</span><span class="s1">&#39;江西省&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">15</span><span class="p">,</span><span class="s1">&#39;山东省&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">),(</span><span class="mi">16</span><span class="p">,</span><span class="s1">&#39;河南省&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">),(</span><span class="mi">17</span><span class="p">,</span><span class="s1">&#39;湖北省&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">),(</span><span class="mi">18</span><span class="p">,</span><span class="s1">&#39;湖南省&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">),(</span><span class="mi">19</span><span class="p">,</span><span class="s1">&#39;广东省&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">),(</span><span class="mi">20</span><span class="p">,</span><span class="s1">&#39;广西壮族自治区&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">),(</span><span class="mi">21</span><span class="p">,</span><span class="s1">&#39;海南省&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">),(</span><span class="mi">22</span><span class="p">,</span><span class="s1">&#39;重庆市&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">),(</span><span class="mi">23</span><span class="p">,</span><span class="s1">&#39;四川省&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">),(</span><span class="mi">24</span><span class="p">,</span><span class="s1">&#39;贵州省&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">),(</span><span class="mi">25</span><span class="p">,</span><span class="s1">&#39;云南省&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">),(</span><span class="mi">26</span><span class="p">,</span><span class="s1">&#39;西藏自治区&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">),(</span><span class="mi">27</span><span class="p">,</span><span class="s1">&#39;陕西省&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">),(</span><span class="mi">28</span><span class="p">,</span><span class="s1">&#39;甘肃省&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">),(</span><span class="mi">29</span><span class="p">,</span><span class="s1">&#39;青海省&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">),(</span><span class="mi">30</span><span class="p">,</span><span class="s1">&#39;宁夏回族自治区&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">),(</span><span class="mi">31</span><span class="p">,</span><span class="s1">&#39;新疆维吾尔自治区&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">);</span>
+<span class="n">UNLOCK</span> <span class="n">TABLES</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">MySQL</span> <span class="p">[</span><span class="n">dbal</span><span class="p">]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">province</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+--------------------------+--------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>                     <span class="o">|</span> <span class="n">region</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------------------------+--------+
+</span><span class="c1"></span><span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="err">北京市</span>                   <span class="o">|</span> <span class="err">華北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="err">天津市</span>                   <span class="o">|</span> <span class="err">華北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="err">河北省</span>                   <span class="o">|</span> <span class="err">華北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="err">山西省</span>                   <span class="o">|</span> <span class="err">華北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="err">内蒙古自治区</span>             <span class="o">|</span> <span class="err">華北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="err">辽宁省</span>                   <span class="o">|</span> <span class="err">東北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="err">吉林省</span>                   <span class="o">|</span> <span class="err">東北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span> <span class="err">黑龙江省</span>                 <span class="o">|</span> <span class="err">東北</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">9</span> <span class="o">|</span> <span class="err">上海市</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">10</span> <span class="o">|</span> <span class="err">江苏省</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">11</span> <span class="o">|</span> <span class="err">浙江省</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">12</span> <span class="o">|</span> <span class="err">安徽省</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">13</span> <span class="o">|</span> <span class="err">福建省</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="err">江西省</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">15</span> <span class="o">|</span> <span class="err">山东省</span>                   <span class="o">|</span> <span class="err">華東</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">16</span> <span class="o">|</span> <span class="err">河南省</span>                   <span class="o">|</span> <span class="err">中南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">17</span> <span class="o">|</span> <span class="err">湖北省</span>                   <span class="o">|</span> <span class="err">中南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">18</span> <span class="o">|</span> <span class="err">湖南省</span>                   <span class="o">|</span> <span class="err">中南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">19</span> <span class="o">|</span> <span class="err">广东省</span>                   <span class="o">|</span> <span class="err">中南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">20</span> <span class="o">|</span> <span class="err">广西壮族自治区</span>           <span class="o">|</span> <span class="err">中南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">21</span> <span class="o">|</span> <span class="err">海南省</span>                   <span class="o">|</span> <span class="err">中南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">22</span> <span class="o">|</span> <span class="err">重庆市</span>                   <span class="o">|</span> <span class="err">西南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">23</span> <span class="o">|</span> <span class="err">四川省</span>                   <span class="o">|</span> <span class="err">西南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">24</span> <span class="o">|</span> <span class="err">贵州省</span>                   <span class="o">|</span> <span class="err">西南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">25</span> <span class="o">|</span> <span class="err">云南省</span>                   <span class="o">|</span> <span class="err">西南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">26</span> <span class="o">|</span> <span class="err">西藏自治区</span>               <span class="o">|</span> <span class="err">西南</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">27</span> <span class="o">|</span> <span class="err">陕西省</span>                   <span class="o">|</span> <span class="err">西北</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">28</span> <span class="o">|</span> <span class="err">甘肃省</span>                   <span class="o">|</span> <span class="err">西北</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">29</span> <span class="o">|</span> <span class="err">青海省</span>                   <span class="o">|</span> <span class="err">西北</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">30</span> <span class="o">|</span> <span class="err">宁夏回族自治区</span>           <span class="o">|</span> <span class="err">西北</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">31</span> <span class="o">|</span> <span class="err">新疆维吾尔自治区</span>         <span class="o">|</span> <span class="err">西北</span>   <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------------------------+--------+
+</span><span class="c1"></span><span class="mi">31</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[</span><span class="n">dbal</span><span class="p">]</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="retrieve-data">Retrieve Data</h3>
+
+<h4 id="fetchcolumn">fetchColumn</h4>
+
+<blockquote>
+<p><code>fetchColumn($column)</code> - Retrieves only one column of the next row specified by column index. Moves the pointer forward one row, so that consecutive calls will always return the next row.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+    $result = $connection-&gt;fetchColumn(&#39;SELECT name FROM dbal.province order by id&#39;);
+    return new Response(dump($result));
+    #var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="fetcharray">fetchArray</h4>
+
+<blockquote>
+<p><code>fetchArray()</code>: Numeric index retrieval of first result row of the given query:</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+    $result = $connection-&gt;fetchArray(&#39;SELECT id,name,region FROM dbal.province where region=1 order by id&#39;);
+    var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">array(3) { [0]=&gt; string(1) &#34;1&#34; [1]=&gt; string(9) &#34;北京市&#34; [2]=&gt; string(6) &#34;華北&#34; }</pre></td></tr></table>
+</div>
+</div>
+<h4 id="fetchassoc">fetchAssoc</h4>
+
+<blockquote>
+<p><code>fetchAssoc()</code>: Retrieve assoc row of the first result row.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+    $result = $connection-&gt;fetchAssoc(&#39;SELECT id,name,region FROM dbal.province where region=1 order by id&#39;);
+    var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">array(3) { [&#34;id&#34;]=&gt; string(1) &#34;1&#34; [&#34;name&#34;]=&gt; string(9) &#34;北京市&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; }</pre></td></tr></table>
+</div>
+</div>
+<h4 id="fetchall">fetchAll</h4>
+
+<blockquote>
+<p><code>fetchAll($fetchStyle)</code> - Retrieves all rows from the statement.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+   $result = $connection-&gt;fetchAll(&#39;SELECT id,name,region FROM dbal.province order by id where region=1&#39;);
+   var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">array(5) { [0]=&gt; array(3) { [&#34;id&#34;]=&gt; string(1) &#34;1&#34; [&#34;name&#34;]=&gt; string(9) &#34;北京市&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; } [1]=&gt; array(3) { [&#34;id&#34;]=&gt; string(1) &#34;2&#34; [&#34;name&#34;]=&gt; string(9) &#34;天津市&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; } [2]=&gt; array(3) { [&#34;id&#34;]=&gt; string(1) &#34;3&#34; [&#34;name&#34;]=&gt; string(9) &#34;河北省&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; } [3]=&gt; array(3) { [&#34;id&#34;]=&gt; string(1) &#34;4&#34; [&#34;name&#34;]=&gt; string(9) &#34;山西省&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; } [4]=&gt; array(3) { [&#34;id&#34;]=&gt; string(1) &#34;5&#34; [&#34;name&#34;]=&gt; string(18) &#34;内蒙古自治区&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; } }</pre></td></tr></table>
+</div>
+</div>
+<h3 id="update-data">Update Data</h3>
+
+<blockquote>
+<p><code>executeUpdate($sql, $params, $types)</code> - Create a prepared statement for the passed SQL query, bind the given params with their binding types and execute the query. This method returns the number of affected rows by the executed query and is useful for <code>UPDATE</code>, <code>DELETE</code> and <code>INSERT</code> statements.</p>
+</blockquote>
+
+<p>Executes a prepared statement with the given SQL and parameters and returns the affected rows count</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+    $sql = &#34;update dbal.province set name=&#39;Testing&#39; where id=1&#34;;
+    $update = $connection-&gt;executeUpdate($sql);
+    $result = $connection-&gt;fetchAssoc(&#39;SELECT id,name,region FROM dbal.province where id=1&#39;);
+    var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">array(3) { [&#34;id&#34;]=&gt; string(1) &#34;1&#34; [&#34;name&#34;]=&gt; string(7) &#34;Testing&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; }</pre></td></tr></table>
+</div>
+</div>
+<h3 id="insert-data">Insert Data</h3>
+
+<blockquote>
+<p>insert(): Insert a row into the given table name using the key value pairs of data.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+    $insert = $connection-&gt;insert(&#39;dbal.province&#39;, array(&#39;name&#39; =&gt; &#39;DBAL&#39;, &#39;region&#39; =&gt; 1));
+    // $conn-&gt;insert(&#39;user&#39;, array(&#39;username&#39; =&gt; &#39;jwage&#39;));
+    // INSERT INTO user (username) VALUES (?) (jwage)
+
+    $result = $connection-&gt;fetchAssoc(&#39;SELECT id,name,region FROM dbal.province order by id desc limit 1&#39;);
+   var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">array(3) { [&#34;id&#34;]=&gt; string(2) &#34;32&#34; [&#34;name&#34;]=&gt; string(4) &#34;DBAL&#34; [&#34;region&#34;]=&gt; string(6) &#34;華北&#34; }</pre></td></tr></table>
+</div>
+</div>
+<h3 id="delete">Delete</h3>
+
+<blockquote>
+<p><code>delete()</code>: Delete all rows of a table matching the given identifier, where keys are column names.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function indexAction(Connection $connection)
+{
+    $delete = $connection-&gt;delete(&#39;dbal.province&#39;, array(&#39;id&#39; =&gt; 1));
+    // $conn-&gt;delete(&#39;user&#39;, array(&#39;id&#39; =&gt; 1));
+    // DELETE FROM user WHERE id = ? (1)
+
+    $result = $connection-&gt;fetchAll(&#39;SELECT id,name FROM dbal.province where region=1 order by id&#39;);
+    var_dump($result);
+}</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">array(5) { [0]=&gt; array(2) { [&#34;id&#34;]=&gt; string(1) &#34;2&#34; [&#34;name&#34;]=&gt; string(9) &#34;天津市&#34; } [1]=&gt; array(2) { [&#34;id&#34;]=&gt; string(1) &#34;3&#34; [&#34;name&#34;]=&gt; string(9) &#34;河北省&#34; } [2]=&gt; array(2) { [&#34;id&#34;]=&gt; string(1) &#34;4&#34; [&#34;name&#34;]=&gt; string(9) &#34;山西省&#34; } [3]=&gt; array(2) { [&#34;id&#34;]=&gt; string(1) &#34;5&#34; [&#34;name&#34;]=&gt; string(18) &#34;内蒙古自治区&#34; } [4]=&gt; array(2) { [&#34;id&#34;]=&gt; string(2) &#34;32&#34; [&#34;name&#34;]=&gt; string(4) &#34;DBAL&#34; } }</pre></td></tr></table>
+</div>
+</div>
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://symfony.com/doc/master/doctrine.html">Databases and the Doctrine ORM</a></li>
+<li><a href="https://symfony.com/doc/master/doctrine/dbal.html">How to Use Doctrine DBAL</a></li>
+<li><a href="https://symfony.com/doc/current/components/var_dumper.html">The VarDumper Component</a></li>
+<li><a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/data-retrieval-and-manipulation.html">Data Retrieval And Manipulation</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.08.24 12:39 Wed Aisa/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.14 19:13 Sat America/Boston
+
+<ul>
+<li>更新、勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-14</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/symfony/">Symfony</a>
+          
+          <a href="/tags/php/">PHP</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Configuring Nginx Web Server For Symfony Framework On GNU Linux</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/">
+            <span class="next-text nav-default">Installing And Setting Up The Symfony Framework On CentOS 7</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

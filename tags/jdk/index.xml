@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jdk on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/jdk/</link>
+    <description>Recent content in Jdk on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Apr 2018 15:37:16 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/jdk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Oracle JDK On GNU/Linux</title>
+      <link>/2018/setting-up-oracle-jdk-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/2018/setting-up-oracle-jdk-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Java SE&lt;/code&gt; is an abbreviation for &lt;code&gt;Java Platform, Standard Edition&lt;/code&gt;, and &lt;code&gt;JDK&lt;/code&gt; is an abbreviation for &lt;code&gt;Java SE Development Kit&lt;/code&gt;. JDK provides running environment for &lt;a href=&#34;http://www.oracle.com/technetwork/java/&#34;&gt;Java&lt;/a&gt; applications. This article documents how to set up Oracle JDK on GNU/Linux, then implement the entire process through Shell script.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝配置Oracle JDK</title>
+      <link>/2018/setting-up-oracle-jdk-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/2018/setting-up-oracle-jdk-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Java SE&lt;/code&gt;是&lt;code&gt;Java Platform, Standard Edition&lt;/code&gt;的縮寫，而&lt;code&gt;JDK&lt;/code&gt;是&lt;code&gt;Java SE Development Kit&lt;/code&gt;的縮寫，JDK爲&lt;a href=&#34;http://www.oracle.com/technetwork/java/&#34;&gt;Java&lt;/a&gt;應用提供環境支持。本文記錄如何在GNU/Linux中安裝、配置 Oracle JDK，並通過Shell腳本實現整個過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

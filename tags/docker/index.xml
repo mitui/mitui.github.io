@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/docker/</link>
+    <description>Recent content in Docker on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 06 Mar 2017 13:24:08 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing And Configuring Docker Community Edition(CE) On GNU/Linux</title>
+      <link>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</link>
+      <pubDate>Mon, 06 Mar 2017 13:24:08 +0800</pubDate>
+      
+      <guid>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt; is a open source container program that performs operating-system-level virtualization. &lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt; currently provides three products &lt;code&gt;Enterprise Edition(EE)&lt;/code&gt;、&lt;code&gt;Community Edition(CE)&lt;/code&gt; and &lt;code&gt;Cloud&lt;/code&gt;. This article documents how to install and configure Docker CE in GNU/Linux.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝Docker CE（社區版）全記錄</title>
+      <link>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</link>
+      <pubDate>Mon, 06 Mar 2017 13:24:08 +0800</pubDate>
+      
+      <guid>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt;是一款開源的，提供&lt;code&gt;Operating-system-level virtualization&lt;/code&gt;(操作系統級別的虛擬化的)容器(container)產品，可實現在軟件容器中自動部署應用。目前有&lt;code&gt;Enterprise Edition(EE)&lt;/code&gt;、&lt;code&gt;Community Edition(CE)&lt;/code&gt;、&lt;code&gt;Cloud&lt;/code&gt;三個變種。本文記錄在GNU/Linux中安裝、配置Docker Engine的過程，並通過&lt;a href=&#34;#shell-script&#34;&gt;Shell Script&lt;/a&gt;實現。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Building Docker Private Registry With Self-signed Certificate</title>
+      <link>/2016/building-docker-private-registry-with-self-signed-certificate/</link>
+      <pubDate>Mon, 06 Jun 2016 22:06:13 +0800</pubDate>
+      
+      <guid>/2016/building-docker-private-registry-with-self-signed-certificate/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt;是一款開源的，提供&lt;code&gt;Operating-system-level virtualization&lt;/code&gt;(操作系統級別的虛擬化的)容器(container)產品，可實現在軟件容器中自動部署應用。本文主要記錄如何&lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt;的&lt;a href=&#34;https://hub.docker.com/_/registry/&#34;&gt;Registry&lt;/a&gt;創建私有倉庫，並通過自簽證書實現通過域名訪問私有倉庫。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

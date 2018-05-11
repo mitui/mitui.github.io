@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on MetaDefine - A super concise theme for Hugo</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Apr 2018 15:37:16 -0400</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Oracle JDK On GNU/Linux</title>
+      <link>/2018/setting-up-oracle-jdk-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/2018/setting-up-oracle-jdk-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Java SE&lt;/code&gt; is an abbreviation for &lt;code&gt;Java Platform, Standard Edition&lt;/code&gt;, and &lt;code&gt;JDK&lt;/code&gt; is an abbreviation for &lt;code&gt;Java SE Development Kit&lt;/code&gt;. JDK provides running environment for &lt;a href=&#34;http://www.oracle.com/technetwork/java/&#34;&gt;Java&lt;/a&gt; applications. This article documents how to set up Oracle JDK on GNU/Linux, then implement the entire process through Shell script.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝配置Oracle JDK</title>
+      <link>/2018/setting-up-oracle-jdk-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/2018/setting-up-oracle-jdk-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Java SE&lt;/code&gt;是&lt;code&gt;Java Platform, Standard Edition&lt;/code&gt;的縮寫，而&lt;code&gt;JDK&lt;/code&gt;是&lt;code&gt;Java SE Development Kit&lt;/code&gt;的縮寫，JDK爲&lt;a href=&#34;http://www.oracle.com/technetwork/java/&#34;&gt;Java&lt;/a&gt;應用提供環境支持。本文記錄如何在GNU/Linux中安裝、配置 Oracle JDK，並通過Shell腳本實現整個過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Anaconda And Jupyter Notebook On GNU/Linux</title>
+      <link>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 10:42:53 -0400</pubDate>
+      
+      <guid>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt; is an open-source interactive web application developed by &lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt; language. The official recommends installing &lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt; and &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt; using the &lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda Distribution&lt;/a&gt;. This article documents how to set up &lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda&lt;/a&gt; and &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;, and implement the entire process through a shell script.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝配置Anaconda和Jupyter Notebook</title>
+      <link>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 10:42:53 -0400</pubDate>
+      
+      <guid>/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;是一款開源的交互式Web應用，使用&lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt;語言開發。其官方建議通過&lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda&lt;/a&gt;安裝&lt;a href=&#34;https://www.python.org&#34;&gt;Python&lt;/a&gt;和&lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;。本文記錄如何通過&lt;a href=&#34;https://www.anaconda.com&#34; title=&#34;The Most Popular Python Data Science Platform&#34;&gt;Anaconda&lt;/a&gt;安裝、配置&lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter Notebook&lt;/a&gt;，並通過Shell腳本實現整個過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Slack Build Notification in Travis CI for Github Project</title>
+      <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</guid>
+      <description>&lt;p&gt;By default, &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt; uses email to send build notification, it also support other method, e.g. &lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;. This article documents how to set up &lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt; notification for &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt; project integrated &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲集成了Travis CI的GitHub項目配置Slack信息推送</title>
+      <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;默認通過郵件發送構建信息，&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;也支持通過其它方式發送信息，如&lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;。本文記錄如何已集成&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;的&lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;項目配置&lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;信息推送。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Cloudflare Free SSL In GitHub Pages With Custom Domain</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;I have succeed in migrating my blog from &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt; to &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; platform, new domain is &lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;. As &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt; doesn&amp;rsquo;t provide SSL certificate for custom domain, so I need to deploy it separately. &lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; provides free SSL certificate, and it has the ability of anti-ddos.&lt;/p&gt;
+
+&lt;p&gt;This article documents how to configure
+&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; free SSL certificate in &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲GitHub Pages配置Cloudflare的免費SSL數字證書</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;Blog已成功從&lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;遷移到&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;，新域名&lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;。由於&lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;對自有域名不提供SSL證書，故須額外部署。&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;提供免費的SSL證書，並且提供防DDOS攻擊功能。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何配置並使用&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;的SSL證書。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically</title>
+      <link>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</link>
+      <pubDate>Wed, 11 Apr 2018 00:20:07 -0400</pubDate>
+      
+      <guid>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</guid>
+      <description>&lt;p&gt;My personal static blog is hosted on &lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;. I used &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt; before, but as its complicated package dependence and cumbersome deployment process, I have to encapsulated the whole deploying environment into Docker image for rapid deployment. But it was still too complex. Now I switch to &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; which is faster, simpler.&lt;/p&gt;
+
+&lt;p&gt;This article documents how to automatically synchronize blog contents generated by &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; to &lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt; through &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Attention&lt;/strong&gt;: The following operation process will not involve account registration, Git configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利用Travis CI和Hugo將Blog自動部署到Github Pages</title>
+      <link>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</link>
+      <pubDate>Wed, 11 Apr 2018 00:20:07 -0400</pubDate>
+      
+      <guid>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</guid>
+      <description>&lt;p&gt;個人Blog採用靜態Blog形式託管在&lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;上。此前使用的是&lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;。本文記錄如何在GNU/Linux中通過&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;將&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;生成的Blog內容自動同步到&lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;，實現持續集成、部署。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：本文旨在記錄關鍵操作，不涉及帳號註冊、Git安裝配置等過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cleaning Text Data Which Delimiter Is Special Character Using Sed &amp; Awk</title>
+      <link>/2018/cleaning-text-data-which-delimiter-is-special-character-using-sed-and-awk/</link>
+      <pubDate>Fri, 09 Mar 2018 01:26:21 -0400</pubDate>
+      
+      <guid>/2018/cleaning-text-data-which-delimiter-is-special-character-using-sed-and-awk/</guid>
+      <description>&lt;p&gt;需要對一份招聘相關的數據樣本(160多萬行)進行數據分析，妻子在用Python處理時出現報錯。經過分析,原因出在&lt;code&gt;分隔符&lt;/code&gt;、&lt;code&gt;換行符&lt;/code&gt;等特殊符號上，此外還有一條數據分散爲兩行的情況。本人通過對異常數據進行分析，整理出特殊情況類別，在GNU/Linux系統下用&lt;code&gt;sed&lt;/code&gt;和&lt;code&gt;awk&lt;/code&gt;對數據進行初步清洗，實現預期要求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extracting API Requests Counts From Nginx Access Log Per week</title>
+      <link>/2017/extracting-api-requests-counts-from-nginx-access-log-per-week/</link>
+      <pubDate>Tue, 12 Dec 2017 19:58:34 +0800</pubDate>
+      
+      <guid>/2017/extracting-api-requests-counts-from-nginx-access-log-per-week/</guid>
+      <description>&lt;p&gt;2017年7月3日寫過一篇 &lt;code&gt;Extracting API Requests Info From Nginx Access Log&lt;/code&gt;，主要記錄從Nginx日誌中提取各自有API的請求頻次。最近一段時間，線上環境服務器的CPU、內存時常會被佔滿，導致線上服務宕掉。爲了解決該問題，其中一項舉措是要求運維這邊每週提取一次各API接口的請求數據，該任務仍有本人來操作。本文主要記錄在當前需求下，數據的提取過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Deploying Project Codes To Multiple Remote Hosts Via SSH</title>
+      <link>/2017/deploying-project-codes-to-multiple-remote-hosts-via-ssh/</link>
+      <pubDate>Tue, 24 Oct 2017 16:46:16 +0800</pubDate>
+      
+      <guid>/2017/deploying-project-codes-to-multiple-remote-hosts-via-ssh/</guid>
+      <description>&lt;p&gt;截至目前(2017-10)，公司測試、驗證、生產環境的代碼仍使用人工手動部署，其中緣由，歷史與現實原因皆有。數月前，研發部門對系統架構進行了一次更改，其中加入了負載均衡(load balance)功能。架構更改後，項目由單節點(主機)運行變成多節點(主機)運行，服務器數量增加了近一倍，加之公司有30多個自有項目在運行。若仍使用人工部署方式，一則運維同事壓力巨大，二則嚴重影響生產效率。在IT運維部經理的要求下，本人着手進行代碼部署的自動化工作。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何使用&lt;code&gt;SSH&lt;/code&gt;將項目代碼傳輸到遠程內網主機中，進行代碼部署操作，並給出Shell Script代碼(簡易版)。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Splitting Nginx Log By Date Via GNU Awk</title>
+      <link>/2017/splitting-nginx-log-by-date-via-gnu-awk/</link>
+      <pubDate>Thu, 10 Aug 2017 16:40:24 +0800</pubDate>
+      
+      <guid>/2017/splitting-nginx-log-by-date-via-gnu-awk/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.nginx.com/&#34; title=&#34;Nginx&#34;&gt;Nginx&lt;/a&gt;在運行過程中會生成大量&lt;code&gt;access&lt;/code&gt;和&lt;code&gt;error&lt;/code&gt;日誌，默認情況下日誌文件大小持續增長。爲方便操作(如打開、查詢)，需對Nginx日誌進行切割，如按日期，而&lt;a href=&#34;https://www.nginx.com/&#34; title=&#34;Nginx&#34;&gt;Nginx&lt;/a&gt;本身並不提供該功能。&lt;/p&gt;
+
+&lt;p&gt;網路上的方案千篇一律：利用&lt;a href=&#34;https://www.nginx.com/&#34; title=&#34;Nginx&#34;&gt;Nginx&lt;/a&gt;的&lt;a href=&#34;https://www.nginx.com/resources/wiki/start/topics/examples/logrotation/&#34; title=&#34;Nginx&#34;&gt;Log Rotation&lt;/a&gt;功能，操作日誌後，通過&lt;code&gt;USR1&lt;/code&gt;信號重新打開日誌；將操作命令寫入腳本，通過cron任務定時執行。對於該種方案，本人不做任何評價。&lt;/p&gt;
+
+&lt;p&gt;本文主要記錄如何通過&lt;a href=&#34;https://www.gnu.org/software/gawk/&#34; title=&#34;GNU awk&#34;&gt;awk&lt;/a&gt;實現Nginx日誌按年分、月份、周、天、小時等預定方式進行切割。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extracting API Requests Info From Nginx Access Log</title>
+      <link>/2017/extracting-api-requests-info-from-nginx-access-log/</link>
+      <pubDate>Mon, 03 Jul 2017 11:43:21 +0800</pubDate>
+      
+      <guid>/2017/extracting-api-requests-info-from-nginx-access-log/</guid>
+      <description>&lt;p&gt;運維部接到研發經理的需求，從Nginx日誌中提取某一天API接口調用信息，並根據指定的維度進行彙總。因日誌文件在線上生產環境中，且單個文件大小達數GB，爲了減少操作對生產環境的穩定性造成影響。將初步提取的數據下載到本地環境，進行進一步的彙總分析。&lt;/p&gt;
+
+&lt;p&gt;以前是將提取的數據導入MySQL數據庫，通過SQL進行提取分析，雖方便但數據導入過程過於漫長。本文
+操作主要使用&lt;code&gt;sed&lt;/code&gt;、&lt;code&gt;awk&lt;/code&gt;命令，並大量使用了一些高級特性，如&lt;code&gt;sed&lt;/code&gt;的添加行號、&lt;a href=&#34;https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html&#34; title=&#34;Character Class&#34;&gt;字符类&lt;/a&gt;、正则、&lt;a href=&#34;https://www.gnu.org/software/sed/manual/html_node/Back_002dreferences-and-Subexpressions.html&#34; title=&#34;Back-references and Subexpressions&#34;&gt;後向引用&lt;/a&gt;；&lt;code&gt;awk&lt;/code&gt;的getline、&lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Controlling-Scanning.html&#34; title=&#34;Controlling Array Traversal&#34;&gt;預定義數組掃描排序&lt;/a&gt;、&lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Multidimensional.html&#34; title=&#34;Multidimensional Arrays&#34;&gt;多維數組&lt;/a&gt;等，算是後積薄發的一次展現。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Sed To Reverse Character Or Line On GNU/Linux</title>
+      <link>/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/</link>
+      <pubDate>Thu, 15 Jun 2017 11:27:01 +0800</pubDate>
+      
+      <guid>/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/software/sed/&#34; title=&#34;GNU sed&#34;&gt;GNU sed&lt;/a&gt;是一款文本流編輯器(stream editor)，功能強大，官方文檔 &lt;a href=&#34;https://www.gnu.org/software/sed/manual/sed.html&#34;&gt;sed, a stream editor&lt;/a&gt;。網路上也有許多不錯的教程，&lt;a href=&#34;http://pement.org/sed/sed1line.txt&#34;&gt;USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)&lt;/a&gt;便是其中之一。本文主要討論其中 &lt;em&gt;字符串逆序排列&lt;/em&gt; (character reverse)和 &lt;em&gt;文本行倒置&lt;/em&gt; (line reverse，功能類似&lt;code&gt;tac&lt;/code&gt;命令)的實現過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk</title>
+      <link>/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/</link>
+      <pubDate>Wed, 15 Mar 2017 14:57:39 +0800</pubDate>
+      
+      <guid>/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/</guid>
+      <description>&lt;p&gt;在GNU/Linux中，&lt;a href=&#34;https://www.gnu.org/software/gawk/&#34; title=&#34;GNU awk&#34;&gt;awk(gawk)&lt;/a&gt;和&lt;a href=&#34;https://www.gnu.org/software/sed/&#34; title=&#34;GNU sed&#34;&gt;sed&lt;/a&gt;可用於處理文本數據。本文討論的是如何使用二者提取匹配數據行的前一行或後一行數據。如果匹配數據行出現多次，則只輸出第一次匹配到的數據行。&lt;/p&gt;
+
+&lt;p&gt;本文採用真實案例進行討論&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(匹配行的前一行) 提取&lt;a href=&#34;https://nginx.org/&#34; title=&#34;Nginx Web Server&#34;&gt;Nginx&lt;/a&gt;的最新版本號；&lt;/li&gt;
+&lt;li&gt;(匹配行的後一行) 提取&lt;a href=&#34;https://www.kernel.org&#34; title=&#34;Linux Kernel&#34;&gt;Linux Kernel&lt;/a&gt;的最新版本號；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Installing And Configuring Docker Community Edition(CE) On GNU/Linux</title>
+      <link>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</link>
+      <pubDate>Mon, 06 Mar 2017 13:24:08 +0800</pubDate>
+      
+      <guid>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt; is a open source container program that performs operating-system-level virtualization. &lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt; currently provides three products &lt;code&gt;Enterprise Edition(EE)&lt;/code&gt;、&lt;code&gt;Community Edition(CE)&lt;/code&gt; and &lt;code&gt;Cloud&lt;/code&gt;. This article documents how to install and configure Docker CE in GNU/Linux.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝Docker CE（社區版）全記錄</title>
+      <link>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</link>
+      <pubDate>Mon, 06 Mar 2017 13:24:08 +0800</pubDate>
+      
+      <guid>/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com&#34; title=&#34;Docker&#34;&gt;Docker&lt;/a&gt;是一款開源的，提供&lt;code&gt;Operating-system-level virtualization&lt;/code&gt;(操作系統級別的虛擬化的)容器(container)產品，可實現在軟件容器中自動部署應用。目前有&lt;code&gt;Enterprise Edition(EE)&lt;/code&gt;、&lt;code&gt;Community Edition(CE)&lt;/code&gt;、&lt;code&gt;Cloud&lt;/code&gt;三個變種。本文記錄在GNU/Linux中安裝、配置Docker Engine的過程，並通過&lt;a href=&#34;#shell-script&#34;&gt;Shell Script&lt;/a&gt;實現。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Life Cycle Info For Mainstream GNU Linux Distributions</title>
+      <link>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</link>
+      <pubDate>Mon, 13 Feb 2017 13:40:36 +0800</pubDate>
+      
+      <guid>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.gnu.org&#34; title=&#34;GNU Operating System&#34;&gt;GNU/Linux&lt;/a&gt; is a open source operating system, it consists of &lt;a href=&#34;linuxkernel&#34;&gt;Linux kernel&lt;/a&gt; and a piece of programs. It has many distributions, &lt;a href=&#34;https://www.redhat.com/en&#34; title=&#34;RedHat&#34;&gt;RHEL&lt;/a&gt;/&lt;a href=&#34;https://www.centos.org&#34; title=&#34;CentOS&#34;&gt;CentOS&lt;/a&gt;、 &lt;a href=&#34;https://www.debian.org&#34; title=&#34;Debian&#34;&gt;Debian&lt;/a&gt;/&lt;a href=&#34;https://www.ubuntu.com&#34; title=&#34;Ubuntu&#34;&gt;Ubuntu&lt;/a&gt;、&lt;a href=&#34;https://www.suse.com&#34; title=&#34;SUSE&#34;&gt;SUSE&lt;/a&gt;/&lt;a href=&#34;https://www.opensuse.org&#34; title=&#34;OpenSUSE&#34;&gt;OpenSUSE&lt;/a&gt; are mainstream distributions. In order to extract the product support life cycle info, I wrote a &lt;a href=&#34;https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxLifeCycleInfo.sh&#34;&gt;Shell script&lt;/a&gt; to extract relevant info from their official site.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

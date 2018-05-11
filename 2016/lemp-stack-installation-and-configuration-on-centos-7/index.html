@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在CentOS 7中配置LEMP開發環境全記錄 - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="如何在CentOS 7中安裝、配置LEMP開發環境" />
+<meta name="keywords" content="AxdLog, LEMP, PHP, Nginx, MySQL, SELinux, Firewalld, Shell Script" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="在CentOS 7中配置LEMP開發環境全記錄" />
+<meta property="og:description" content="如何在CentOS 7中安裝、配置LEMP開發環境" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/lemp-stack-installation-and-configuration-on-centos-7/" />
+
+
+
+<meta property="article:published_time" content="2016-03-11T18:31:58&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-14T13:20:02-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="在CentOS 7中配置LEMP開發環境全記錄">
+<meta itemprop="description" content="如何在CentOS 7中安裝、配置LEMP開發環境">
+
+
+<meta itemprop="datePublished" content="2016-03-11T18:31:58&#43;08:00" />
+<meta itemprop="dateModified" content="2016-03-11T18:31:58&#43;08:00" />
+<meta itemprop="wordCount" content="4829">
+
+
+
+<meta itemprop="keywords" content="PHP,Nginx,MySQL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在CentOS 7中配置LEMP開發環境全記錄"/>
+<meta name="twitter:description" content="如何在CentOS 7中安裝、配置LEMP開發環境"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">在CentOS 7中配置LEMP開發環境全記錄</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-03-11 </span>
+        <div class="post-category">
+            
+              <a href="/categories/php/"> PHP </a>
+            
+          </div>
+        <span class="more-meta"> 4829 words </span>
+        <span class="more-meta"> 10 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#概要">概要</a></li>
+<li><a href="#系統初始化">系統初始化</a></li>
+<li><a href="#軟件源">軟件源</a></li>
+<li><a href="#nginx">Nginx</a>
+<ul>
+<li><a href="#安裝-nginx">安裝 Nginx</a></li>
+</ul></li>
+<li><a href="#mysql">MySQL</a>
+<ul>
+<li><a href="#安裝-mysql">安裝 MySQL</a></li>
+<li><a href="#創建遠程登錄用戶">創建遠程登錄用戶</a></li>
+</ul></li>
+<li><a href="#php">PHP</a>
+<ul>
+<li><a href="#配置-remi-倉庫">配置 REMI 倉庫</a></li>
+<li><a href="#安裝-php">安裝 PHP</a></li>
+<li><a href="#配置-php">配置 PHP</a></li>
+<li><a href="#配置-php-fpm">配置 PHP-FPM</a></li>
+<li><a href="#配置-nginx">配置 Nginx</a></li>
+<li><a href="#phpinfo">phpinfo()</a></li>
+</ul></li>
+<li><a href="#連接測試">連接測試</a>
+<ul>
+<li><a href="#數據庫連接">數據庫連接</a></li>
+<li><a href="#web-服務器">Web 服務器</a></li>
+<li><a href="#nginx-日誌">Nginx 日誌</a></li>
+</ul></li>
+<li><a href="#更新日誌">更新日誌</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>本文記錄如何在已啓用<code>SELinux</code>、<code>Firewalld</code>防火牆的<code>CentOS 7</code>系統中安裝、配置 <strong>LEMP</strong> (<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>、<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>)套件。</p>
+
+<p>本人寫了一些Shell腳本用以實現操作的自動化，項目代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript" title="axd Shell Script">GitHub</a>。已實現 系統初始化，<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>的腳本化操作，但<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>暫時仍需要手動安裝。</p>
+
+<p></p>
+
+<p>通常如果<code>SELinux</code>設爲<code>enabled</code>，會導致<a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>、<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>無法正常使用，本人已在Shell腳本中處理好相關問題。</p>
+
+<p><strong>注意</strong>：如果是普通用戶，則須通過<code>sudo</code>執行相關命令。</p>
+
+<h2 id="概要">概要</h2>
+
+<p>VPS主機外網地址 <code>104.236.100.67</code></p>
+
+<p>版本信息</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Info</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">OS Version</td>
+<td align="left"><code>CentOS Linux release 7.4.1708 (Core)</code></td>
+</tr>
+
+<tr>
+<td align="left">Kernel Version</td>
+<td align="left"><code>3.10.0-693.21.1.el7.x86_64</code></td>
+</tr>
+
+<tr>
+<td align="left">PHP</td>
+<td align="left"><code>7.2.4</code></td>
+</tr>
+
+<tr>
+<td align="left">Nginx</td>
+<td align="left"><code>1.13.12</code></td>
+</tr>
+
+<tr>
+<td align="left">MySQL</td>
+<td align="left"><code>5.7.21</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>配置文件默認安裝路徑</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Software</th>
+<th align="left">Configuration Files</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">PHP</td>
+<td align="left"><code>/etc/php.ini</code>, <code>/etc/php.d/</code></td>
+</tr>
+
+<tr>
+<td align="left">PHP-FPM</td>
+<td align="left"><code>/etc/php-fpm.conf</code>, <code>/etc/php-fpm.d/www.conf</code></td>
+</tr>
+
+<tr>
+<td align="left">Nginx</td>
+<td align="left"><code>/etc/nginx/nginx.conf</code>, <code>/etc/nginx/conf.d/*.conf</code></td>
+</tr>
+
+<tr>
+<td align="left">MySQL</td>
+<td align="left"><code>/etc/my.cnf</code>, <code>/etc/my.cnf.d</code>, <code>~/.my.cnf</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>版本檢查</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># - nginx
+</span><span class="c1"></span>sudo nginx -V <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> awk -v <span class="nv">FS</span><span class="o">=</span><span class="s1">&#39;/&#39;</span> <span class="s1">&#39;{print $NF;exit}&#39;</span>
+sudo nginx -V <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;1 s@.*/(.*)@\1@p&#39;</span>
+<span class="c1"># For Bash 4+  2&gt;&amp;1 | == |&amp;
+</span><span class="c1"></span>
+<span class="c1"># - mysql
+</span><span class="c1"></span>mysql -V <span class="p">|</span> sed -r -n <span class="s1">&#39;s@.*Distrib (.*),.*@\1@p&#39;</span>
+
+<span class="c1"># - php
+</span><span class="c1"></span>php -v <span class="m">2</span>&gt; /dev/null <span class="p">|</span> awk <span class="s1">&#39;{print $2;exit}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>配置文件路徑檢查</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># - nginx
+</span><span class="c1"></span>sudo nginx -V <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;s@.*conf-path=(.*) --error.*@\1@p&#39;</span>
+
+<span class="c1"># - mysql
+</span><span class="c1"></span>mysql --help <span class="p">|</span> awk <span class="s1">&#39;$0~/Default options/{getline;print}&#39;</span>
+mysqladmin --help <span class="p">|</span> awk <span class="s1">&#39;$0~/Default options/{getline;print}&#39;</span>
+
+<span class="c1"># - php
+</span><span class="c1"></span>php -i <span class="m">2</span>&gt; /dev/null <span class="p">|</span> awk <span class="s1">&#39;$0~/^Loaded Configuration File/{print $NF}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="系統初始化">系統初始化</h2>
+
+<p>系統初始化操作通過Shell腳本實現，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>，通過如下命令執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh <span class="p">|</span> sudo bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/176585.js" id="asciicast-176585" async></script>
+
+<p>通過指令<code>-Z</code>設置<code>SELinux</code>的類型(<code>permissive/enforcing/disabled</code>)，默認啓用<code>Firewalld</code>防火牆並開放SSH端口。</p>
+
+<p>系統初始化後<code>SELinux</code>和<code>Firewalld</code>防火牆的狀態</p>
+
+<p>SELinux status</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># sestatus
+</span><span class="c1"></span>SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      <span class="m">28</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Firewall status</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># firewall-cmd --list-all
+</span><span class="c1"></span>public <span class="o">(</span>active<span class="o">)</span>
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources:
+  services: dhcpv6-client
+  ports: <span class="m">22</span>/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks: echo-request echo-reply timestamp-reply timestamp-request
+  rich rules:</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="軟件源">軟件源</h2>
+
+<p>安裝各組件需要用到的Repo</p>
+
+<ul>
+<li><a href="https://fedoraproject.org/wiki/EPEL">EPEL Repo</a></li>
+<li><a href="http://rpms.famillecollet.com">REMI Repo</a> (依賴epel，用於安裝PHP)</li>
+<li><a href="https://dev.mysql.com/downloads/repo/">MySQL</a></li>
+<li><a href="https://downloads.mariadb.org/mariadb/repositories/">MariaDB Repo</a></li>
+<li><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">Nginx Repo</a></li>
+</ul>
+
+<h2 id="nginx">Nginx</h2>
+
+<p><a href="https://www.nginx.com" title="High Performance Load Balancer, Web Server, &amp; Reverse Proxy">Nginx</a>安裝、配置</p>
+
+<h3 id="安裝-nginx">安裝 Nginx</h3>
+
+<p>Nginx通過Shell腳本安裝，已包含常規的設置、優化，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/NginxWebServer.sh">GitHub</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/software/NginxWebServer.sh <span class="p">|</span> sudo bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/176158.js" id="asciicast-176158" async></script>
+
+<p>此處安裝<code>mainline</code>版本，故指定參數<code>-t m</code>，默認安裝的是<code>stable</code>版本。若要在防火牆中開放Web服務器端口(80)，只需在Shell腳本中指定參數<code>-f</code>即可。</p>
+
+<p>Nginx 版本信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># nginx -v
+</span><span class="c1"></span>nginx version: nginx/1.13.12</code></pre></td></tr></table>
+</div>
+</div>
+<p>防火牆規則</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># firewall-cmd --list-all
+</span><span class="c1"></span>public <span class="o">(</span>active<span class="o">)</span>
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources:
+  services: dhcpv6-client
+  ports: <span class="m">22</span>/tcp <span class="m">80</span>/tcp <span class="m">443</span>/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks: echo-request echo-reply timestamp-reply timestamp-request
+  rich rules:</code></pre></td></tr></table>
+</div>
+</div>
+<p>Nginx的Root目錄默認爲<code>/usr/share/nginx/html/</code>，確保<code>owner</code>、<code>group</code>都是<code>nginx</code>，否則可能會出現<code>403 Forbidden</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo chown -R nginx:nginx /usr/share/nginx/html/</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="mysql">MySQL</h2>
+
+<p><a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>安裝、配置</p>
+
+<h3 id="安裝-mysql">安裝 MySQL</h3>
+
+<p>MySQL通過Shell腳本安裝，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/MySQLVariants.sh">GitHub</a>，腳本同時支持在Debian/Ubuntu/CentOS/Fedora/OpenSUSE/SLES等發行版中安裝<a href="https://www.mysql.com" title="MySQL is the world's most popular open source database.">MySQL</a>、<a href="https://mariadb.org/" title="One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.">MariaDB</a>、<a href="https://www.percona.com/" title="The Database Performance Experts">Percona</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/software/MySQLVariants.sh <span class="p">|</span> sudo bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/176162.js" id="asciicast-176162" async></script>
+
+<p>此處安裝 <strong>MySQL 5.7</strong>，故在Shell腳本中指定參數<code>-t mysql</code>、<code>-v 5.7</code>。如需在防火牆中開啓端口(默認爲<code>3306</code>)，加上參數<code>-f</code>即可。</p>
+
+<p>如果服務未啓動，執行如下命令啓動服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl status mysqld.service
+
+<span class="c1"># start service
+</span><span class="c1"></span>sudo systemctl start mysqld.service</code></pre></td></tr></table>
+</div>
+</div>
+<p>MySQL 版本信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># mysql --version
+</span><span class="c1"></span>mysql  Ver <span class="m">14</span>.14 Distrib <span class="m">5</span>.7.21, <span class="k">for</span> Linux <span class="o">(</span>x86_64<span class="o">)</span> using  EditLine wrapper</code></pre></td></tr></table>
+</div>
+</div>
+<p>用戶名、密碼保存在文件<code>~/.my.cnf</code>，密碼是通過自定義函數隨機生成的強密碼。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># cat .my.cnf
+</span><span class="c1"></span><span class="o">[</span>client<span class="o">]</span>
+<span class="nv">user</span><span class="o">=</span>root
+<span class="nv">password</span><span class="o">=</span><span class="s2">&#34;fEf}db)coQfvV)hQ</span><span class="nv">$GX</span><span class="s2">@F!Pcefi!Kt{ICw&lt;1&#34;</span>
+
+<span class="o">[</span>mysql<span class="o">]</span>
+<span class="nv">prompt</span><span class="o">=</span>MySQL <span class="o">[</span><span class="se">\d</span><span class="o">]</span>&gt;<span class="se">\_</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>通過命令<code>mysql</code>直接登入MySQL交互界面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">Welcome</span> <span class="k">to</span> <span class="n">the</span> <span class="n">MySQL</span> <span class="n">monitor</span><span class="p">.</span>  <span class="n">Commands</span> <span class="k">end</span> <span class="k">with</span> <span class="p">;</span> <span class="k">or</span> <span class="err">\</span><span class="k">g</span><span class="p">.</span>
+<span class="n">Your</span> <span class="n">MySQL</span> <span class="k">connection</span> <span class="n">id</span> <span class="k">is</span> <span class="mi">3</span>
+<span class="n">Server</span> <span class="k">version</span><span class="p">:</span> <span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">21</span><span class="o">-</span><span class="n">log</span> <span class="n">MySQL</span> <span class="n">Community</span> <span class="n">Server</span> <span class="p">(</span><span class="n">GPL</span><span class="p">)</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="k">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="n">Oracle</span> <span class="k">and</span><span class="o">/</span><span class="k">or</span> <span class="n">its</span> <span class="n">affiliates</span><span class="p">.</span> <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+
+<span class="n">Oracle</span> <span class="k">is</span> <span class="n">a</span> <span class="n">registered</span> <span class="n">trademark</span> <span class="k">of</span> <span class="n">Oracle</span> <span class="n">Corporation</span> <span class="k">and</span><span class="o">/</span><span class="k">or</span> <span class="n">its</span>
+<span class="n">affiliates</span><span class="p">.</span> <span class="n">Other</span> <span class="k">names</span> <span class="n">may</span> <span class="n">be</span> <span class="n">trademarks</span> <span class="k">of</span> <span class="n">their</span> <span class="n">respective</span>
+<span class="n">owners</span><span class="p">.</span>
+
+<span class="k">Type</span> <span class="s1">&#39;help;&#39;</span> <span class="k">or</span> <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="p">.</span> <span class="k">Type</span> <span class="s1">&#39;\c&#39;</span> <span class="k">to</span> <span class="n">clear</span> <span class="n">the</span> <span class="k">current</span> <span class="k">input</span> <span class="k">statement</span><span class="p">.</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">version</span><span class="p">();</span>
+<span class="o">+</span><span class="c1">------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">version</span><span class="p">()</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">21</span><span class="o">-</span><span class="n">log</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------+
+</span><span class="c1"></span><span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">user</span><span class="p">();</span>
+<span class="o">+</span><span class="c1">----------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">user</span><span class="p">()</span>         <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">root</span><span class="o">@</span><span class="n">localhost</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+
+</span><span class="c1"></span><span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="創建遠程登錄用戶">創建遠程登錄用戶</h3>
+
+<p>對於數據庫而言，不建議使用<code>root</code>賬戶進行遠程登錄操作。此處以創建用戶<code>axdlog</code>爲例，密碼<code>AxdLog_MySQL@2018</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 創建用戶
+</span><span class="c1"></span><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="s1">&#39;axdlog&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;AxdLog_MySQL@2018&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="c1">-- 授權
+</span><span class="c1"></span><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;axdlog&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="c1">-- 刷新權限
+</span><span class="c1"></span><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">user</span><span class="p">,</span><span class="k">host</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;axdlog&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">--------+------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">user</span>   <span class="o">|</span> <span class="k">host</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------+------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">axdlog</span> <span class="o">|</span> <span class="o">%</span>    <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------+------+
+</span><span class="c1"></span><span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">grants</span> <span class="k">for</span> <span class="s1">&#39;axdlog&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="err">\</span><span class="k">G</span>
+<span class="o">***************************</span> <span class="mi">1</span><span class="p">.</span> <span class="k">row</span> <span class="o">***************************</span>
+<span class="n">Grants</span> <span class="k">for</span> <span class="n">axdlog</span><span class="o">@%</span><span class="p">:</span> <span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;axdlog&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span>
+<span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="php">PHP</h2>
+
+<p><a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>安裝、配置</p>
+
+<h3 id="配置-remi-倉庫">配置 REMI 倉庫</h3>
+
+<p>初始化腳本已經安裝了<code>epel</code>源，如果還沒有安裝，須先安裝，可通過如下命令安裝：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install -y epel-release</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過如下命令安裝<code>REMI</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</code></pre></td></tr></table>
+</div>
+</div>
+<p>安裝完成後，目錄<code>/etc/yum.repos.d/</code>中出現如下若干以<code>remi</code>開頭的repo：<code>remi-php54.repo</code>、<code>remi-php70.repo</code>、<code>remi-php71.repo</code>、<code>remi-php72.repo</code>、<code>remi.repo</code>、<code>remi-safe.repo</code>。</p>
+
+<p>其中<code>PHP 5.5</code>、<code>PHP 5.6</code>的配置信息在文件<code>remi.repo</code>中。</p>
+
+<p>此處安裝最新版本<code>7.2.4</code>，故選擇啓用<code>remi-php72.repo</code>，將該文件中<code>[remi-php72]</code>中的<code>enabled</code>設置爲<code>1</code>即可。(這些文件默認是禁用的，即<code>enabled=0</code>)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -r -i <span class="s1">&#39;/^\[remi-php72\]$/,/^$/{/^enabled=/{s@^([^=]+=).*@\11@g;}}&#39;</span> /etc/yum.repos.d/remi-php72.repo
+
+<span class="c1"># 更新緩存
+</span><span class="c1"></span>sudo yum makecache fast
+
+<span class="c1"># 獲取以 php72- 開頭的可用安裝包列表
+</span><span class="c1"></span>yum info php72-* <span class="p">|</span> awk <span class="s1">&#39;match($0,/^Name[[:space:]]+:/){print gensub(/^[^:]+:[[:space:]]*(.*)$/,&#34;\\1&#34;,&#34;g&#34;,$0)}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="安裝-php">安裝 PHP</h3>
+
+<p>PHP相關安裝包都是以<code>php72-</code>爲前綴(如<code>php72-php-mysqlnd</code>)，逐個指定太過麻煩，可通過<code>--enablerepo</code>參數指定目標repo來規避該問題(包名仍指定<code>php-mysqlnd</code>即可)。</p>
+
+<p>PHP使用<code>PHP-FPM</code>來管理，故需安裝<code>php-fpm</code>，數據庫驅動使用<code>php-mysqlnd</code>。</p>
+
+<p>安裝命令如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum --enablerepo<span class="o">=</span>remi-php72 install -y php php-common php-devel php-fpm php-mysqlnd php-mbstring php-xml php-pecl-mcrypt php-pecl-apc php-cli php-pear php-pdo php-bcmath php-ctype php-opcache php-gd php-json</code></pre></td></tr></table>
+</div>
+</div>
+<p>相關配置文件路徑</p>
+
+<ul>
+<li><code>/etc/php.ini</code></li>
+<li><code>/etc/php.d/</code></li>
+<li><code>/etc/php-fpm.conf</code></li>
+<li><code>/etc/php-fpm.d/</code></li>
+</ul>
+
+<h3 id="配置-php">配置 PHP</h3>
+
+<p>PHP配置文件 <code>/etc/php.ini</code>，進行修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># backup
+</span><span class="c1"></span>sudo cp -p /etc/php.ini<span class="o">{</span>,.bak<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>修改 <code>/etc/php.ini</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#關閉Nginx文件類型錯誤解析
+</span><span class="c1"></span>cgi.fix_pathinfo<span class="o">=</span><span class="m">0</span>
+<span class="c1">#設置時區
+</span><span class="c1"></span>date.timezone <span class="o">=</span> Asia/Singapore
+<span class="c1">#禁止顯示PHP版本信息
+</span><span class="c1"></span><span class="nv">expose_php</span> <span class="o">=</span> Off
+<span class="c1">#支持PHP短標籤
+</span><span class="c1"></span><span class="nv">short_open_tag</span> <span class="o">=</span> Off
+<span class="c1">#禁用的功能函數
+</span><span class="c1"></span><span class="nv">disable_functions</span> <span class="o">=</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>可通過如下方式進行快速修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">funcPHPConfiguration<span class="o">(){</span>
+    <span class="nb">local</span> <span class="nv">l_item</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span>
+    <span class="nb">local</span> <span class="nv">l_val</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span>
+    <span class="nb">local</span> <span class="nv">l_path</span><span class="o">=</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="s1">&#39;/etc/php.ini&#39;</span><span class="si">}</span>
+    <span class="o">[[</span> -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_item</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_val</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo sed -r -i <span class="s1">&#39;/^;?[[:space:]]*&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_item</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;[[:space:]]*=/{s@^;?[[:space:]]*([^=]+=).*$@\1 &#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_val</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;@g;}&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_path</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="o">}</span>
+
+funcPHPConfiguration <span class="s1">&#39;cgi.fix_pathinfo&#39;</span> <span class="s1">&#39;0&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;date.timezone&#39;</span> <span class="s2">&#34;Asia/Singapore&#34;</span>
+funcPHPConfiguration <span class="s1">&#39;expose_php&#39;</span> <span class="s1">&#39;Off&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;short_open_tag&#39;</span> <span class="s1">&#39;Off&#39;</span>
+
+<span class="nv">disable_function_list</span><span class="o">=</span><span class="s2">&#34;passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space,posix_ctermid,posix_get_last_error,posix_getcwd, posix_getegid,posix_geteuid,posix_getgid, posix_getgrgid,posix_getgrnam,posix_getgroups,posix_getlogin,posix_getpgid,posix_getpgrp,posix_getpid, posix_getppid,posix_getpwnam,posix_getpwuid, posix_getrlimit, posix_getsid,posix_getuid,posix_isatty, posix_kill,posix_mkfifo,posix_setegid,posix_seteuid,posix_setgid, posix_setpgid,posix_setsid,posix_setuid,posix_strerror,posix_times,posix_ttyname,posix_uname&#34;</span>
+funcPHPConfiguration <span class="s1">&#39;disable_functions&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">disable_function_list</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>依賴函數<code>proc_open</code>、<code>proc_get_status</code>，需從<code>disable_functions</code>的列表中移除。執行如下命令即可啓用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -r -i <span class="s1">&#39;/disable_functions[[:space:]]*=/{s@(proc_open|proc_get_status),?@@g;}&#39;</span> /etc/php.ini</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="配置-php-fpm">配置 PHP-FPM</h3>
+
+<p>通過如下命令管理<code>PHP-FPM</code>服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl status/start/stop/enable/disable php-fpm.service</code></pre></td></tr></table>
+</div>
+</div>
+<p>服務啓動後，會在目錄<code>/var/run/</code>中生成臨時目錄<code>/var/run/php-fpm/</code>(Debian中生成的目錄名爲<code>/var/run/php/</code>)，設置<code>socket</code>監聽時會用到該路徑。</p>
+
+<p><strong>注意</strong>：目錄<code>/var/lib/php/session/</code>默認的屬主、屬組爲<code>root</code>，建議更改爲<code>nginx</code>，執行如下命令更改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span> -d /var/lib/php/session <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo chown -R nginx:nginx /var/lib/php/session</code></pre></td></tr></table>
+</div>
+</div>
+<p>PHP-FPM配置文件 <code>/etc/php-fpm.d/www.conf</code>，修改相關指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">;</span><span class="nv">listen</span> <span class="o">=</span> <span class="m">127</span>.0.0.1:9000
+<span class="nv">listen</span> <span class="o">=</span> /var/run/php-fpm/php-fpm.sock
+
+<span class="c1">#如果不指定爲nginx，無法正常監聽php-fpm.sock
+</span><span class="c1"></span><span class="p">;</span>listen.owner <span class="o">=</span> nobody
+<span class="p">;</span>listen.group <span class="o">=</span> nobody
+<span class="p">;</span>listen.mode <span class="o">=</span> <span class="m">0660</span>
+listen.owner <span class="o">=</span> nginx
+listen.group <span class="o">=</span> nginx
+listen.mode <span class="o">=</span> <span class="m">0660</span>
+
+<span class="p">;</span><span class="nv">user</span> <span class="o">=</span> apache
+<span class="nv">user</span> <span class="o">=</span> nginx
+
+<span class="p">;</span><span class="nv">group</span> <span class="o">=</span> apache
+<span class="nv">group</span> <span class="o">=</span> nginx</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過自定義函數修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">funcPHPConfiguration<span class="o">(){</span>
+    <span class="nb">local</span> <span class="nv">l_item</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span>
+    <span class="nb">local</span> <span class="nv">l_val</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span>
+    <span class="nb">local</span> <span class="nv">l_path</span><span class="o">=</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="s1">&#39;/etc/php-fpm.d/www.conf&#39;</span><span class="si">}</span>
+    <span class="o">[[</span> -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_item</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_val</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo sed -r -i <span class="s1">&#39;/^;?[[:space:]]*&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_item</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;[[:space:]]*=/{s@^;?[[:space:]]*([^=]+=).*$@\1 &#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_val</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;@g;}&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_path</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="o">}</span>
+
+funcPHPConfiguration <span class="s1">&#39;listen&#39;</span> <span class="s1">&#39;/var/run/php-fpm/php72-fpm.sock&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;listen.owner&#39;</span> <span class="s1">&#39;nginx&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;listen.group&#39;</span> <span class="s1">&#39;nginx&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;listen.mode&#39;</span> <span class="s1">&#39;0660&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;nginx&#39;</span>
+funcPHPConfiguration <span class="s1">&#39;group&#39;</span> <span class="s1">&#39;nginx&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>啓動PHP-FPM服務 (務必確認Nginx已經安裝，否則PHP-FPM無法正常啓動)。如果啓動失敗，可在日誌文件<code>/var/log/messages</code>查看錯誤信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start php-fpm
+sudo systemctl <span class="nb">enable</span> php-fpm</code></pre></td></tr></table>
+</div>
+</div>
+<p>PHP-FPM服務已成功啓動</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ls /var/run/php-fpm/php72-fpm.sock
+</span><span class="c1"></span>/var/run/php-fpm/php72-fpm.sock
+
+<span class="c1"># systemctl status php-fpm
+</span><span class="c1"></span>● php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/php-fpm.service<span class="p">;</span> disabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Thu <span class="m">2018</span>-04-12 <span class="m">15</span>:04:07 EDT<span class="p">;</span> 4s ago
+ Main PID: <span class="m">29046</span> <span class="o">(</span>php-fpm<span class="o">)</span>
+   Status: <span class="s2">&#34;Ready to handle connections&#34;</span>
+   CGroup: /system.slice/php-fpm.service
+           ├─29046 php-fpm: master process <span class="o">(</span>/etc/php-fpm.conf<span class="o">)</span>
+           ├─29047 php-fpm: pool www
+           ├─29048 php-fpm: pool www
+           ├─29049 php-fpm: pool www
+           ├─29050 php-fpm: pool www
+           └─29051 php-fpm: pool www
+
+Apr <span class="m">12</span> <span class="m">15</span>:04:07 centos7 systemd<span class="o">[</span><span class="m">1</span><span class="o">]</span>: Starting The PHP FastCGI Process Manager...
+Apr <span class="m">12</span> <span class="m">15</span>:04:07 centos7 systemd<span class="o">[</span><span class="m">1</span><span class="o">]</span>: Started The PHP FastCGI Process Manager.</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="配置-nginx">配置 Nginx</h3>
+
+<p>Shell腳本中已配置有PHP相關指令，取消註釋即可。</p>
+
+<p>打開文件 <code>/etc/nginx/conf.d/default.conf</code>，找到<code>PHP FPM Start</code>、<code>PHP FPM End</code>部分，將<code>location</code>部分的指令取消註釋，同時將<code>fastcgi_pass</code>的socket地址更改爲上文在文件<code>/etc/php-fpm.d/www.conf</code>的路徑，即 <code>/var/run/php-fpm/php72-fpm.sock</code>。</p>
+
+<p>可通過如下命令修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># socket file path
+</span><span class="c1"></span><span class="nv">php_fpm_socket_path</span><span class="o">=</span><span class="s1">&#39;/var/run/php-fpm/php72-fpm.sock&#39;</span>
+
+sudo sed -r -i <span class="s1">&#39;/PHP FPM Start/,/PHP FPM End/{/PHP FPM/!{s@# @@g}; /fastcgi_pass/{s@^([^:]+:)[^\;]*(.*)$@\1&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">php_fpm_socket_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;\2@g;};}&#39;</span> /etc/nginx/conf.d/default.conf</code></pre></td></tr></table>
+</div>
+</div>
+<p>最終格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># PHP FPM Start
+</span><span class="c1"></span>location ~ <span class="se">\.</span>php$ <span class="o">{</span>
+    <span class="c1">#try_files $uri = 404;
+</span><span class="c1"></span>    root   /usr/share/nginx/html<span class="p">;</span>
+    fastcgi_pass unix:/var/run/php-fpm/php72-fpm.sock<span class="p">;</span>
+    fastcgi_index index.php<span class="p">;</span>
+    fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+    include fastcgi_params<span class="p">;</span>
+<span class="o">}</span>
+# PHP FPM End</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>: <code>$document_root</code>默認指向<code>/etc/nginx/html/</code>，需在<code>location ~ \.php$</code>指定root路徑</p>
+
+<p>使用<code>nginx -t</code>檢測配置文件是否有語法錯誤(需要<code>root</code>權限)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># sudo nginx -t
+</span><span class="c1"></span>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is successful</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>重要</strong>：配置修改後，務必重啓Nginx、PHP-FPM服務，否則會 <strong>出現Web服務器無法解釋執行PHP代碼，直接將目標PHP文件下載到本地</strong> 的情況。</p>
+
+<p>執行如下命令重啓服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart nginx
+sudo systemctl restart php-fpm</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="phpinfo">phpinfo()</h3>
+
+<p>PHP的詳細配置信息可通過函數<code>phpinfo()</code>查看。</p>
+
+<p>通過如下命令創建文件<code>/usr/share/nginx/html/index.php</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">target_path</span><span class="o">=</span><span class="s1">&#39;/usr/share/nginx/html/index.php&#39;</span>
+sudo bash -c <span class="s1">&#39;echo -e &#34;&lt;?php\nphpinfo();\n?&gt;&#34; &gt; &#39;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s1">&#39;&#39;</span>
+sudo chown nginx:nginx <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span>
+sudo chmod <span class="m">640</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>通過Web瀏覽器查看</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-03-11_LEMP_Stack_On_Centos7/2018-04-12_16-11-58_php_info.png" alt="" /></p>
+
+<h2 id="連接測試">連接測試</h2>
+
+<h3 id="數據庫連接">數據庫連接</h3>
+
+<p>測試MySQL能否正常連接，如果是遠程連接，確保<code>/etc/my.cnf</code>中指令<code>bind_address</code>是否綁定本地地址(<code>bind_address = 127.0.0.1</code>)，如果是，則無法成功連接。</p>
+
+<p>Local Login</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">user</span><span class="p">(),</span><span class="n">now</span><span class="p">();</span>
+<span class="o">+</span><span class="c1">----------------+---------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">user</span><span class="p">()</span>         <span class="o">|</span> <span class="n">now</span><span class="p">()</span>               <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+---------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">root</span><span class="o">@</span><span class="n">localhost</span> <span class="o">|</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">32</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+---------------------+
+</span><span class="c1"></span><span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Romote Login</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="err">┌─</span><span class="p">[</span><span class="n">maxdsre</span><span class="o">@</span><span class="n">Stretch</span><span class="p">]</span><span class="err">─</span><span class="p">[</span><span class="o">~</span><span class="p">]</span>
+<span class="err">└──╼</span> <span class="err">$</span><span class="n">mysql</span> <span class="o">-</span><span class="n">uaxdlog</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">h</span> <span class="mi">104</span><span class="p">.</span><span class="mi">236</span><span class="p">.</span><span class="mi">100</span><span class="p">.</span><span class="mi">67</span> <span class="o">-</span><span class="n">P</span> <span class="mi">3306</span>
+<span class="n">Enter</span> <span class="n">password</span><span class="p">:</span>
+<span class="n">Welcome</span> <span class="k">to</span> <span class="n">the</span> <span class="n">MySQL</span> <span class="n">monitor</span><span class="p">.</span>  <span class="n">Commands</span> <span class="k">end</span> <span class="k">with</span> <span class="p">;</span> <span class="k">or</span> <span class="err">\</span><span class="k">g</span><span class="p">.</span>
+<span class="n">Your</span> <span class="n">MySQL</span> <span class="k">connection</span> <span class="n">id</span> <span class="k">is</span> <span class="mi">3</span>
+<span class="n">Server</span> <span class="k">version</span><span class="p">:</span> <span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">21</span><span class="o">-</span><span class="n">log</span> <span class="n">MySQL</span> <span class="n">Community</span> <span class="n">Server</span> <span class="p">(</span><span class="n">GPL</span><span class="p">)</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="k">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="n">Oracle</span> <span class="k">and</span><span class="o">/</span><span class="k">or</span> <span class="n">its</span> <span class="n">affiliates</span><span class="p">.</span> <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+
+<span class="n">Oracle</span> <span class="k">is</span> <span class="n">a</span> <span class="n">registered</span> <span class="n">trademark</span> <span class="k">of</span> <span class="n">Oracle</span> <span class="n">Corporation</span> <span class="k">and</span><span class="o">/</span><span class="k">or</span> <span class="n">its</span>
+<span class="n">affiliates</span><span class="p">.</span> <span class="n">Other</span> <span class="k">names</span> <span class="n">may</span> <span class="n">be</span> <span class="n">trademarks</span> <span class="k">of</span> <span class="n">their</span> <span class="n">respective</span>
+<span class="n">owners</span><span class="p">.</span>
+
+<span class="k">Type</span> <span class="s1">&#39;help;&#39;</span> <span class="k">or</span> <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="p">.</span> <span class="k">Type</span> <span class="s1">&#39;\c&#39;</span> <span class="k">to</span> <span class="n">clear</span> <span class="n">the</span> <span class="k">current</span> <span class="k">input</span> <span class="k">statement</span><span class="p">.</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">user</span><span class="p">(),</span><span class="n">now</span><span class="p">();</span>
+<span class="o">+</span><span class="c1">------------------------+---------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">user</span><span class="p">()</span>                 <span class="o">|</span> <span class="n">now</span><span class="p">()</span>               <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------------------+---------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">axdlog</span><span class="o">@</span><span class="mi">18</span><span class="p">.</span><span class="mi">233</span><span class="p">.</span><span class="mi">165</span><span class="p">.</span><span class="mi">46</span>   <span class="o">|</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">05</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------------------+---------------------+
+</span><span class="c1"></span><span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="err">\</span><span class="n">q</span>
+<span class="n">Bye</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="web-服務器">Web 服務器</h3>
+
+<p>在Nginx的Root目錄<code>/usr/share/nginx/html/</code>下創建<code>db.php</code>文件（確保Nginx對文件有讀權限），測試LEMP能否正常工作，包括PHP和數據庫連接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">target_path</span><span class="o">=</span><span class="s1">&#39;/usr/share/nginx/html/db.php&#39;</span>
+
+sudo bash -c <span class="s2">&#34;cat &gt; </span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s">&lt;&lt; EOF
+</span><span class="s">&lt;?php
+</span><span class="s">    # Database connection test
+</span><span class="s">    try {
+</span><span class="s">        \$pdo = new PDO(&#39;mysql:host=localhost;port=3306&#39;,&#39;axdlog&#39;,&#39;AxdLog_MySQL@2018&#39;);
+</span><span class="s">        \$pdo-&gt;exec(&#39;set names utf8&#39;);
+</span><span class="s">    } catch (Exception \$e) {
+</span><span class="s">        echo &#39;Connection Failure, Error message: &#39;.\$e-&gt;getMessage();
+</span><span class="s">    }
+</span><span class="s">
+</span><span class="s">    \$sql = &#34;select user,host from mysql.user&#34;;
+</span><span class="s">    \$stmt = \$pdo-&gt;prepare(\$sql);
+</span><span class="s">    \$stmt-&gt;execute();
+</span><span class="s">    \$rows = \$stmt-&gt;fetchAll(PDO::FETCH_ASSOC);
+</span><span class="s">    echo &#39;&lt;pre&gt;&#39;;
+</span><span class="s">    print_r(\$rows);
+</span><span class="s">
+</span><span class="s">    # Print PHP info
+</span><span class="s">    #phpinfo();
+</span><span class="s">?&gt;
+</span><span class="s">EOF</span>
+
+sudo chown nginx:nginx <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span>
+sudo chmod <span class="m">640</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>文件內代碼如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">&lt;?php
+    <span class="c1"># Database connection test
+</span><span class="c1"></span>    try <span class="o">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> new PDO<span class="o">(</span><span class="s1">&#39;mysql:host=localhost;port=3306&#39;</span>,<span class="s1">&#39;axdlog&#39;</span>,<span class="s1">&#39;AxdLog_MySQL@2018&#39;</span><span class="o">)</span><span class="p">;</span>
+        <span class="nv">$pdo</span>-&gt;exec<span class="o">(</span><span class="s1">&#39;set names utf8&#39;</span><span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span> catch <span class="o">(</span>Exception <span class="nv">$e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nb">echo</span> <span class="s1">&#39;Connection Failure, Error message: &#39;</span>.<span class="nv">$e</span>-&gt;getMessage<span class="o">()</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&#34;select user,host from mysql.user&#34;</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span>-&gt;prepare<span class="o">(</span><span class="nv">$sql</span><span class="o">)</span><span class="p">;</span>
+    <span class="nv">$stmt</span>-&gt;execute<span class="o">()</span><span class="p">;</span>
+    <span class="nv">$rows</span> <span class="o">=</span> <span class="nv">$stmt</span>-&gt;fetchAll<span class="o">(</span>PDO::FETCH_ASSOC<span class="o">)</span><span class="p">;</span>
+    <span class="nb">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+    print_r<span class="o">(</span><span class="nv">$rows</span><span class="o">)</span><span class="p">;</span>
+
+    <span class="c1"># Print PHP info
+</span><span class="c1"></span>    <span class="c1">#phpinfo();
+</span><span class="c1"></span>?&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>在瀏覽器地址欄中輸入 <code>http://{IPADDR}(:PORT)/info.php</code>，其中的<code>{IPADDR}</code>即主機IP地址</p>
+
+<ul>
+<li>如果是本機，則可用<code>localhost</code>或<code>127.0.0.1</code>；</li>
+<li>如果是遠程主機，則使用遠程主機的地址，如果不是<code>80</code>端口，則須手動指定端口；</li>
+</ul>
+
+<p>此處遠程訪問地址爲 <code>http://104.236.100.67/info.php</code></p>
+
+<p>通過Shell終端連接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$curl</span> http://104.236.100.67/info.php
+Array
+<span class="o">(</span>
+    <span class="o">[</span><span class="m">0</span><span class="o">]</span> <span class="o">=</span>&gt; Array
+        <span class="o">(</span>
+            <span class="o">[</span>user<span class="o">]</span> <span class="o">=</span>&gt; axdlog
+            <span class="o">[</span>host<span class="o">]</span> <span class="o">=</span>&gt; %
+        <span class="o">)</span>
+
+    <span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="o">=</span>&gt; Array
+        <span class="o">(</span>
+            <span class="o">[</span>user<span class="o">]</span> <span class="o">=</span>&gt; mysql.session
+            <span class="o">[</span>host<span class="o">]</span> <span class="o">=</span>&gt; localhost
+        <span class="o">)</span>
+
+    <span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="o">=</span>&gt; Array
+        <span class="o">(</span>
+            <span class="o">[</span>user<span class="o">]</span> <span class="o">=</span>&gt; mysql.sys
+            <span class="o">[</span>host<span class="o">]</span> <span class="o">=</span>&gt; localhost
+        <span class="o">)</span>
+
+    <span class="o">[</span><span class="m">3</span><span class="o">]</span> <span class="o">=</span>&gt; Array
+        <span class="o">(</span>
+            <span class="o">[</span>user<span class="o">]</span> <span class="o">=</span>&gt; root
+            <span class="o">[</span>host<span class="o">]</span> <span class="o">=</span>&gt; localhost
+        <span class="o">)</span>
+
+<span class="o">)</span>
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ $</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過瀏覽器訪問</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-03-11_LEMP_Stack_On_Centos7/2018-04-12_16-13-39_database_conn.png" alt="" /></p>
+
+<h3 id="nginx-日誌">Nginx 日誌</h3>
+
+<p>Nginx中訪問日誌格式</p>
+
+<blockquote>
+<p>&ldquo;12/Apr/2018:16:11:37 -0400&rdquo; remote_addr=18.233.165.46 request_method=GET request=&ldquo;GET /info.php HTTP/1.1&rdquo; request_length=354 status=200 bytes_sent=347 body_bytes_sent=137 http_referer=&ldquo;-&rdquo; http_user_agent=&ldquo;Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0&rdquo; request_time=0.002 upstream_addr=unix:/var/run/php-fpm/php72-fpm.sock upstream_status=200 upstream_cache_status=- upstream_response_time=0.002 upstream_connect_time=0.000 upstream_header_time=0.002 msec=1523563897.481 pipe=.gzip_ratio=3.26</p>
+</blockquote>
+
+<h2 id="更新日誌">更新日誌</h2>
+
+<ul>
+<li>2016.03.11 18:18 Fri Asia/Beijing
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2016.03.23 15:48 Wed Asia/Beijing
+
+<ul>
+<li>內容更新，相關配置參數</li>
+</ul></li>
+<li>2016.03.30 21:56 Wed Asia/Beijing
+
+<ul>
+<li>添加<code>Mounting Partitions</code></li>
+</ul></li>
+<li>2016.08.19 10:41 Fri Asia/Shanghai
+
+<ul>
+<li>添加參數<code>worker_rlimit_nofile</code></li>
+</ul></li>
+<li>2016.12.08 14:18 Thu Asia/Shanghai
+
+<ul>
+<li>MariaDB配置文件<code>/etc/my.cnf</code>參數優化</li>
+</ul></li>
+<li>2016.12.20 23:18 Tue Asia/Shanghai
+
+<ul>
+<li>Nginx參數配置優化</li>
+</ul></li>
+<li>2016.12.21 11:33 Wed Asia/Shanghai
+
+<ul>
+<li>添加<code>Security Optimization</code>安全相關</li>
+</ul></li>
+<li>2018.04.12 16:38 Thu America/Boston
+
+<ul>
+<li>內容更新，勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-14</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/php/">PHP</a>
+          
+          <a href="/tags/nginx/">Nginx</a>
+          
+          <a href="/tags/mysql/">MySQL</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">LEMP Stack Installation And Configuration On CentOS 7</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/a-complete-intrduction-to-markdown-syntax/">
+            <span class="next-text nav-default">A Complete Intrduction To Markdown Syntax</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

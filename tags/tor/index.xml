@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tor on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/tor/</link>
+    <description>Recent content in Tor on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 22 Dec 2016 18:45:24 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/tor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Tor Browser On GNU/Linux</title>
+      <link>/2016/setting-up-tor-browser-on-gnu-linux/</link>
+      <pubDate>Thu, 22 Dec 2016 18:45:24 +0800</pubDate>
+      
+      <guid>/2016/setting-up-tor-browser-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.torproject.org/projects/torbrowser.html.en&#34;&gt;Tor Browser&lt;/a&gt;是由&lt;a href=&#34;https://www.torproject.org&#34;&gt;Tor Project&lt;/a&gt;推出的一款集成了&lt;a href=&#34;https://www.torproject.org/&#34;&gt;Tor&lt;/a&gt;，&lt;a href=&#34;https://www.mozilla.org/en-US/firefox/organizations/&#34;&gt;Firefox ESR&lt;/a&gt;, &lt;a href=&#34;https://www.torproject.org/docs/torbutton/&#34;&gt;Torbutton&lt;/a&gt;, &lt;a href=&#34;https://github.com/micahflee/torbrowser-launcher&#34;&gt;TorLauncher&lt;/a&gt;, &lt;a href=&#34;https://noscript.net&#34;&gt;NoScript&lt;/a&gt;,和 &lt;a href=&#34;https://www.eff.org/https-everywhere&#34;&gt;HTTPS-Everywhere&lt;/a&gt;的瀏覽器。&lt;a href=&#34;https://www.torproject.org/projects/torbrowser.html.en&#34;&gt;Tor Browser&lt;/a&gt;默認監聽&lt;code&gt;9150&lt;/code&gt;、&lt;code&gt;9151&lt;/code&gt;端口，通過&lt;a href=&#34;https://en.wikipedia.org/wiki/Tor_(anonymity_network)&#34; title=&#34;WikiPedia&#34;&gt;Tor (anonymity network)&lt;/a&gt;實現匿名訪問，保障用戶隱私。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何在GNU/Linux中下載、校驗、安裝&lt;a href=&#34;https://www.torproject.org/projects/torbrowser.html.en&#34;&gt;Tor Browser&lt;/a&gt;及在&lt;a href=&#34;https://www.gnome.org&#34;&gt;GNOME&lt;/a&gt;桌面中創建快捷圖標。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

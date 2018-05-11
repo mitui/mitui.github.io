@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on MetaDefine - A super concise theme for Hugo</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Apr 2018 13:31:34 -0400</lastBuildDate>
+    
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog</title>
+      <link>/categories/blog/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Container</title>
+      <link>/categories/container/</link>
+      <pubDate>Mon, 06 Mar 2017 13:24:08 +0800</pubDate>
+      
+      <guid>/categories/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Process</title>
+      <link>/categories/data-process/</link>
+      <pubDate>Thu, 15 Jun 2017 11:27:01 +0800</pubDate>
+      
+      <guid>/categories/data-process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops</title>
+      <link>/categories/devops/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gnu/Linux</title>
+      <link>/categories/gnu/linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/categories/gnu/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>/categories/php/</link>
+      <pubDate>Tue, 15 Nov 2016 17:54:13 +0800</pubDate>
+      
+      <guid>/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Production Case</title>
+      <link>/categories/production-case/</link>
+      <pubDate>Fri, 09 Mar 2018 01:26:21 -0400</pubDate>
+      
+      <guid>/categories/production-case/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/categories/python/</link>
+      <pubDate>Thu, 19 Apr 2018 10:42:53 -0400</pubDate>
+      
+      <guid>/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>/categories/security/</link>
+      <pubDate>Mon, 25 Jan 2016 21:01:52 +0800</pubDate>
+      
+      <guid>/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>/categories/tutorial/</link>
+      <pubDate>Mon, 25 Jan 2016 22:04:52 +0800</pubDate>
+      
+      <guid>/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Crawling</title>
+      <link>/categories/web-crawling/</link>
+      <pubDate>Mon, 14 Mar 2016 00:01:59 +0800</pubDate>
+      
+      <guid>/categories/web-crawling/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

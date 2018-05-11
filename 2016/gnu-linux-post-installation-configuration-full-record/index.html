@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GNU/Linux Post Installation Configuration Full Record - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" />
+  <meta name="description" content="GNU/Linux安裝完成後，需要進行一系列的初始化配置才能滿足使用需求。本文詳細記錄各初始化操作，並用Shell腳本實現相關過程（在root模式中操作）。
+
+" />
+<meta name="keywords" content="AxdLog, SELinux, Firewall, Optimization, Shell script" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/gnu-linux-post-installation-configuration-full-record/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="GNU/Linux Post Installation Configuration Full Record" />
+<meta property="og:description" content="GNU/Linux安裝完成後，需要進行一系列的初始化配置才能滿足使用需求。本文詳細記錄各初始化操作，並用Shell腳本實現相關過程（在root模式中操作）。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/gnu-linux-post-installation-configuration-full-record/" />
+
+
+
+<meta property="article:published_time" content="2016-06-17T11:30:54&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-24T11:36:54-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="GNU/Linux Post Installation Configuration Full Record">
+<meta itemprop="description" content="GNU/Linux安裝完成後，需要進行一系列的初始化配置才能滿足使用需求。本文詳細記錄各初始化操作，並用Shell腳本實現相關過程（在root模式中操作）。
+
+">
+
+
+<meta itemprop="datePublished" content="2016-06-17T11:30:54&#43;08:00" />
+<meta itemprop="dateModified" content="2016-06-17T11:30:54&#43;08:00" />
+<meta itemprop="wordCount" content="4741">
+
+
+
+<meta itemprop="keywords" content="Shell Script," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GNU/Linux Post Installation Configuration Full Record"/>
+<meta name="twitter:description" content="GNU/Linux安裝完成後，需要進行一系列的初始化配置才能滿足使用需求。本文詳細記錄各初始化操作，並用Shell腳本實現相關過程（在root模式中操作）。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">GNU/Linux Post Installation Configuration Full Record</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-06-17 </span>
+        <div class="post-category">
+            
+              <a href="/categories/gnu/linux/"> GNU/Linux </a>
+            
+          </div>
+        <span class="more-meta"> 4741 words </span>
+        <span class="more-meta"> 10 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#official-documents">Official Documents</a></li>
+<li><a href="#system-info-detection">System Info Detection</a></li>
+<li><a href="#shell-script">Shell Script</a></li>
+<li><a href="#tips-and-tricks">Tips And Tricks</a>
+<ul>
+<li><a href="#bootable-usb-drive">Bootable USB Drive</a></li>
+<li><a href="#screen-lock-hotkey">Screen Lock Hotkey</a></li>
+<li><a href="#x11-forwarding-vis-ssh">X11 Forwarding Vis SSH</a></li>
+<li><a href="#rsync-synchronizing">Rsync Synchronizing</a></li>
+<li><a href="#gnome-desktop-setting">GNOME Desktop Setting</a>
+<ul>
+<li><a href="#recent-files">Recent Files</a></li>
+<li><a href="#customcorner">CustomCorner</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#selinux">SELinux</a></li>
+<li><a href="#user-management">User Management</a>
+<ul>
+<li><a href="#config-file">Config File</a></li>
+<li><a href="#sudo-privilege">sudo privilege</a></li>
+<li><a href="#new-user">New User</a></li>
+</ul></li>
+<li><a href="#timezone">TimeZone</a></li>
+<li><a href="#hostname">HostName</a></li>
+<li><a href="#software-management">Software Management</a>
+<ul>
+<li><a href="#essential-packages">Essential Packages</a></li>
+</ul></li>
+<li><a href="#kernel">Kernel</a></li>
+<li><a href="#input-methods">Input Methods</a>
+<ul>
+<li><a href="#via-ibus">Via ibus</a></li>
+<li><a href="#via-fcitx">Via Fcitx</a></li>
+</ul></li>
+<li><a href="#web-browser">Web Browser</a>
+<ul>
+<li><a href="#google-chrome">Google Chrome</a>
+<ul>
+<li><a href="#plugins">Plugins</a></li>
+<li><a href="#extensions">Extensions</a></li>
+</ul></li>
+<li><a href="#mozilla-firefox">Mozilla Firefox</a>
+<ul>
+<li><a href="#extensions-1">Extensions</a></li>
+</ul></li>
+<li><a href="#srware-iron">SRWare Iron</a></li>
+</ul></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://www.gnu.org" title="GNU Operating System">GNU/Linux</a>安裝完成後，需要進行一系列的初始化配置才能滿足使用需求。本文詳細記錄各初始化操作，並用Shell腳本實現相關過程（在<code>root</code>模式中操作）。</p>
+
+<p></p>
+
+<p><a href="https://www.gnu.org" title="GNU Operating System">GNU/Linux</a>發行版衆多，目前有3大主流分支：<a href="https://www.redhat.com/en" title="RedHat">RHEL</a>、<a href="https://www.debian.org" title="Debian">Debian</a>、<a href="https://www.suse.com" title="SUSE">SUSE</a>。本文中的操作支持如下主流發行版：<a href="https://www.redhat.com/en" title="RedHat">RHEL</a>/<a href="https://www.centos.org" title="CentOS">CentOS</a>/<a href="https://getfedora.org" title="Fedora">Fedora</a>/<a href="https://aws.amazon.com/amazon-linux-ami/" title="Amazon Linux AMI">Amazon Linux</a>、 <a href="https://www.debian.org" title="Debian">Debian</a>/<a href="https://www.ubuntu.com" title="Ubuntu">Ubuntu</a>、<a href="https://www.suse.com" title="SUSE">SUSE</a>/<a href="https://www.opensuse.org" title="OpenSUSE">OpenSUSE</a>，暫不支持<a href="https://www.archlinux.org" title="Arch Linux">Arch Linux</a>、<a href="https://www.gentoo.org" title="Gentoo Linux">Gentoo</a>、<a href="http://www.slackware.com" title="Slackware Linux">Slackware</a>等發行版。</p>
+
+<h2 id="official-documents">Official Documents</h2>
+
+<p>各發行版官方文檔頁</p>
+
+<table>
+<thead>
+<tr>
+<th>distribution</th>
+<th>doc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>RedHat</td>
+<td><a href="https://access.redhat.com/documentation/en/red-hat-enterprise-linux/">https://access.redhat.com/documentation/en/red-hat-enterprise-linux/</a></td>
+</tr>
+
+<tr>
+<td>Debian</td>
+<td><a href="https://www.debian.org/doc/">https://www.debian.org/doc/</a></td>
+</tr>
+
+<tr>
+<td>Ubuntu</td>
+<td><a href="https://help.ubuntu.com">https://help.ubuntu.com</a></td>
+</tr>
+
+<tr>
+<td>Suse</td>
+<td><a href="https://www.suse.com/documentation/">https://www.suse.com/documentation/</a></td>
+</tr>
+
+<tr>
+<td>OpenSUSE</td>
+<td><a href="https://doc.opensuse.org">https://doc.opensuse.org</a></td>
+</tr>
+
+<tr>
+<td>AWS</td>
+<td><a href="https://aws.amazon.com/documentation/">https://aws.amazon.com/documentation/</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>本人通過Shell腳本實現下載操作，目前支持<a href="https://www.redhat.com/en" title="RedHat">RHEL</a>/<a href="https://aws.amazon.com/amazon-linux-ami/" title="Amazon Linux AMI">AWS</a>/<a href="https://www.suse.com" title="SUSE">SUSE</a>/<a href="https://www.opensuse.org" title="OpenSUSE">OpenSUSE</a>的文檔下載。代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>，通過如下命令執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/gnulinux/gnuLinuxOfficialDocumentationDownload.sh <span class="p">|</span> bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/178133.js" id="asciicast-178133" async></script>
+
+<h2 id="system-info-detection">System Info Detection</h2>
+
+<p>爲快速偵測GNU/Linux系統信息，本人通過Shell腳本實現該操作過程(暫不支持對RAID磁盤的信息偵測)。代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxMachineInfoDetection.sh">GitHub</a>，通過如下命令執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/gnulinux/gnuLinuxMachineInfoDetection.sh <span class="p">|</span> sudo bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/178142.js" id="asciicast-178142" async></script>
+
+<h2 id="shell-script">Shell Script</h2>
+
+<p>系統初始化操作通過Shell腳本實現，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>，通過如下命令執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh <span class="p">|</span> sudo bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/176585.js" id="asciicast-176585" async></script>
+
+<h2 id="tips-and-tricks">Tips And Tricks</h2>
+
+<h3 id="bootable-usb-drive">Bootable USB Drive</h3>
+
+<p>官方通常會在提供鏡像文件下載頁提供鏡像文件的Hash校驗值(通常爲sha256)，出於安全考慮，建議對下載到本地的系統鏡像進行Hash校驗。通過校驗後，將系統鏡像燒錄到U盤中，通過U盤安裝系統。此處以鏡像文件<code>~/Downloads/debian-9.4.0-amd64-DVD-1.iso</code>爲例。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># List the partition tables for the specified devices
+</span><span class="c1"></span>fdisk -l
+<span class="c1"># Disk /dev/sdb: 16.1 GB, 16131293184 bytes, 31506432 sectors
+</span><span class="c1"></span>
+<span class="c1"># https://www.debian.org/CD/faq/#write-usb
+</span><span class="c1"></span>dd <span class="k">if</span><span class="o">=</span>~/Downloads/debian-9.4.0-amd64-DVD-1.iso <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M<span class="p">;</span> sync</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="screen-lock-hotkey">Screen Lock Hotkey</h3>
+
+<p>快速鎖屏幕</p>
+
+<table>
+<thead>
+<tr>
+<th>Desktop</th>
+<th>Command</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>Cinnamon</code></td>
+<td>Ctrl + Alt + L</td>
+</tr>
+
+<tr>
+<td><code>GNome</code></td>
+<td>Command(Win) + L</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="x11-forwarding-vis-ssh">X11 Forwarding Vis SSH</h3>
+
+<p>如果需要通過<code>ssh</code>調用遠程主機(Remote)中的GUI圖形化界面</p>
+
+<p>在遠程主機(Remote)中進行如下配置</p>
+
+<ol>
+<li>修改<code>/etc/ssh/sshd_config</code>；
+
+<ul>
+<li><code>AllowTcpForwarding yes</code></li>
+<li><code>X11Forwarding yes</code></li>
+</ul></li>
+<li>執行<code>startx</code>命令；</li>
+</ol>
+
+<p>在本地主機(Local)中進行如下配置</p>
+
+<ol>
+<li>在文件<code>~/.bashrc</code>中添加<code>export DISPLAY=:0.0</code>；</li>
+</ol>
+
+<p><strong>注意</strong>：如果目標主機(Remote)的<code>~/.bashrc</code>中存在該指令，須將其註釋掉，否則無法正常啓用GUI。</p>
+
+<p>使用方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ssh -Y remoteUser@remoteHost -p remotePort</code></pre></td></tr></table>
+</div>
+</div>
+<p>初次連接時會提示</p>
+
+<blockquote>
+<p>/usr/bin/xauth:  file /home/remoteUser/.Xauthority does not exist</p>
+</blockquote>
+
+<p>該文件會自動創建，無須擔心。</p>
+
+<h3 id="rsync-synchronizing">Rsync Synchronizing</h3>
+
+<p>通過<code>rsync</code>命令進行文件同步、備份，分別在本機和遠程主機中進行。命令使用參考<a href="https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/" title="Tecmint">Rsync(Remote Sync): 10 Practical Examples of Rsync Command in Linux</a></p>
+
+<p>通過計劃任務(cron)進行定時操作，備份用戶家目錄<code>/home/maxdsre</code>。</p>
+
+<p>注意目標路徑的owner，使用ssh進行文件傳輸時須指定ssh key。</p>
+
+<p>相關命令</p>
+
+<ul>
+<li><code>crontab -e</code>：修改、更新計劃任務</li>
+<li><code>crontab -l</code>：查看已存在的計劃任務</li>
+</ul>
+
+<p>執行<code>crontab -e</code>，寫入如下信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Back up to local directory /opt/Backup/
+</span><span class="c1"></span>*/20 * * * * rsync --bwlimit<span class="o">=</span><span class="m">2048</span> -avz --delete /home/maxdsre /opt/Backup/
+
+<span class="c1"># Back up to remote host DataBack /opt/Backup/, &#39;DataBack&#39; is defined in file ~/.ssh/config
+</span><span class="c1"></span>*/30 */2 * * * rsync --bwlimit<span class="o">=</span><span class="m">800</span> --delete -avze <span class="s2">&#34;ssh -i /home/maxdsre/.ssh/id_ed25519&#34;</span> /home/maxdsre DataBack:/opt/Backup/</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="gnome-desktop-setting">GNOME Desktop Setting</h3>
+
+<h4 id="recent-files">Recent Files</h4>
+
+<p>在<a href="https://www.gnome.org/gnome-3/">GNome 3</a>桌面環境中，默認會記錄當前用戶打開的文件，在 <code>Recent</code> 窗口中列出。</p>
+
+<p>信息存放路徑爲<code>~/.local/share/recently-used.xbel</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span> -f ~/.local/share/recently-used.xbel <span class="o">]]</span> <span class="o">&amp;&amp;</span> rm -f ~/.local/share/recently-used.xbel</code></pre></td></tr></table>
+</div>
+</div>
+<p>但刪除後仍會自動創建。</p>
+
+<p>方案1: 禁止<code>Recent</code>按鈕出現，參考<a href="http://forums.fedoraforum.org/showthread.php?t=308731">鏈接</a>，通過<code>gsettings</code>設置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">gsettings get org.gnome.desktop.privacy remember-recent-files
+gsettings <span class="nb">set</span> org.gnome.desktop.privacy remember-recent-files false</code></pre></td></tr></table>
+</div>
+</div>
+<p>方案2：通過GNome Extension <a href="https://extensions.gnome.org/extension/72/recent-items/">Recent Items</a>手動清理，參考<a href="https://bbs.archlinux.org/viewtopic.php?id=116870">鏈接</a></p>
+
+<p>可將二者結合起來使用。</p>
+
+<h4 id="customcorner">CustomCorner</h4>
+
+<p><a href="https://extensions.gnome.org/extension/1037/customcorner/">CustomCorner</a>是GNome的一個擴展，用於在屏幕的四個角落創建快捷功能，代碼託管在<a href="https://gitlab.com/eccheng/customcorner/tree/master">Gitlab</a>。</p>
+
+<p><strong>注意</strong>： 該擴展不支持GNome <code>3.14</code>及之前的版本。</p>
+
+<p>根據<a href="https://gitlab.com/eccheng/customcorner/blob/master/README.md">說明</a>編寫操作命令，通過如下命令安裝擴展</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">fileSavaPath</span><span class="o">=</span><span class="s1">&#39;/tmp/archive.tar.gz&#39;</span>
+curl -s https://gitlab.com/eccheng/customcorner/repository/archive.tar.gz?ref<span class="o">=</span>master -o <span class="nv">$fileSavaPath</span>
+
+<span class="nv">targetPath</span><span class="o">=</span><span class="s2">&#34;~/.local/share/gnome-shell/extensions/customcorner@eccheng.gitlab.com&#34;</span>
+<span class="o">[[</span> -d <span class="s2">&#34;</span><span class="nv">$targetPath</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> rm -rf <span class="s2">&#34;</span><span class="nv">$targetPath</span><span class="s2">&#34;</span>/* <span class="o">||</span> mkdir -p <span class="s2">&#34;</span><span class="nv">$targetPath</span><span class="s2">&#34;</span>
+
+tar xf <span class="nv">$fileSavaPath</span> -C <span class="s2">&#34;</span><span class="nv">$targetPath</span><span class="s2">&#34;</span> --strip-components<span class="o">=</span><span class="m">1</span>
+
+<span class="nv">gnomeShellVersion</span><span class="o">=</span><span class="k">$(</span>gnome-shell --version <span class="p">|</span> sed -n -r <span class="s1">&#39;s@GNOME Shell (.*)@\1@p&#39;</span><span class="k">)</span>
+
+sed -i -r <span class="s1">&#39;/shell-version/s@(&#34;shell-version&#34;: \[\&#34;).*(\&#34;\],)@\1&#39;</span><span class="s2">&#34;</span><span class="nv">$gnomeShellVersion</span><span class="s2">&#34;</span><span class="s1">&#39;\2@&#39;</span> <span class="s2">&#34;</span><span class="nv">$targetPath</span><span class="s2">&#34;</span>/metadata.json
+
+<span class="o">[[</span> -f <span class="nv">$fileSavaPath</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> rm -f <span class="nv">$fileSavaPath</span>
+<span class="nb">unset</span> fileSavaPath
+<span class="nb">unset</span> targetPath
+<span class="nb">unset</span> gnomeShellVersion</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過組合命令<code>Alt + F2</code>重啓GNome Shell，在桌面窗口左上側依次點擊 <code>Applications</code> &ndash;&gt; <code>System Tools</code> &ndash;&gt; <code>Tweak Tool</code> &ndash;&gt; <code>Extensions</code>中找到 <em>Customcorner</em> ，根據個人需求進行設置。</p>
+
+<h2 id="selinux">SELinux</h2>
+
+<p>SELinux配置文件路徑<code>/etc/selinux/config</code>，其模式分爲3種：<code>disabled</code>, <code>enforcing</code>, <code>permissive</code>，默認爲<code>permissive</code>。</p>
+
+<p>RHEL/CentOS默認安裝有SELinux，修改配置文件即可。</p>
+
+<p>對於SLES/OpenSUSE，只能先設置爲<code>permissive</code>重啓系統後才能修正爲<code>enforcing</code>，否則會出現無法問題。</p>
+
+<p>不建議在Debian/Ubuntu中使用SELinux，配置過於繁瑣。</p>
+
+<p>對於如何配置，此處不做討論。具體見本人Shell腳本<code>funcSELinuxConfiguration</code>、<code>funcSELinuxSemanageOperation</code>函數。</p>
+
+<p><strong>重要</strong>：如果對SELinux不瞭解，建議將模式調爲<code>permissive</code>，否則會出現因配置不當而導致應用無法正常使用的情況。</p>
+
+<h2 id="user-management">User Management</h2>
+
+<h3 id="config-file">Config File</h3>
+
+<ol>
+<li><code>/etc/security/pwquality.conf</code> 用於設置密碼生成策略</li>
+<li><code>/etc/login.defs</code> 用於設置有效期，加密方式等</li>
+</ol>
+
+<h3 id="sudo-privilege">sudo privilege</h3>
+
+<p>爲普通用戶添加<code>sudo</code>權限</p>
+
+<p>默認配置文件爲<code>/etc/sudoers</code>，若不存在，則須先安裝<code>sudo</code>安裝包。</p>
+
+<p><strong>注意</strong>：Debian系(Debian/Ubuntu)使用的sudo用戶組名爲<code>sudo</code>，RHEL/SUSE使用的則是<code>wheel</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># disable sudo su - / sudo su root
+</span><span class="c1"></span><span class="nv">sudo_config_path</span><span class="o">=</span><span class="s1">&#39;/etc/sudoers&#39;</span>
+
+<span class="c1"># - For using group &#39;sudo&#39; (Debian/Ubuntu)
+</span><span class="c1"></span>sed -r -i <span class="s1">&#39;s@#*[[:space:]]*(%sudo[[:space:]]+ALL=\(ALL:ALL\)[[:space:]]+ALL)@# \1@;/%sudo ALL=NOPASSWD:ALL/d;/group sudo/a %sudo ALL=NOPASSWD:ALL,!/bin/su&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">sudo_config_path</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># - For using group &#39;wheel&#39;
+</span><span class="c1"></span>sed -r -i <span class="s1">&#39;s@#*[[:space:]]*(%wheel[[:space:]]+ALL=\(ALL\)[[:space:]]+ALL)@# \1@;s@#*[[:space:]]*(%wheel[[:space:]]+ALL=\(ALL\)[[:space:]]+NOPASSWD: ALL).*@\1,!/bin/su@&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">sudo_config_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>爲用戶賦權</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">sudo_group_name</span><span class="o">=</span><span class="s1">&#39;sudo&#39;</span>    <span class="c1"># for group &#39;sudo&#39;
+</span><span class="c1"></span><span class="nv">sudo_group_name</span><span class="o">=</span><span class="s1">&#39;wheel&#39;</span>    <span class="c1"># for group &#39;wheel&#39;
+</span><span class="c1"></span>
+<span class="c1"># - For existed user
+</span><span class="c1"></span>usermod -a -G <span class="s2">&#34;</span><span class="si">${</span><span class="nv">sudo_group_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">username</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># - For new user
+</span><span class="c1"></span>usedadd -mN -G <span class="s2">&#34;</span><span class="si">${</span><span class="nv">sudo_group_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="new-user">New User</h3>
+
+<p>創建新用戶</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -mN <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>設置新密碼</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Debian/SUSE not support --stdin
+</span><span class="c1"></span>
+<span class="c1"># - For apt-get
+</span><span class="c1"># https://debian-administration.org/article/668/Changing_a_users_password_inside_a_script
+</span><span class="c1"></span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">new_password</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> chpasswd
+
+<span class="c1"># - For dnf/yum
+</span><span class="c1"></span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_password</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> passwd --stdin <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># - For Zypper
+</span><span class="c1"># https://stackoverflow.com/questions/27837674/changing-a-linux-password-via-script#answer-27837785
+</span><span class="c1"></span><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_password</span><span class="si">}</span><span class="s2">\n</span><span class="si">${</span><span class="nv">new_password</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> passwd <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>設置密碼失效時間</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># setting user password expired date
+</span><span class="c1"></span>passwd -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pass_change_minday</span><span class="si">}</span><span class="s2">&#34;</span> -x <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pass_change_maxday</span><span class="si">}</span><span class="s2">&#34;</span> -w <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pass_change_warnningday</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>設置第一次登錄時強制重置密碼</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># new created user have to change passwd when first login
+</span><span class="c1"></span>chage -d0 <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_username</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="timezone">TimeZone</h2>
+
+<p>時區如<code>Asia/Singapore</code>, <code>America/New_York</code>, <code>Europe/Berlin</code>等，文件存放在目錄<code>/usr/share/zoneinfo/</code>中。</p>
+
+<p>若存在<code>timedatectl</code>命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">timedatectl set-timezone <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_timezone</span><span class="si">}</span><span class="s2">&#34;</span>
+timedatectl set-local-rtc <span class="nb">false</span>
+timedatectl set-ntp true</code></pre></td></tr></table>
+</div>
+</div>
+<p>若不存在<code>timedatectl</code>命令，分兩種情況：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># - Condition 1: For Debian/Ubuntu using apt-get
+</span><span class="c1"></span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_timezone</span><span class="si">}</span><span class="s2">&#34;</span> &gt; /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata
+
+<span class="c1"># - Condition 2:
+</span><span class="c1"># For RHEL/OpenSUSE
+</span><span class="c1"></span>ln -fs <span class="s2">&#34;/usr/share/zoneinfo/</span><span class="si">${</span><span class="nv">new_timezone</span><span class="si">}</span><span class="s2">&#34;</span> /etc/localtime
+
+<span class="c1"># For CentOS6 or older
+</span><span class="c1"></span>sed -r -i <span class="s1">&#39;/^ZONE=/{s@^([^=]+=).*@\1&#34;&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_timezone</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;&#34;@g;}&#39;</span> /etc/sysconfig/clock</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="hostname">HostName</h2>
+
+<p>設置主機名</p>
+
+<p>如果命令<code>hostnamectl</code>存在，執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># The static hostname is stored in /etc/hostname, see hostname(5) for more information. The pretty hostname, chassis type, and icon name are stored in /etc/machine-info, see machine-info(5). -- man hostnamectl
+</span><span class="c1"></span>
+<span class="c1"># --static, --transient, --pretty
+</span><span class="c1"></span>hostnamectl set-hostname <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span>
+hostnamectl --pretty set-hostname <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span>
+hostnamectl --static set-hostname <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># - set-deployment
+</span><span class="c1"># Debian Jessie has no set-deployment
+</span><span class="c1"></span>hostnamectl set-deployment <span class="o">[</span>development<span class="p">|</span>integration<span class="p">|</span>staging<span class="p">|</span>production<span class="o">]</span>
+
+# hostnamectl set-location <span class="s2">&#34;</span><span class="si">${</span><span class="nv">current_location</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>如果命令<code>hostnamectl</code>不存在</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># temporarily change, when reboot, it will recover
+</span><span class="c1"></span>hostname <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># For /etc/sysconfig/network exists (RHEL)
+</span><span class="c1"></span>sed -r -i <span class="s1">&#39;/^HOSTNAME=/s@^(HOSTNAME=).*@\1&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;@g&#39;</span> /etc/sysconfig/network
+
+<span class="c1"># For /etc/hostname exists (Debian/OpenSUSE)
+</span><span class="c1"></span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span> &gt; /etc/hostname</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：修改主機名後，須在文件<code>/etc/hosts</code>中添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">127</span>.0.0.1 <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span>
+::1 <span class="s2">&#34;</span><span class="si">${</span><span class="nv">new_hostname</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>否則執行<code>sudo</code>時會出現如下報錯</p>
+
+<blockquote>
+<p>sudo: unable to resolve host AWS-Xenial</p>
+</blockquote>
+
+<h2 id="software-management">Software Management</h2>
+
+<p>配置文件路徑</p>
+
+<ul>
+<li>yum: <code>/etc/yum.conf</code></li>
+<li>dnf: <code>/etc/dnf/dnf.conf</code></li>
+<li>apt-get: <code>/etc/apt/apt.conf.d</code></li>
+<li>zypper: <code>/etc/zypp/zypp.conf</code>, <code>/etc/zypp/zypper.conf</code></li>
+</ul>
+
+<p>軟件源配置路徑</p>
+
+<ul>
+<li>yum/dnf: <code>/etc/yum.repos.d/</code></li>
+<li>apt-get: <code>/etc/apt/sources.list</code>, <code>/etc/apt/sources.list.d/</code></li>
+<li>zypper: <code>etc/zypp/repos.d/</code></li>
+</ul>
+
+<p>其中<a href="https://www.centos.org" title="CentOS">CentOS</a>需要單獨安裝<code>epel-release</code>源</p>
+
+<p>各包管理器支持週期性更新配置，但此處不作敘述，詳細配置見本人Shell腳本<code>funcAutomaticPackageUpdate</code>函數。</p>
+
+<h3 id="essential-packages">Essential Packages</h3>
+
+<p>一些必要的安裝包</p>
+
+<ul>
+<li><code>bash-completion</code>： Tab自動補全</li>
+<li><code>chrony</code>：時間同步</li>
+</ul>
+
+<h2 id="kernel">Kernel</h2>
+
+<p>通常系統中的軟件源提供的<a href="https://www.kernel.org" title="The Linux Kernel">Kernel</a>並不是最新版本，如果需要安裝最新版本的kernel，須進行相關設置。</p>
+
+<p>For Debian/Ubuntu</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># For Ubuntu
+</span><span class="c1"></span>apt-get -yq -f install <span class="k">$(</span>apt-cache search linux-generic-hwe <span class="m">2</span>&gt; /dev/null <span class="p">|</span> sed -r -n <span class="s1">&#39;1{s@^([^[:space:]]+).*$@\1@g;p}&#39;</span><span class="k">)</span>
+
+
+<span class="c1"># For Debian
+</span><span class="c1"></span>apt-get -t <span class="k">$(</span>lsb_release -cs<span class="k">)</span>-backports -y -q upgrade</code></pre></td></tr></table>
+</div>
+</div>
+<p>For OpenSUSE</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># http://pvdm.xs4all.nl/wiki/index.php/How_to_have_the_latest_kernel_in_openSUSE
+</span><span class="c1"># multiversion = provides:multiversion(kernel)
+</span><span class="c1"># multiversion.kernels = latest,latest-1,running
+</span><span class="c1"></span>zypper ar -fcg http://download.opensuse.org/repositories/Kernel:/HEAD/standard/ kernel-repo
+zypper dup -r kernel-repo</code></pre></td></tr></table>
+</div>
+</div>
+<p>For CentOS</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ELRepo /etc/yum.repos./elrepo.repo
+</span><span class="c1"></span>
+<span class="c1"># version_id=7    # CentOS 7
+</span><span class="c1"># version_id=6    # CentOS 6
+</span><span class="c1"></span><span class="nv">elrepo_info</span><span class="o">=</span><span class="k">$(</span>curl -fsL https://elrepo.org/tiki/tiki-index.php <span class="p">|</span> sed -r -n <span class="s1">&#39;/rpm (--import|-Uvh)/{s@&lt;[^&gt;]*&gt;@@g;s@.*(http.*)$@\1@g;p}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;:a;N;$!ba;s@\n@|@g;&#39;</span><span class="k">)</span>
+
+rpm --import <span class="s2">&#34;</span><span class="si">${</span><span class="nv">elrepo_info</span><span class="p">%%|*</span><span class="si">}</span><span class="s2">&#34;</span> <span class="m">2</span>&gt; /dev/null
+<span class="nv">elrepo_info</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">elrepo_info</span><span class="p">#*|</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">version_id</span><span class="si">}</span><span class="s2">&#34;</span> in
+    <span class="m">7</span> <span class="o">)</span> <span class="nv">elrepo_info</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">elrepo_info</span><span class="p">%%|*</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">;;</span>
+    <span class="m">6</span> <span class="o">)</span> <span class="nv">elrepo_info</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">elrepo_info</span><span class="p">##*|</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">;;</span>
+<span class="k">esac</span>
+
+yum -y -q install <span class="s2">&#34;</span><span class="si">${</span><span class="nv">elrepo_info</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># Long term support kernel package name is kernel-lt version
+</span><span class="c1"># Mainline stable kernel package name is kernel-ml version
+</span><span class="c1"></span>
+<span class="c1"># yum --disablerepo=&#39;*&#39; --enablerepo=&#39;elrepo-kernel&#39; list available
+</span><span class="c1"># yum --disablerepo=&#39;*&#39; --enablerepo=&#39;elrepo-kernel&#39; -y -q install kernel-lt
+</span><span class="c1"></span>yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;elrepo-kernel&#39;</span> -y -q install kernel-ml
+
+<span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">version_id</span><span class="si">}</span><span class="s2">&#34;</span> in
+    <span class="m">7</span> <span class="o">)</span>
+        <span class="c1"># egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \&#39;
+</span><span class="c1"></span>        grub2-set-default <span class="m">0</span> <span class="m">2</span>&gt; /dev/null
+    <span class="p">;;</span>
+    <span class="m">6</span> <span class="o">)</span>
+        <span class="o">[[</span> -s <span class="s1">&#39;/etc/grub.conf&#39;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> sed -r -i <span class="s1">&#39;/default=/{s@^([^+]+=).*$@\10@g;}&#39;</span> /etc/grub.conf
+    <span class="p">;;</span>
+<span class="k">esac</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="input-methods">Input Methods</h2>
+
+<p>如果需要安裝中文輸入法，可通過<a href="https://github.com/ibus/ibus">ibus</a>或<a href="https://www.fcitx-im.org">fcitx</a>框架實現。</p>
+
+<p>推薦使用<a href="http://rime.im">RIME | 中州韻輸入法引擎</a>，具體安裝說明見<a href="https://github.com/rime/home/wiki/RimeWithIBus">RimeWithIBus</a>。</p>
+
+<h3 id="via-ibus">Via ibus</h3>
+
+<p>使用<a href="https://github.com/ibus/ibus">ibus</a>(Intelligent Input Bus)作為輸入法框架。可通過如下命令查看相關軟件包的名稱</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">apt-cache search -n ^ibus <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get install -y ibus-rime ibus-pinyin ibus-cangjie ibus-sunpinyin</code></pre></td></tr></table>
+</div>
+</div>
+<p>安裝完成後執行如下命令配置ibus</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo ibus-setup</code></pre></td></tr></table>
+</div>
+</div>
+<p>出現提示信息</p>
+
+<blockquote>
+<p>The IBus daemon is not running. Do you wish to start it?</p>
+</blockquote>
+
+<p>選擇<code>Yes</code>後出現如下提示信息</p>
+
+<blockquote>
+<p>IBus has been started! If you cannot use IBus, add the following lines to your $HOME/.bashrc; then relog into your desktop.
+  export GTK_IM_MODULE=ibus
+  export XMODIFIERS=@im=ibus
+  export QT_IM_MODULE=ibus</p>
+</blockquote>
+
+<p>在<code>IBus Preferences</code>窗口中選<code>Input Method</code>選項卡，點擊<code>Add</code>按鈕，選擇<code>Chinese</code>，可看到已經安裝的輸入法，選擇需要的輸入法，點擊<code>Add</code>添加。</p>
+
+<p>在窗口左上角的<code>Applications</code>中找到<code>Settings</code>(通常在<code>System Tools</code>中)，打開<code>All Settings</code>窗口後，找到<code>Region&amp;Language</code>圖標點擊進去，在<code>Input Reources</code>下方點<code>+</code>(加號)，點擊<code>More</code>(三個豎點那欄)，在其中搜索<code>chinese</code>，可列出已安裝的中文輸入法。</p>
+
+<p>此處選擇<code>Chinese(Rime)</code>，點擊窗口右上角的<code>Add</code>按鈕進行添加。操作完成後即可在桌面右上角看到輸入法圖標，可點擊進行切換。也可通過按鍵<code>Super</code>+<code>Space</code>(Win鍵+空格鍵)進行輸入法的切換。</p>
+
+<p><code>Rime</code>輸入法支持多種輸入方案，可通過如下方式進行切換
+1. 功能鍵<code>F4</code>
+2. 組合按鍵<code>Ctrl+`</code> (鍵盤左上角的反引號)</p>
+
+<p><strong>注</strong>：可能需要退出重新登入系統才能使用。</p>
+
+<h3 id="via-fcitx">Via Fcitx</h3>
+
+<p>fcitx官方文檔 <a href="https://fcitx-im.org/wiki/Install_and_Configure">Install and Configure
+</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># - For Debian
+</span><span class="c1"></span>sudo apt-get install fcitx fcitx-rime -y
+
+<span class="c1"># - For OpenSUSE
+</span><span class="c1"># search
+</span><span class="c1"></span>sudo zypper ref
+zypper se fcitx*
+<span class="c1"># install fcitx and rime
+</span><span class="c1"></span>sudo zypper in -y fcitx fcitx-rime
+<span class="c1"># This overwrites the system default set in /etc/sysconfig/language
+</span><span class="c1"></span>sed -i <span class="s1">&#39;/^INPUT_METHOD=/d&#39;</span> ~/.profile
+<span class="nb">echo</span> <span class="s2">&#34;INPUT_METHOD=\&#34;fcitx\&#34;&#34;</span> &gt;&gt; ~/.profile</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 選擇input method
+</span><span class="c1"></span>im-config
+
+<span class="c1"># 點符號 + 添加rime，取消勾選 Only Show Current Language後查詢
+</span><span class="c1"></span>fcitx-config-gtk3
+
+<span class="c1"># 重啓fcitx
+</span><span class="c1"># https://fcitx-im.org/wiki/Install_input_method
+</span><span class="c1"></span>fcitx -r</code></pre></td></tr></table>
+</div>
+</div>
+<p>退出當前登錄狀態，重新登錄。通過組合按鍵<code>Ctrl+Space</code>啓用Rime輸入法，通過按鍵<code>L Shift</code>臨時切換輸入法。</p>
+
+<h2 id="web-browser">Web Browser</h2>
+
+<h3 id="google-chrome">Google Chrome</h3>
+
+<p>Google Chrome官網爲 <a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a>，點擊頁面的 <strong>Download now</strong> 按鈕，會跳出彈框提示需要下載何種安裝包，主要兩種</p>
+
+<ul>
+<li><a href="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb">64 bit .deb (For Debian/Ubuntu)</a></li>
+<li><a href="https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm">64 bit .rpm (For Fedora/openSUSE)</a></li>
+</ul>
+
+<p>在GNome Desktop環境中，<code>/usr/bin/x-www-browser</code>用於設置系統默認瀏覽器，以下是Google Chrome在安裝過程中的配置記錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">update-alternatives: using /usr/bin/google-chrome-stable to provide /usr/bin/x-www-browser <span class="o">(</span>x-www-browser<span class="o">)</span> in auto mode
+update-alternatives: using /usr/bin/google-chrome-stable to provide /usr/bin/gnome-www-browser <span class="o">(</span>gnome-www-browser<span class="o">)</span> in auto mode
+update-alternatives: using /usr/bin/google-chrome-stable to provide /usr/bin/google-chrome <span class="o">(</span>google-chrome<span class="o">)</span> in auto mode</code></pre></td></tr></table>
+</div>
+</div>
+<p>Google Chrome的配置文件(如登錄信息、設置、插件等)目錄爲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">~/.config/google-chrome</code></pre></td></tr></table>
+</div>
+</div>
+<p>安裝成功後，即可在<code>Menu</code>菜單中找到Google Chrome應用程序(通常是<code>Applications</code>-&gt;<code>Internet</code>)。</p>
+
+<p>在瀏覽器地址欄中輸入如下地址，可顯示對應功能、信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#瀏覽器版本信息
+</span><span class="c1"></span>chrome://version
+
+<span class="c1">#Experiments功能控制
+</span><span class="c1"></span>chrome://flags
+
+<span class="c1">#清除瀏覽歷史
+</span><span class="c1"></span>chrome://settings/clearBrowserData</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="plugins">Plugins</h4>
+
+<p>在瀏覽器地址欄中輸入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">chrome://plugins/</code></pre></td></tr></table>
+</div>
+</div>
+<p>禁用不需要的插件，如<code>Chrome PDF Viewer</code>。</p>
+
+<p>啟用<code>Do Not Track</code> (Setting&ndash;&gt;Privacy中)</p>
+
+<h4 id="extensions">Extensions</h4>
+
+<p>出於某些需要，安裝如下擴展</p>
+
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/crxmouse-chrome-gestures/jlgkpaicikihijadgifklkbpdajbkhjo?hl=en-US">crxMouse Chrome Gestures</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm/related?hl=en-US">uBlock Origin</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/wot-web-of-trust-website/bhmmomiinigofkjcapegjjndpbikblnp?hl=en-US">WOT: Web of Trust, Website Reputation Ratings</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/disconnect/jeoacafpbcihiomhlakheieifhpjdfeo?hl=en-US">Disconnect</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=en-US">HTTPS Everywhere</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=en-US">Proxy SwitchyOmega</a></li>
+<li><a href="https://chrome.google.com/webstore/search/Random%20User-Agent?hl=en-US">Random User-Agent</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/webrtc-network-limiter/npeicpdbkakmehahjeeohfdhnlpdklia?hl=en-US">WebRTC Network Limiter</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp?hl=en-US">Privacy Badger</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/clickclean/ghgabhipcejejjmhhchfonmamedcbeod?hl=en-US">Click&amp;Clean</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/ghostery/mlomiejdfkolichcflejclcbmpeaniij?hl=en-US">Ghostery</a></li>
+</ul>
+
+<h3 id="mozilla-firefox">Mozilla Firefox</h3>
+
+<p>系統自帶的Mozilla Firefox版本較低，若要使用最新版本，需從<a href="https://www.mozilla.org/en-US/firefox/">Mozilla Firefox</a>官網下載，FTP<a href="https://download-installer.cdn.mozilla.net/pub/firefox/releases/">路徑</a>。Mozilla Firefox默認未安裝<code>Adobe Flash Player</code>無法播放視頻，需從Adobe官網下載<a href="https://get.adobe.com/flashplayer/">Adobe Flash Player</a>後手動安裝，按需選擇下載格式，此處選擇<code>.tar.gz</code>格式。</p>
+
+<h4 id="extensions-1">Extensions</h4>
+
+<p>出於某些需要，安裝如下擴展</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/gesturefy/">Gesturefy</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/happy-bonobo-disable-webrtc/">Disable WebRTC</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/">HTTPS Everywhere</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/disconnect/">Disconnect</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/">Privacy Badger</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher-revived/">User-Agent Switcher</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">uBlock Origin</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/wot-safe-browsing-tool/">WOT</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/country-flags-ip-whois/">Country Flags &amp; IP Whois</a></li>
+</ul>
+
+<h3 id="srware-iron">SRWare Iron</h3>
+
+<p>SRWare Iron官方網站 <a href="https://www.srware.net/en/">https://www.srware.net/en/</a>，<a href="https://www.srware.net/en/software_srware_iron.php">介紹頁面</a>，<a href="https://www.srware.net/en/software_srware_iron_download.php">下載頁面</a>。</p>
+
+<p>其中Linux版本下載頁的鏈接可通過如下命令獲取</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -s https://www.srware.net/en/software_srware_iron_download.php <span class="p">|</span> sed -n <span class="s1">&#39;/Iron for Linux/p&#39;</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;s@.*href=&#34;(.*)&#34; .*@\1@p;&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s@\&amp;amp\;@\&amp;@g&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.06.17 11:30 Fri Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.24 17:03 Tue America/Boston
+
+<ul>
+<li>勘誤，更新，遷移到新blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-24</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/shell-script/">Shell Script</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/using-awk-to-extract-statistic-results-from-multiple-log-files/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Using Awk To Extract Statistic Results From Multiple Log Files</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/building-docker-private-registry-with-self-signed-certificate/">
+            <span class="next-text nav-default">Building Docker Private Registry With Self-signed Certificate</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

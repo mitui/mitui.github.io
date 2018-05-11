@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorial on MetaDefine - A super concise theme for Hugo</title>
+    <link>/categories/tutorial/</link>
+    <description>Recent content in Tutorial on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2016 22:04:52 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Complete Intrduction To Markdown Syntax</title>
+      <link>/2016/a-complete-intrduction-to-markdown-syntax/</link>
+      <pubDate>Mon, 25 Jan 2016 22:04:52 +0800</pubDate>
+      
+      <guid>/2016/a-complete-intrduction-to-markdown-syntax/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://daringfireball.net/projects/markdown/&#34; title=&#34;Markdown&#34;&gt;Markdown&lt;/a&gt;是一種輕量級的標記語言，採用純文本語法格式，文件後綴爲&lt;code&gt;.md&lt;/code&gt;。&lt;a href=&#34;https://daringfireball.net/projects/markdown/&#34; title=&#34;Markdown&#34;&gt;Markdown&lt;/a&gt;應用廣泛，常用於撰寫&lt;a href=&#34;https://en.wikipedia.org/wiki/README&#34; title=&#34;WikiPedia&#34;&gt;README&lt;/a&gt;。&lt;a href=&#34;https://jekyllrb.com&#34; title=&#34;Jekyll is a simple, blog-aware, static site generator&#34;&gt;Jekyll&lt;/a&gt;, &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;, &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;等靜態Blog框架支持Markdown語法，&lt;a href=&#34;https://www.digitalocean.com&#34; title=&#34;Digital Ocean&#34;&gt;Digital Ocean&lt;/a&gt;、&lt;a href=&#34;https://stackoverflow.com&#34; title=&#34;Stack Overflow&#34;&gt;Stack Overflow&lt;/a&gt;等網站也支持Markdown語法。只是各家對Markdown的語法解釋不盡相同，如對&lt;code&gt;TOC&lt;/code&gt;、&lt;code&gt;Diagram&lt;/code&gt;、&lt;code&gt;LaTeX&lt;/code&gt;的支持。&lt;/p&gt;
+
+&lt;p&gt;本文詳細介紹&lt;a href=&#34;https://daringfireball.net/projects/markdown/&#34; title=&#34;Markdown&#34;&gt;Markdown&lt;/a&gt;的語法、使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

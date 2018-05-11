@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>A Complete Intrduction To Markdown Syntax - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="A complete introduction to Markdown syntax" />
+<meta name="keywords" content="AxdLog, Markdown syntax, Github" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/a-complete-intrduction-to-markdown-syntax/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="A Complete Intrduction To Markdown Syntax" />
+<meta property="og:description" content="A complete introduction to Markdown syntax" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/a-complete-intrduction-to-markdown-syntax/" />
+
+
+
+<meta property="article:published_time" content="2016-01-25T22:04:52&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T22:20:02-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="A Complete Intrduction To Markdown Syntax">
+<meta itemprop="description" content="A complete introduction to Markdown syntax">
+
+
+<meta itemprop="datePublished" content="2016-01-25T22:04:52&#43;08:00" />
+<meta itemprop="dateModified" content="2016-01-25T22:04:52&#43;08:00" />
+<meta itemprop="wordCount" content="5556">
+
+
+
+<meta itemprop="keywords" content="Markdown,GitHub," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Complete Intrduction To Markdown Syntax"/>
+<meta name="twitter:description" content="A complete introduction to Markdown syntax"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">A Complete Intrduction To Markdown Syntax</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-01-25 </span>
+        <div class="post-category">
+            
+              <a href="/categories/tutorial/"> Tutorial </a>
+            
+          </div>
+        <span class="more-meta"> 5556 words </span>
+        <span class="more-meta"> 12 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intrduction">Intrduction</a></li>
+<li><a href="#block-elements-syntax">Block Elements syntax</a>
+<ul>
+<li><a href="#heading">Heading</a></li>
+<li><a href="#paragraphs-and-line-breaks">Paragraphs and Line Breaks</a></li>
+<li><a href="#music-and-video">Music and Video</a>
+<ul>
+<li><a href="#hexo-hugo">Hexo/Hugo</a></li>
+<li><a href="#github">GitHub</a></li>
+</ul></li>
+<li><a href="#blockquotes">Blockquotes</a>
+<ul>
+<li><a href="#style1">style1</a></li>
+<li><a href="#style2">style2</a></li>
+<li><a href="#style3">style3</a></li>
+<li><a href="#style4">style4</a></li>
+<li><a href="#style5">style5</a></li>
+<li><a href="#style6">style6</a></li>
+<li><a href="#style7">style7</a></li>
+</ul></li>
+<li><a href="#lists">Lists</a>
+<ul>
+<li><a href="#ordered-lists">Ordered Lists</a></li>
+<li><a href="#unordered-lists">Unordered Lists</a></li>
+</ul></li>
+<li><a href="#code-blocks">Code Blocks</a>
+<ul>
+<li><a href="#style1-1">style1</a></li>
+<li><a href="#style2-1">style2</a></li>
+</ul></li>
+<li><a href="#html-entities">HTML Entities</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#horizonal-rules">Horizonal Rules</a></li>
+</ul></li>
+<li><a href="#inline-elements">Inline Elements</a>
+<ul>
+<li><a href="#links">Links</a>
+<ul>
+<li><a href="#inline-style">Inline-style</a></li>
+<li><a href="#reference-style">Reference-style</a></li>
+</ul></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#emphasis">Emphasis</a></li>
+<li><a href="#code-highlight">Code Highlight</a></li>
+</ul></li>
+<li><a href="#table-of-contents">Table Of Contents</a>
+<ul>
+<li><a href="#shell-script">Shell Script</a></li>
+</ul></li>
+<li><a href="#github-with-markdown">GitHub With Markdown</a>
+<ul>
+<li><a href="#youtube-video-thumbnail">YouTube Video Thumbnail</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#bibliography">Bibliography</a></li>
+<li><a href="#change-logs">Change logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://daringfireball.net/projects/markdown/" title="Markdown">Markdown</a>是一種輕量級的標記語言，採用純文本語法格式，文件後綴爲<code>.md</code>。<a href="https://daringfireball.net/projects/markdown/" title="Markdown">Markdown</a>應用廣泛，常用於撰寫<a href="https://en.wikipedia.org/wiki/README" title="WikiPedia">README</a>。<a href="https://jekyllrb.com" title="Jekyll is a simple, blog-aware, static site generator">Jekyll</a>, <a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>, <a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>等靜態Blog框架支持Markdown語法，<a href="https://www.digitalocean.com" title="Digital Ocean">Digital Ocean</a>、<a href="https://stackoverflow.com" title="Stack Overflow">Stack Overflow</a>等網站也支持Markdown語法。只是各家對Markdown的語法解釋不盡相同，如對<code>TOC</code>、<code>Diagram</code>、<code>LaTeX</code>的支持。</p>
+
+<p>本文詳細介紹<a href="https://daringfireball.net/projects/markdown/" title="Markdown">Markdown</a>的語法、使用。</p>
+
+<p></p>
+
+<h2 id="intrduction">Intrduction</h2>
+
+<p>Markdown由<a href="https://en.wikipedia.org/wiki/John_Gruber" title="WikiPedia">John Gruber</a>於2004年開發，設計主旨爲<code>可讀性</code>，語法設計參考Email中的純文本標記。更多介紹參見<a href="https://en.wikipedia.org/wiki/Markdown" title="Wikipedia">維基詞條</a>。</p>
+
+<p>Markdown通過<code>[:punct:]</code>(標點符號)來定義語法，同時支持部分<a href="https://html.spec.whatwg.org/multipage/" title="WHATWG">HTML</a>語法。與<code>HTML</code>語法相比，Markdown的語法極爲簡潔。不過二者的語法有對應關係。對照<code>HTML</code>中相關元素學習Markdown，有助於理解並掌握Markdown。</p>
+
+<p>在<code>HTML</code>語法中，元素分爲<code>Block Elements</code>(塊級元素)和<code>Inline Elements</code>(行內元素)，Markdown也有相對應的語法。</p>
+
+<p>Markdown官網對於其語法格式的說明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Basics
+</span><span class="c1"></span>https://daringfireball.net/projects/markdown/basics
+
+<span class="c1"># Syntax
+</span><span class="c1"></span>https://daringfireball.net/projects/markdown/syntax</code></pre></td></tr></table>
+</div>
+</div>
+<p>本文對Markdown的介紹按照 <strong>塊級元素</strong> 和 <strong>行內元素</strong> 的分類進行，額外的功能單獨介紹。</p>
+
+<h2 id="block-elements-syntax">Block Elements syntax</h2>
+
+<p>塊級元素的Markdown語法涵蓋 <strong>標題</strong>、<strong>段落</strong>、<strong>引用</strong>、<strong>列表</strong>、<strong>代碼塊</strong>、<strong>水平分割線</strong> 等。</p>
+
+<h3 id="heading">Heading</h3>
+
+<p>對於標題，<code>HTML</code>中<a href="https://html.spec.whatwg.org/multipage/semantics.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">Heading Element</a>(小標題)共有6個，從<code>&lt;h1&gt;&lt;/h1&gt;</code>到<code>&lt;h6&gt;&lt;/h6&gt;</code>，字體逐漸減小。Markdown中有對應的6個級別的標題，實現方式爲在標題文字前加上對應數量的符號<code>#</code>。如一級標題爲在文字前加一個<code>#</code>，二級標題爲在文字前加兩個<code>#</code>，依次類推。</p>
+
+<p><strong>提醒</strong>: 強烈建議在符號<code>#</code>與文字之間加一個空格，即以空格間隔二者。</p>
+
+<p><code>HTML</code>與Markdown語法格式的對應關係如下</p>
+
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Markdown</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>H1</td>
+<td><code>#</code></td>
+</tr>
+
+<tr>
+<td>H2</td>
+<td><code>##</code></td>
+</tr>
+
+<tr>
+<td>H3</td>
+<td><code>###</code></td>
+</tr>
+
+<tr>
+<td>H4</td>
+<td><code>####</code></td>
+</tr>
+
+<tr>
+<td>H5</td>
+<td><code>#####</code></td>
+</tr>
+
+<tr>
+<td>H6</td>
+<td><code>######</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>HTML中<code>&lt;H&gt;</code>是閉合標籤，如<code>&lt;H1&gt;</code>必須用<code>&lt;/H1&gt;</code>閉合，但在Markdown中，此爲可選操作，可不在文字後再添加對應個數的符號<code>#</code>。</p>
+
+<p><strong>重要</strong>：<code># H1</code>爲Title(標題)，<code>## H2</code>爲SubTitle(子標題)，Markdown有額外的語法定義此二者：</p>
+
+<ol>
+<li>在文字所在行的下一行添加至少3個符號<code>=</code>即代表是 <em>標題</em> ；</li>
+<li>在文字所在行的下一行添加至少3個符號<code>-</code>即代表是 <em>子標題</em> ；</li>
+</ol>
+
+<p>對應關係如下</p>
+
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Type1</th>
+<th>Type2</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>H1</td>
+<td><code>#</code></td>
+<td>Text<br>===</td>
+</tr>
+
+<tr>
+<td>H2</td>
+<td><code>##</code></td>
+<td>Text<br>&mdash;</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="paragraphs-and-line-breaks">Paragraphs and Line Breaks</h3>
+
+<p>對於段落，段落間用空行間隔即可。</p>
+
+<p>對於換行，通過換行符<code>&lt;br /&gt;</code>實現。此標籤在HTML是XML寫法，爲了讓XHTML兼容HTML，也可簡寫爲<code>&lt;br&gt;</code>。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">I love you, my lover. &lt;br /&gt;I miss you, every day and night.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下：</p>
+
+<blockquote>
+<p>I love you, my lover. <br />I miss you, every day and night.</p>
+</blockquote>
+
+<h3 id="music-and-video">Music and Video</h3>
+
+<p>在HTML中，音頻、視頻是通過標籤<code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>實現，但對Markdown而言不同的平臺支持性不能不一樣。<a href="https://hexo.io" title="A fast, simple &amp; powerful blog framework">Hexo</a>、<a href="https://gohugo.io" title="The world’s fastest framework for building websites">Hugo</a>支持通過標籤<code>&lt;iframe&gt;&lt;/iframe&gt;</code>實現音視頻嵌入。但GitHub到目前爲止尚不支持音視頻的嵌入，但可通過圖片鏈接形式折衷實現。</p>
+
+<h4 id="hexo-hugo">Hexo/Hugo</h4>
+
+<p>以<a href="https://www.youtube.com" title="Youtube">Youtube</a>中的<a href="https://www.youtube.com/watch?v=rYEDA3JcQqw" title="Youtube">Adele - Rolling in the Deep</a>爲例</p>
+
+<p>其<code>&lt;iframe&gt;</code>代碼是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;640&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;360&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://www.youtube-nocookie.com/embed/rYEDA3JcQqw?rel=0&#34;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下：</p>
+
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/rYEDA3JcQqw?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<h4 id="github">GitHub</h4>
+
+<p>對於GitHub,如果需要嵌入音、視頻，可參考如下資源：</p>
+
+<ul>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos">Youtube videos</a></li>
+<li><a href="https://stackoverflow.com/questions/4279611/how-to-embed-a-video-into-github-readme-md" title="Stack Overflow">How to embed a video into GitHub README.md?</a></li>
+<li><a href="https://stackoverflow.com/questions/11804820/embed-a-youtube-video" title="Stack Overflow">Embed a YouTube video</a></li>
+</ul>
+
+<p>實現方式是使用Markdown中插入圖片和超鏈接的語法，將二者結合起來。圖片可以是視頻截圖，通過點擊圖片自動跳轉到視頻的播放地址，實現 <strong>僞</strong> 嵌入。</p>
+
+<p>對於<code>Youtube</code>而言，可通過調用<code>Youtube</code>的<a href="https://developers.google.com/youtube/v3/" title="Google">API</a>獲取視頻的縮略圖。(參考自<a href="https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api" title="Stack Overflow">How do I get a YouTube video thumbnail from the YouTube API?</a>)</p>
+
+<p>此處仍以<a href="https://www.youtube.com/watch?v=rYEDA3JcQqw" title="Youtube">Adele - Rolling in the Deep</a>爲例，在GitHub中語法如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[<span class="nt">![</span>](<span class="na">https://img.youtube.com/vi/rYEDA3JcQqw/maxresdefault.jpg &#39;Adele - Rolling in the Deep&#39;</span>)](https://www.youtube.com/watch?v=rYEDA3JcQqw)</code></pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><a href="https://www.youtube.com/watch?v=rYEDA3JcQqw"><img src="https://img.youtube.com/vi/rYEDA3JcQqw/maxresdefault.jpg" alt="" title="Adele - Rolling in the Deep" /></a></p>
+
+<h3 id="blockquotes">Blockquotes</h3>
+
+<p>對於引用，Markdown在文字前添加符號<code>&gt;</code>表示引用。</p>
+
+<ol>
+<li>如果行之間沒有空行，則在第一行的行首添加符號<code>&gt;</code>即可將餘下行自動添加到引用的範圍內，直到最近一個空行出現爲止；</li>
+<li>如果有多個段落需要引用，在段落間的空行中添加符號<code>&gt;</code>可自動將下一段文字添加到引用的範圍內；</li>
+<li>也可在需要引用的每一行之前添加符號<code>&gt;</code>，包括其中的空行。</li>
+</ol>
+
+<p><strong>注意</strong>：符號<code>&gt;&gt;</code>表示內部引用。</p>
+
+<p>具體分析如下</p>
+
+<h4 id="style1">style1</h4>
+
+<p>對於一段話，中間沒有空行，可在段首加上符號 <code>&gt;</code>，即可引用整段話。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;I love you, my lover.
+I miss you, every day and night.
+Today is Sun.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>I love you, my lover.
+I miss you, every day and night.
+Today is Sun.</p>
+</blockquote>
+
+<h4 id="style2">style2</h4>
+
+<p>對於一段話，如果中間有空行，在段首加上符號<code>&gt;</code>，只能第一次空行出現之前的內容。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;I love you, my lover.
+I miss you, every day and night.
+
+Today is Sun.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>I love you, my lover.
+I miss you, every day and night.</p>
+</blockquote>
+
+<p>Today is Sun.</p>
+
+<h4 id="style3">style3</h4>
+
+<p>在每行前都加上符號<code>&gt;</code>，等效於引用一段話。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;I love you, my lover.
+&gt;I miss you, every day and night.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>I love you, my lover.
+I miss you, every day and night.</p>
+</blockquote>
+
+<h4 id="style4">style4</h4>
+
+<p>在每行前都加上符號<code>&gt;</code>（包括空行），等效於包含空行在其中的一段話。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;I love you, my lover.
+&gt;
+&gt;I miss you, every day and night.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>I love you, my lover.</p>
+
+<p>I miss you, every day and night.</p>
+</blockquote>
+
+<h4 id="style5">style5</h4>
+
+<p>在每行前都加上符號<code>&gt;</code>（不包括空行），等效於包含空行在其中的一段話。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;I love you, my lover.
+
+&gt;I miss you, every day and night.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>I love you, my lover.</p>
+
+<p>I miss you, every day and night.</p>
+</blockquote>
+
+<h4 id="style6">style6</h4>
+
+<p>在行首加上2個符號<code>&gt;</code>，即<code>&gt;&gt;</code>，即表示內部引用。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;To my lover
+&gt;&gt;I love you, my lover.
+
+&gt;&gt;I miss you, every day and night.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>To my lover
+&gt;I love you, my lover.</p>
+
+<blockquote>
+<p>I miss you, every day and night.</p>
+</blockquote>
+</blockquote>
+
+<h4 id="style7">style7</h4>
+
+<p>在行首加上2個符號<code>&gt;</code>，即<code>&gt;&gt;</code>，即表示內部引用。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;To my lover
+&gt;&gt;I love you, my lover.
+
+&gt;I miss you, every day and night.</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<p>To my lover
+&gt;I love you, my lover.</p>
+
+<p>I miss you, every day and night.</p>
+</blockquote>
+
+<h3 id="lists">Lists</h3>
+
+<p>在HTML中列表分爲<code>Ordered List</code>(有序列表)和<code>Unordered List</code>(無序列表)。Markdown的語法如下：</p>
+
+<ul>
+<li>有序列表：使用數值，數值後有點號<code>.</code>和一個空格，再加上需要排序的字符</li>
+<li>無序列表：使用星號<code>*</code>、加號<code>+</code>、減號<code>-</code>都可以</li>
+</ul>
+
+<h4 id="ordered-lists">Ordered Lists</h4>
+
+<p>有序列表：數字遞增，通常只需要用數值表示即可(自動渲染爲遞增)，其後加上點號<code>.</code>和一個空格。</p>
+
+<p><strong>注意</strong>：點號<code>.</code>和空格必須添加，否則會被認爲不是排列。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1. Monday
+2. Tuesday
+3. Wensday
+4. Thursday
+5. Friday
+6. Staturday
+7. Sunday</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<ol>
+<li>Monday</li>
+<li>Tuesday</li>
+<li>Wensday</li>
+<li>Thursday</li>
+<li>Friday</li>
+<li>Staturday</li>
+<li>Sunday</li>
+</ol>
+</blockquote>
+
+<p>此例子很典型，不管數值是否重複或順序，Markdown渲染出來的序號都是遞增的。如果某一行沒有添加數值格式，則Markdown會認爲其仍是上一個數值代表的數據，但會進行格式排版，與上一條數據同一豎直位置。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1. Monday
+1. Tuesday
+7. Wensday
+9. Thursday
+Friday
+18. Staturday
+5. Sunday</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下：</p>
+
+<blockquote>
+<ol>
+<li>Monday</li>
+<li>Tuesday</li>
+<li>Wensday</li>
+<li>Thursday
+Friday</li>
+<li>Staturday</li>
+<li>Sunday</li>
+</ol>
+</blockquote>
+
+<h4 id="unordered-lists">Unordered Lists</h4>
+
+<p>無序列表：只需在每行之前加上<code>*</code>、<code>+</code>、<code>-</code>中任一種符號即可，需有空格間隔。</p>
+
+<p><strong>注意</strong>：空格必須添加，否則會被認爲不是排列。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">* Monday
+* Tuesday
++ Wensday
++ Thursday
+- Friday
+- Staturday
+- Sunday</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下：</p>
+
+<blockquote>
+<ul>
+<li>Monday</li>
+<li>Tuesday</li>
+<li>Wensday
+Thursday</li>
+<li>Friday</li>
+<li>Staturday</li>
+<li>Sunday</li>
+</ul>
+</blockquote>
+
+<h3 id="code-blocks">Code Blocks</h3>
+
+<p>代碼塊，對於代碼塊引用。在Markdown中，可通過如下2中方式實現：</p>
+
+<ol>
+<li>可使用一個<code>Tab</code>或四個空格實現。即先按一個<code>Tab</code>或四個空格，再輸入代碼；</li>
+<li>可通過三個反引號包裹起來，首行和尾行都是三個反引號；</li>
+</ol>
+
+<h4 id="style1-1">style1</h4>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    flag=1
+    while $flag;do
+        echo &#34;I love you, my lover&#34;
+    done</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">flag=1
+while $flag;do
+    echo &#34;I love you, my lover&#34;
+done</pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h4 id="style2-1">style2</h4>
+
+<p>通過三個反引號包裹</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">flag=1
+while $flag;do
+    echo &#34;I love you, my lover&#34;
+done</pre></td></tr></table>
+</div>
+</div>
+<p>此種形式，可以給不同語言的代碼塊加上對應語言的標記，如<code>html</code>、<code>bash</code>、<code>php</code>、<code>phthon</code>、<code>javascript</code>、<code>sql</code>等，添加位置是行首三個反引號後面，直接添加即可，這樣對應語言的語法關鍵詞會被Markdown用醒目的顏色標記出來。</p>
+
+<p>如對SQL語句的渲染</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">drop</span> <span class="k">database</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">arsenal</span><span class="p">;</span>
+
+<span class="c1">-- 創建數據庫
+</span><span class="c1"></span><span class="k">create</span> <span class="k">database</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">arsenal</span>
+    <span class="k">default</span> <span class="nb">character</span> <span class="k">set</span><span class="o">=</span><span class="n">utf8</span>
+    <span class="k">default</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span><span class="p">;</span>
+
+<span class="c1">-- 進入數據庫
+</span><span class="c1"></span><span class="n">use</span> <span class="n">arsenal</span><span class="p">;</span>
+
+<span class="c1">-- 存儲用戶session信息
+</span><span class="c1">-- http://symfony.com/doc/current/doctrine/pdo_session_storage.html#preparing-the-database-to-store-sessions
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">sessions</span> <span class="p">(</span>
+    <span class="n">sess_id</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;session id&#39;</span><span class="p">,</span>
+    <span class="n">sess_data</span> <span class="nb">blob</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;session data (dynamic clomumn)json 格式&#39;</span><span class="p">,</span>
+    <span class="n">sess_time</span> <span class="nb">int</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;session create or update time (timestamp)&#39;</span><span class="p">,</span>
+    <span class="n">sess_lifetime</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;session life time，單位s，默認1440s即24小時&#39;</span>
+<span class="p">)</span> <span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_bin</span> <span class="k">comment</span> <span class="s1">&#39;存儲用戶session信息&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="html-entities">HTML Entities</h3>
+
+<blockquote>
+<p>Within a code block, ampersands (&amp;) and angle brackets (&lt; and &gt;) are automatically converted into HTML entities. This makes it very easy to include example HTML source code using Markdown — just paste it and indent it, and Markdown will handle the hassle of encoding the ampersands and angle brackets.</p>
+</blockquote>
+
+<p>在代碼塊中，符號<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>爲被自動解析爲HTML實體，Markdown支持直接加入HTML代碼，並按HTML方式解析。</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;div class=&#34;footer&#34;&gt;
+    &amp;copy; 2004 Foo Corporation
+&lt;/div&gt;
+
+&amp;lt;div class=&#34;footer&#34;&amp;gt;
+    &amp;copy; 2004 Foo Corporation
+&amp;lt;/div&amp;gt;</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下：</p>
+
+<blockquote>
+<div class="footer">
+    &copy; 2004 Foo Corporation
+</div>
+
+<p>&lt;div class=&ldquo;footer&rdquo;&gt;
+    &copy; 2004 Foo Corporation
+&lt;/div&gt;</p>
+</blockquote>
+
+<h3 id="tables">Tables</h3>
+
+<p>表格在HTML中表格需要使用<code>&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;td&gt;&lt;/td&gt;&lt;/th&gt;</code>形式標籤創建，Markdown中語法格式如下</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">| Country    | Province     | City  |
+|   :---:    |    :----     | -----:  |
+| China      | Beijing      | Beiging |
+| China      | Taiwan       | Taiwan   |
+| China      | HongKong     | HongKong |</pre></td></tr></table>
+</div>
+</div>
+<p>也可簡寫爲(可讀性較弱)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Country|Province|City
+:---:|:----|-----:
+China|Beijing|Beiging
+China|Taiwan|Taiwan
+China|HongKong|HongKong</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Country</th>
+<th align="left">Province</th>
+<th align="right">City</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">China</td>
+<td align="left">Beijing</td>
+<td align="right">Beiging</td>
+</tr>
+
+<tr>
+<td align="center">China</td>
+<td align="left">Taiwan</td>
+<td align="right">Taiwan</td>
+</tr>
+
+<tr>
+<td align="center">China</td>
+<td align="left">HongKong</td>
+<td align="right">HongKong</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>注意</strong>：
+1. 第二行加至少三個連接號<code>-</code>，用以定義表格，必須添加；
+2. 其左右的冒號<code>:</code>則表示向左、向右、居中對齊。</p>
+
+<h3 id="horizonal-rules">Horizonal Rules</h3>
+
+<p>水平分割線在HTML中用符號<code>&lt;hr&gt;</code>，在Markdown中可用連字符<code>-</code>、星號<code>*</code>、下劃線<code>_</code>表示，但必須至少3個字符一起使用。</p>
+
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>syntax</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td><code>---</code></td>
+</tr>
+
+<tr>
+<td><code>*</code></td>
+<td><code>***</code></td>
+</tr>
+
+<tr>
+<td><code>_</code></td>
+<td><code>___</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Markdown渲染效果如下</p>
+
+<ol>
+<li>連字符<code>-</code></li>
+</ol>
+
+<hr />
+
+<ol>
+<li>星號<code>*</code></li>
+</ol>
+
+<hr />
+
+<ol>
+<li>下劃線<code>_</code></li>
+</ol>
+
+<hr />
+
+<h2 id="inline-elements">Inline Elements</h2>
+
+<p>行內元素的Markdown語法涵蓋 <strong>超鏈接</strong>、<strong>圖片</strong>、<strong>強調</strong>、<strong>代碼高亮</strong> 等。</p>
+
+<h3 id="links">Links</h3>
+
+<p>超鏈接，常用Markdown語法如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[description](url &#39;info&#39;)</pre></td></tr></table>
+</div>
+</div>
+<p>會被渲染爲<code>[description](url 'info')</code>，當鼠標移動到鏈接上時，會顯示<code>info</code>信息</p>
+
+<h4 id="inline-style">Inline-style</h4>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[GitHub](https://github.com &#39;GitHub Official Site&#39;)</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><a href="https://github.com" title="GitHub Official Site">GitHub</a></p>
+
+<h4 id="reference-style">Reference-style</h4>
+
+<p>將url和info通過類似錨點的形式引入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[GitHub][github]</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><a href="https://github.com" title="GitHub Official Site">GitHub</a></p>
+
+<p>以下三者等效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"></pre></td>
+<td class="lntd">
+<pre class="chroma"></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：在某些Markdown工具中，使用單引號形式的可能無法正常渲染。建議使用雙引號<code>&quot;&quot;</code>或<code>()</code>。</p>
+
+<h3 id="images">Images</h3>
+
+<p>對於圖片，Markdown的常用語法如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">![description](url &#39;info&#39;)</pre></td></tr></table>
+</div>
+</div>
+<p>會被解釋爲<code>![description](url 'info')</code></p>
+
+<p>也可使用類似超鏈接中的<code>Reference-style</code></p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">![<span class="nt">萬里長城</span>](<span class="na">https://upload.wikimedia.org/wikipedia/commons/1/17/The_Great_wall_-_by_Hao_Wei.jpg &#39;維基百科&#39;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/17/The_Great_wall_-_by_Hao_Wei.jpg" alt="萬里長城" title="維基百科" /></p>
+
+<h3 id="emphasis">Emphasis</h3>
+
+<p>強調主要是 <strong>加粗</strong> 和 <em>斜體</em> 兩種形式，在Markdown中主要使用星號<code>*</code>和下劃線<code>_</code>兩種符號包裹，使用一個表示 *斜體*，使用兩個表示 <strong>加粗</strong></p>
+
+<p>強調還有一種形式 <del>刪除效果</del>，也可與上面兩種組合使用，比如 <del><strong>刪除效果</strong></del></p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">*Italic*
+_Italic_
+
+**Bold**
+__Bold__
+
+~~strike through~~</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><em>Italic</em>
+<em>Italic</em></p>
+
+<p><strong>Bold</strong>
+<strong>Bold</strong></p>
+
+<p><del>strike through</del></p>
+
+<h3 id="code-highlight">Code Highlight</h3>
+
+<p>代碼高亮：在Markdown中使用反引號<code>`</code>包裹</p>
+
+<p>此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">`Enter`</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><code>Enter</code></p>
+
+<p>但有些符號，比如反引號<code>`</code>本身，直接使用單個反引號包裹無法正常渲染，需使用 <strong>雙反引號</strong> 包裹，才能正常渲染出反引號。</p>
+
+<h2 id="table-of-contents">Table Of Contents</h2>
+
+<p>爲Markdown製作目錄索引，有些編輯器支持<code>[TOC]</code>功能，可自動生成目錄。但GitHub暫不支持<code>[TOC]</code>功能，故需手動生成目錄。如本文<code>Table Of Contents</code>部分，目錄主要針對<a href="#heading">Heading</a>的6中標題，通過對其建立錨點實現頁內內容跳轉。</p>
+
+<p>注意點：圓括號內的錨點內容</p>
+
+<ul>
+<li>大寫字母一律替換爲小寫</li>
+<li>空格接號<code>-</code>替換，連續多個空格當作一個空格看待</li>
+<li>特殊字符忽略，如<code>&quot;&quot;</code>、<code>%</code>、<code>#</code>、<code>(</code>、<code>)</code>等，但<code>-</code>不變</li>
+</ul>
+
+<p>如下是示例</p>
+
+<p><code>&quot;Hello&quot;but% goto # school</code>的錨點是<code>hellobut-goto-school</code></p>
+
+<h3 id="shell-script">Shell Script</h3>
+
+<p>本人撰寫了一個Shell Script用於生成TOC目錄，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/tool/markdownTOCGeneration.sh">GitHub</a>。</p>
+
+<p>使用方式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/tool/markdownTOCGeneration.sh <span class="p">|</span> bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="github-with-markdown">GitHub With Markdown</h2>
+
+<p>對於GitHub</p>
+
+<ul>
+<li>GitHub不支持<code>[TOC]</code>自動生成目錄，只能手動生成；
+
+<ul>
+<li>對於次級目錄，GitHub不支持自動換行，在一級目錄後，類似行內元素；</li>
+</ul></li>
+<li>GitHub默認不支持自動解釋換行符號，需在生成的TOC目錄後添加2個空格用於標記換行(每一行都要添加)；</li>
+<li>GitHub無法直接插入視頻鏈接，只能通過類似插入超鏈接或圖片形式，點擊跳轉到視頻播放頁面；</li>
+</ul>
+
+<h3 id="youtube-video-thumbnail">YouTube Video Thumbnail</h3>
+
+<p>如何獲取Youtube視頻的縮略圖
+參考 <a href="http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api" title="stack overflow">How do I get a YouTube video thumbnail from the YouTube API?</a></p>
+
+<p>每個視頻生成四張縮略圖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/0.jpg
+</span><span class="err">https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/1.jpg
+</span><span class="err">https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/2.jpg
+</span><span class="err">https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/3.jpg</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>通常第一張是默認圖片，且是全尺寸，其餘三張是縮略圖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/default.jpg</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>獲取<code>default.jpg</code>不同畫質的圖片</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">quality version</th>
+<th align="left">url</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">high quality</td>
+<td align="left"><code>https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/hqdefault.jpg</code></td>
+</tr>
+
+<tr>
+<td align="center">medium quality</td>
+<td align="left"><code>https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/mqdefault.jpg</code></td>
+</tr>
+
+<tr>
+<td align="center">standard definition</td>
+<td align="left"><code>https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/sddefault.jpg</code></td>
+</tr>
+
+<tr>
+<td align="center">maximum resolution</td>
+<td align="left"><code>https://img.youtube.com/vi/&lt;Youtube-Video-id&gt;/maxresdefault.jpg</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>仍以<a href="https://www.youtube.com" title="Youtube">Youtube</a>中的<a href="https://www.youtube.com/watch?v=rYEDA3JcQqw" title="Youtube">Adele - Rolling in the Deep</a>爲例。此爲使用Markdown語法撰寫的內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[![](https://img.youtube.com/vi/rYEDA3JcQqw/maxresdefault.jpg &#39;Adele - Rolling in the Deep&#39;)](https://www.youtube.com/watch?v=rYEDA3JcQqw)</pre></td></tr></table>
+</div>
+</div>
+<p>Markdown渲染效果如下</p>
+
+<p><a href="https://www.youtube.com/watch?v=rYEDA3JcQqw"><img src="https://img.youtube.com/vi/rYEDA3JcQqw/maxresdefault.jpg" alt="" title="Adele - Rolling in the Deep" /></a></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="http://daringfireball.net/projects/markdown/">Daring Fireball: Markdown</a></li>
+</ul>
+
+<h2 id="bibliography">Bibliography</h2>
+
+<ul>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></li>
+<li><a href="https://guides.github.com/features/mastering-markdown/">Mastering Markdown</a></li>
+<li><a href="https://itsfoss.com/best-markdown-editors-linux/">14 BEST MARKDOWN EDITORS FOR LINUX</a></li>
+</ul>
+
+<h2 id="change-logs">Change logs</h2>
+
+<ul>
+<li>2016.01.03 17:33 Sun Asia/Beijing
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2017.02.24 13:46 Fri Asia/Shanghai
+
+<ul>
+<li>內容結構優化，添加生成<code>TOC</code>的腳本</li>
+</ul></li>
+<li>2018-04-11 22:20 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/markdown/">Markdown</a>
+          
+          <a href="/tags/github/">GitHub</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">在CentOS 7中配置LEMP開發環境全記錄</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/using-google-authenticator-to-set-up-multi-factor-authentication-on-gnu-linux/">
+            <span class="next-text nav-default">Using Google Authenticator To Set Up Multi-Factor Authentication On GNU/Linux</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

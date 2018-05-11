@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Deploying Project Codes To Multiple Remote Hosts Via SSH - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Using shell script to deploy project codes to multiple remote hosts via ssh" />
+<meta name="keywords" content="AxdLog, Tomcat, SSH, Java, Maven, Shell Script, Deployment" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2017/deploying-project-codes-to-multiple-remote-hosts-via-ssh/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Deploying Project Codes To Multiple Remote Hosts Via SSH" />
+<meta property="og:description" content="Using shell script to deploy project codes to multiple remote hosts via ssh" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/deploying-project-codes-to-multiple-remote-hosts-via-ssh/" />
+
+
+
+<meta property="article:published_time" content="2017-10-24T16:46:16&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T10:11:16-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Deploying Project Codes To Multiple Remote Hosts Via SSH">
+<meta itemprop="description" content="Using shell script to deploy project codes to multiple remote hosts via ssh">
+
+
+<meta itemprop="datePublished" content="2017-10-24T16:46:16&#43;08:00" />
+<meta itemprop="dateModified" content="2017-10-24T16:46:16&#43;08:00" />
+<meta itemprop="wordCount" content="4980">
+
+
+
+<meta itemprop="keywords" content="Shell Script,SSH,Tomcat,Java," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Deploying Project Codes To Multiple Remote Hosts Via SSH"/>
+<meta name="twitter:description" content="Using shell script to deploy project codes to multiple remote hosts via ssh"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Deploying Project Codes To Multiple Remote Hosts Via SSH</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-10-24 </span>
+        <div class="post-category">
+            
+              <a href="/categories/production-case/"> Production Case </a>
+            
+          </div>
+        <span class="more-meta"> 4980 words </span>
+        <span class="more-meta"> 10 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#existing-conditions-requirements">Existing Conditions &amp; Requirements</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#challenge">Challenge</a></li>
+<li><a href="#code-snippet">Code Snippet</a>
+<ul>
+<li><a href="#config-file">Config File</a></li>
+<li><a href="#entry-file">Entry File</a></li>
+<li><a href="#execution-file">Execution File</a></li>
+</ul></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#after-the-words">After The Words</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>截至目前(2017-10)，公司測試、驗證、生產環境的代碼仍使用人工手動部署，其中緣由，歷史與現實原因皆有。數月前，研發部門對系統架構進行了一次更改，其中加入了負載均衡(load balance)功能。架構更改後，項目由單節點(主機)運行變成多節點(主機)運行，服務器數量增加了近一倍，加之公司有30多個自有項目在運行。若仍使用人工部署方式，一則運維同事壓力巨大，二則嚴重影響生產效率。在IT運維部經理的要求下，本人着手進行代碼部署的自動化工作。</p>
+
+<p>本文記錄如何使用<code>SSH</code>將項目代碼傳輸到遠程內網主機中，進行代碼部署操作，並給出Shell Script代碼(簡易版)。</p>
+
+<p></p>
+
+<h2 id="existing-conditions-requirements">Existing Conditions &amp; Requirements</h2>
+
+<p>現有前提條件</p>
+
+<ol>
+<li>公司服務器託管於多個IDC機房，每個機房配置一臺跳板主機，配置有MFA多重認證；同一機房中的其它主機爲內網主機，只能通過跳板主機登錄；</li>
+<li>跳板主機的<code>/etc/hosts</code>中有各內網主機的別名，跳板主機通過<code>SSH Keys</code>連接各內網主機；</li>
+<li>跳板主機通過<code>SSH Keys</code>連接各內網主機；</li>
+<li>項目運行在各內網主機中；</li>
+<li>代碼打包後，測試人員提供ftp下載地址，運維人員下載後進行部署(需登入每一臺相關的內網主機)；</li>
+<li>項目名、代碼包名、部署目錄名不一致，驗證和生產環境的項目部署路徑不一致；</li>
+<li>開發語言Java，項目通過<code>Tomcat</code>和<code>Maven</code>運行；</li>
+<li>代碼包格式有<code>.wav</code>、<code>.zip</code>、<code>.tar.gz</code>等；</li>
+<li>Java的安裝路徑不一致；</li>
+</ol>
+
+<p>關於需求，部門經理的要求是能夠通過ftp下載地址自動識別、部署。</p>
+
+<h2 id="analysis">Analysis</h2>
+
+<p>根據現有情況，進行分析</p>
+
+<blockquote>
+<p>一機房中的其它主機爲內網主機，只能通過跳板主機登錄；</p>
+</blockquote>
+
+<p>逐個登入項目所在的內網主機進行部署，不太好操作。直接在跳板主機中操作，通過SSH傳輸執行腳本到特定內網主機。</p>
+
+<blockquote>
+<p>項目名、代碼包名、部署目錄名不一致，驗證和生產環境的項目部署路徑不一致</p>
+</blockquote>
+
+<p>要求研發部門、IT運維部門對項目名稱、部署路徑進行一致性處理的難度非常大，此爲歷史遺留問題。考慮通過整理一份關係對應表解決該問題，但工作量巨大，本人需花長時間整理。</p>
+
+<blockquote>
+<p>開發語言Java，項目通過<code>Tomcat</code>和<code>Maven</code>運行</p>
+</blockquote>
+
+<p>將項目部署方式一併加入對應關係表中。</p>
+
+<h2 id="challenge">Challenge</h2>
+
+<p>遇到的問題</p>
+
+<blockquote>
+<p>如何在跳板主機中將相關代碼傳輸到特定的內網主機中並執行?</p>
+</blockquote>
+
+<p>通過<code>SSH</code>和管道符<code>|</code>將代碼傳輸到內網主機，代碼示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">operation_path</span><span class="o">=</span><span class="si">${</span><span class="nv">operation_path</span><span class="k">:-</span><span class="s1">&#39;/PATH/operation.sh&#39;</span><span class="si">}</span>
+
+cat <span class="s2">&#34;</span><span class="si">${</span><span class="nv">operation_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> ssh REMOTE_HOST <span class="s2">&#34;dd of=/tmp/kjw_operation.sh &amp;&gt; /dev/null; bash /tmp/kjw_operation.sh; rm -f /tmp/kjw_operation.sh 1&gt;/dev/null&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>考慮到謹慎部署，採用<code>while</code>循環進行遍歷操作，而非使用<code>parallel</code>進行並行操作。</p>
+
+<h2 id="code-snippet">Code Snippet</h2>
+
+<p>整個腳本分爲3部分</p>
+
+<ul>
+<li>核心配置文件</li>
+<li>入口文件(在跳板主機中執行)</li>
+<li>執行文件(在內網主機中執行)</li>
+</ul>
+
+<h3 id="config-file">Config File</h3>
+
+<p>配置文件格式爲</p>
+
+<blockquote>
+<p>主機 - 部署類型 - 部署路徑名 - 項目路徑名 - 安裝包名 -是否已啓動</p>
+</blockquote>
+
+<p>示例如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">APP1|tomcat|tomcat-flycar-business-web|flycar-business-web|flycar-business-web
+APP1|tomcat|tomcat-flycar-chargestation|flycar-chargestation|flycar-chargestation
+APP1|tomcat|tomcat-flycar-driver|flycar-driver|flycar-car-driver
+APP1|tomcat|tomcat-flycar-finance|flycar-finance|flycar-finance
+APP1|tomcat|tomcat-flycar-lgwx|flycar-lgwx|flybuscar-weixin
+APP1|tomcat|tomcat-flycar-pc-dispatch|flycar-pc-dispatch|flycar-pc-dispatch
+APP1|tomcat|tomcat-flycar-user-mobile|flycar-user-mobile|flycar-user-mobile
+APP1|tomcat|tomcat-flycar-user-web|flycar-user-web|flycar-user-web
+APP1|tomcat|tomcat-flycar-weixin|flycar-weixin|flycar-weixin
+APP1|maven||tomcat-sms-auth|sms-auth
+APP1|maven||tomcat-sms-bi|sms-bi
+APP1|maven||tomcat-sms-bpm|sms-bpm
+APP1|maven||tomcat-sms-bs|sms-bs
+APP1|maven||tomcat-sms-qywx|sms-qywx</pre></td></tr></table>
+</div>
+</div>
+<h3 id="entry-file">Entry File</h3>
+
+<p>入口文件，將驗證和生產環境的部署腳本整合在一起。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span><span class="nb">set</span> -u
+<span class="nb">set</span> -o pipefail
+
+funcExitStatement<span class="o">(){</span>
+    <span class="nb">local</span> <span class="nv">item</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">item</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">item</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="nb">exit</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$#</span><span class="s2">&#34;</span> -eq <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> -e <span class="s2">&#34;本脚本用法如下:&#34;</span>
+    <span class="nb">echo</span> -e <span class="s2">&#34;bash /PATH/deploy.sh ftp_link deploy_environment\n&#34;</span>
+    <span class="nb">echo</span> -e <span class="s2">&#34;ftp_link: 安装包ftp下载链接&#34;</span>
+    <span class="nb">echo</span> -e <span class="s2">&#34;deploy_environment: 部署环境类型(生产或验证环境)，可用字母p和v指定，若未指定则默认为生产环境\n&#34;</span>
+    <span class="nb">echo</span> -e <span class="s2">&#34;注意 JAVA_HOME 变量值&#34;</span>
+    <span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="c1"># 脚本所在路径
+</span><span class="c1"></span><span class="nv">script_saved_path</span><span class="o">=</span><span class="si">${</span><span class="nv">script_saved_path</span><span class="k">:-</span><span class="si">}</span>
+<span class="nv">script_saved_path</span><span class="o">=</span><span class="k">$(</span>dirname <span class="k">$(</span>readlink -f <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span><span class="k">))</span>
+
+<span class="nv">deploy_environment_type</span><span class="o">=</span><span class="si">${</span><span class="nv">deploy_environment_type</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+<span class="c1"># 主机 - 部署类型 - 部署路径名 - 项目路径名 - 安装包名 -是否已启动
+</span><span class="c1"></span><span class="nv">config_path</span><span class="o">=</span><span class="si">${</span><span class="nv">config_path</span><span class="k">:-</span><span class="si">}</span>
+<span class="nv">curl_command</span><span class="o">=</span><span class="si">${</span><span class="nv">curl_command</span><span class="k">:-</span><span class="si">}</span>
+
+<span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_environment_type</span><span class="p">,,</span><span class="si">}</span><span class="s2">&#34;</span> in
+    verify<span class="p">|</span>v <span class="o">)</span>
+        <span class="c1"># 验证环境
+</span><span class="c1"></span>        <span class="nv">config_path</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">script_saved_path</span><span class="si">}</span><span class="s2">/config_verify.txt&#34;</span>
+        <span class="nv">curl_command</span><span class="o">=</span><span class="s2">&#34;curl -u XXXXX:XXXXXX&#34;</span>
+        <span class="p">;;</span>
+    product<span class="p">|</span>p<span class="p">|</span>* <span class="o">)</span>
+        <span class="c1"># 生产环境
+</span><span class="c1"></span>        <span class="nv">config_path</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">script_saved_path</span><span class="si">}</span><span class="s2">/config_product.txt&#34;</span>
+        <span class="nv">curl_command</span><span class="o">=</span><span class="s2">&#34;curl -u YYYYY:YYYYYY&#34;</span>
+        <span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="o">[[</span> -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">config_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">||</span> funcExitStatement <span class="s1">&#39;未找到代码部署配置文件，脚本即将退出!&#39;</span>
+<span class="nv">operation_path</span><span class="o">=</span><span class="si">${</span><span class="nv">operation_path</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">script_saved_path</span><span class="si">}</span><span class="s2">/operation.sh&#34;</span><span class="si">}</span>
+<span class="o">[[</span> -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">operation_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">||</span> funcExitStatement <span class="s1">&#39;未找到代码部署脚本，脚本即将退出!&#39;</span>
+
+<span class="c1"># 1.获取下载链接、下载安装包
+</span><span class="c1"></span><span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    funcExitStatement <span class="s1">&#39;未指定下载链接，脚本即将退出!&#39;</span>
+<span class="k">elif</span> <span class="o">[[</span> ! <span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span>~ ^ftp:// <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    funcExitStatement <span class="s1">&#39;下载链接必须以ftp://开头!&#39;</span>
+<span class="k">else</span>
+    <span class="nv">$curl_command</span> -I <span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">&amp;</span>&gt;/dev/null
+    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;经测试下载链接有效&#34;</span>
+    <span class="k">else</span>
+        funcExitStatement <span class="s1">&#39;经测试: 下载链接无效，请确定部署环境，脚本即将退出!&#39;</span>
+    <span class="k">fi</span>
+<span class="k">fi</span>
+
+<span class="nv">download_link</span><span class="o">=</span><span class="si">${</span><span class="nv">download_link</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+<span class="nv">package_full_name</span><span class="o">=</span><span class="si">${</span><span class="nv">package_full_name</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">download_link</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+<span class="nv">package_name</span><span class="o">=</span><span class="si">${</span><span class="nv">package_name</span><span class="k">:-</span><span class="si">}</span>
+<span class="nv">package_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s/^([^[:digit:]]+)-.*/\1/g&#39;</span><span class="k">)</span>
+<span class="o">[[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> funcExitStatement <span class="s1">&#39;无法提取安装包名，脚本即将退出!&#39;</span>
+
+<span class="c1"># 提取安装包对应的主机、服务等信息
+</span><span class="c1"></span><span class="nv">project_info_list</span><span class="o">=</span><span class="si">${</span><span class="nv">project_info_list</span><span class="k">:-</span><span class="si">}</span>
+<span class="nv">project_info_list</span><span class="o">=</span><span class="k">$(</span>awk -F<span class="se">\|</span> <span class="s1">&#39;match($5,/&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;/){print}&#39;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">config_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="k">)</span>
+<span class="o">[[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_info_list</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> funcExitStatement <span class="s2">&#34;未查询到 </span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2"> 对应的服务，脚本即将退出!&#34;</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_info_list</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span><span class="s2">&#34;|&#34;</span> <span class="nb">read</span> -r host_name deploy_type deploy_path_name project_path_name package_name is_running<span class="p">;</span> <span class="k">do</span>
+
+    <span class="nv">config_info</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">host_name</span><span class="si">}</span><span class="s2">|</span><span class="si">${</span><span class="nv">deploy_type</span><span class="si">}</span><span class="s2">|</span><span class="si">${</span><span class="nv">deploy_path_name</span><span class="si">}</span><span class="s2">|</span><span class="si">${</span><span class="nv">project_path_name</span><span class="si">}</span><span class="s2">|</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="c1"># $1  download_link   /  $2  config_info   / $3  curl_command
+</span><span class="c1"></span>    cat <span class="s2">&#34;</span><span class="si">${</span><span class="nv">operation_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> ssh <span class="s2">&#34;</span><span class="si">${</span><span class="nv">host_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;dd of=/tmp/kjw_operation.sh &amp;&gt; /dev/null; bash /tmp/kjw_operation.sh \&#34;</span><span class="si">${</span><span class="nv">download_link</span><span class="si">}</span><span class="s2">\&#34; \&#34;</span><span class="si">${</span><span class="nv">config_info</span><span class="si">}</span><span class="s2">\&#34; \&#34;</span><span class="si">${</span><span class="nv">curl_command</span><span class="si">}</span><span class="s2">\&#34;; rm -f /tmp/kjw_operation.sh 1&gt;/dev/null&#34;</span>
+
+<span class="k">done</span>
+
+# Script End</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="execution-file">Execution File</h3>
+
+<p>執行文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span><span class="nb">set</span> -u
+<span class="nb">set</span> -o pipefail
+
+<span class="nv">download_link</span><span class="o">=</span><span class="si">${</span><span class="nv">download_link</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+<span class="nv">config_info</span><span class="o">=</span><span class="si">${</span><span class="nv">config_info</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+<span class="nv">curl_command</span><span class="o">=</span><span class="si">${</span><span class="nv">curl_command</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">3</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+
+<span class="nv">deploy_default_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">deploy_default_dir</span><span class="k">:-</span><span class="s1">&#39;/usr/local/webmiddleware&#39;</span><span class="si">}</span>
+<span class="nv">project_default_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">project_default_dir</span><span class="k">:-</span><span class="s1">&#39;/project&#39;</span><span class="si">}</span>
+<span class="nv">package_save_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">package_save_dir</span><span class="k">:-</span><span class="s1">&#39;/tmp&#39;</span><span class="si">}</span>
+
+<span class="nv">package_full_name</span><span class="o">=</span><span class="si">${</span><span class="nv">package_full_name</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">download_link</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+<span class="nv">package_name</span><span class="o">=</span><span class="si">${</span><span class="nv">package_name</span><span class="k">:-</span><span class="si">}</span>
+<span class="nv">package_name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s/^([^[:digit:]]+)-.*/\1/g&#39;</span><span class="k">)</span>
+
+<span class="nv">suffix_type</span><span class="o">=</span><span class="si">${</span><span class="nv">suffix_type</span><span class="k">:-</span><span class="si">}</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span>~ tar.gz$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">suffix_type</span><span class="o">=</span><span class="s1">&#39;tar.gz&#39;</span>
+<span class="k">elif</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span>~ .zip$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">suffix_type</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span>
+<span class="k">elif</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span>~ .war$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">suffix_type</span><span class="o">=</span><span class="s1">&#39;war&#39;</span>
+<span class="k">fi</span>
+
+
+funcExitStatement<span class="o">(){</span>
+    <span class="nb">local</span> <span class="nv">item</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">item</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">item</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="nb">exit</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+funcStartProjectProcess<span class="o">(){</span>
+    <span class="nb">local</span> <span class="nv">l_deploy_type</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="nb">local</span> <span class="nv">l_deploy_dir</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="nb">local</span> <span class="nv">l_project_dir</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="c1"># 设置JAVA环境变量
+</span><span class="c1"></span>    <span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/java
+    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/java:<span class="nv">$PATH</span>
+
+    <span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_deploy_type</span><span class="si">}</span><span class="s2">&#34;</span> in
+        <span class="s1">&#39;tomcat&#39;</span> <span class="o">)</span>
+            <span class="k">if</span> <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_deploy_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_deploy_dir</span><span class="si">}</span><span class="s2">/bin/startup.sh&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                /bin/bash <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_deploy_dir</span><span class="si">}</span><span class="s2">/bin/startup.sh&#34;</span>
+            <span class="k">fi</span>
+            <span class="p">;;</span>
+        <span class="s1">&#39;maven&#39;</span> <span class="o">)</span>
+            <span class="k">if</span> <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span>  -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_project_dir</span><span class="si">}</span><span class="s2">/bin/start.sh&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                /bin/bash <span class="s2">&#34;</span><span class="si">${</span><span class="nv">l_project_dir</span><span class="si">}</span><span class="s2">/bin/start.sh&#34;</span>
+            <span class="k">fi</span>
+            <span class="p">;;</span>
+    <span class="k">esac</span>
+<span class="o">}</span>
+
+<span class="nb">readonly</span> <span class="nv">c_normal</span><span class="o">=</span><span class="s1">&#39;\e[0m&#39;</span>
+<span class="nb">readonly</span> <span class="nv">c_red</span><span class="o">=</span><span class="s1">&#39;\e[31;1m&#39;</span>
+<span class="nb">readonly</span> <span class="nv">c_blue</span><span class="o">=</span><span class="s1">&#39;\e[34m&#39;</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">config_info</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span><span class="s2">&#34;|&#34;</span> <span class="nb">read</span> -r host_name deploy_type deploy_path_name project_path_name package_name is_running<span class="p">;</span> <span class="k">do</span>
+    <span class="nv">deploy_dir</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_default_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">deploy_path_name</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="nv">project_dir</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_default_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">project_path_name</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="nb">echo</span> -e <span class="s2">&#34;\n</span><span class="si">${</span><span class="nv">c_red</span><span class="si">}</span><span class="s2">主机名:</span><span class="si">${</span><span class="nv">c_normal</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">host_name</span><span class="si">}</span><span class="s2">\n</span><span class="si">${</span><span class="nv">c_red</span><span class="si">}</span><span class="s2">安装包:</span><span class="si">${</span><span class="nv">c_normal</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">\n</span><span class="si">${</span><span class="nv">c_red</span><span class="si">}</span><span class="s2">部署路径:</span><span class="si">${</span><span class="nv">c_normal</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">deploy_dir</span><span class="si">}</span><span class="s2">\n</span><span class="si">${</span><span class="nv">c_red</span><span class="si">}</span><span class="s2">项目路径:</span><span class="si">${</span><span class="nv">c_normal</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">\n&#34;</span>
+
+    <span class="k">if</span> <span class="o">[[</span> ! -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;部署目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2"> 不存在，请核实，自动跳过&#34;</span>
+        <span class="k">continue</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># 下载安装包
+</span><span class="c1"></span>    <span class="nv">package_save_path</span><span class="o">=</span><span class="si">${</span><span class="nv">package_save_path</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="si">}</span>
+    <span class="nb">echo</span> <span class="s2">&#34;准备下载安装包:&#34;</span>
+    <span class="nv">$curl_command</span> -fL# -o <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">download_link</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="k">if</span> <span class="o">[[</span> -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;安装包 </span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2"> 下载成功&#34;</span>
+    <span class="k">else</span>
+        /bin/rm -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="nb">echo</span> <span class="s2">&#34;链接 </span><span class="si">${</span><span class="nv">download_link</span><span class="si">}</span><span class="s2"> 下载失败，自动跳过&#34;</span>
+        <span class="k">continue</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># 查询已存在的备份
+</span><span class="c1"></span>    <span class="nv">existed_backup_list</span><span class="o">=</span><span class="si">${</span><span class="nv">existed_backup_list</span><span class="k">:-</span><span class="si">}</span>
+    <span class="nv">existed_backup_list</span><span class="o">=</span><span class="k">$(</span>find <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_default_dir</span><span class="si">}</span><span class="s2">/&#34;</span> -maxdepth <span class="m">1</span> -type d -name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_path_name</span><span class="si">}</span><span class="s2">-*.bak&#34;</span> -print<span class="k">)</span>
+
+    <span class="c1"># 移除旧备份目录
+</span><span class="c1"></span>    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">&#34;</span><span class="si">${</span><span class="nv">existed_backup_list</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;\n准备移除已存在的备份目录&#34;</span>
+
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">existed_backup_list</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="nb">read</span> -r line<span class="p">;</span> <span class="k">do</span>
+            <span class="k">if</span> <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">line</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                /bin/rm -rf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">line</span><span class="si">}</span><span class="s2">&#34;</span>
+                <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">line</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;成功移除备份目录: </span><span class="si">${</span><span class="nv">line</span><span class="si">}</span><span class="s2">&#34;</span>
+            <span class="k">fi</span>
+        <span class="k">done</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># 创建新备份目录
+</span><span class="c1"></span>    <span class="nv">current_date</span><span class="o">=</span><span class="si">${</span><span class="nv">current_date</span><span class="k">:-</span><span class="s2">&#34;</span><span class="k">$(</span>date +<span class="s2">&#34;%Y%m%d-%H%M&#34;</span><span class="k">)</span><span class="s2">&#34;</span><span class="si">}</span>
+    <span class="nv">project_dir_backup</span><span class="o">=</span><span class="si">${</span><span class="nv">project_dir_backup</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">-</span><span class="si">${</span><span class="nv">current_date</span><span class="si">}</span><span class="s2">.bak&#34;</span><span class="si">}</span>
+
+    <span class="k">if</span> <span class="o">[[</span> ! -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;\n项目目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2"> 检测不存在，准备创建&#34;</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;\n项目目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2"> 检测存在，准备进行备份操作&#34;</span>
+        cp -R <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir_backup</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir_backup</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;成功创建备份目录 </span><span class="si">${</span><span class="nv">project_dir_backup</span><span class="si">}</span><span class="s2">&#34;</span>
+
+        <span class="c1"># Kill进程ID
+</span><span class="c1"></span>        <span class="nv">pid_old</span><span class="o">=</span><span class="si">${</span><span class="nv">pid_old</span><span class="k">:-</span><span class="s1">&#39;&#39;</span><span class="si">}</span>
+        <span class="nv">pid_old</span><span class="o">=</span><span class="k">$(</span>ps -ef <span class="p">|</span> awk <span class="s1">&#39;$0~/java.*&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;/&amp;&amp;$0!~/awk.*print/{print $2;exit}&#39;</span><span class="k">)</span>
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pid_old</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nb">echo</span> -e <span class="s2">&#34;\n未侦测到</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">进程\n&#34;</span>
+        <span class="k">elif</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pid_old</span><span class="si">}</span><span class="s2">&#34;</span> -gt <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nb">kill</span> -9 <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pid_old</span><span class="si">}</span><span class="s2">&#34;</span>
+            <span class="nb">echo</span> -e <span class="s2">&#34;\n侦测到</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">进程(PID </span><span class="si">${</span><span class="nv">pid_old</span><span class="si">}</span><span class="s2">)，进程停止成功\n&#34;</span>
+        <span class="k">fi</span>
+
+        <span class="nb">echo</span> <span class="s2">&#34;准备移除项目目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+        /bin/rm -rf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;成功移除项目目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="nb">echo</span> <span class="s2">&#34;准备重新创建项目目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="k">fi</span>
+
+    <span class="c1"># 创建新项目目录
+</span><span class="c1"></span>    mkdir -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;成功创建项目目录 </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="c1"># 解压
+</span><span class="c1"></span>    <span class="nb">echo</span> -e <span class="s2">&#34;\n准备解压安装包 </span><span class="si">${</span><span class="nv">package_full_name</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">suffix_type</span><span class="si">}</span><span class="s2">&#34;</span> in
+        <span class="s1">&#39;tar.gz&#39;</span> <span class="o">)</span>
+            tar xf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span> -C <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+            <span class="p">;;</span>
+        zip<span class="p">|</span>war <span class="o">)</span>
+            unzip <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="m">1</span>&gt;/dev/null
+            <span class="p">;;</span>
+    <span class="k">esac</span>
+
+    <span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>ls -A <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> wc -l<span class="k">)</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;安装包解压成功&#34;</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&#34;安装包解压失败，自动跳过&#34;</span>
+        <span class="k">continue</span>
+    <span class="k">fi</span>
+
+    <span class="o">[[</span> -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> /bin/rm -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">package_save_path</span><span class="si">}</span><span class="s2">&#34;</span>
+
+
+    <span class="c1"># 启动进程
+</span><span class="c1"></span>    <span class="nb">echo</span> -e <span class="s2">&#34;\n准备启动</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">服务&#34;</span>
+    funcStartProjectProcess <span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_type</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="nv">pid_new</span><span class="o">=</span><span class="si">${</span><span class="nv">pid_new</span><span class="k">:-</span><span class="si">}</span>
+    <span class="nv">pid_new</span><span class="o">=</span><span class="k">$(</span>ps -ef <span class="p">|</span> awk <span class="s1">&#39;$0~/java.*&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;/&amp;&amp;$0!~/awk.*print/{print $2;exit}&#39;</span><span class="k">)</span>
+
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pid_new</span><span class="si">}</span><span class="s2">&#34;</span> -gt <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;\n</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">进程启动成功，新进程ID: </span><span class="si">${</span><span class="nv">pid_new</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;\n项目</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">部署完毕，部署路径: </span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+        <span class="nb">echo</span> -e <span class="s2">&#34;\n进程详情&#34;</span>
+        ps -ef <span class="p">|</span> awk <span class="s1">&#39;$0~/java.*&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;/&amp;&amp;$0!~/awk.*print/{print;exit}&#39;</span>
+
+    <span class="k">else</span>
+        <span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> /bin/rm -rf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+
+        <span class="k">if</span> <span class="o">[[</span> ! -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir_backup</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nb">echo</span> <span class="s2">&#34;项目</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">启动失败，自动跳过!&#34;</span>
+            <span class="k">continue</span>
+        <span class="k">else</span>
+            <span class="nb">echo</span> <span class="s2">&#34;项目</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">启动失败，准备执行回滚操作&#34;</span>
+            mv <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir_backup</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+            funcStartProjectProcess <span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_type</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+
+            <span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>ps -ef <span class="p">|</span> awk <span class="s1">&#39;$0~/java.*&#39;</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">deploy_dir</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span><span class="s1">&#39;/&amp;&amp;$0!~/awk.*print/{print $2;exit}&#39;</span><span class="k">)</span> -gt <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                <span class="nb">echo</span> <span class="s2">&#34;项目</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">已回滚&#34;</span>
+            <span class="k">else</span>
+                <span class="nb">echo</span> <span class="s2">&#34;项目</span><span class="si">${</span><span class="nv">package_name</span><span class="si">}</span><span class="s2">回滚失败，请核查，自动跳过&#34;</span>
+                <span class="k">continue</span>
+            <span class="k">fi</span>
+
+        <span class="k">fi</span>
+
+    <span class="k">fi</span>
+
+    <span class="nb">echo</span> -e <span class="s2">&#34;\n</span><span class="si">${</span><span class="nv">c_red</span><span class="si">}</span><span class="s2">---------------  Split Line  ---------------</span><span class="si">${</span><span class="nv">c_normal</span><span class="si">}</span><span class="s2">\n\n&#34;</span>
+
+<span class="k">done</span>
+
+# Script End</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="example">Example</h2>
+
+<p>實例演示</p>
+
+<p>執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bash deploy.sh ftp://XXX.XXX.XXX.XXX/PATH/flybus-provider-XXX.war</code></pre></td></tr></table>
+</div>
+</div>
+<p>輸出如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">经测试下载链接有效
+
+主机名: CORE1
+安装包: flybus-provider
+部署路径: /usr/local/webmiddleware/tomcat-flybus-provider1
+项目路径: /project/flybus-provider1
+
+准备下载安装包:
+<span class="c1">######################################################################## 100.0%
+</span><span class="c1"></span>安装包 flybus-provider-3.9.0-release-20171129093531.war 下载成功
+
+准备移除已存在的备份目录
+成功移除备份目录: /project/flybus-provider1-20171128-1558.bak
+
+项目目录 /project/flybus-provider1 检测存在，准备进行备份操作
+成功创建备份目录 /project/flybus-provider1-20171130-0932.bak
+
+侦测到flybus-provider进程<span class="o">(</span>PID <span class="m">16238</span><span class="o">)</span>，进程停止成功
+
+准备移除项目目录 /project/flybus-provider1
+成功移除项目目录 /project/flybus-provider1
+准备重新创建项目目录 /project/flybus-provider1
+成功创建项目目录 /project/flybus-provider1
+
+准备解压安装包 flybus-provider-3.9.0-release-20171129093531.war
+安装包解压成功
+
+准备启动flybus-provider服务
+Tomcat started.
+
+flybus-provider进程启动成功，新进程ID: <span class="m">33089</span>
+
+项目flybus-provider部署完毕，部署路径: /project/flybus-provider1
+
+进程详情
+root      <span class="m">33089</span>      <span class="m">1</span>  <span class="m">3</span> <span class="m">09</span>:32 ?        <span class="m">00</span>:00:00 /usr/local/java/bin/java -Djava.util.logging.config.file<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1/conf/logging.properties -Djava.util.logging.manager<span class="o">=</span>org.apache.juli.ClassLoaderLogManager -server -Xms2048m -Xmx2048m -XX:PermSize<span class="o">=</span>128M -XX:MaxPermSize<span class="o">=</span>256m -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> -Djmagick.systemclassloader<span class="o">=</span><span class="nb">false</span> -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:../logs/bus_provider_gc.log -XX:+PrintHeapAtGC -XX:+PrintGC -Duser.timezone<span class="o">=</span>GMT+8 -Djava.endorsed.dirs<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1/endorsed -classpath /usr/local/webmiddleware/tomcat-flybus-provider1/bin/bootstrap.jar:/usr/local/webmiddleware/tomcat-flybus-provider1/bin/tomcat-juli.jar -Dcatalina.base<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1 -Dcatalina.home<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1 -Djava.io.tmpdir<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1/temp org.apache.catalina.startup.Bootstrap start
+
+---------------  Split Line  ---------------
+
+
+
+主机名: CORE1
+安装包: flybus-provider
+部署路径: /usr/local/webmiddleware/tomcat-flybus-provider2
+项目路径: /project/flybus-provider2
+
+准备下载安装包:
+<span class="c1">######################################################################## 100.0%
+</span><span class="c1"></span>安装包 flybus-provider-3.9.0-release-20171129093531.war 下载成功
+
+准备移除已存在的备份目录
+成功移除备份目录: /project/flybus-provider2-20171128-1558.bak
+
+项目目录 /project/flybus-provider2 检测存在，准备进行备份操作
+成功创建备份目录 /project/flybus-provider2-20171130-0932.bak
+
+侦测到flybus-provider进程<span class="o">(</span>PID <span class="m">16335</span><span class="o">)</span>，进程停止成功
+
+准备移除项目目录 /project/flybus-provider2
+成功移除项目目录 /project/flybus-provider2
+准备重新创建项目目录 /project/flybus-provider2
+成功创建项目目录 /project/flybus-provider2
+
+准备解压安装包 flybus-provider-3.9.0-release-20171129093531.war
+安装包解压成功
+
+准备启动flybus-provider服务
+Tomcat started.
+
+flybus-provider进程启动成功，新进程ID: <span class="m">33186</span>
+
+项目flybus-provider部署完毕，部署路径: /project/flybus-provider2
+
+进程详情
+root      <span class="m">33186</span>      <span class="m">1</span>  <span class="m">0</span> <span class="m">09</span>:32 ?        <span class="m">00</span>:00:00 /usr/local/java/bin/java -Djava.util.logging.config.file<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2/conf/logging.properties -Djava.util.logging.manager<span class="o">=</span>org.apache.juli.ClassLoaderLogManager -server -Xms2048m -Xmx2048m -XX:PermSize<span class="o">=</span>128M -XX:MaxPermSize<span class="o">=</span>256m -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> -Djmagick.systemclassloader<span class="o">=</span><span class="nb">false</span> -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:../logs/bus_provider_gc.log -XX:+PrintHeapAtGC -XX:+PrintGC -Duser.timezone<span class="o">=</span>GMT+8 -Djava.endorsed.dirs<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2/endorsed -classpath /usr/local/webmiddleware/tomcat-flybus-provider2/bin/bootstrap.jar:/usr/local/webmiddleware/tomcat-flybus-provider2/bin/tomcat-juli.jar -Dcatalina.base<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2 -Dcatalina.home<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2 -Djava.io.tmpdir<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2/temp org.apache.catalina.startup.Bootstrap start
+
+---------------  Split Line  ---------------
+
+
+
+主机名: CORE2
+安装包: flybus-provider
+部署路径: /usr/local/webmiddleware/tomcat-flybus-provider1
+项目路径: /project/flybus-provider1
+
+准备下载安装包:
+<span class="c1">######################################################################## 100.0%
+</span><span class="c1"></span>安装包 flybus-provider-3.9.0-release-20171129093531.war 下载成功
+
+准备移除已存在的备份目录
+成功移除备份目录: /project/flybus-provider1-20171128-1558.bak
+
+项目目录 /project/flybus-provider1 检测存在，准备进行备份操作
+成功创建备份目录 /project/flybus-provider1-20171130-0932.bak
+
+侦测到flybus-provider进程<span class="o">(</span>PID <span class="m">22663</span><span class="o">)</span>，进程停止成功
+
+准备移除项目目录 /project/flybus-provider1
+成功移除项目目录 /project/flybus-provider1
+准备重新创建项目目录 /project/flybus-provider1
+成功创建项目目录 /project/flybus-provider1
+
+准备解压安装包 flybus-provider-3.9.0-release-20171129093531.war
+安装包解压成功
+
+准备启动flybus-provider服务
+Tomcat started.
+
+flybus-provider进程启动成功，新进程ID: <span class="m">5716</span>
+
+项目flybus-provider部署完毕，部署路径: /project/flybus-provider1
+
+进程详情
+root      <span class="m">5716</span>     <span class="m">1</span>  <span class="m">0</span> <span class="m">09</span>:32 ?        <span class="m">00</span>:00:00 /usr/local/java/bin/java -Djava.util.logging.config.file<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1/conf/logging.properties -Djava.util.logging.manager<span class="o">=</span>org.apache.juli.ClassLoaderLogManager -server -Xms2048m -Xmx2048m -XX:PermSize<span class="o">=</span>128M -XX:MaxPermSize<span class="o">=</span>256m -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> -Djmagick.systemclassloader<span class="o">=</span><span class="nb">false</span> -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:../logs/bus_provider_gc.log -XX:+PrintHeapAtGC -XX:+PrintGC -Duser.timezone<span class="o">=</span>GMT+8 -Djava.endorsed.dirs<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1/endorsed -classpath /usr/local/webmiddleware/tomcat-flybus-provider1/bin/bootstrap.jar:/usr/local/webmiddleware/tomcat-flybus-provider1/bin/tomcat-juli.jar -Dcatalina.base<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1 -Dcatalina.home<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1 -Djava.io.tmpdir<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider1/temp org.apache.catalina.startup.Bootstrap start
+
+---------------  Split Line  ---------------
+
+
+
+主机名: CORE2
+安装包: flybus-provider
+部署路径: /usr/local/webmiddleware/tomcat-flybus-provider2
+项目路径: /project/flybus-provider2
+
+准备下载安装包:
+<span class="c1">######################################################################## 100.0%
+</span><span class="c1"></span>安装包 flybus-provider-3.9.0-release-20171129093531.war 下载成功
+
+准备移除已存在的备份目录
+成功移除备份目录: /project/flybus-provider2-20171128-1558.bak
+
+项目目录 /project/flybus-provider2 检测存在，准备进行备份操作
+成功创建备份目录 /project/flybus-provider2-20171130-0932.bak
+
+侦测到flybus-provider进程<span class="o">(</span>PID <span class="m">22746</span><span class="o">)</span>，进程停止成功
+
+准备移除项目目录 /project/flybus-provider2
+成功移除项目目录 /project/flybus-provider2
+准备重新创建项目目录 /project/flybus-provider2
+成功创建项目目录 /project/flybus-provider2
+
+准备解压安装包 flybus-provider-3.9.0-release-20171129093531.war
+安装包解压成功
+
+准备启动flybus-provider服务
+Tomcat started.
+
+flybus-provider进程启动成功，新进程ID: <span class="m">5802</span>
+
+项目flybus-provider部署完毕，部署路径: /project/flybus-provider2
+
+进程详情
+root      <span class="m">5802</span>     <span class="m">1</span>  <span class="m">0</span> <span class="m">09</span>:32 ?        <span class="m">00</span>:00:00 /usr/local/java/bin/java -Djava.util.logging.config.file<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2/conf/logging.properties -Djava.util.logging.manager<span class="o">=</span>org.apache.juli.ClassLoaderLogManager -server -Xms2048m -Xmx2048m -XX:PermSize<span class="o">=</span>128M -XX:MaxPermSize<span class="o">=</span>256m -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> -Djmagick.systemclassloader<span class="o">=</span><span class="nb">false</span> -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:../logs/bus_provider_gc.log -XX:+PrintHeapAtGC -XX:+PrintGC -Duser.timezone<span class="o">=</span>GMT+8 -Djava.endorsed.dirs<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2/endorsed -classpath /usr/local/webmiddleware/tomcat-flybus-provider2/bin/bootstrap.jar:/usr/local/webmiddleware/tomcat-flybus-provider2/bin/tomcat-juli.jar -Dcatalina.base<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2 -Dcatalina.home<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2 -Djava.io.tmpdir<span class="o">=</span>/usr/local/webmiddleware/tomcat-flybus-provider2/temp org.apache.catalina.startup.Bootstrap start
+
+---------------  Split Line  ---------------</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="after-the-words">After The Words</h2>
+
+<p>在多主機部署代碼是剛需，自動部署可極大減輕運維人員的工作量，有效提高生產效率。</p>
+
+<p>如果有需要，可將其更改爲併發部署，整個項目部署速度更快。</p>
+
+<p>腳本經過測試可用，已經上傳至IT運維部的Gitlab代碼庫中。</p>
+
+<p>然而，今天的上線，運維同事仍舊採用逐個登錄內網主機部署的方式。本人去年用PHP的<code>Symfony</code>框架開發的 <strong>資產管理平臺</strong> 也是這樣的境況，心中有些苦澀。</p>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2017.10.24 18:40 Tue Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2017.11.30 09:42 Thu Asia/Shanghai
+
+<ul>
+<li>添加操作實例</li>
+</ul></li>
+<li>2018.04.11 10:11 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>Wechat</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>Alipay</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/shell-script/">Shell Script</a>
+          
+          <a href="/tags/ssh/">SSH</a>
+          
+          <a href="/tags/tomcat/">Tomcat</a>
+          
+          <a href="/tags/java/">Java</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/extracting-api-requests-counts-from-nginx-access-log-per-week/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Extracting API Requests Counts From Nginx Access Log Per week</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2017/splitting-nginx-log-by-date-via-gnu-awk/">
+            <span class="next-text nav-default">Splitting Nginx Log By Date Via GNU Awk</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

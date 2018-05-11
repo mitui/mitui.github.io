@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Crawling on MetaDefine - A super concise theme for Hugo</title>
+    <link>/categories/web-crawling/</link>
+    <description>Recent content in Web Crawling on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 14 Mar 2016 00:01:59 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/web-crawling/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Crawling China Administrative Division Code</title>
+      <link>/2016/crawling-china-administrative-division-code/</link>
+      <pubDate>Mon, 14 Mar 2016 00:01:59 +0800</pubDate>
+      
+      <guid>/2016/crawling-china-administrative-division-code/</guid>
+      <description>&lt;p&gt;本文記錄如何從&lt;a href=&#34;http://www.stats.gov.cn&#34;&gt;中華人民共和國國家統計局&lt;/a&gt;官網提取中國大陸地區的行政區劃信息，數據入庫，並通過Shell腳本實現整個過程。項目代碼託管在&lt;a href=&#34;https://github.com/MaxdSre/Shell-script-web-crawler/tree/master/project/CADC&#34;&gt;GitHub&lt;/a&gt;，包含Shell腳本、數據庫數據表、文本數據、從MySQL中導出的SQL數據。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

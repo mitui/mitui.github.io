@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gnu/Linux on MetaDefine - A super concise theme for Hugo</title>
+    <link>/categories/gnu/linux/</link>
+    <description>Recent content in Gnu/Linux on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Apr 2018 15:37:16 -0400</lastBuildDate>
+    
+	<atom:link href="/categories/gnu/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Oracle JDK On GNU/Linux</title>
+      <link>/2018/setting-up-oracle-jdk-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/2018/setting-up-oracle-jdk-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Java SE&lt;/code&gt; is an abbreviation for &lt;code&gt;Java Platform, Standard Edition&lt;/code&gt;, and &lt;code&gt;JDK&lt;/code&gt; is an abbreviation for &lt;code&gt;Java SE Development Kit&lt;/code&gt;. JDK provides running environment for &lt;a href=&#34;http://www.oracle.com/technetwork/java/&#34;&gt;Java&lt;/a&gt; applications. This article documents how to set up Oracle JDK on GNU/Linux, then implement the entire process through Shell script.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在GNU/Linux中安裝配置Oracle JDK</title>
+      <link>/2018/setting-up-oracle-jdk-on-gnu-linux/</link>
+      <pubDate>Thu, 19 Apr 2018 15:37:16 -0400</pubDate>
+      
+      <guid>/2018/setting-up-oracle-jdk-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Java SE&lt;/code&gt;是&lt;code&gt;Java Platform, Standard Edition&lt;/code&gt;的縮寫，而&lt;code&gt;JDK&lt;/code&gt;是&lt;code&gt;Java SE Development Kit&lt;/code&gt;的縮寫，JDK爲&lt;a href=&#34;http://www.oracle.com/technetwork/java/&#34;&gt;Java&lt;/a&gt;應用提供環境支持。本文記錄如何在GNU/Linux中安裝、配置 Oracle JDK，並通過Shell腳本實現整個過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Life Cycle Info For Mainstream GNU Linux Distributions</title>
+      <link>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</link>
+      <pubDate>Mon, 13 Feb 2017 13:40:36 +0800</pubDate>
+      
+      <guid>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.gnu.org&#34; title=&#34;GNU Operating System&#34;&gt;GNU/Linux&lt;/a&gt; is a open source operating system, it consists of &lt;a href=&#34;linuxkernel&#34;&gt;Linux kernel&lt;/a&gt; and a piece of programs. It has many distributions, &lt;a href=&#34;https://www.redhat.com/en&#34; title=&#34;RedHat&#34;&gt;RHEL&lt;/a&gt;/&lt;a href=&#34;https://www.centos.org&#34; title=&#34;CentOS&#34;&gt;CentOS&lt;/a&gt;、 &lt;a href=&#34;https://www.debian.org&#34; title=&#34;Debian&#34;&gt;Debian&lt;/a&gt;/&lt;a href=&#34;https://www.ubuntu.com&#34; title=&#34;Ubuntu&#34;&gt;Ubuntu&lt;/a&gt;、&lt;a href=&#34;https://www.suse.com&#34; title=&#34;SUSE&#34;&gt;SUSE&lt;/a&gt;/&lt;a href=&#34;https://www.opensuse.org&#34; title=&#34;OpenSUSE&#34;&gt;OpenSUSE&lt;/a&gt; are mainstream distributions. In order to extract the product support life cycle info, I wrote a &lt;a href=&#34;https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxLifeCycleInfo.sh&#34;&gt;Shell script&lt;/a&gt; to extract relevant info from their official site.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>主流GNU/Linux發行版的產品支持週期信息</title>
+      <link>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</link>
+      <pubDate>Mon, 13 Feb 2017 13:40:36 +0800</pubDate>
+      
+      <guid>/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.gnu.org&#34; title=&#34;GNU Operating System&#34;&gt;GNU/Linux&lt;/a&gt;是一種開源操作系統，由&lt;a href=&#34;https://www.kernel.org&#34; title=&#34;The Linux Kernel&#34;&gt;Linux&lt;/a&gt;內核和開源軟件構成。其發行版衆多，主流的有 &lt;a href=&#34;https://www.redhat.com/en&#34; title=&#34;RedHat&#34;&gt;RHEL&lt;/a&gt;/&lt;a href=&#34;https://www.centos.org&#34; title=&#34;CentOS&#34;&gt;CentOS&lt;/a&gt;、 &lt;a href=&#34;https://www.debian.org&#34; title=&#34;Debian&#34;&gt;Debian&lt;/a&gt;/&lt;a href=&#34;https://www.ubuntu.com&#34; title=&#34;Ubuntu&#34;&gt;Ubuntu&lt;/a&gt;、&lt;a href=&#34;https://www.suse.com&#34; title=&#34;SUSE&#34;&gt;SUSE&lt;/a&gt;/&lt;a href=&#34;https://www.opensuse.org&#34; title=&#34;OpenSUSE&#34;&gt;OpenSUSE&lt;/a&gt;。爲瞭解各發行版的產品支持週期，本人通過&lt;a href=&#34;https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxLifeCycleInfo.sh&#34;&gt;Shell腳本&lt;/a&gt;從各官方網站提取相關信息，並梳理成文。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Tor Browser On GNU/Linux</title>
+      <link>/2016/setting-up-tor-browser-on-gnu-linux/</link>
+      <pubDate>Thu, 22 Dec 2016 18:45:24 +0800</pubDate>
+      
+      <guid>/2016/setting-up-tor-browser-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.torproject.org/projects/torbrowser.html.en&#34;&gt;Tor Browser&lt;/a&gt;是由&lt;a href=&#34;https://www.torproject.org&#34;&gt;Tor Project&lt;/a&gt;推出的一款集成了&lt;a href=&#34;https://www.torproject.org/&#34;&gt;Tor&lt;/a&gt;，&lt;a href=&#34;https://www.mozilla.org/en-US/firefox/organizations/&#34;&gt;Firefox ESR&lt;/a&gt;, &lt;a href=&#34;https://www.torproject.org/docs/torbutton/&#34;&gt;Torbutton&lt;/a&gt;, &lt;a href=&#34;https://github.com/micahflee/torbrowser-launcher&#34;&gt;TorLauncher&lt;/a&gt;, &lt;a href=&#34;https://noscript.net&#34;&gt;NoScript&lt;/a&gt;,和 &lt;a href=&#34;https://www.eff.org/https-everywhere&#34;&gt;HTTPS-Everywhere&lt;/a&gt;的瀏覽器。&lt;a href=&#34;https://www.torproject.org/projects/torbrowser.html.en&#34;&gt;Tor Browser&lt;/a&gt;默認監聽&lt;code&gt;9150&lt;/code&gt;、&lt;code&gt;9151&lt;/code&gt;端口，通過&lt;a href=&#34;https://en.wikipedia.org/wiki/Tor_(anonymity_network)&#34; title=&#34;WikiPedia&#34;&gt;Tor (anonymity network)&lt;/a&gt;實現匿名訪問，保障用戶隱私。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何在GNU/Linux中下載、校驗、安裝&lt;a href=&#34;https://www.torproject.org/projects/torbrowser.html.en&#34;&gt;Tor Browser&lt;/a&gt;及在&lt;a href=&#34;https://www.gnome.org&#34;&gt;GNOME&lt;/a&gt;桌面中創建快捷圖標。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GNU/Linux Post Installation Configuration Full Record</title>
+      <link>/2016/gnu-linux-post-installation-configuration-full-record/</link>
+      <pubDate>Fri, 17 Jun 2016 11:30:54 +0800</pubDate>
+      
+      <guid>/2016/gnu-linux-post-installation-configuration-full-record/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.gnu.org&#34; title=&#34;GNU Operating System&#34;&gt;GNU/Linux&lt;/a&gt;安裝完成後，需要進行一系列的初始化配置才能滿足使用需求。本文詳細記錄各初始化操作，並用Shell腳本實現相關過程（在&lt;code&gt;root&lt;/code&gt;模式中操作）。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

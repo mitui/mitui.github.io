@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Extracting API Requests Info From Nginx Access Log - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Using sed and awk to extract API requests info from Nginx log" />
+<meta name="keywords" content="AxdLog, awk, sed, Nginx" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2017/extracting-api-requests-info-from-nginx-access-log/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Extracting API Requests Info From Nginx Access Log" />
+<meta property="og:description" content="Using sed and awk to extract API requests info from Nginx log" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/extracting-api-requests-info-from-nginx-access-log/" />
+
+
+
+<meta property="article:published_time" content="2017-07-03T11:43:21&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T09:59:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Extracting API Requests Info From Nginx Access Log">
+<meta itemprop="description" content="Using sed and awk to extract API requests info from Nginx log">
+
+
+<meta itemprop="datePublished" content="2017-07-03T11:43:21&#43;08:00" />
+<meta itemprop="dateModified" content="2017-07-03T11:43:21&#43;08:00" />
+<meta itemprop="wordCount" content="2009">
+
+
+
+<meta itemprop="keywords" content="awk,sed," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Extracting API Requests Info From Nginx Access Log"/>
+<meta name="twitter:description" content="Using sed and awk to extract API requests info from Nginx log"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Extracting API Requests Info From Nginx Access Log</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-07-03 </span>
+        <div class="post-category">
+            
+              <a href="/categories/production-case/"> Production Case </a>
+            
+          </div>
+        <span class="more-meta"> 2009 words </span>
+        <span class="more-meta"> 5 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#requirements">Requirements</a>
+<ul>
+<li><a href="#target">Target</a></li>
+<li><a href="#data-source">Data Source</a></li>
+<li><a href="#nginx-log-format">Nginx Log Format</a>
+<ul>
+<li><a href="#outlier-data">Outlier Data</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#data-extraction">Data Extraction</a>
+<ul>
+<li><a href="#command">Command</a></li>
+<li><a href="#data-format">Data Format</a></li>
+</ul></li>
+<li><a href="#analyzing">Analyzing</a>
+<ul>
+<li><a href="#requests-per-second">Requests Per Second</a></li>
+<li><a href="#requests-per-second-for-specific-api">Requests Per Second For Specific API</a></li>
+</ul></li>
+<li><a href="#data-output">Data Output</a>
+<ul>
+<li><a href="#requests-per-second-1">Requests Per Second</a>
+<ul>
+<li><a href="#deerbus">deerbus</a></li>
+<li><a href="#feilu66">feilu66</a></li>
+</ul></li>
+<li><a href="#requests-per-second-for-specific-api-1">Requests Per Second For Specific API</a>
+<ul>
+<li><a href="#deerbus-1">deerbus</a></li>
+<li><a href="#deerbus-2">deerbus</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#sql-slow-query">SQL Slow Query</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>運維部接到研發經理的需求，從Nginx日誌中提取某一天API接口調用信息，並根據指定的維度進行彙總。因日誌文件在線上生產環境中，且單個文件大小達數GB，爲了減少操作對生產環境的穩定性造成影響。將初步提取的數據下載到本地環境，進行進一步的彙總分析。</p>
+
+<p>以前是將提取的數據導入MySQL數據庫，通過SQL進行提取分析，雖方便但數據導入過程過於漫長。本文
+操作主要使用<code>sed</code>、<code>awk</code>命令，並大量使用了一些高級特性，如<code>sed</code>的添加行號、<a href="https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html" title="Character Class">字符类</a>、正则、<a href="https://www.gnu.org/software/sed/manual/html_node/Back_002dreferences-and-Subexpressions.html" title="Back-references and Subexpressions">後向引用</a>；<code>awk</code>的getline、<a href="https://www.gnu.org/software/gawk/manual/html_node/Controlling-Scanning.html" title="Controlling Array Traversal">預定義數組掃描排序</a>、<a href="https://www.gnu.org/software/gawk/manual/html_node/Multidimensional.html" title="Multidimensional Arrays">多維數組</a>等，算是後積薄發的一次展現。</p>
+
+<p></p>
+
+<p><strong>注意</strong>：本文只記錄需求實現過程，對於關鍵文件，只顯示文件名，不列出路徑。</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<h3 id="target">Target</h3>
+
+<p>提取<a href="http://www.deerbus.com" title="飛路巴士">飛路巴士</a>於2017年06月26日的API接口調用數據，具體需求爲：</p>
+
+<ol>
+<li>每秒請求數量最多的Top10時間段及數量，精確到秒；</li>
+<li>每秒請求頻次最高的接口及數量Top10；</li>
+<li>執行最慢的SQL及耗時、發生時間；</li>
+</ol>
+
+<h3 id="data-source">Data Source</h3>
+
+<p>具體的API域名爲</p>
+
+<ul>
+<li>api.deerbus.com</li>
+<li>api.feilu66.com</li>
+</ul>
+
+<p>通過域名在Nginx配置文件中提取到<a href="http://www.deerbus.com" title="飛路巴士">飛路巴士</a>相關服務對應的訪問日誌，具體信息如下</p>
+
+<table>
+<thead>
+<tr>
+<th>API Domain</th>
+<th>Path</th>
+<th>Size</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>api.deerbus.com</strong></td>
+<td><code>api.deerbus.com_access.log</code></td>
+<td><code>5.5G</code></td>
+</tr>
+
+<tr>
+<td><strong>api.feilu66.com</strong></td>
+<td><code>api.feilu66.com_access.log</code></td>
+<td><code>1.7G</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="nginx-log-format">Nginx Log Format</h3>
+
+<p>指令<code>log_format</code>在Nginx配置文件中的定義如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">$remote_addr - $remote_user [$time_local] &#34;$request&#34; $status $body_bytes_sent &#34;$http_referer&#34; &#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;</pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：當某個指定的值爲空時，用字符<code>-</code>表示其內容。</p>
+
+<p>提取日誌<code>api.deerbus.com_access.log</code>中的一條數據用於分析</p>
+
+<blockquote>
+<p>223.104.213.12 - - [30/Jun/2017:13:27:56 +0800] &ldquo;POST /bususer/nearbyRoute.do HTTP/1.1&rdquo; 200 2703 &ldquo;-&rdquo; &ldquo;%E9%A3%9E%E8%B7%AF%E5%B7%B4%E5%A3%AB/3.6.0 CFNetwork/758.0.2 Darwin/15.0.0&rdquo;</p>
+</blockquote>
+
+<p>分析如下</p>
+
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$remote_addr</td>
+<td><code>223.104.213.12</code></td>
+</tr>
+
+<tr>
+<td>$remote_user</td>
+<td><code>-</code></td>
+</tr>
+
+<tr>
+<td>[$time_local]</td>
+<td><code>[30/Jun/2017:13:27:56 +0800]</code></td>
+</tr>
+
+<tr>
+<td>$request</td>
+<td><code>&quot;POST /bususer/nearbyRoute.do HTTP/1.1&quot;</code></td>
+</tr>
+
+<tr>
+<td>$status</td>
+<td><code>200</code></td>
+</tr>
+
+<tr>
+<td>$body_bytes_sent</td>
+<td><code>2703</code></td>
+</tr>
+
+<tr>
+<td>$http_referer</td>
+<td><code>-</code></td>
+</tr>
+
+<tr>
+<td>$http_user_agent</td>
+<td><code>&quot;%E9%A3%9E%E8%B7%AF%E5%B7%B4%E5%A3%AB/3.6.0 CFNetwork/758.0.2 Darwin/15.0.0&quot;</code></td>
+</tr>
+
+<tr>
+<td>$http_x_forwarded_for</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>需要使用到的指令有<code>$remote_addr</code>、<code>[$time_local]</code>、<code>$request</code>，此處僅以<code>$remote_addr</code>、<code>[$time_local]</code>二者確定一次API接口的訪問請求。</p>
+
+<p>初步提取出的數據格式爲<code>remote_addr|time_local|api</code></p>
+
+<blockquote>
+<p>223.104.213.12|30 Jun 2017:13:27:56|/bususer/nearbyRoute.do</p>
+</blockquote>
+
+<h4 id="outlier-data">Outlier Data</h4>
+
+<p>Nginx日誌文件中存在格式異常的數據，如</p>
+
+<blockquote>
+<p>223.104.212.38 - - [26/Jun/2017:223.104.212.76 - - [26/Jun/2017:07:25:18 +0800] &ldquo;POST /serve/driver/getInfo.do HTTP/1.1&rdquo; 200 761 &ldquo;-&rdquo; &ldquo;okhttp/3.1.2&rdquo;</p>
+</blockquote>
+
+<p>數據處理時，須考慮對異常數據對操作命令的影響。</p>
+
+<h2 id="data-extraction">Data Extraction</h2>
+
+<p>將目標日期當天所有符合條件的API接口調用數據提取出來，存儲到臨時文件中作進一步分析用。此處定義相關臨時文件路徑：</p>
+
+<table>
+<thead>
+<tr>
+<th>api domain</th>
+<th>temp file</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>api.deerbus.com</strong></td>
+<td><code>/tmp/api_deerbus.txt</code></td>
+</tr>
+
+<tr>
+<td><strong>api.feilu66.com</strong></td>
+<td><code>/tmp/api_feilu66.txt</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="command">Command</h3>
+
+<p>提取命令如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># api.deerbus.com
+</span><span class="c1"></span>sed -r -n <span class="s1">&#39;/\[26\/Jun\/2017:/{s@-[[:space:]]@@g;s@[[:space:]]*\+[[:digit:]]+@@g;s@\&#34;[[:upper:]]+ ([^[:space:]]*) .*@\1@g;s@(\[|\])@@g;s@ @|@g;s@([[:digit:]]{4}):@\1 @g;s@([[:digit:]]{1,2})/([[:alpha:]]+)/([[:digit:]]{4})@\1 \2 \3@g;p}&#39;</span> /PATH/api.deerbus.com_access.log &gt; /tmp/api_deerbus.txt</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過<code>sed</code>的<a href="https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html" title="Character Class">字符類</a>、<a href="https://www.gnu.org/software/sed/manual/html_node/Back_002dreferences-and-Subexpressions.html" title="Back-references and Subexpressions">後向引用</a>、正則表達式的配合使用實現。</p>
+
+<p><code>api.feilu66.com</code>的日誌提取同上。</p>
+
+<h3 id="data-format">Data Format</h3>
+
+<p>提取出的數據格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#head -n 2 /tmp/api_deerbus.txt
+</span><span class="c1"></span><span class="m">101</span>.90.253.174<span class="p">|</span><span class="m">26</span> Jun <span class="m">2017</span> <span class="m">00</span>:00:00<span class="p">|</span>/bususer/search.do
+<span class="m">180</span>.159.44.125<span class="p">|</span><span class="m">26</span> Jun <span class="m">2017</span> <span class="m">00</span>:00:00<span class="p">|</span>/bususer/search.do
+
+<span class="c1">#head -n 2 /tmp/api_feilu66.txt
+</span><span class="c1"></span><span class="m">58</span>.33.50.235<span class="p">|</span><span class="m">26</span> Jun <span class="m">2017</span> <span class="m">00</span>:00:08<span class="p">|</span>/serve/driver/uploadGPS.do
+<span class="m">183</span>.193.190.67<span class="p">|</span><span class="m">26</span> Jun <span class="m">2017</span> <span class="m">00</span>:00:09<span class="p">|</span>/serve/driver/uploadGPS.do</code></pre></td></tr></table>
+</div>
+</div>
+<p>提取操作相關信息</p>
+
+<table>
+<thead>
+<tr>
+<th>temp file</th>
+<th>lines</th>
+<th>size</th>
+<th>time consuming</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>/tmp/api_deerbus.txt</strong></td>
+<td>392,712</td>
+<td>23M</td>
+<td>53.983s</td>
+</tr>
+
+<tr>
+<td><strong>/tmp/api_feilu66.txt</strong></td>
+<td>39,100</td>
+<td>2.6M</td>
+<td>14.411s</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="analyzing">Analyzing</h2>
+
+<p><strong>注意</strong>：</p>
+
+<ol>
+<li>此處的分析不作 <code>去重</code>處理；</li>
+<li>爲避免過度佔用線上主機的CPU資源，將文件下載至個人工作電腦(<code>ThinkPad E450</code>)中進行操作；</li>
+</ol>
+
+<h3 id="requests-per-second">Requests Per Second</h3>
+
+<p>按時間(精度爲秒)，每一秒的API接口請求數</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># api.deerbus.com
+</span><span class="c1"></span>awk -F<span class="se">\|</span> <span class="s1">&#39;BEGIN{OFS=&#34;|&#34;}{&#34;date --date=\&#34;&#34;$(NF-1)&#34;\&#34; +\&#34;%F %T\&#34;&#34; | getline a;arr[a]++}END{PROCINFO[&#34;sorted_in&#34;]=&#34;@val_num_desc&#34;;for (i in arr) print i,arr[i] }&#39;</span> api_deerbus.txt &gt; /tmp/deerbus_total_counts_per_second.txt</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過<code>awk</code>實現，此處使用<code>$(NF-1)</code>是爲了消除異常數據對操作的影響。</p>
+
+<p><code>api.feilu66.com</code>的日誌提取同上。</p>
+
+<p>提取操作相關信息</p>
+
+<table>
+<thead>
+<tr>
+<th>temp file</th>
+<th>lines</th>
+<th>time consuming</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/tmp/deerbus_total_counts_per_second.txt</td>
+<td>52,302</td>
+<td>12m31.617s</td>
+</tr>
+
+<tr>
+<td>/tmp/feilu66_total_counts_per_second.txt</td>
+<td>25,364</td>
+<td>3m48.103s</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="requests-per-second-for-specific-api">Requests Per Second For Specific API</h3>
+
+<p>按具體接口每秒被調用的次數，接口名和請求時間二者確定一次請求。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># api.deerbus.com
+</span><span class="c1"></span>awk -F<span class="se">\|</span> <span class="s1">&#39;BEGIN{OFS=&#34;|&#34;}{&#34;date --date=\&#34;&#34;$(NF-1)&#34;\&#34; +\&#34;%F %T\&#34;&#34; | getline a;arr[$NF,a]++}END{PROCINFO[&#34;sorted_in&#34;]=&#34;@val_num_desc&#34;;for (i in arr) {split(i,j,SUBSEP);print j[2],j[1],arr[i]}}&#39;</span> api_deerbus.txt &gt; /tmp/deerbus_specific_counts_per_second.txt</code></pre></td></tr></table>
+</div>
+</div>
+<p>通過<code>awk</code>的<a href="https://www.gnu.org/software/gawk/manual/html_node/Multidimensional.html" title="Multidimensional Arrays">多維數組</a>實現2個維度確定一條數據。</p>
+
+<p><code>api.feilu66.com</code>的日誌提取同上。</p>
+
+<p>提取操作相關信息</p>
+
+<table>
+<thead>
+<tr>
+<th>temp file</th>
+<th>lines</th>
+<th>time consuming</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/tmp/deerbus_specific_counts_per_second.txt</td>
+<td>210,889</td>
+<td>11m30.479s</td>
+</tr>
+
+<tr>
+<td>/tmp/feilu66_specific_counts_per_second.txt</td>
+<td>34,705</td>
+<td>3m26.213s</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="data-output">Data Output</h2>
+
+<p>最終數據展示，此處提取前Top20。其中的排列需要通過<code>sed = file | sed 'N;s/\n/|/g'</code>實現。</p>
+
+<h3 id="requests-per-second-1">Requests Per Second</h3>
+
+<h4 id="deerbus">deerbus</h4>
+
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>time</th>
+<th>requests</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>08:00:02</td>
+<td>2854</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>07:25:24</td>
+<td>108</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>07:25:17</td>
+<td>105</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>07:25:23</td>
+<td>103</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>07:25:22</td>
+<td>97</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>07:25:25</td>
+<td>92</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>07:25:18</td>
+<td>87</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>07:25:19</td>
+<td>86</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>07:25:29</td>
+<td>85</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>07:25:26</td>
+<td>82</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>07:25:27</td>
+<td>82</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>07:25:38</td>
+<td>82</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>07:25:28</td>
+<td>80</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>07:25:30</td>
+<td>79</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>07:25:33</td>
+<td>78</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>07:25:37</td>
+<td>78</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>07:25:20</td>
+<td>77</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>07:25:21</td>
+<td>77</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>07:25:41</td>
+<td>77</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>07:25:31</td>
+<td>72</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="feilu66">feilu66</h4>
+
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>time</th>
+<th>requests</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>19:30:02</td>
+<td>49</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>13:10:01</td>
+<td>27</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>12:00:00</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>12:00:01</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>13:10:00</td>
+<td>23</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>19:30:03</td>
+<td>22</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>07:00:19</td>
+<td>19</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>07:56:46</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>09:29:18</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>15:35:43</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>15:34:25</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>07:56:56</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>15:35:54</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>14:16:23</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>11:07:38</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>07:59:00</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>07:00:20</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>15:32:34</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>10:19:13</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>10:21:56</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="requests-per-second-for-specific-api-1">Requests Per Second For Specific API</h3>
+
+<h4 id="deerbus-1">deerbus</h4>
+
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>time</th>
+<th>api</th>
+<th>requests</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>08:00:02</td>
+<td>/driver/uploadGPS.do</td>
+<td>864</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>08:00:02</td>
+<td>/bususer/getRealTimeRouteInfo.do</td>
+<td>297</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>08:00:02</td>
+<td>/bususer/getBusPosition.do</td>
+<td>296</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>08:00:02</td>
+<td>/bususer/getUserTickets.do</td>
+<td>202</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>08:00:02</td>
+<td>/serve/optServer.do</td>
+<td>185</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>08:00:02</td>
+<td>/bususer/checkTicketWithPosition.do</td>
+<td>133</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>08:00:02</td>
+<td>/bususer/getUserInfo.do</td>
+<td>129</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>08:00:02</td>
+<td>/bususer/flybusLogin.do</td>
+<td>118</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>08:00:02</td>
+<td>/bususer/search.do</td>
+<td>98</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>08:00:02</td>
+<td>/bususer/findRouteList.do</td>
+<td>84</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>08:00:02</td>
+<td>/bususer/getContentResources.do</td>
+<td>76</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>08:00:02</td>
+<td>/bususer/getBanner.do</td>
+<td>65</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>08:00:02</td>
+<td>/bususer/saveToken.do</td>
+<td>51</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>08:00:02</td>
+<td>/bususer/myCouponList.do</td>
+<td>45</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>08:00:02</td>
+<td>/bususer/findOpenDays.do</td>
+<td>37</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>14:38:17</td>
+<td>/bususer/fuzzyQueryStopInfo.do</td>
+<td>32</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>07:25:17</td>
+<td>/bususer/getUserTickets.do</td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>07:25:18</td>
+<td>/bususer/getUserTickets.do</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>08:00:02</td>
+<td>/bususer/findRouteDetail.do</td>
+<td>24</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>07:25:23</td>
+<td>/serve/optServer.do</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="deerbus-2">deerbus</h4>
+
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>time</th>
+<th>api</th>
+<th>requests</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>19:30:02</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>42</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>13:10:01</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>12:00:00</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>22</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>12:00:01</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>22</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>19:30:03</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>21</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>13:10:00</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>20</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>07:00:19</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>18</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>09:29:18</td>
+<td>/vehchile/getCarNum.do</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>15:34:25</td>
+<td>/vehchile/getCarNum.do</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>11:07:38</td>
+<td>/vehchile/getCarNum.do</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>15:35:43</td>
+<td>/vehchile/getCarNum.do</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>15:35:54</td>
+<td>/vehchile/getCarNum.do</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>15:32:34</td>
+<td>/vehchile/getCarNum.do</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>10:19:13</td>
+<td>/vehchile/getCarNum.do</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>14:16:23</td>
+<td>/vehchile/getCarNum.do</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>15:32:24</td>
+<td>/vehchile/getCarNum.do</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>10:19:03</td>
+<td>/vehchile/getCarNum.do</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>10:21:56</td>
+<td>/vehchile/getCarNum.do</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>07:00:20</td>
+<td>/serve/getNewsBriefList.do</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>12:09:22</td>
+<td>/vehchile/getCarNum.do</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="sql-slow-query">SQL Slow Query</h2>
+
+<p>SQL慢查詢日誌來自生成數據庫，因涉及到數據庫表字段，此處不列出具體的SQL語句，只顯示執行時間。</p>
+
+<p>通過關鍵詞<code>Time: 170626</code>提取。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">7</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">47</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">589281</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000688</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">90</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">5456950</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">7</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">50</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">300753</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000414</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">90</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">5456952</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">7</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">51</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">318564</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000609</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">90</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">5456952</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">9</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">06</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">083190</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000229</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">1342780</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">9</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">09</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">300643</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000252</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">18</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">1337464</span>
+
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">300645</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000252</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">18</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">1337464</span>
+<span class="k">SET</span> <span class="k">timestamp</span><span class="o">=</span><span class="mi">1498439349</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">303412</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000165</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">30</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">1344612</span>
+<span class="k">SET</span> <span class="k">timestamp</span><span class="o">=</span><span class="mi">1498439349</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">9</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">02</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">495894</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000265</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">2702204</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span>  <span class="mi">9</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">06</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">442528</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000155</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">30</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">2702360</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span> <span class="mi">15</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">39</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">037750</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000758</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">816958</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span> <span class="mi">17</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">06</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">962839</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000207</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">1825767</span>
+
+<span class="o">#</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">170626</span> <span class="mi">22</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">46</span>
+<span class="o">#</span> <span class="n">Query_time</span><span class="p">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">916867</span>  <span class="n">Lock_time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000170</span> <span class="n">Rows_sent</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Rows_examined</span><span class="p">:</span> <span class="mi">1827446</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>雖然兼任公司的DBA，但手中擁有的權限少得可憐。在面對開發人員的SQL語句時，有一種無力感。</p>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2017.07.03 11:42 Mon Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.11 09:59 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>Wechat</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>Alipay</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/awk/">awk</a>
+          
+          <a href="/tags/sed/">sed</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/splitting-nginx-log-by-date-via-gnu-awk/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Splitting Nginx Log By Date Via GNU Awk</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2017/using-sed-to-reverse-character-or-line-on-gnu-linux/">
+            <span class="next-text nav-default">Using Sed To Reverse Character Or Line On GNU/Linux</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

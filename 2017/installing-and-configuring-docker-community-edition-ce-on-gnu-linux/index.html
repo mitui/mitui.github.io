@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在GNU/Linux中安裝Docker CE（社區版）全記錄 - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="本文記錄如何通過Shell腳本在GNU/Linux安裝Docker CE（社區版）。" />
+<meta name="keywords" content="AxdLog, Docker, Docker CE, Container" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="在GNU/Linux中安裝Docker CE（社區版）全記錄" />
+<meta property="og:description" content="本文記錄如何通過Shell腳本在GNU/Linux安裝Docker CE（社區版）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/" />
+
+
+
+<meta property="article:published_time" content="2017-03-06T13:24:08&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T11:41:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="在GNU/Linux中安裝Docker CE（社區版）全記錄">
+<meta itemprop="description" content="本文記錄如何通過Shell腳本在GNU/Linux安裝Docker CE（社區版）。">
+
+
+<meta itemprop="datePublished" content="2017-03-06T13:24:08&#43;08:00" />
+<meta itemprop="dateModified" content="2017-03-06T13:24:08&#43;08:00" />
+<meta itemprop="wordCount" content="3584">
+
+
+
+<meta itemprop="keywords" content="Docker," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在GNU/Linux中安裝Docker CE（社區版）全記錄"/>
+<meta name="twitter:description" content="本文記錄如何通過Shell腳本在GNU/Linux安裝Docker CE（社區版）。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">在GNU/Linux中安裝Docker CE（社區版）全記錄</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-03-06 </span>
+        <div class="post-category">
+            
+              <a href="/categories/container/"> Container </a>
+            
+          </div>
+        <span class="more-meta"> 3584 words </span>
+        <span class="more-meta"> 8 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#官方站點">官方站點</a></li>
+<li><a href="#教程">教程</a></li>
+<li><a href="#簡介">簡介</a>
+<ul>
+<li><a href="#架構">架構</a></li>
+<li><a href="#對比虛擬機">對比虛擬機</a>
+<ul>
+<li><a href="#虛擬機">虛擬機</a></li>
+<li><a href="#容器">容器</a></li>
+</ul></li>
+<li><a href="#系統要求">系統要求</a></li>
+</ul></li>
+<li><a href="#docker-產品線">Docker 產品線</a></li>
+<li><a href="#安裝">安裝</a>
+<ul>
+<li><a href="#centos">CentOS</a>
+<ul>
+<li><a href="#安裝-docker">安裝 Docker</a></li>
+<li><a href="#卸載-docker">卸載 Docker</a></li>
+</ul></li>
+<li><a href="#debian-ubuntu">Debian/Ubuntu</a>
+<ul>
+<li><a href="#安裝-docker-1">安裝 Docker</a></li>
+<li><a href="#卸載-docker-1">卸載 Docker</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#啓動-docker-服務">啓動 Docker 服務</a></li>
+<li><a href="#安裝後配置">安裝後配置</a>
+<ul>
+<li><a href="#創建非root用戶">創建非root用戶</a></li>
+<li><a href="#穿過防火牆訪問遠程api">穿過防火牆訪問遠程API</a></li>
+</ul></li>
+<li><a href="#shell-腳本">Shell 腳本</a></li>
+<li><a href="#報錯">報錯</a>
+<ul>
+<li><a href="#image-has-dependent-child-images">image has dependent child images</a></li>
+</ul></li>
+<li><a href="#更新日誌">更新日誌</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://www.docker.com" title="Docker">Docker</a>是一款開源的，提供<code>Operating-system-level virtualization</code>(操作系統級別的虛擬化的)容器(container)產品，可實現在軟件容器中自動部署應用。目前有<code>Enterprise Edition(EE)</code>、<code>Community Edition(CE)</code>、<code>Cloud</code>三個變種。本文記錄在GNU/Linux中安裝、配置Docker Engine的過程，並通過<a href="#shell-script">Shell Script</a>實現。</p>
+
+<p></p>
+
+<h2 id="官方站點">官方站點</h2>
+
+<p>以下是<a href="https://www.docker.com" title="Docker">Docker</a>相關官方站點</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Site</th>
+<th align="left">Website</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Official Site</td>
+<td align="left"><a href="https://www.docker.com">https://www.docker.com</a></td>
+</tr>
+
+<tr>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/docker">https://github.com/docker</a></td>
+</tr>
+
+<tr>
+<td align="left">Documentation</td>
+<td align="left"><a href="https://docs.docker.com">https://docs.docker.com</a></td>
+</tr>
+
+<tr>
+<td align="left">Blog</td>
+<td align="left"><a href="https://blog.docker.com">https://blog.docker.com</a></td>
+</tr>
+
+<tr>
+<td align="left">Twitter</td>
+<td align="left"><a href="https://twitter.com/docker">https://twitter.com/docker</a></td>
+</tr>
+
+<tr>
+<td align="left">Youtube</td>
+<td align="left"><a href="https://www.youtube.com/user/dockerrun">https://www.youtube.com/user/dockerrun</a></td>
+</tr>
+
+<tr>
+<td align="left">Docker Hub</td>
+<td align="left"><a href="https://hub.docker.com">https://hub.docker.com</a></td>
+</tr>
+
+<tr>
+<td align="left">Docker Store</td>
+<td align="left"><a href="https://store.docker.com">https://store.docker.com</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="教程">教程</h2>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>在<a href="https://github.com">Github</a>中提供了一些教程，初學者可通過此教程學習Docker的使用</p>
+
+<ul>
+<li><a href="https://github.com/docker/labs/">Docker Tutorials and Labs</a></li>
+<li><a href="https://github.com/docker/labs/tree/master/beginner">Docker for beginners</a></li>
+</ul>
+
+<p>官網提供的基礎教程</p>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/getstarted/">Learn the basics of Docker</a></li>
+<li><a href="https://docs.docker.com/engine/userguide/">Docker Engine user guide</a></li>
+</ul>
+
+<p>若要詳細瞭解，建議閱讀Docker<a href="https://docs.docker.com/">官方文檔</a>。</p>
+
+<h2 id="簡介">簡介</h2>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>是一款操作系統級別的虛擬化產品，<a href="https://www.docker.com" title="Docker">Docker</a>啓動封裝好的鏡像，運行的實例即爲容器。鏡像以精簡後的操作系統(GNU/Linux)爲基礎，安裝有運行目標應用所需的各種應用、庫。運行的容器，對於操作系統而言，像是一個個進程，但對目標應用而言，應用運行在一個“操作系統”之中。基於同一個鏡像運行的容器，容器內提供的運行環境是相同的。</p>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>利用Linux Kernel中的<a href="https://en.wikipedia.org/wiki/Cgroups" title="WikiPedia">control groups</a>、<a href="https://en.wikipedia.org/wiki/Linux_namespaces">namespaces</a>和<a href="https://en.wikipedia.org/wiki/Aufs">advanced multi layered unification filesystem</a>等特性，實現在單個Linux實例上運行多個獨立的<code>容器</code>(container)，減少了啓動和維護<a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a>的開銷。 &mdash; <a href="https://en.wikipedia.org/wiki/Docker_%28software%29" title="WikiPedia">Docker (software)</a></p>
+
+<blockquote>
+<p>Docker allows you to package an application with all of its dependencies into a standardized unit for software development.</p>
+</blockquote>
+
+<p><strong>此處插一句</strong> <a href="http://www.debian.org/">Debian</a>的聯合創建者同時也是<a href="https://www.docker.com" title="Docker">Docker</a>的開發者之一 <a href="https://en.wikipedia.org/wiki/Ian_Murdock">Ian Murdock</a>，於2015年12月28日去世。此爲<code>Docker</code>官方博客發佈的文章<a href="https://blog.docker.com/2015/12/ian-murdock/">In Memoriam: Ian Murdock</a>，在此緬懷一下逝者。</p>
+
+<h3 id="架構">架構</h3>
+
+<blockquote>
+<p>Docker uses a client-server architecture. The Docker client talks to the Docker <em>daemon</em>, which does the heavy lifting of building, running, and distributing your Docker containers. Both the Docker client and the daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate via sockets or through a RESTful API.  &mdash; <a href="https://docs.docker.com/engine/understanding-docker/#what-is-dockers-architecture">Understand the architecture</a></p>
+</blockquote>
+
+<p><img src="https://docs.docker.com/engine/images/architecture.svg" alt="architecture" /></p>
+
+<p>關於<code>Docker</code>的具體架構介紹，請移步 <a href="https://docs.docker.com/engine/docker-overview/">Docker overview
+</a></p>
+
+<h3 id="對比虛擬機">對比虛擬機</h3>
+
+<p>Docker Container本質上也是<code>虛擬化</code>，但與<code>virtual machine</code>(如<a href="https://en.wikipedia.org/wiki/Vagrant_%28software%29">Vagrant</a>)的實現方式不同。</p>
+
+<blockquote>
+<p>Each virtual machine includes the application, the necessary binaries and libraries and an entire guest operating system - all of which may be tens of GBs in size.</p>
+</blockquote>
+
+<p>每個虛擬機包含了應用程序、需要的二進制和庫文件，以及整個<code>guest</code>操作系統，整個需要數十GB的空間。</p>
+
+<blockquote>
+<p>Containers include the application and all of its dependencies, but share the kernel with other containers. They run as an isolated process in userspace on the host operating system. They’re also not tied to any specific infrastructure – Docker containers run on any computer, on any infrastructure and in any cloud.</p>
+</blockquote>
+
+<p>容器包含應用程序及其所有的依賴文件，但與其它容器共享內核(kernel)，它們在宿主機(host)操作系統的用戶空間(userspace)中以獨立的進程(process)運行。它們不與任何具體的基礎架構(infrastructure)關聯。Docker容器運行在任意計算機、任意基礎架構和任意一種雲環境中。</p>
+
+<p>下圖介紹了二者的區別，圖片來自<a href="https://www.docker.com/what-container">What is a Container?</a>。</p>
+
+<h4 id="虛擬機">虛擬機</h4>
+
+<p>舊圖<br />
+<img src="https://www.docker.com/sites/default/files/what-is-docker-diagram.png" alt="Virtual Machines" /></p>
+
+<p>新圖<br />
+<img src="https://www.docker.com/sites/default/files/VM%402x.png" alt="Virtual Machines" /></p>
+
+<h4 id="容器">容器</h4>
+
+<p>舊圖<br />
+<img src="https://www.docker.com/sites/default/files/what-is-vm-diagram.png" alt="Containers" /></p>
+
+<p>新圖<br />
+<img src="https://www.docker.com/sites/default/files/Container%402x.png" alt="Containers" /></p>
+
+<p>簡言之，<code>Virtual Machine</code>虛擬的是一個完整的操作系統，而<code>Container</code>是在Linux kernel的基礎上實現獨立的運行環境。</p>
+
+<p><strong>Containers and Virtual Machines Together</strong></p>
+
+<p><img src="https://www.docker.com/sites/default/files/containers-vms-together.png" alt="" /></p>
+
+<h3 id="系統要求">系統要求</h3>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>對系統有一定要求：</p>
+
+<ol>
+<li>操作系統必須是 <strong>64-bit</strong>；</li>
+<li>Linux Kernel版本至少是 <strong>3.10</strong>；</li>
+<li><code>iptables</code>的版本至少是 <strong>1.4</strong>；</li>
+</ol>
+
+<p>具體見 <a href="https://docs.docker.com/install/linux/docker-ce/binaries/">Install Docker CE from binaries</a>。</p>
+
+<p>可通過如下命令查看系統是否爲64-bit，即<code>x86_64</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">uname -m</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="docker-產品線">Docker 產品線</h2>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>目前分爲3條產品線，具體介紹見 <a href="https://docs.docker.com/install/">Install Docker</a>。</p>
+
+<ol>
+<li><a href="https://www.docker.com/enterprise-edition">Docker Enterprise Edition (Docker EE)</a></li>
+<li><a href="https://www.docker.com/community-edition">Docker Community Edition (Docker CE)</a>
+
+<ul>
+<li>Stable (release per quarter)</li>
+<li>Edge (release per month)</li>
+</ul></li>
+<li><a href="https://docs.docker.com/install/#cloud">Docker Cloud</a></li>
+</ol>
+
+<p><code>Docker CE</code>和<code>Docker EE</code>支持的GNU/Linux發行版不盡相同，具體如下</p>
+
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th align="center">Docker EE</th>
+<th align="center">Docker CE</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>RHEL</td>
+<td align="center">Y</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td>CentOS</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+
+<tr>
+<td>Fedora</td>
+<td align="center"></td>
+<td align="center">Y</td>
+</tr>
+
+<tr>
+<td>Oracle Linux</td>
+<td align="center">Y</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td>Debian</td>
+<td align="center"></td>
+<td align="center">Y</td>
+</tr>
+
+<tr>
+<td>Ubuntu</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+
+<tr>
+<td>SLES</td>
+<td align="center">Y</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>See also Docker Cloud for setup instructions for <code>Digital Ocean</code>, <code>Packet</code>, <code>SoftLink</code>, or Bring Your Own Cloud.</p>
+</blockquote>
+
+<h2 id="安裝">安裝</h2>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>目前分<code>Docker EE</code>、<code>Docker CE</code>。</p>
+
+<p>對GNU/Linux而言，<code>RHEL</code>、<code>Oracle Linux</code>、<code>SLES</code>只能安裝<code>Docker EE</code>。而安裝<code>Docker EE</code>須先註冊<a href="https://store.docker.com/">Docker Store</a>。能使用<code>Docker CE</code>的只有<code>CentOS/Fedora</code>、<code>Debian/Ubuntu</code>。</p>
+
+<p>本文只針對<code>Docker CE</code>，涵蓋的發行版只有CentOS/Debian/Ubuntu。</p>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>官方文檔提供了安裝說明 <a href="https://docs.docker.com/engine/installation/">Install Docker Engine</a>，具體如下：</p>
+
+<ul>
+<li><a href="https://docs.docker.com/install/linux/centos/">Get Docker for CentOS</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/debian/">Get Docker for Debian</a></li>
+<li><a href="https://docs.docker.com/install/linux/ubuntu/">Get Docker for Ubuntu</a></li>
+</ul>
+
+<p>根據以上文檔整理出<code>Docker CE</code>支持的具體版本</p>
+
+<table>
+<thead>
+<tr>
+<th>Distro</th>
+<th>Version</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>CentOS</td>
+<td>7</td>
+</tr>
+
+<tr>
+<td>Debian</td>
+<td>Buster 10 (Docker CE 17.11 Edge only)</td>
+</tr>
+
+<tr>
+<td>Debian</td>
+<td>Stretch 9</td>
+</tr>
+
+<tr>
+<td>Debian</td>
+<td>Jessie 8</td>
+</tr>
+
+<tr>
+<td>Debian</td>
+<td>Wheezy 7</td>
+</tr>
+
+<tr>
+<td>Ubuntu</td>
+<td>Artful 17.10 (Docker CE 17.11 Edge and higher only)</td>
+</tr>
+
+<tr>
+<td>Ubuntu</td>
+<td>Zesty 17.04</td>
+</tr>
+
+<tr>
+<td>Ubuntu</td>
+<td>Xenial 16.04</td>
+</tr>
+
+<tr>
+<td>Ubuntu</td>
+<td>Trusty 14.04</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>注意</strong>：Linux Kernel版本必須至少爲<code>3.10</code>。</p>
+
+<h3 id="centos">CentOS</h3>
+
+<h4 id="安裝-docker">安裝 Docker</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Remove unofficial Docker packages
+</span><span class="c1"></span>yum -q makecache fast
+yum -y -q remove docker docker-<span class="o">{</span>client,client-latest,latest,latest-logrotate,logrotate,common,selinux,engine,engine-selinux<span class="o">}</span>
+
+<span class="c1"># Install Docker
+</span><span class="c1"></span>curl -fsSL https://download.docker.com/linux/centos/docker-ce.repo <span class="p">|</span> sed -n <span class="s1">&#39;/ce-stable-debuginf/,$d;/^$/d;p&#39;</span> &gt; /etc/yum.repos.d/docker-ce.repo
+
+<span class="c1"># [docker-ce-stable]
+</span><span class="c1"># name=Docker CE Stable - $basearch
+</span><span class="c1"># baseurl=https://download-stage.docker.com/linux/centos/7/$basearch/stable
+</span><span class="c1"># enabled=1
+</span><span class="c1"># gpgcheck=1
+</span><span class="c1"># gpgkey=https://download-stage.docker.com/linux/centos/gpg
+</span><span class="c1"></span>
+yum -q makecache fast
+yum -y -q install docker-ce</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="卸載-docker">卸載 Docker</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y -q remove docker-ce
+rm -rf /var/lib/docker</code></pre></td></tr></table>
+</div>
+</div>
+<p>執行<code>yum install docker-ce</code>提示的GPG信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># yum -y -q install docker-ce
+</span><span class="c1"></span>warning: /var/cache/yum/x86_64/7/docker-ce-stable/packages/docker-ce-selinux-17.03.1.ce-1.el7.centos.noarch.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+Public key <span class="k">for</span> docker-ce-selinux-17.03.1.ce-1.el7.centos.noarch.rpm is not installed
+Importing GPG key 0x621E9F35:
+ Userid     : <span class="s2">&#34;Docker Release (CE rpm) &lt;docker@docker.com&gt;&#34;</span>
+ Fingerprint: 060a 61c5 1b55 8a7f 742b 77aa c52f eb6b 621e 9f35
+ From       : https://download.docker.com/linux/centos/gpg
+setsebool:  SELinux is disabled.
+libsemanage.semanage_direct_install_info: Overriding docker module at lower priority <span class="m">100</span> with module at priority <span class="m">400</span>.</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="debian-ubuntu">Debian/Ubuntu</h3>
+
+<h4 id="安裝-docker-1">安裝 Docker</h4>
+
+<p>Ubuntu與Debian的安裝過程大致相同，區別之處在於
+1. 具體版本依賴的軟件不同
+2. Repo配置不同(發行版名稱、codename)</p>
+
+<p>整合後，操作命令如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># remove old package
+</span><span class="c1"></span>sudo apt-get -y remove docker docker-engine
+
+<span class="nv">versionId</span><span class="o">=</span><span class="k">$(</span>awk <span class="s1">&#39;/VERSION_ID=/{print gensub(/.*&#34;(.*)&#34;$/,&#34;\\1&#34;,&#34;g&#34;,$0)}&#39;</span> /etc/os-release<span class="k">)</span>
+<span class="nv">codeName</span><span class="o">=</span><span class="k">$(</span>awk <span class="s1">&#39;/VERSION=/{print gensub(/.*\((.*)\)&#34;$/,&#34;\\1&#34;,&#34;g&#34;,$0)}&#39;</span> /etc/os-release<span class="k">)</span>
+<span class="nv">distroName</span><span class="o">=</span><span class="k">$(</span>awk <span class="s1">&#39;/PRETTY_NAME=/{distro=gensub(/.*&#34;([^ ]*) .*/,&#34;\\1&#34;,&#34;g&#34;,$0);print tolower(distro)}&#39;</span> /etc/os-release<span class="k">)</span>
+
+<span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">distroNam</span><span class="si">}</span><span class="s2">&#34;</span> in
+    debian <span class="o">)</span>
+        <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">versionId</span><span class="si">}</span><span class="s2">&#34;</span> -gt <span class="m">7</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">externalPack</span><span class="o">=</span><span class="s1">&#39;software-properties-common gnupg2&#39;</span> <span class="o">||</span> <span class="nv">externalPack</span><span class="o">=</span><span class="s1">&#39;python-software-properties&#39;</span>  <span class="c1"># Wheezy 7
+</span><span class="c1"></span>        <span class="p">;;</span>
+    ubuntu <span class="o">)</span>
+        <span class="nv">externalPack</span><span class="o">=</span><span class="s1">&#39;software-properties-common&#39;</span>
+        <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">versionId</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s1">&#39;14.04&#39;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">externalPack</span><span class="o">=</span><span class="si">${</span><span class="nv">externalPack</span><span class="si">}</span><span class="s2">&#34; linux-image-extra-</span><span class="k">$(</span>uname -r<span class="k">)</span><span class="s2"> linux-image-extra-virtual&#34;</span>   <span class="c1"># Trusty 14.04
+</span><span class="c1"></span>        <span class="p">;;</span>
+<span class="k">esac</span>
+
+sudo apt-get -qy --no-install-recommends install apt-transport-https ca-certificates curl <span class="s2">&#34;</span><span class="si">${</span><span class="nv">externalPack</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># add Docker’s official GPG key
+</span><span class="c1"></span>curl -fsSL https://download.docker.com/linux/<span class="si">${</span><span class="nv">distroNam</span><span class="si">}</span>/gpg <span class="p">|</span> sudo apt-key add -
+<span class="c1"># sudo apt-key fingerprint 0EBFCD88
+</span><span class="c1"></span>
+<span class="c1"># add stable official repository
+</span><span class="c1"></span>sudo bash -c <span class="s2">&#34;echo \&#34;deb [arch=amd64] https://download.docker.com/linux/</span><span class="si">${</span><span class="nv">distroNam</span><span class="si">}</span><span class="s2"> </span><span class="nv">$codeName</span><span class="s2"> stable\&#34; &gt; /etc/apt/sources.list.d/docker.list&#34;</span>
+
+sudo apt-get update <span class="m">1</span>&gt; /dev/null
+sudo apt-get -qy install docker-ce
+
+<span class="nb">unset</span> externalPack
+<span class="nb">unset</span> versionId
+<span class="nb">unset</span> distroName
+<span class="nb">unset</span> codeName</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="卸載-docker-1">卸載 Docker</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get -qy purge docker-ce
+sudo rm -rf /var/lib/docker</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="啓動-docker-服務">啓動 Docker 服務</h2>
+
+<p>安裝完成後通過如下命令啓動Docker服務</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl status docker
+sudo systemctl start docker
+sudo systemctl <span class="nb">enable</span> docker
+
+<span class="c1"># testing
+</span><span class="c1"></span>sudo docker run hello-world</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="安裝後配置">安裝後配置</h2>
+
+<p><a href="https://www.docker.com" title="Docker">Docker</a>安裝後的配置說明：</p>
+
+<ul>
+<li><a href="https://docs.docker.com/install/linux/linux-postinstall/">Post-installation steps for Linux</a></li>
+</ul>
+
+<h3 id="創建非root用戶">創建非root用戶</h3>
+
+<p>在<a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">Manage Docker as a non-root user</a>中有如下文字</p>
+
+<blockquote>
+<p>The docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user <code>root</code> and other users can only access it using <code>sudo</code>. The docker daemon always runs as the <code>root</code> user.</p>
+
+<p>If you don&rsquo;t want to use <code>sudo</code> when you use the docker command, create a Unix group called <code>docker</code> and add users to it. When the docker daemon starts, it makes the ownership of the Unix socket read/writable by the <code>docker</code> group.</p>
+
+<p><strong>Warning</strong>: The <code>docker</code> group grants privileges equivalent to the <code>root</code> user. For details on how this impacts security in your system, see <a href="https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface">Docker Daemon Attack Surface</a>.</p>
+</blockquote>
+
+<p>翻譯如下：</p>
+
+<p>Docker守護進程(daemon)綁定Unix套接字(socket)而非TCP端口(port)。默認情況下，Unix套接字的擁有者是用戶<code>root</code>和使用<code>sudo</code>權限訪問的其他用戶。Docker守護進程以<code>root</code>用戶的身份運行。</p>
+
+<p>如果不想在執行docker命令的時候使用<code>sudo</code>，創建名爲<code>docker</code>的用戶組(group)，將普通用戶添加到該組中。當Docker守護進程啓動時，docker自動將Unix套接字的讀、寫權限賦予名爲<code>docker</code>的用戶組。</p>
+
+<p><strong>提醒</strong>： <code>docker</code>用戶組的權限與用戶<code>root</code>相同，該操作會如何影響系統安全，詳見<a href="https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface">Docker Daemon Attack Surface</a>。</p>
+
+<blockquote>
+<p>Docker Daemon Attack Surface</p>
+
+<ul>
+<li>only trusted users should be allowed to control your Docker daemon</li>
+<li>if you run Docker on a server, it is recommended to run exclusively Docker on the server, and move all other services within containers controlled by Docker.</li>
+</ul>
+</blockquote>
+
+<p>簡言之：默認情況下，執行docker命令時須添加<code>sudo</code>，爲避免此情況。創建名爲<code>docker</code>的用戶組，將有次需求的用戶添加到該用戶組即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo groupadd docker
+sudo usermod -aG docker <span class="nv">$USER</span>
+# sudo gpasswd -a <span class="nv">$USER</span> docker</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="穿過防火牆訪問遠程api">穿過防火牆訪問遠程API</h3>
+
+<p><a href="https://docs.docker.com/install/linux/linux-postinstall/#allow-access-to-the-remote-api-through-a-firewall">Allow access to the remote API through a firewall</a>中有如下文字</p>
+
+<blockquote>
+<p>If you run a firewall on the same host as you run Docker and you want to access the Docker Remote API from another host and remote access is enabled, you need to configure your firewall to allow incoming connections on the Docker port, which defaults to <code>2376</code> if TLS encrypted transport is enabled or <code>2375</code> otherwise.</p>
+</blockquote>
+
+<p>簡言之：如果運行Docker的主機安裝有防火牆，想要從其他主機遠程訪問該主機的Docker API。須在本機中開放<code>2376</code>端口，如果通過TLS加密傳輸，則需開放<code>2375</code>端口。</p>
+
+<h2 id="shell-腳本">Shell 腳本</h2>
+
+<p>腳本託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/Docker-CE.sh">Github</a>，通過如下命令執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/software/Docker-CE.sh <span class="p">|</span> bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="報錯">報錯</h2>
+
+<h3 id="image-has-dependent-child-images">image has dependent child images</h3>
+
+<p>在使用<code>docker rmi</code>移除tag爲<code>&lt;none&gt;</code>的鏡像時，出現報錯</p>
+
+<blockquote>
+<p>Error response from daemon: conflict: unable to delete 978d85d02b87 (cannot be forced) - image has dependent child images</p>
+</blockquote>
+
+<p>參考<a href="https://stackoverflow.com/questions/36584122/docker-how-can-i-get-the-list-of-dependent-child-images#answer-41195790">docker how can I get the list of dependent child images?</a>，在本機目錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/var/lib/docker/image/btrfs/imagedb/content/sha256/
+
+<span class="c1"># docker 17.06.2-ce
+</span><span class="c1"></span>/var/lib/docker/image/overlay2/imagedb/content/sha256</code></pre></td></tr></table>
+</div>
+</div>
+<p>中刪除以<code>978d85d02b87</code>開頭的文件解決。</p>
+
+<p>操作過程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 獲取image id
+</span><span class="c1"></span>maxsre@jessie:~$ docker images <span class="p">|</span> awk <span class="s1">&#39;match($2,/none/){print $3}&#39;</span>
+978d85d02b87
+
+<span class="c1"># 移除鏡像報錯
+</span><span class="c1"></span>maxsre@jessie:~$ docker rmi 978d85d02b87
+Error response from daemon: conflict: unable to delete 978d85d02b87 <span class="o">(</span>cannot be forced<span class="o">)</span> - image has dependent child images
+
+<span class="c1"># 使用sudo
+</span><span class="c1"></span>maxsre@jessie:~$ sudo -i
+
+<span class="c1"># 進入目標目錄
+</span><span class="c1"></span>root@jessie:~# <span class="nb">cd</span> /var/lib/docker/image/btrfs/imagedb/content/sha256/
+
+<span class="c1"># 查找文件
+</span><span class="c1"></span>root@jessie:/var/lib/docker/image/btrfs/imagedb/content/sha256# ls 978d85d02b87*
+978d85d02b87aea199e4ae8664f6abf32fdea331884818e46b8a01106b114cee
+
+<span class="c1"># 移除文件
+</span><span class="c1"></span>root@jessie:/var/lib/docker/image/btrfs/imagedb/content/sha256# rm -f 978d85d02b87aea199e4ae8664f6abf32fdea331884818e46b8a01106b114cee
+
+<span class="c1"># 勘驗
+</span><span class="c1"></span>root@jessie:~# docker images <span class="p">|</span> awk <span class="s1">&#39;match($2,/none/){print $3}&#39;</span>
+root@jessie:~#</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="更新日誌">更新日誌</h2>
+
+<ul>
+<li>2016.04.04 11:30 Thu Asia/Beijing
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2017.03.02 15:44 Thu Asia/Shanghai
+
+<ul>
+<li>文檔重構</li>
+</ul></li>
+<li>2017.03.03 16:49 Fri Asia/Shanghai
+
+<ul>
+<li>Docker官方文檔更新(分<code>Docker EE</code>、<code>Docker CE</code>、<code>Docker Cloud</code>)，文檔重構</li>
+</ul></li>
+<li>2017.04.07 09:50 Fri Asia/Shanghai
+
+<ul>
+<li>添加<code>Error Occuring</code>-&gt;<code>image has dependent child images</code></li>
+</ul></li>
+<li>2017.09.08 08:31 Fri Asia/Shanghai
+
+<ul>
+<li>添加<code>/var/lib/docker/image/overlay2/imagedb/content/sha256</code></li>
+</ul></li>
+<li>2018.04.11 11:41 Wed America/Boston
+
+<ul>
+<li>更新文檔鏈接，勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>Wechat</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>Alipay</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/docker/">Docker</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/installing-and-configuring-docker-community-edition-ce-on-gnu-linux/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Installing And Configuring Docker Community Edition(CE) On GNU/Linux</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/">
+            <span class="next-text nav-default">Life Cycle Info For Mainstream GNU Linux Distributions</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Setting Up Tor Browser On GNU/Linux - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="How to set up Tor Browser on GNU/Linux via shell script" />
+<meta name="keywords" content="AxdLog, Tor, Tor browser, GPG" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/setting-up-tor-browser-on-gnu-linux/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Setting Up Tor Browser On GNU/Linux" />
+<meta property="og:description" content="How to set up Tor Browser on GNU/Linux via shell script" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/setting-up-tor-browser-on-gnu-linux/" />
+
+
+
+<meta property="article:published_time" content="2016-12-22T18:45:24&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-11T11:55:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Setting Up Tor Browser On GNU/Linux">
+<meta itemprop="description" content="How to set up Tor Browser on GNU/Linux via shell script">
+
+
+<meta itemprop="datePublished" content="2016-12-22T18:45:24&#43;08:00" />
+<meta itemprop="dateModified" content="2016-12-22T18:45:24&#43;08:00" />
+<meta itemprop="wordCount" content="2865">
+
+
+
+<meta itemprop="keywords" content="Tor,GPG," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting Up Tor Browser On GNU/Linux"/>
+<meta name="twitter:description" content="How to set up Tor Browser on GNU/Linux via shell script"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Setting Up Tor Browser On GNU/Linux</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-12-22 </span>
+        <div class="post-category">
+            
+              <a href="/categories/gnu/linux/"> GNU/Linux </a>
+            
+          </div>
+        <span class="more-meta"> 2865 words </span>
+        <span class="more-meta"> 6 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#os-info">OS Info</a></li>
+<li><a href="#downloading-verification">Downloading &amp;&amp; Verification</a>
+<ul>
+<li><a href="#download">Download</a></li>
+<li><a href="#importing-gpg-public-key">Importing GPG Public Key</a></li>
+<li><a href="#verifying-gpg-signature">Verifying GPG Signature</a></li>
+</ul></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#create-desktop-for-gnome">Create Desktop For GNOME</a>
+<ul>
+<li><a href="#start-tor-browser-desktop">start-tor-browser.desktop</a></li>
+<li><a href="#custom-create-torbrowser-desktop">Custom Create torbrowser.desktop</a></li>
+</ul></li>
+<li><a href="#setting-custom-bridge">Setting Custom Bridge</a></li>
+<li><a href="#snapshots-about-anonymous-connection">Snapshots About Anonymous Connection</a>
+<ul>
+<li><a href="#network-setting">Network Setting</a></li>
+<li><a href="#tor-bridge-connection">Tor Bridge Connection</a></li>
+<li><a href="#local-proxy-connection">Local Proxy Connection</a></li>
+<li><a href="#connecting-to-the-tor-network">Connecting To The Tor Network</a></li>
+<li><a href="#welcome-page">Welcome Page</a></li>
+<li><a href="#ip-status">IP Status</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#bibliography">Bibliography</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a>是由<a href="https://www.torproject.org">Tor Project</a>推出的一款集成了<a href="https://www.torproject.org/">Tor</a>，<a href="https://www.mozilla.org/en-US/firefox/organizations/">Firefox ESR</a>, <a href="https://www.torproject.org/docs/torbutton/">Torbutton</a>, <a href="https://github.com/micahflee/torbrowser-launcher">TorLauncher</a>, <a href="https://noscript.net">NoScript</a>,和 <a href="https://www.eff.org/https-everywhere">HTTPS-Everywhere</a>的瀏覽器。<a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a>默認監聽<code>9150</code>、<code>9151</code>端口，通過<a href="https://en.wikipedia.org/wiki/Tor_(anonymity_network)" title="WikiPedia">Tor (anonymity network)</a>實現匿名訪問，保障用戶隱私。</p>
+
+<p>本文記錄如何在GNU/Linux中下載、校驗、安裝<a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a>及在<a href="https://www.gnome.org">GNOME</a>桌面中創建快捷圖標。</p>
+
+<p></p>
+
+<blockquote>
+<p>The Tor software protects you by bouncing your communications around a distributed network of relays run by volunteers all around the world: it prevents somebody watching your Internet connection from learning what sites you visit, it prevents the sites you visit from learning your physical location, and it lets you access sites which are blocked. &ndash; <a href="https://www.torproject.org/projects/torbrowser.html.en">https://www.torproject.org/projects/torbrowser.html.en</a></p>
+</blockquote>
+
+<h2 id="os-info">OS Info</h2>
+
+<p>主機操作系統信息如下</p>
+
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>detail</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OS Version</td>
+<td><code>Debian GNU/Linux 9.4 (stretch)</code></td>
+</tr>
+
+<tr>
+<td>Kernel Version</td>
+<td><code>4.9.0-5-amd64</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="downloading-verification">Downloading &amp;&amp; Verification</h2>
+
+<p><code>Tor Browser</code>的下載頁面在<a href="https://www.torproject.org/projects/torbrowser.html#downloads" title="Tor">Tor Browser Downloads</a>，GPG簽名的校驗方法在<a href="https://www.torproject.org/docs/verifying-signatures.html.en" title="How to verify signatures for packages">Verify package signatures</a>。Release信息可在其官方blog中查看<a href="https://blog.torproject.org/category/tags/tor-browser">鏈接</a>。</p>
+
+<h3 id="download">Download</h3>
+
+<p>官網當前提供的下載版本是<code>7.5.3</code>(Apr 11, 2018)，release信息見<a href="https://blog.torproject.org/tor-browser-753-released"> Tor Browser 7.5.3 is released</a>。</p>
+
+<p>下載鏈接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">https://www.torproject.org/dist/torbrowser/7.5.3/tor-browser-linux64-7.5.3_en-US.tar.xz
+
+<span class="c1"># GPG Signature File
+</span><span class="c1"></span>https://www.torproject.org/dist/torbrowser/7.5.3/tor-browser-linux64-7.5.3_en-US.tar.xz.asc</code></pre></td></tr></table>
+</div>
+</div>
+<p>此處定義下載路徑<code>~/Downloads</code></p>
+
+<h3 id="importing-gpg-public-key">Importing GPG Public Key</h3>
+
+<p>下載完成後進行校驗操作，參考官方文檔 <a href="https://www.torproject.org/docs/verifying-signatures.html.en" title="How to verify signatures for packages">Verify package signatures</a>。</p>
+
+<p><strong>注意</strong>：必須在操作系統中導入指定的公鑰，否則無法進行校驗工作</p>
+
+<p>KeyId是<code>0x4E2C6E8793298290</code></p>
+
+<p>執行如下命令安裝公鑰</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#列出本機中的公鑰
+</span><span class="c1"></span>gpg --list-keys
+gpg --list-key 0x4E2C6E8793298290
+
+<span class="c1">#在keyserver中查詢指定的公鑰
+</span><span class="c1"></span>gpg --keyserver keys.gnupg.net --search-keys 0x4E2C6E8793298290
+
+<span class="c1">#從keyserver下載指定的公鑰
+</span><span class="c1"></span>gpg --keyserver keys.gnupg.net --recv-keys 0x4E2C6E8793298290
+
+<span class="c1">#查看公鑰及其指紋
+</span><span class="c1"></span>gpg --fingerprint 0x4E2C6E8793298290</code></pre></td></tr></table>
+</div>
+</div>
+<p>具體操作過程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#列出本機中的公鑰
+</span><span class="c1"></span><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ gpg --list-key 0x4E2C6E8793298290
+gpg: error reading key: No public key
+
+<span class="c1">#在keyserver中查詢公鑰
+</span><span class="c1"></span><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ gpg --keyserver keys.gnupg.net --search-keys 0x4E2C6E8793298290
+gpg: searching <span class="k">for</span> <span class="s2">&#34;0x4E2C6E8793298290&#34;</span> from hkp server keys.gnupg.net
+<span class="o">(</span><span class="m">1</span><span class="o">)</span> Tor Browser Developers <span class="o">(</span>signing key<span class="o">)</span> &lt;torbrowser@torproject.org&gt;
+      <span class="m">4096</span> bit RSA key <span class="m">93298290</span>, created: <span class="m">2014</span>-12-15, expires: <span class="m">2020</span>-08-24
+Keys <span class="m">1</span>-1 of <span class="m">1</span> <span class="k">for</span> <span class="s2">&#34;0x4E2C6E8793298290&#34;</span>.  Enter number<span class="o">(</span>s<span class="o">)</span>, N<span class="o">)</span>ext, or Q<span class="o">)</span>uit &gt; <span class="m">1</span>
+gpg: requesting key <span class="m">93298290</span> from hkp server keys.gnupg.net
+gpg: key <span class="m">93298290</span>: public key <span class="s2">&#34;Tor Browser Developers (signing key) &lt;torbrowser@torproject.org&gt;&#34;</span> imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: <span class="m">1</span>
+gpg:               imported: <span class="m">1</span>  <span class="o">(</span>RSA: <span class="m">1</span><span class="o">)</span>
+
+<span class="c1">#從keyserver下載公鑰
+</span><span class="c1"></span><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ gpg --keyserver keys.gnupg.net --recv-keys 0x4E2C6E8793298290
+gpg: requesting key <span class="m">93298290</span> from hkp server keys.gnupg.net
+gpg: key <span class="m">93298290</span>: <span class="s2">&#34;Tor Browser Developers (signing key) &lt;torbrowser@torproject.org&gt;&#34;</span> not changed
+gpg: Total number processed: <span class="m">1</span>
+gpg:              unchanged: <span class="m">1</span>
+<span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ gpg --list-key 0x4E2C6E8793298290
+pub   4096R/93298290 <span class="m">2014</span>-12-15 <span class="o">[</span>expires: <span class="m">2020</span>-08-24<span class="o">]</span>
+uid                  Tor Browser Developers <span class="o">(</span>signing key<span class="o">)</span> &lt;torbrowser@torproject.org&gt;
+sub   4096R/F65C2036 <span class="m">2014</span>-12-15 <span class="o">[</span>expires: <span class="m">2017</span>-08-25<span class="o">]</span>
+sub   4096R/D40814E0 <span class="m">2014</span>-12-15 <span class="o">[</span>expires: <span class="m">2017</span>-08-25<span class="o">]</span>
+sub   4096R/C3C07136 <span class="m">2016</span>-08-24 <span class="o">[</span>expires: <span class="m">2018</span>-08-24<span class="o">]</span>
+
+<span class="c1">#查看公鑰及其指紋
+</span><span class="c1"></span><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ gpg --fingerprint 0x4E2C6E8793298290
+pub   4096R/93298290 <span class="m">2014</span>-12-15 <span class="o">[</span>expires: <span class="m">2020</span>-08-24<span class="o">]</span>
+      Key <span class="nv">fingerprint</span> <span class="o">=</span> EF6E 286D DA85 EA2A 4BA7  DE68 4E2C 6E87 <span class="m">9329</span> <span class="m">8290</span>
+uid                  Tor Browser Developers <span class="o">(</span>signing key<span class="o">)</span> &lt;torbrowser@torproject.org&gt;
+sub   4096R/F65C2036 <span class="m">2014</span>-12-15 <span class="o">[</span>expires: <span class="m">2017</span>-08-25<span class="o">]</span>
+sub   4096R/D40814E0 <span class="m">2014</span>-12-15 <span class="o">[</span>expires: <span class="m">2017</span>-08-25<span class="o">]</span>
+sub   4096R/C3C07136 <span class="m">2016</span>-08-24 <span class="o">[</span>expires: <span class="m">2018</span>-08-24<span class="o">]</span>
+
+<span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="verifying-gpg-signature">Verifying GPG Signature</h3>
+
+<p>安裝公鑰後進行校驗，使用命令<code>gpg --verify</code>進行校驗</p>
+
+<p>操作過程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#列出文件
+</span><span class="c1"></span><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ ls -lhF ~/Downloads/tor-browser-linux64-7.5.3_en-US.tar.xz*
+-rw-r--r-- <span class="m">1</span> maxdsre maxdsre 68M Feb  <span class="m">3</span> <span class="m">14</span>:54 /home/maxdsre/Downloads/tor-browser-linux64-7.5.3_en-US.tar.xz
+-rw-r--r-- <span class="m">1</span> maxdsre maxdsre <span class="m">801</span> Feb  <span class="m">3</span> <span class="m">14</span>:50 /home/maxdsre/Downloads/tor-browser-linux64-7.5.3_en-US.tar.xz.asc
+
+<span class="c1">#校驗 校驗文件在前，源文件在後
+</span><span class="c1"></span><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ gpg --verify ~/Downloads/tor-browser-linux64-7.5.3_en-US.tar.xz<span class="o">{</span>.asc,<span class="o">}</span>
+gpg: Signature made Tue <span class="m">24</span> Jan <span class="m">2017</span> <span class="m">09</span>:42:49 AM EST using RSA key ID C3C07136
+gpg: Good signature from <span class="s2">&#34;Tor Browser Developers (signing key) &lt;torbrowser@torproject.org&gt;&#34;</span>
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: EF6E 286D DA85 EA2A 4BA7  DE68 4E2C 6E87 <span class="m">9329</span> <span class="m">8290</span>
+     Subkey fingerprint: A430 0A6B C93C <span class="m">0877</span> A445  <span class="m">1486</span> D148 3FA6 C3C0 <span class="m">7136</span>
+<span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<p>校驗結果中出現
+&gt;gpg: Good signature from &ldquo;Tor Browser Developers (signing key) <a href="mailto:torbrowser@torproject.org">torbrowser@torproject.org</a>&ldquo;</p>
+
+<p>說明校驗成功，證明下載的文件是由Tor官方釋出，未經過第三方篡改，可以信任。</p>
+
+<h2 id="installation">Installation</h2>
+
+<p><code>Tor Browser</code>的安裝可參考官方文檔 <a href="https://www.torproject.org/docs/installguide.html.en" title="Tor">Tor Installation guides</a>。</p>
+
+<p>此處定義安裝路徑<code>/opt/torBrowser</code>，執行如下命令進行解壓</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#創建目標路徑
+</span><span class="c1"></span><span class="o">[[</span> ! -d /opt/torBrowser <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo mkdir -m <span class="m">755</span> -pv /opt/torBrowser <span class="o">||</span> sudo rm -rf /opt/torBrowser/*
+
+<span class="c1">#解壓壓縮包到目標路徑
+</span><span class="c1"></span>sudo tar xf ~/Downloads/tor-browser-linux64-7.5.3_en-US.tar.xz -C /opt/torBrowser --strip-components<span class="o">=</span><span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>解壓完成後，進入目標路徑，執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">./start-tor-browser.desktop</code></pre></td></tr></table>
+</div>
+</div>
+<p>出現
+&gt;Launching &lsquo;./Browser/start-tor-browser &ndash;detach&rsquo;&hellip;</p>
+
+<p>即可啓動<code>Tor Browser</code>。</p>
+
+<p>操作過程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ <span class="o">[[</span> ! -d /opt/torBrowser <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo mkdir -pv /opt/torBrowser
+mkdir: created directory ‘/opt/torBrowser’
+<span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ sudo tar xf ~/Downloads/tor-browser-linux64-7.5.3_en-US.tar.xz -C /opt/torBrowser --strip-components<span class="o">=</span><span class="m">1</span>
+<span class="o">[</span>maxdsre@Stretch ~<span class="o">]</span>$ <span class="nb">cd</span> /opt/torBrowser/
+<span class="o">[</span>maxdsre@Stretch torBrowser<span class="o">]</span>$ ls -lhF
+total <span class="m">8</span>.0K
+drwx------ <span class="m">11</span> maxdsre root   <span class="m">4</span>.0K Apr <span class="m">11</span> <span class="m">12</span>:22 Browser/
+-rwx------  <span class="m">1</span> maxdsre maxdsre <span class="m">1</span>.7K Apr <span class="m">11</span> <span class="m">12</span>:21 start-tor-browser.desktop*
+
+<span class="o">[</span>maxdsre@Stretch torBrowser<span class="o">]</span>$ ls -lhF Browser/
+total 95M
+-rw------- <span class="m">1</span> maxdsre root    <span class="m">440</span> Dec <span class="m">31</span>  <span class="m">1999</span> application.ini
+drwx------ <span class="m">6</span> maxdsre root    <span class="m">126</span> Dec <span class="m">31</span>  <span class="m">1999</span> browser/
+-rw------- <span class="m">1</span> maxdsre root      <span class="m">0</span> Dec <span class="m">31</span>  <span class="m">1999</span> chrome.manifest
+drwx------ <span class="m">3</span> maxdsre root     <span class="m">18</span> Dec <span class="m">31</span>  <span class="m">1999</span> defaults/
+-rw------- <span class="m">1</span> maxdsre root    <span class="m">144</span> Dec <span class="m">31</span>  <span class="m">1999</span> dependentlibs.list
+drwxr-xr-x <span class="m">2</span> maxdsre maxdsre    <span class="m">6</span> Apr <span class="m">11</span> <span class="m">12</span>:21 Desktop/
+drwx------ <span class="m">2</span> maxdsre root     <span class="m">40</span> Dec <span class="m">31</span>  <span class="m">1999</span> dictionaries/
+-rwx------ <span class="m">1</span> maxdsre root    <span class="m">284</span> Dec <span class="m">31</span>  <span class="m">1999</span> execdesktop*
+-rwx------ <span class="m">1</span> maxdsre root   147K Dec <span class="m">31</span>  <span class="m">1999</span> firefox*
+drwx------ <span class="m">2</span> maxdsre root   <span class="m">4</span>.0K Dec <span class="m">31</span>  <span class="m">1999</span> fonts/
+drwx------ <span class="m">2</span> maxdsre root     <span class="m">25</span> Dec <span class="m">31</span>  <span class="m">1999</span> icons/
+-rw------- <span class="m">1</span> maxdsre root    11M Dec <span class="m">31</span>  <span class="m">1999</span> icudt58l.dat
+-rwx------ <span class="m">1</span> maxdsre root   507K Dec <span class="m">31</span>  <span class="m">1999</span> libfreeblpriv3.so*
+-rwx------ <span class="m">1</span> maxdsre root   121K Dec <span class="m">31</span>  <span class="m">1999</span> liblgpllibs.so*
+-rwx------ <span class="m">1</span> maxdsre root   <span class="m">1</span>.6M Dec <span class="m">31</span>  <span class="m">1999</span> libmozavcodec.so*
+-rwx------ <span class="m">1</span> maxdsre root   207K Dec <span class="m">31</span>  <span class="m">1999</span> libmozavutil.so*
+-rwx------ <span class="m">1</span> maxdsre root   163K Dec <span class="m">31</span>  <span class="m">1999</span> libmozsandbox.so*
+-rwx------ <span class="m">1</span> maxdsre root   674K Dec <span class="m">31</span>  <span class="m">1999</span> libmozsqlite3.so*
+-rwx------ <span class="m">1</span> maxdsre root   213K Dec <span class="m">31</span>  <span class="m">1999</span> libnspr4.so*
+-rwx------ <span class="m">1</span> maxdsre root   978K Dec <span class="m">31</span>  <span class="m">1999</span> libnss3.so*
+-rwx------ <span class="m">1</span> maxdsre root   625K Dec <span class="m">31</span>  <span class="m">1999</span> libnssckbi.so*
+-rwx------ <span class="m">1</span> maxdsre root   119K Dec <span class="m">31</span>  <span class="m">1999</span> libnssdbm3.so*
+-rwx------ <span class="m">1</span> maxdsre root   167K Dec <span class="m">31</span>  <span class="m">1999</span> libnssutil3.so*
+-rwx------ <span class="m">1</span> maxdsre root    19K Dec <span class="m">31</span>  <span class="m">1999</span> libplc4.so*
+-rwx------ <span class="m">1</span> maxdsre root    15K Dec <span class="m">31</span>  <span class="m">1999</span> libplds4.so*
+-rwx------ <span class="m">1</span> maxdsre root   139K Dec <span class="m">31</span>  <span class="m">1999</span> libsmime3.so*
+-rwx------ <span class="m">1</span> maxdsre root   220K Dec <span class="m">31</span>  <span class="m">1999</span> libsoftokn3.so*
+-rwx------ <span class="m">1</span> maxdsre root   259K Dec <span class="m">31</span>  <span class="m">1999</span> libssl3.so*
+-rwx------ <span class="m">1</span> maxdsre root    73M Dec <span class="m">31</span>  <span class="m">1999</span> libxul.so*
+-rw------- <span class="m">1</span> maxdsre root   <span class="m">5</span>.6M Dec <span class="m">31</span>  <span class="m">1999</span> omni.ja
+-rw------- <span class="m">1</span> maxdsre root     <span class="m">48</span> Dec <span class="m">31</span>  <span class="m">1999</span> platform.ini
+-rwx------ <span class="m">1</span> maxdsre root   131K Dec <span class="m">31</span>  <span class="m">1999</span> plugin-container*
+-rw------- <span class="m">1</span> maxdsre root    99K Dec <span class="m">31</span>  <span class="m">1999</span> precomplete
+-rw------- <span class="m">1</span> maxdsre root    <span class="m">707</span> Dec <span class="m">31</span>  <span class="m">1999</span> removed-files
+-rwx------ <span class="m">1</span> maxdsre root   <span class="m">8</span>.8K Dec <span class="m">31</span>  <span class="m">1999</span> run-mozilla.sh*
+-rwx------ <span class="m">1</span> maxdsre root    13K Dec <span class="m">31</span>  <span class="m">1999</span> start-tor-browser*
+-rwx------ <span class="m">1</span> maxdsre root   <span class="m">1</span>.7K Dec <span class="m">31</span>  <span class="m">1999</span> start-tor-browser.desktop*
+drwx------ <span class="m">6</span> maxdsre root     <span class="m">59</span> Apr <span class="m">11</span> <span class="m">12</span>:22 TorBrowser/
+-rwx------ <span class="m">1</span> maxdsre root   126K Dec <span class="m">31</span>  <span class="m">1999</span> updater*
+-rw------- <span class="m">1</span> maxdsre root    <span class="m">689</span> Dec <span class="m">31</span>  <span class="m">1999</span> updater.ini
+-rw------- <span class="m">1</span> maxdsre root    <span class="m">138</span> Dec <span class="m">31</span>  <span class="m">1999</span> update-settings.ini
+
+<span class="o">[</span>maxdsre@Stretch torBrowser<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="create-desktop-for-gnome">Create Desktop For GNOME</h2>
+
+<p>如果要在GNOME中爲Tor Browser創建快捷圖標，可通過在目錄<code>/usr/share/applications/</code>中創建<code>.desktop</code>文件實現。</p>
+
+<h3 id="start-tor-browser-desktop">start-tor-browser.desktop</h3>
+
+<p>查看啓動腳本<code>start-tor-browser.desktop</code>，內容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env ./Browser/execdesktop
+</span><span class="cp"></span><span class="c1">#
+</span><span class="c1"># This file is a self-modifying .desktop file that can be run from the shell.
+</span><span class="c1"># It preserves arguments and environment for the start-tor-browser script.
+</span><span class="c1">#
+</span><span class="c1"># Run &#39;./start-tor-browser.desktop --help&#39; to display the full set of options.
+</span><span class="c1">#
+</span><span class="c1"># When invoked from the shell, this file must always be in a Tor Browser root
+</span><span class="c1"># directory. When run from the file manager or desktop GUI, it is relocatable.
+</span><span class="c1">#
+</span><span class="c1"># After first invocation, it will update itself with the absolute path to the
+</span><span class="c1"># current TBB location, to support relocation of this .desktop file for GUI
+</span><span class="c1"># invocation. You can also add Tor Browser to your desktop&#39;s application menu
+</span><span class="c1"># by running &#39;./start-tor-browser.desktop --register-app&#39;
+</span><span class="c1">#
+</span><span class="c1"># If you use --register-app, and then relocate your TBB directory, Tor Browser
+</span><span class="c1"># will no longer launch from your desktop&#39;s app launcher/dock. However, if you
+</span><span class="c1"># re-run --register-app from inside that new directory, the script
+</span><span class="c1"># will correct the absolute paths and re-register itself.
+</span><span class="c1">#
+</span><span class="c1"># This file will also still function if the path changes when TBB is used as a
+</span><span class="c1"># portable app, so long as it is run directly from that new directory, either
+</span><span class="c1"># via the shell or via the file manager.
+</span><span class="c1"></span>
+<span class="o">[</span>Desktop Entry<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Name</span><span class="o">=</span>Tor Browser
+<span class="nv">GenericName</span><span class="o">=</span>Web Browser
+<span class="nv">Comment</span><span class="o">=</span>Tor Browser is +1 <span class="k">for</span> privacy and -1 <span class="k">for</span> mass surveillance
+<span class="nv">Categories</span><span class="o">=</span>Network<span class="p">;</span>WebBrowser<span class="p">;</span>Security<span class="p">;</span>
+<span class="nv">Exec</span><span class="o">=</span>sh -c <span class="s1">&#39;&#34;/opt/torBrowser/Browser/start-tor-browser&#34; --detach || ([ !  -x &#34;/opt/torBrowser/Browser/start-tor-browser&#34; ] &amp;&amp; &#34;$(dirname &#34;$*&#34;)&#34;/Browser/start-tor-browser --detach)&#39;</span> dummy %k
+X-TorBrowser-ExecShell<span class="o">=</span>./Browser/start-tor-browser --detach
+<span class="nv">Icon</span><span class="o">=</span>/opt/torBrowser/Browser/browser/icons/mozicon128.png
+<span class="nv">StartupWMClass</span><span class="o">=</span>Tor Browser</code></pre></td></tr></table>
+</div>
+</div>
+<p>根據該文件中的內容創建定製化的<code>.desktop</code>文件</p>
+
+<h3 id="custom-create-torbrowser-desktop">Custom Create torbrowser.desktop</h3>
+
+<p>Tor Browser的logo圖片可下如下路徑中找到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#cd /opt/torBrowser/
+</span><span class="c1"></span>./Browser/browser/chrome/icons/default/
+./Browser/browser/icons/mozicon128.png</code></pre></td></tr></table>
+</div>
+</div>
+<p>須將logo圖片複製或創建符號鏈接至路徑<code>/usr/share/pixmaps/</code>中</p>
+
+<p>執行如下命令創建定製化的<code>.desktop</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span> -f /usr/share/pixmaps/torbrowser.png <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo rm -f /usr/share/pixmaps/torbrowser.png
+sudo cp -a /opt/torBrowser/Browser/browser/chrome/icons/default/default48.png /usr/share/pixmaps/torbrowser.png
+
+sudo tee /usr/share/applications/torbrowser.desktop <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">[Desktop Entry]
+</span><span class="s">Encoding=UTF-8
+</span><span class="s">Name=Tor Browser
+</span><span class="s">GenericName[en]=Web Browser
+</span><span class="s">Comment=Tor Browser is +1 for privacy and -1 for mass surveillance
+</span><span class="s">Type=Application
+</span><span class="s">Categories=Network;WebBrowser;Security;
+</span><span class="s">Exec=sh -c &#39;/opt/torBrowser/Browser/start-tor-browser --detach&#39; dummy %k
+</span><span class="s">X-TorBrowser-ExecShell=/opt/torBrowser/Browser/start-tor-browser --detach
+</span><span class="s">Icon=TorBrowser.png
+</span><span class="s">Terminal=false
+</span><span class="s">StartupWMClass=Tor Browser
+</span><span class="s">MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;
+</span><span class="s">EOF</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>在 <em>Applications</em> -&gt; <em>Internet</em> 中即可看到Tor Browser的圖標，點擊該圖標可正常啓動Tor Browser。</p>
+
+<p>連接到Tor Network需要一段時間，請耐心等待。</p>
+
+<p>連接成功後，可通過如下地址檢測Tor瀏覽器是否正常工作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://check.torproject.org/</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="setting-custom-bridge">Setting Custom Bridge</h2>
+
+<p>在 <strong>Tor Bridges Configuration</strong> 設置過程中，可配置<code>custom bridges</code>。具體解釋說明見官方文檔 <a href="https://www.torproject.org/docs/bridges.html.en">Tor: Bridges</a>。</p>
+
+<p><code>custom bridges</code>可通過如下鏈接獲取</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://bridges.torproject.org
+</span><span class="err">
+</span><span class="err">https://bridges.torproject.org/options</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>也可通過給<a href="mailto:bridges@bridges.torproject.org">bridges@bridges.torproject.org</a>發送題爲 <strong>get bridges</strong> 的郵件獲取，但只支持Gmail，Riseup，Yahoo。</p>
+
+<blockquote>
+<p>You can also get bridges by sending mail to <em>bridges@bridges.torproject.org</em> with the line &ldquo;get bridges&rdquo; by itself in the body of the mail. You&rsquo;ll need to send this request from a Gmail, Riseup!, or Yahoo! account, though — we only accept these providers because otherwise we make it too easy for an attacker to make a lot of email addresses and learn about all the bridges.  &ndash; <a href="https://www.torproject.org/docs/bridges.html.en#FindingMore">https://www.torproject.org/docs/bridges.html.en#FindingMore</a></p>
+</blockquote>
+
+<p>獲取到的<code>custom bridges</code>格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#type 1
+</span><span class="c1"></span><span class="m">23</span>.229.18.162:8584 107316EC0170228DADE8F5FD521B4987FB0C93A8
+<span class="m">13</span>.54.46.194:8443 A9B168022DDF6B0AA7D728CD233C6E42617A58C0
+<span class="m">91</span>.219.68.181:443 53935564E40B358BADDF9169ABBDEDB237C7EA59
+
+<span class="c1">#type2
+</span><span class="c1"></span>obfs4 <span class="m">89</span>.177.136.11:45423 9CD55E88DA7B9D861EEFB6156D74E369BF964C70 <span class="nv">cert</span><span class="o">=</span>LjPVCVAsil6PFjaa8/VbfcMQ90I33NN5H1KIgVgSbdp1zICsX6LG8PTD9Q+21/yIYYq8Qg iat-mode<span class="o">=</span><span class="m">0</span>
+obfs4 <span class="m">37</span>.218.246.32:33081 B9B43048D75BF880DCC25606B0E10CFCDEDCB161 <span class="nv">cert</span><span class="o">=</span>ZnlWh5pqbNzc4HOON0rDQ+t+6a42FustCCJx45iKRLTLl/JKytbyK4ccQItjoZ86yV2MMA iat-mode<span class="o">=</span><span class="m">0</span>
+obfs4 <span class="m">185</span>.101.218.42:41758 E3BBFDD00B287113C7A1EB2A2C2EC1D9D6A80218 <span class="nv">cert</span><span class="o">=</span>ePT0ASv45frcpQ9pSzQ3Ae/wNMufga/x5jGdqdZpLGLbHdYKm3s5QQGhPkQKivRwz/Csfg iat-mode<span class="o">=</span><span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>在如下文本框中填寫即可</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/3.tor-bridge-configuration-2016-12-22_17-54-44.png" alt="" /></p>
+
+<h2 id="snapshots-about-anonymous-connection">Snapshots About Anonymous Connection</h2>
+
+<p>此處使用本地代理連接成功，以下是操作過程截圖</p>
+
+<h3 id="network-setting">Network Setting</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/1.tor-network-setting-2016-12-22_17-54-16.png" alt="" /></p>
+
+<h3 id="tor-bridge-connection">Tor Bridge Connection</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/2.tor-bridge-configuration-2016-12-22_17-54-35.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/3.tor-bridge-configuration-2016-12-22_17-54-44.png" alt="" /></p>
+
+<h3 id="local-proxy-connection">Local Proxy Connection</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/4.local-proxy-configuration-2016-12-22_17-54-56.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/5.local-proxy-configuration-2016-12-22_17-55-08.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/6.local-proxy-configuration-2016-12-22_17-55-23.png" alt="" /></p>
+
+<h3 id="connecting-to-the-tor-network">Connecting To The Tor Network</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/7.establishing-encrypted-connection-2016-12-22_17-55-29.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/8.retrieving-network-status-2016-12-22_17-55-32.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/9.loading-network-status-2016-12-22_17-55-33.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/10.establishing-a-tor-circuit-2016-12-22_17-55-36.png" alt="" /></p>
+
+<h3 id="welcome-page">Welcome Page</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/11.welcome-page-2016-12-22_17-55-56.png" alt="" /></p>
+
+<h3 id="ip-status">IP Status</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/12.ip-check-2016-12-22_17-57-34.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-12-22_Tor_Borwser_Installation/13.ip-check2016-12-22_18-06-16.png" alt="" /></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="http://askubuntu.com/questions/348777/how-to-add-tor-browser-to-my-menu-launcher-for-regular-use" title="askubuntu">How to add Tor Browser to my menu/launcher for regular use?</a></li>
+</ul>
+
+<h2 id="bibliography">Bibliography</h2>
+
+<ul>
+<li><a href="https://securityinabox.org/en/guide/torbrowser/linux" title="security in-a-box">TOR BROWSER FOR LINUX - ONLINE ANONYMITY AND CIRCUMVENTION</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.12.22 17:24 Thu Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2017.02.03 15:02 Fri America/Boston
+
+<ul>
+<li>添加<code>custom bridges</code>配置</li>
+</ul></li>
+<li>2018.04.11 11:55 Wed America/Boston
+
+<ul>
+<li>勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>Wechat</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>Alipay</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/tor/">Tor</a>
+          
+          <a href="/tags/gpg/">GPG</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2017/product-support-life-cycle-info-for-mainstream-gnu-linux-distributions/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">主流GNU/Linux發行版的產品支持週期信息</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/">
+            <span class="next-text nav-default">Analying The Change Frequency Of Active Users Tokens From Tomcat Logs</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

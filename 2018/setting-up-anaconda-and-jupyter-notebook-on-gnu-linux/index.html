@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Setting Up Anaconda And Jupyter Notebook On GNU/Linux - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script" />
+<meta name="keywords" content="AxdLog, Anaconda, Jupyter, Jupyter notebook, SSL, Shell script" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Setting Up Anaconda And Jupyter Notebook On GNU/Linux" />
+<meta property="og:description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/" />
+
+
+
+<meta property="article:published_time" content="2018-04-19T10:42:53-04:00"/>
+
+<meta property="article:modified_time" content="2018-04-19T10:42:53-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Setting Up Anaconda And Jupyter Notebook On GNU/Linux">
+<meta itemprop="description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script">
+
+
+<meta itemprop="datePublished" content="2018-04-19T10:42:53-04:00" />
+<meta itemprop="dateModified" content="2018-04-19T10:42:53-04:00" />
+<meta itemprop="wordCount" content="1583">
+
+
+
+<meta itemprop="keywords" content="Python,Anaconda,Jupyter,SSL,Shell Script," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting Up Anaconda And Jupyter Notebook On GNU/Linux"/>
+<meta name="twitter:description" content="How to set up Anaconda and Jupyter notebook on GNU/Linux via Shell script"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Setting Up Anaconda And Jupyter Notebook On GNU/Linux</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-19 </span>
+        <div class="post-category">
+            
+              <a href="/categories/python/"> Python </a>
+            
+          </div>
+        <span class="more-meta"> 1583 words </span>
+        <span class="more-meta"> 8 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#official-document">Official Document</a></li>
+<li><a href="#shell-script">Shell Script</a></li>
+<li><a href="#anaconda">Anaconda</a>
+<ul>
+<li><a href="#release-version">Release Version</a></li>
+<li><a href="#verification">Verification</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#path">$PATH</a></li>
+</ul></li>
+<li><a href="#jupyter">Jupyter</a>
+<ul>
+<li><a href="#password-generation">Password Generation</a>
+<ul>
+<li><a href="#interactive-mode">Interactive mode</a></li>
+<li><a href="#silent-mode">Silent Mode</a></li>
+</ul></li>
+<li><a href="#ssl">SSL</a></li>
+</ul></li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#command-line">Command Line</a></li>
+<li><a href="#web-browser">Web Browser</a></li>
+<li><a href="#private-ssl">Private SSL</a></li>
+</ul></li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>The <a href="https://jupyter.org">Jupyter Notebook</a> is an open-source interactive web application developed by <a href="https://www.python.org">Python</a> language. The official recommends installing <a href="https://www.python.org">Python</a> and <a href="https://jupyter.org">Jupyter Notebook</a> using the <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda Distribution</a>. This article documents how to set up <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> and <a href="https://jupyter.org">Jupyter Notebook</a>, and implement the entire process through a shell script.</p>
+
+<p></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<blockquote>
+<p>We strongly recommend installing Python and Jupyter using the <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda Distribution</a>, which includes Python, the Jupyter Notebook, and other commonly used packages for scientific computing and data science. &ndash; <a href="https://jupyter.org/install.html">Installing Jupyter</a></p>
+</blockquote>
+
+<p>Anaconda</p>
+
+<blockquote>
+<p>Anaconda Distribution is the easiest way to do Python data science and machine learning. It includes 250+ popular data science packages and the conda package and virtual environment manager for Windows, Linux, and MacOS. Conda makes it quick and easy to install, run, and upgrade complex data science and machine learning environments like Scikit-learn, TensorFlow, and SciPy. Anaconda Distribution is the foundation of millions of data science projects as well as Amazon Web Services&rsquo; Machine Learning AMIs and Anaconda for Microsoft on Azure and Windows. &ndash; <a href="https://www.anaconda.com/what-is-anaconda/">https://www.anaconda.com/what-is-anaconda/</a></p>
+</blockquote>
+
+<p>Jupyter</p>
+
+<blockquote>
+<p>The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.  &ndash; <a href="https://jupyter.org/">https://jupyter.org/</a></p>
+</blockquote>
+
+<h2 id="official-document">Official Document</h2>
+
+<ul>
+<li>Anaconda <a href="https://docs.anaconda.com/anaconda/">https://docs.anaconda.com/anaconda/</a></li>
+<li>Jupyter
+
+<ul>
+<li><a href="https://jupyter.org/documentation">https://jupyter.org/documentation</a></li>
+<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/">https://jupyter-notebook.readthedocs.io/en/stable/</a></li>
+<li><a href="http://jupyter-notebook.readthedocs.io/en/latest/changelog.html">http://jupyter-notebook.readthedocs.io/en/latest/changelog.html</a></li>
+</ul></li>
+</ul>
+
+<h2 id="shell-script">Shell Script</h2>
+
+<p>The entire installation and configuration process has been implemented through a shell script, the code is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/gnulinux/gnuLinuxPostInstallationConfiguration.sh">GitHub</a>, usage info</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># curl -fsL / wget -qO-
+</span><span class="c1"></span>
+<span class="c1"># if need help info, specify &#39;-h&#39;
+</span><span class="c1"></span>curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/software/Anaconda.sh <span class="p">|</span> sudo bash -s --</code></pre></td></tr></table>
+</div>
+</div>
+<script src="https://asciinema.org/a/175225.js" id="asciicast-175225" async></script>
+
+<p>To facilitate managing <a href="https://jupyter.org">Jupyter Notebook</a>, I set up some command aliases in <code>~/.bashrc</code>, as follows</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># jupyter notebook Start
+</span><span class="c1"></span><span class="nb">alias</span> <span class="nv">jnl</span><span class="o">=</span><span class="s2">&#34;jupyter notebook list | sed &#39;/running servers/d&#39;&#34;</span>
+<span class="nb">alias</span> <span class="nv">jnb</span><span class="o">=</span><span class="s2">&#34;(nohup jupyter notebook &amp;&gt; /dev/null &amp;); sleep 2; jnl&#34;</span>
+<span class="nb">alias</span> <span class="nv">jne</span><span class="o">=</span><span class="s2">&#34;ps -ef | awk &#39;match(\$0,/(jupyter-noteboo|Anaconda\/bin)/)&amp;&amp;!match(\$0,/awk/){print \$2}&#39; | xargs kill -9 2&gt; /dev/null&#34;</span>
+<span class="nb">alias</span> <span class="nv">jni</span><span class="o">=</span><span class="s2">&#34;curl -fsL https://raw.githubusercontent.com/MaxdSre/axd-ShellScript/master/assets/software/Anaconda.sh | sudo bash -s -- -U&#34;</span>
+<span class="nb">alias</span> <span class="nv">jnr</span><span class="o">=</span><span class="s2">&#34;sudo /opt/Anaconda/bin/conda remove&#34;</span>
+# jupyter notebook End</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><code>jnl</code>：list running server；</li>
+<li><code>jnb</code>：start new server；</li>
+<li><code>jne</code>：stop all started server；</li>
+<li><code>jni</code>：search, install, update package via <code>conda</code>， use command <code>jni a</code> to update entire conda environment;</li>
+<li><code>jnr</code>: remove package via <code>conda</code></li>
+</ul>
+
+<h2 id="anaconda">Anaconda</h2>
+
+<p>Official download page is <a href="https://www.anaconda.com/download">https://www.anaconda.com/download</a>, it supports both  Python <strong>3.6</strong> and <strong>2.7</strong>. Choosing the corresponding version according to your needs.</p>
+
+<h3 id="release-version">Release Version</h3>
+
+<p>The latest release version of <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> is <code>5.1</code>.</p>
+
+<p>You can use the following command to extract the latest version information</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL https://www.anaconda.com/download/ <span class="p">|</span> sed -r -n <span class="s1">&#39;/&gt;Release Date:/{s@[[:space:]]*&lt;[^&gt;]*&gt;[[:space:]]*@@g;s@^[^:]*:[[:space:]]*(.*)@\1@g;p}; /Anaconda.*Linux-x86_64/{/Installer/{s@.*href=&#34;([^&#34;]*)&#34;.*@\1@g;s@.*Anaconda[^-]*-([^-]*).*$@\1@g;p;q}}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;:a;N;$!ba;s@\n@|@g&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Output results</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">February 15, 2018|5.1.0</pre></td></tr></table>
+</div>
+</div>
+<h3 id="verification">Verification</h3>
+
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> doesn&rsquo;t provide hash verification info for the package directly on its download page. The relevant information is stored on the page <a href="https://docs.anaconda.com/anaconda/install/hashes/">Anaconda installer file hashes</a>. The page <a href="https://docs.anaconda.com/anaconda/install/hashes/all">Hashes for all files</a> lists the sha256 hash values of the historical versions of <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a>.</p>
+
+<p>Here use <code>Anaconda3-5.1.0-Linux-x86_64.sh</code> as an example, the page <a href="https://docs.anaconda.com/anaconda/install/hashes/Anaconda3-5.1.0-Linux-x86_64.sh-hash">Hashes for Anaconda3-5.1.0-Linux-x86_64.sh</a> lists the installation package information.</p>
+
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Last Modified</td>
+<td><code>2018-02-15 09:08:57</code></td>
+</tr>
+
+<tr>
+<td>size(byte)</td>
+<td><code>577996269</code></td>
+</tr>
+
+<tr>
+<td>md5</td>
+<td><code>966406059cf7ed89cc82eb475ba506e5</code></td>
+</tr>
+
+<tr>
+<td>sha256</td>
+<td><code>7e6785caad25e33930bc03fac4994a434a21bc8401817b7efa28f53619fa9c29</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Hash check can be performed by the following command</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">file_path</span><span class="o">=</span><span class="s1">&#39;~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh&#39;</span>
+
+<span class="c1"># via sha256sum
+</span><span class="c1"></span>sha256sum <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file_path</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="c1"># via openssl
+</span><span class="c1"></span>openssl dgst -sha256 <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Demonstration example</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~/Downloads<span class="o">]</span>
+└──╼ <span class="nv">$sha256sum</span> Anaconda3-5.1.0-Linux-x86_64.sh
+7e6785caad25e33930bc03fac4994a434a21bc8401817b7efa28f53619fa9c29  Anaconda3-5.1.0-Linux-x86_64.sh
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~/Downloads<span class="o">]</span>
+└──╼ <span class="nv">$openssl</span> dgst -sha256 Anaconda3-5.1.0-Linux-x86_64.sh
+SHA256<span class="o">(</span>Anaconda3-5.1.0-Linux-x86_64.sh<span class="o">)=</span> 7e6785caad25e33930bc03fac4994a434a21bc8401817b7efa28f53619fa9c29
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~/Downloads<span class="o">]</span>
+└──╼ $</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="installation">Installation</h3>
+
+<p>After the sha256 check is passed, refer to the official document <a href="https://docs.anaconda.com/anaconda/install/">https://docs.anaconda.com/anaconda/install/</a> for installation.</p>
+
+<p>Run the following command to install</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh</code></pre></td></tr></table>
+</div>
+</div>
+<p>By default, the installing process of <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> is <strong>interactive</strong> which requires user interaction , details in <a href="https://docs.anaconda.com/anaconda/install/linux">Installing on Linux</a>.</p>
+
+<p>It also supports <strong>silent mode</strong> installation, according to official documents</p>
+
+<ul>
+<li><a href="https://conda.io/docs/user-guide/install/index.html#installing-in-silent-mode">https://conda.io/docs/user-guide/install/index.html#installing-in-silent-mode</a></li>
+<li><a href="https://conda.io/docs/user-guide/install/linux.html#install-linux-silent">https://conda.io/docs/user-guide/install/linux.html#install-linux-silent</a></li>
+<li><a href="https://conda.io/docs/user-guide/install/macos.html#install-macos-silent">https://conda.io/docs/user-guide/install/macos.html#install-macos-silent</a></li>
+</ul>
+
+<p>Specifing flag <code>-b</code> to make it into silent mode, you can also specify flag <code>-p</code> to custom installation path, as explained below:</p>
+
+<ol>
+<li><strong>-b</strong>： Batch mode with no PATH modifications to <code>~/.bashrc</code>. Assumes that you agree to the license agreement. Does not edit the <code>.bashrc</code> or <code>.bash_profile</code> files.</li>
+<li><strong>-p</strong>： Installation prefix/path.</li>
+<li><strong>-f</strong>： Force installation even if prefix -p already exists.</li>
+</ol>
+
+<p>Here use installation path <code>/opt/Anaconda</code> as an example, the installation command is</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">installation_dir</span><span class="o">=</span><span class="s1">&#39;/opt/Anaconda&#39;</span>
+bash ~/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b -f -p <span class="si">${</span><span class="nv">installation_dir</span><span class="si">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="path">$PATH</h3>
+
+<p>After <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> is installed, it still can&rsquo;t directly execute the command <code>conda</code>. The reason is that the executable path <code>${installation_dir}/bin/</code> is not in the environment variable <code>$PATH.</code> You need to use <code>${installation_dir}/bin/activateadd</code> to add into <code>$PATH</code>.</p>
+
+<p><a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> just adds the following directive into file <code>~/.bashrc</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">installation_dir</span><span class="si">}</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>But personal advice is place it under directory <code>/etc/profile.d/</code>, so that other users can also use <code>conda</code>.</p>
+
+<p>Run the following command to update</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 1 - in $PATH
+</span><span class="c1"></span>conda update conda
+<span class="c1"># 2 - absolute path
+</span><span class="c1"></span>/opt/Anaconda/conda update conda</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="jupyter">Jupyter</h2>
+
+<p>As <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> includes <a href="https://jupyter.org">Jupyter Notebook</a>, what you need to do is change its default configuration.</p>
+
+<p><a href="https://jupyter.org">Jupyter Notebook</a> listens on the default port <code>8888</code>, logging in via a password or token.</p>
+
+<p>Generate the configuration file through the following command</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">jupyter notebook --generate-config</code></pre></td></tr></table>
+</div>
+</div>
+<p>The generated configuration file path</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">~/.jupyter/jupyter_notebook_config.py</pre></td></tr></table>
+</div>
+</div>
+<p>Details in <a href="https://jupyter-notebook.readthedocs.io/en/stable/config_overview.html">Configuration Overview</a></p>
+
+<p>The important directive</p>
+
+<ul>
+<li><code>NotebookApp.allow_root</code></li>
+<li><code>NotebookApp.base_url</code></li>
+<li><code>NotebookApp.ip</code></li>
+<li><code>NotebookApp.port</code></li>
+<li><code>c.NotebookApp.password</code></li>
+<li><code>NotebookApp.allow_password_change</code></li>
+<li><code>NotebookApp.notebook_dir</code></li>
+<li><code>NotebookApp.certfile</code></li>
+<li><code>NotebookApp.disable_check_xsrf</code></li>
+</ul>
+
+<p>For remote access, you need to open the Jupyter port (default is <code>8888</code>) in firewall rule.</p>
+
+<h3 id="password-generation">Password Generation</h3>
+
+<p><a href="https://jupyter.org">Jupyter Notebook</a> uses an interactive way to generate hashed password.</p>
+
+<h4 id="interactive-mode">Interactive mode</h4>
+
+<p>Official document <a href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication">Alternatives to token authentication</a> mentioned</p>
+
+<blockquote>
+<p>New in version 5.0: <strong>jupyter notebook password</strong> command is added.</p>
+</blockquote>
+
+<p>The generated hashed password stores in file</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">~.jupyter/jupyter_notebook_config.json</pre></td></tr></table>
+</div>
+</div>
+<p>The demo process is as follows (raw password <code>Axdlog@2018_Python</code>)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jupyter</span> notebook password
+Enter password:
+Verify password:
+<span class="o">[</span>NotebookPasswordApp<span class="o">]</span> Wrote hashed password to /home/maxdsre/.jupyter/jupyter_notebook_config.json
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$cat</span> ~/.jupyter/jupyter_notebook_config.json
+<span class="o">{</span>
+  <span class="s2">&#34;NotebookApp&#34;</span>: <span class="o">{</span>
+    <span class="s2">&#34;password&#34;</span>: <span class="s2">&#34;sha1:4b55a390f103:1e3bf1e48ca12fda8a0fad32799fc0ad82e0301c&#34;</span>
+  <span class="o">}</span>
+<span class="o">}</span>┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ $</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="silent-mode">Silent Mode</h4>
+
+<p>But the interactive mode is not conducive to the automatic operation of the shell script. If there is a possibility to generate hashed password in silent mode?</p>
+
+<p>Here use <a href="https://www.python.org">Python 3</a> as an example, the functions used by <a href="https://jupyter.org">Jupyter Notebook</a> to generated hashed password are <code>passwd</code>、<code>passwd_check</code>、<code>set_password</code>、<code>persist_config</code>, they lists in file</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="si">${</span><span class="nv">installation_dir</span><span class="si">}</span>/lib/python3.6/site-packages/notebook/auth/security.py</code></pre></td></tr></table>
+</div>
+</div>
+<p>Extracting the core codes into file <code>/tmp/passwd.py</code>, here still use the raw password <code>Axdlog@2018_Python</code> as an example.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># For Python 3.6
+</span><span class="c1"></span>import hashlib
+import random
+from ipython_genutils.py3compat import cast_bytes, str_to_bytes
+from notebook.auth.security import passwd_check
+
+<span class="nv">salt_len</span> <span class="o">=</span> <span class="m">12</span>
+
+def passwd<span class="o">(</span>password,algorithm<span class="o">=</span><span class="s1">&#39;sha1&#39;</span><span class="o">)</span>:
+    <span class="nv">h</span> <span class="o">=</span> hashlib.new<span class="o">(</span>algorithm<span class="o">)</span>
+    <span class="nv">salt</span> <span class="o">=</span> <span class="o">(</span><span class="s1">&#39;%0&#39;</span> + str<span class="o">(</span>salt_len<span class="o">)</span> + <span class="s1">&#39;x&#39;</span><span class="o">)</span> % random.getrandbits<span class="o">(</span><span class="m">4</span> * salt_len<span class="o">)</span>
+    h.update<span class="o">(</span>cast_bytes<span class="o">(</span>password, <span class="s1">&#39;utf-8&#39;</span><span class="o">)</span> + str_to_bytes<span class="o">(</span>salt, <span class="s1">&#39;ascii&#39;</span><span class="o">))</span>
+    <span class="k">return</span> <span class="s1">&#39;:&#39;</span>.join<span class="o">((</span>algorithm, salt, h.hexdigest<span class="o">()))</span>
+
+<span class="nv">pass_str</span><span class="o">=</span><span class="s1">&#39;Axdlog@2018_Python&#39;</span>
+<span class="nv">result_str</span><span class="o">=</span>passwd<span class="o">(</span>pass_str<span class="o">)</span>
+
+<span class="c1"># print hashed passwd
+</span><span class="c1"></span>print<span class="o">(</span>result_str<span class="o">)</span>
+
+<span class="c1"># check if is legal
+</span><span class="c1"></span>print<span class="o">(</span>passwd_check<span class="o">(</span>result_str,pass_str<span class="o">))</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>executing the following command to generated hashed password</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bsah" data-lang="bsah"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bsah" data-lang="bsah">jupyter run /tmp/test.py</code></pre></td></tr></table>
+</div>
+</div>
+<p>operating process</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>/tmp<span class="o">]</span>
+└──╼ <span class="nv">$jupyter</span> run /tmp/test.py
+sha1:492e18c9b198:5c00c6ea49e8426766ffb698ced3827e579369c6
+True
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>/tmp<span class="o">]</span>
+└──╼ $</code></pre></td></tr></table>
+</div>
+</div>
+<p>The verification result is <code>True</code>.</p>
+
+<p>However, there is a problem with this: <a href="https://www.anaconda.com" title="The Most Popular Python Data Science Platform">Anaconda</a> supports both <a href="https://www.python.org">Python</a> 3 and 2, there are 2 <code>security.py</code> copies need to be processed separately. If <a href="https://jupyter.org">Jupyter Notebook</a> changes the code, the shell script must also be changed accordingly. I&rsquo;m not ensure that the script can be updated in time. Based on this consideration, this function (custom password setting) was not added to the shell script.</p>
+
+<h3 id="ssl">SSL</h3>
+
+<p>To improve the security of data transmission, SSL certificates can be configured. More details in <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-ssl-for-encrypted-communication">Using SSL for encrypted communication</a>.</p>
+
+<p>Here I use command <code>openssl</code> to create a self-signed SSL certificate. This process is also in interactive mode. However, you can disable it by flag <code>-subj</code>.</p>
+
+<p>Shell code sample</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">jupyter_name</span><span class="o">=</span><span class="s1">&#39;Jupyter&#39;</span>
+<span class="nv">jupyter_conf_dir</span><span class="o">=</span><span class="s2">&#34;/tmp/</span><span class="si">${</span><span class="nv">jupyter_name</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="nv">self_cert_path</span><span class="o">=</span><span class="si">${</span><span class="nv">self_cert_path</span><span class="k">:-</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">jupyter_conf_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">jupyter_name</span><span class="si">}</span><span class="s2">.pem&#34;</span><span class="si">}</span>
+<span class="c1"># openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+</span><span class="c1"></span><span class="o">[[</span> -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">jupyter_conf_dir</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">||</span> mkdir -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">jupyter_conf_dir</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="k">if</span> <span class="o">[[</span> ! -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">self_cert_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">cert_C</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_C</span><span class="k">:-</span><span class="s1">&#39;CN&#39;</span><span class="si">}</span>    <span class="c1"># Country Name
+</span><span class="c1"></span>    <span class="nv">cert_ST</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_ST</span><span class="k">:-</span><span class="s1">&#39;Shanghai&#39;</span><span class="si">}</span>    <span class="c1"># State or Province Name
+</span><span class="c1"></span>    <span class="nv">cert_L</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_L</span><span class="k">:-</span><span class="s1">&#39;Shanghai&#39;</span><span class="si">}</span>    <span class="c1"># Locality Name
+</span><span class="c1"></span>    <span class="nv">cert_O</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_O</span><span class="k">:-</span><span class="s1">&#39;MaxdSre&#39;</span><span class="si">}</span>    <span class="c1"># Organization Name
+</span><span class="c1"></span>    <span class="nv">cert_OU</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_OU</span><span class="k">:-</span><span class="s1">&#39;Python&#39;</span><span class="si">}</span>    <span class="c1"># Organizational Unit Name
+</span><span class="c1"></span>    <span class="nv">cert_CN</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_CN</span><span class="k">:-</span><span class="s1">&#39;jupyter.org&#39;</span><span class="si">}</span>    <span class="c1"># Common Name
+</span><span class="c1"></span>    <span class="c1"># https://jupyter.org/community
+</span><span class="c1"></span>    <span class="nv">cert_email</span><span class="o">=</span><span class="si">${</span><span class="nv">cert_email</span><span class="k">:-</span><span class="s1">&#39;jupyter@googlegroups.com&#39;</span><span class="si">}</span>    <span class="c1"># Email Address
+</span><span class="c1"></span>
+    <span class="nv">cert_C</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">ip_public_country_code</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="nv">cert_ST</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">ip_public_locate</span><span class="p">%%.*</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="nv">cert_L</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">ip_public_locate</span><span class="p">##*.</span><span class="si">}</span><span class="s2">&#34;</span>
+
+    <span class="c1"># expire date 3650 days, crypt type RSA, key length 4096
+</span><span class="c1"></span>    openssl req -x509 -nodes -days <span class="m">3650</span> -newkey rsa:4096 -keyout <span class="s2">&#34;</span><span class="si">${</span><span class="nv">self_cert_path</span><span class="si">}</span><span class="s2">&#34;</span> -out <span class="s2">&#34;</span><span class="si">${</span><span class="nv">self_cert_path</span><span class="si">}</span><span class="s2">&#34;</span> -subj <span class="s2">&#34;/C=</span><span class="si">${</span><span class="nv">cert_C</span><span class="si">}</span><span class="s2">/ST=</span><span class="si">${</span><span class="nv">cert_ST</span><span class="si">}</span><span class="s2">/L=</span><span class="si">${</span><span class="nv">cert_L</span><span class="si">}</span><span class="s2">/O=</span><span class="si">${</span><span class="nv">cert_O</span><span class="si">}</span><span class="s2">/OU=</span><span class="si">${</span><span class="nv">cert_OU</span><span class="si">}</span><span class="s2">/CN=</span><span class="si">${</span><span class="nv">cert_CN</span><span class="si">}</span><span class="s2">/emailAddress=</span><span class="si">${</span><span class="nv">cert_email</span><span class="si">}</span><span class="s2">&#34;</span> <span class="m">2</span>&gt; /dev/null
+    <span class="c1"># openssl rsa -in &#34;${self_cert_path}&#34; -text -noout 2&gt; /dev/null
+</span><span class="c1"></span>    <span class="o">[[</span> -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">self_cert_path</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> chmod <span class="m">644</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">self_cert_path</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="k">fi</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The testing process is as follows</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># bash -x ssl.sh
+</span><span class="c1"></span>+ <span class="nv">jupyter_name</span><span class="o">=</span>Jupyter
++ <span class="nv">jupyter_conf_dir</span><span class="o">=</span>/tmp/Jupyter
++ <span class="nv">self_cert_path</span><span class="o">=</span>/tmp/Jupyter/Jupyter.pem
++ <span class="o">[[</span> -d /tmp/Jupyter <span class="o">]]</span>
++ mkdir -p /tmp/Jupyter
++ <span class="o">[[</span> ! -f /tmp/Jupyter/Jupyter.pem <span class="o">]]</span>
++ <span class="nv">cert_C</span><span class="o">=</span>CN
++ <span class="nv">cert_ST</span><span class="o">=</span>Shanghai
++ <span class="nv">cert_L</span><span class="o">=</span>Shanghai
++ <span class="nv">cert_O</span><span class="o">=</span>MaxdSre
++ <span class="nv">cert_OU</span><span class="o">=</span>Python
++ <span class="nv">cert_CN</span><span class="o">=</span>jupyter.org
++ <span class="nv">cert_email</span><span class="o">=</span>jupyter@googlegroups.com
++ <span class="nv">cert_C</span><span class="o">=</span>
++ <span class="nv">cert_ST</span><span class="o">=</span>
++ <span class="nv">cert_L</span><span class="o">=</span>
++ openssl req -x509 -nodes -days <span class="m">3650</span> -newkey rsa:4096 -keyout /tmp/Jupyter/Jupyter.pem -out /tmp/Jupyter/Jupyter.pem -subj /C<span class="o">=</span>/ST<span class="o">=</span>/L<span class="o">=</span>/O<span class="o">=</span>MaxdSre/OU<span class="o">=</span>Python/CN<span class="o">=</span>jupyter.org/emailAddress<span class="o">=</span>jupyter@googlegroups.com
++ <span class="o">[[</span> -f /tmp/Jupyter/Jupyter.pem <span class="o">]]</span>
++ chmod <span class="m">644</span> /tmp/Jupyter/Jupyter.pem</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="testing">Testing</h2>
+
+<h3 id="command-line">Command Line</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jni</span> a
+Solving environment: <span class="k">done</span>
+
+<span class="c1"># All requested packages already installed.
+</span><span class="c1"></span>
+Finishing executing conda update --all <span class="k">for</span> Anaconda!
+
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jnl</span>
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jnb</span>
+https://127.0.0.1:33525/Jupyter/?token<span class="o">=</span>2709e9966fe2772e00a76ebfddfc12ac3d544eef518c530c :: /home/maxdsre/Jupyter
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jnl</span>
+https://127.0.0.1:33525/Jupyter/?token<span class="o">=</span>2709e9966fe2772e00a76ebfddfc12ac3d544eef518c530c :: /home/maxdsre/Jupyter
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jne</span>
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ <span class="nv">$jnl</span>
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>~<span class="o">]</span>
+└──╼ $</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="web-browser">Web Browser</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-22-24.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-22-52.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-22-57.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-23-33.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-23-47.png" alt="" /></p>
+
+<h3 id="private-ssl">Private SSL</h3>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-24-22.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-24-33.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-24-49.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2018-04-19_jupyter_notebook_anaconda/2018-04-19_10-25-03.png" alt="" /></p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://testnb.readthedocs.io/en/stable/examples/Notebook/Configuring%20the%20Notebook%20and%20Server.html">Configuring the Notebook and Server</a></li>
+<li><a href="http://jupyter-notebook.readthedocs.io/en/latest/examples/Notebook/examples_index.html">Examples</a></li>
+</ul>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2018.04.19 10:42 Wed America/Boston
+
+<ul>
+<li>first draft</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">Python</a>
+          
+          <a href="/tags/anaconda/">Anaconda</a>
+          
+          <a href="/tags/jupyter/">Jupyter</a>
+          
+          <a href="/tags/ssl/">SSL</a>
+          
+          <a href="/tags/shell-script/">Shell Script</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2018/setting-up-oracle-jdk-on-gnu-linux/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">在GNU/Linux中安裝配置Oracle JDK</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/">
+            <span class="next-text nav-default">在GNU/Linux中安裝配置Anaconda和Jupyter Notebook</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

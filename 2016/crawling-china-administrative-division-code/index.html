@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Crawling China Administrative Division Code - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="How to use shell script to crawl China administrative division code from Center National Bureau of Statistics of China, then importing row datas into MySQL database." />
+<meta name="keywords" content="AxdLog, Web Crawling, SED, AWK, MySQL, Shell script" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/crawling-china-administrative-division-code/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Crawling China Administrative Division Code" />
+<meta property="og:description" content="How to use shell script to crawl China administrative division code from Center National Bureau of Statistics of China, then importing row datas into MySQL database." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/crawling-china-administrative-division-code/" />
+
+
+
+<meta property="article:published_time" content="2016-03-14T00:01:59&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-22T20:22:59-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Crawling China Administrative Division Code">
+<meta itemprop="description" content="How to use shell script to crawl China administrative division code from Center National Bureau of Statistics of China, then importing row datas into MySQL database.">
+
+
+<meta itemprop="datePublished" content="2016-03-14T00:01:59&#43;08:00" />
+<meta itemprop="dateModified" content="2016-03-14T00:01:59&#43;08:00" />
+<meta itemprop="wordCount" content="7522">
+
+
+
+<meta itemprop="keywords" content="sed,awk,MySQL,Shell Script," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Crawling China Administrative Division Code"/>
+<meta name="twitter:description" content="How to use shell script to crawl China administrative division code from Center National Bureau of Statistics of China, then importing row datas into MySQL database."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Crawling China Administrative Division Code</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-03-14 </span>
+        <div class="post-category">
+            
+              <a href="/categories/web-crawling/"> Web Crawling </a>
+            
+          </div>
+        <span class="more-meta"> 7522 words </span>
+        <span class="more-meta"> 16 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#rules-explanation">Rules Explanation</a>
+<ul>
+<li><a href="#statistical-division-code">Statistical Division Code</a></li>
+<li><a href="#urban-and-rural-classification-code">Urban And Rural Classification Code</a>
+<ul>
+<li><a href="#attributes-code">Attributes Code</a></li>
+<li><a href="#classification-code">Classification Code</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#web-crawling-methods">Web Crawling Methods</a></li>
+<li><a href="#official-page-analysis">Official Page Analysis</a>
+<ul>
+<li><a href="#url-analysis">URL Analysis</a></li>
+<li><a href="#crawler-codes">Crawler Codes</a></li>
+</ul></li>
+<li><a href="#code-design-architecture">Code Design Architecture</a>
+<ul>
+<li><a href="#sql-design">SQL Design</a></li>
+</ul></li>
+<li><a href="#data-presentation">Data Presentation</a>
+<ul>
+<li><a href="#interesting-name">Interesting Name</a></li>
+</ul></li>
+<li><a href="#problems">Problems</a></li>
+<li><a href="#change-log">Change Log</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>本文記錄如何從<a href="http://www.stats.gov.cn">中華人民共和國國家統計局</a>官網提取中國大陸地區的行政區劃信息，數據入庫，並通過Shell腳本實現整個過程。項目代碼託管在<a href="https://github.com/MaxdSre/Shell-script-web-crawler/tree/master/project/CADC">GitHub</a>，包含Shell腳本、數據庫數據表、文本數據、從MySQL中導出的SQL數據。</p>
+
+<p></p>
+
+<h2 id="prerequisite">Prerequisite</h2>
+
+<table>
+<thead>
+<tr>
+<th>Short Name</th>
+<th>Name</th>
+<th>English Name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ROC</td>
+<td>中華民國</td>
+<td>Republic of China</td>
+</tr>
+
+<tr>
+<td>PRC</td>
+<td>中華人民共和國</td>
+<td>People&rsquo;s Republic of China</td>
+</tr>
+</tbody>
+</table>
+
+<p>數據來源 <a href="http://www.stats.gov.cn">中華人民共和國國家統計局</a></p>
+
+<ul>
+<li><a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/">統計用區劃和城鄉劃分代碼</a></li>
+<li><a href="http://www.stats.gov.cn/tjsj/tjbz/200911/t20091125_8667.html">統計用區劃代碼和城鄉劃分代碼編制規則</a></li>
+</ul>
+
+<p>根據最新的<a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html">2016年</a>版信息，中國目前有<code>34</code>個省級行政區，包括<code>23</code>個省（含臺灣省）、<code>5</code>個自治區、<code>4</code>個直轄市、<code>2</code>個特別行政區（香港特別行政區、澳門特別行政區）。但 <em>區劃代碼和城鄉劃分代碼</em> 不包括（臺灣省、香港特別行政區、澳門特別行政區）。</p>
+
+<p>中國大陸地區按地理位置可分為六塊</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Geographical Division</th>
+<th align="left">Provice Lists</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>1</code> 華北</td>
+<td align="left">北京市、天津市、河北省、山西省、內蒙古自治區</td>
+</tr>
+
+<tr>
+<td align="left"><code>2</code> 東北</td>
+<td align="left">遼寧省、吉林省、黑龍江省</td>
+</tr>
+
+<tr>
+<td align="left"><code>3</code> 華東</td>
+<td align="left">上海市、江蘇省、浙江省、安徽省、福建省、江西省、山東省</td>
+</tr>
+
+<tr>
+<td align="left"><code>4</code> 中南</td>
+<td align="left">河南省、河北省、湖北省、廣東省、廣西壯族自治區、海南省</td>
+</tr>
+
+<tr>
+<td align="left"><code>5</code> 西南</td>
+<td align="left">重慶市、四川省、貴州省、雲南省、西藏自治區</td>
+</tr>
+
+<tr>
+<td align="left"><code>6</code> 西北</td>
+<td align="left">陝西省、甘肅省、青海省、寧夏回族自治區、新疆維吾爾族自治區</td>
+</tr>
+</tbody>
+</table>
+
+<p>各省份簡稱</p>
+
+<table>
+<thead>
+<tr>
+<th>region</th>
+<th>code</th>
+<th>name</th>
+<th>short name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>華北</td>
+<td>11</td>
+<td>北京市</td>
+<td>京</td>
+</tr>
+
+<tr>
+<td>華北</td>
+<td>12</td>
+<td>天津市</td>
+<td>津</td>
+</tr>
+
+<tr>
+<td>華北</td>
+<td>13</td>
+<td>河北省</td>
+<td>冀</td>
+</tr>
+
+<tr>
+<td>華北</td>
+<td>14</td>
+<td>山西省</td>
+<td>晉</td>
+</tr>
+
+<tr>
+<td>華北</td>
+<td>15</td>
+<td>內蒙古自治區</td>
+<td>蒙</td>
+</tr>
+
+<tr>
+<td>東北</td>
+<td>21</td>
+<td>遼寧省</td>
+<td>遼</td>
+</tr>
+
+<tr>
+<td>東北</td>
+<td>22</td>
+<td>吉林省</td>
+<td>吉</td>
+</tr>
+
+<tr>
+<td>東北</td>
+<td>23</td>
+<td>黑龍江省</td>
+<td>黑</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>31</td>
+<td>上海市</td>
+<td>滬</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>32</td>
+<td>江蘇省</td>
+<td>蘇</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>33</td>
+<td>浙江省</td>
+<td>浙</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>34</td>
+<td>安徽省</td>
+<td>皖</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>35</td>
+<td>福建省</td>
+<td>閩</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>36</td>
+<td>江西省</td>
+<td>贛</td>
+</tr>
+
+<tr>
+<td>華東</td>
+<td>37</td>
+<td>山東省</td>
+<td>魯</td>
+</tr>
+
+<tr>
+<td>中南</td>
+<td>41</td>
+<td>河南省</td>
+<td>豫</td>
+</tr>
+
+<tr>
+<td>中南</td>
+<td>42</td>
+<td>湖北省</td>
+<td>鄂</td>
+</tr>
+
+<tr>
+<td>中南</td>
+<td>43</td>
+<td>湖南省</td>
+<td>湘</td>
+</tr>
+
+<tr>
+<td>中南</td>
+<td>44</td>
+<td>廣東省</td>
+<td>粵</td>
+</tr>
+
+<tr>
+<td>中南</td>
+<td>45</td>
+<td>廣西壯族自治區</td>
+<td>桂</td>
+</tr>
+
+<tr>
+<td>中南</td>
+<td>46</td>
+<td>海南省</td>
+<td>瓊</td>
+</tr>
+
+<tr>
+<td>西南</td>
+<td>50</td>
+<td>重慶市</td>
+<td>渝</td>
+</tr>
+
+<tr>
+<td>西南</td>
+<td>51</td>
+<td>四川省</td>
+<td>川</td>
+</tr>
+
+<tr>
+<td>西南</td>
+<td>52</td>
+<td>貴州省</td>
+<td>黔</td>
+</tr>
+
+<tr>
+<td>西南</td>
+<td>53</td>
+<td>雲南省</td>
+<td>滇</td>
+</tr>
+
+<tr>
+<td>西南</td>
+<td>54</td>
+<td>西藏自治區</td>
+<td>藏</td>
+</tr>
+
+<tr>
+<td>西北</td>
+<td>61</td>
+<td>陝西省</td>
+<td>陝</td>
+</tr>
+
+<tr>
+<td>西北</td>
+<td>62</td>
+<td>甘肅省</td>
+<td>甘</td>
+</tr>
+
+<tr>
+<td>西北</td>
+<td>63</td>
+<td>青海省</td>
+<td>青</td>
+</tr>
+
+<tr>
+<td>西北</td>
+<td>64</td>
+<td>寧夏回族自治區</td>
+<td>寧</td>
+</tr>
+
+<tr>
+<td>西北</td>
+<td>65</td>
+<td>新疆維吾爾自治區</td>
+<td>新</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>臺灣</td>
+<td>臺</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>香港特別行政區</td>
+<td>港</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>澳門</td>
+<td>澳</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="rules-explanation">Rules Explanation</h2>
+
+<p>規則依據來自 <a href="http://www.stats.gov.cn/tjsj/tjbz/200911/t20091125_8667.html">統計用區劃代碼和城鄉劃分代碼編制規則</a>。</p>
+
+<blockquote>
+<p>為規範統計用區劃代碼和城鄉劃分代碼，建立各項普查、全面統計、抽樣調查、專項調查統一使用的《統計用區劃代碼和城鄉劃分代碼庫》，特制定本規則。</p>
+</blockquote>
+
+<p><strong>統計用區劃代碼</strong> 和 <strong>城鄉劃分代碼</strong> 分為2段共<code>17</code>位，前者由第1~12位代碼構成，後者由13~17位代碼構成，其中第13~14位為 <em>城鄉屬性代碼</em> ，第16~17為 <em>城鄉分類代碼</em> 。</p>
+
+<h3 id="statistical-division-code">Statistical Division Code</h3>
+
+<blockquote>
+<p>統計用區劃代碼基本長度為<code>12</code>位，省、地、縣、鄉四級代碼不足12位用<code>0</code>補足。</p>
+</blockquote>
+
+<p><code>統計用區劃代碼</code>共12位，行政區劃按行政級別共分為5級。</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Division Level</th>
+<th align="left">Position</th>
+<th align="left">Length</th>
+<th align="left">English</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>省級</code></td>
+<td align="left">1~2</td>
+<td align="left">2</td>
+<td align="left">Province</td>
+<td align="left">包含省、直轄市、自治區</td>
+</tr>
+
+<tr>
+<td align="left"><code>地市級</code></td>
+<td align="left">3~4</td>
+<td align="left">2</td>
+<td align="left">City</td>
+<td align="left">各省、自治區的地級市，各直轄市的市轄區</td>
+</tr>
+
+<tr>
+<td align="left"><code>縣級</code></td>
+<td align="left">5～6</td>
+<td align="left">3</td>
+<td align="left">Country</td>
+<td align="left">各直轄市的市轄區，各地級市所轄的區、市、縣</td>
+</tr>
+
+<tr>
+<td align="left"><code>鄉級</code></td>
+<td align="left">7～9</td>
+<td align="left">3</td>
+<td align="left">Town</td>
+<td align="left">各街道辦事處或鄉鎮</td>
+</tr>
+
+<tr>
+<td align="left"><code>村級</code></td>
+<td align="left">10～12</td>
+<td align="left">3</td>
+<td align="left">Village</td>
+<td align="left">各社區居委會 、各村委會</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>縣以上行政區劃代碼由1～6位代碼組成</strong>。在統計工作中，各級統計部門不編制縣以上行政區劃代碼，統一採用《中華人民共和國行政區劃代碼》國家標準。</p>
+
+<p><strong>縣以下區劃代碼由7～12位代碼組成</strong>，包括 <em>鄉級代碼</em> 和 <em>村級代碼</em> 兩部分。</p>
+
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Code Range</th>
+<th>Position</th>
+<th>Length</th>
+<th>Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>鄉級</td>
+<td><code>001～099</code></td>
+<td>7~9</td>
+<td>3</td>
+<td>街道</td>
+</tr>
+
+<tr>
+<td>鄉級</td>
+<td><code>100～199</code></td>
+<td>7~9</td>
+<td>3</td>
+<td>鎮</td>
+</tr>
+
+<tr>
+<td>鄉級</td>
+<td><code>200～399</code></td>
+<td>7~9</td>
+<td>3</td>
+<td>鄉</td>
+</tr>
+
+<tr>
+<td>鄉級</td>
+<td><code>400～599</code></td>
+<td>7~9</td>
+<td>3</td>
+<td>類似鄉級單位 (民政部門未確認的開發區、工礦區、農場等)</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>001~199</code></td>
+<td>10~12</td>
+<td>3</td>
+<td>居民委員會</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>200~399</code></td>
+<td>10~12</td>
+<td>3</td>
+<td>村民委員會</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>400~499</code></td>
+<td>10~12</td>
+<td>3</td>
+<td>類似居民委員會(不含498代碼)</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>500~599</code></td>
+<td>10~12</td>
+<td>3</td>
+<td>類似村民委員會(不含598代碼)</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>498</code></td>
+<td>10~12</td>
+<td>3</td>
+<td>虛擬社區 (街道、鎮以及類似鄉級單位的開發區、科技園區、工業園區、工礦區、高校園區、科研機構園區等)</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>598</code></td>
+<td>10~12</td>
+<td>3</td>
+<td>虛擬生活區 (鄉以及類似鄉級單位的農、林、牧、漁場和其它農業活動區域)</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>凡民政部門確認的街道、鎮、鄉，按照國家標準《縣級以下行政區劃代碼編制規則》（GB/T 10114—2003）編制，其鄉級代碼為001～399；民政部門未確認的開發區、工礦區、農場等類似鄉級單位，鄉級代碼為400～599。</p>
+</blockquote>
+
+<h3 id="urban-and-rural-classification-code">Urban And Rural Classification Code</h3>
+
+<p><code>城鄉劃分代碼</code>共5位，含有 <strong>城鄉屬性</strong>、<strong>城鄉分類</strong> 2個維度。</p>
+
+<table>
+<thead>
+<tr>
+<th>Postion</th>
+<th>Length</th>
+<th>Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>13~14</td>
+<td>2</td>
+<td><strong>城鄉屬性代碼</strong></td>
+</tr>
+
+<tr>
+<td>15~17</td>
+<td>3</td>
+<td><strong>城鄉分類代碼</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="attributes-code">Attributes Code</h4>
+
+<blockquote>
+<p>城鄉屬性代碼由第13、14位代碼組成。其中：第13位表示鄉級屬性，第14位表示村級屬性。</p>
+
+<p>鄉級屬性代碼表示街道、鎮、鄉以及類似鄉級單位的鄉級屬性。鄉級屬性代碼用1～3數字表示。</p>
+
+<p>村級屬性代碼表示居民委員會（社區）、村民委員會以及類似村級單位的村級屬性。村級屬性代碼用1～9數字表示。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Code Num</th>
+<th>Position</th>
+<th>Length</th>
+<th>Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>鄉級</td>
+<td><code>1</code></td>
+<td>13</td>
+<td>1</td>
+<td>縣級政府駐地</td>
+</tr>
+
+<tr>
+<td>鄉級</td>
+<td><code>2</code></td>
+<td>13</td>
+<td>1</td>
+<td>連接的鄉級區域</td>
+</tr>
+
+<tr>
+<td>鄉級</td>
+<td><code>3</code></td>
+<td>13</td>
+<td>1</td>
+<td>其他鄉級區域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>1</code></td>
+<td>14</td>
+<td>1</td>
+<td>鄉級政府駐地</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>2</code></td>
+<td>14</td>
+<td>1</td>
+<td>完全連接的村級地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>3</code></td>
+<td>14</td>
+<td>1</td>
+<td>部分連接的村級地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>4</code></td>
+<td>14</td>
+<td>1</td>
+<td>與其他區、市完全連接的村級地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>5</code></td>
+<td>14</td>
+<td>1</td>
+<td>與其他區、市部分連接的村級地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>6</code></td>
+<td>14</td>
+<td>1</td>
+<td>與其他鎮完全連接的村級地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>7</code></td>
+<td>14</td>
+<td>1</td>
+<td>與其他鎮部分連接的村級地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>8</code></td>
+<td>14</td>
+<td>1</td>
+<td>特殊地域</td>
+</tr>
+
+<tr>
+<td>村級</td>
+<td><code>9</code></td>
+<td>14</td>
+<td>1</td>
+<td>其他村級地域</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>在城鄉屬性代碼中，特殊地域僅指以下兩種情況：
+* 在類似居委會中，常住人口達到或超過3000人的開發區、工礦區、大專院校、科研單位等居民生活區域。
+* 在類似村委會中，常住人口達到或超過3000人，且非農產業從業人員達到70%的農、林、牧、漁場及其他以農業活動為主的區域。
+當類似居委會、類似村委會不滿足上述要求，也不滿足代碼<code>1～7</code>的編制要求時,村級屬性一律編<code>9</code>。</p>
+
+<p>農、林、牧、漁場
+農、林、牧、漁場場部的村級屬性代碼一律編<code>1</code>，與場部連接的下屬生產單位，村級屬性代碼編<code>2</code>或<code>3</code>，與場部不連接的下屬生產單位，村級屬性代碼編<code>9</code>。當常住人口達到3000人，非農產業從業人員達到70%時，不連接的下屬生產單位的村級屬性代碼編<code>8</code>。</p>
+
+<p>只有一個村級單位的村級屬性
+凡鄉級單位下只有一個村級單位，無論是實際存在還是虛擬的，其對應的村級屬性代碼一律編<code>1</code>。</p>
+
+<p>不連接的居民委員會
+當居民委員會與政府駐地不連接時，如果有農業用地，村級屬性代碼編<code>9</code>；如果沒有農業用地（或沒有明確的地域），村級屬性代碼編<code>8</code>。</p>
+</blockquote>
+
+<h4 id="classification-code">Classification Code</h4>
+
+<p>城鄉分類代碼</p>
+
+<p>通常由<code>3</code>位數字構成：
+* 首位是<code>1</code>表示 <strong>城鎮</strong>；
+* 首位是<code>2</code>表示 <strong>鄉村</strong>；</p>
+
+<blockquote>
+<p>城鄉分類代碼由第15～17位代碼組成。第15位為<code>1</code>，表示城鎮；第15位為<code>2</code>，表示鄉村。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>Code Num</th>
+<th>Position</th>
+<th>Length</th>
+<th>Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>111</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>主城區</td>
+</tr>
+
+<tr>
+<td><code>112</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>城鄉結合區</td>
+</tr>
+
+<tr>
+<td><code>121</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>鎮中心區域</td>
+</tr>
+
+<tr>
+<td><code>122</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>鎮鄉結合區</td>
+</tr>
+
+<tr>
+<td><code>123</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>特殊區域</td>
+</tr>
+
+<tr>
+<td><code>210</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>鄉中心區</td>
+</tr>
+
+<tr>
+<td><code>220</code></td>
+<td>15～17</td>
+<td>3</td>
+<td>村莊</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="web-crawling-methods">Web Crawling Methods</h2>
+
+<p>通過命令<code>curl</code>或<code>wget</code>抓取html頁面，使用命令<code>sed</code>、<code>awk</code>對數據進行處理。</p>
+
+<p>直接使用<code>curl</code>抓取頁面，返回的數據出現中文亂碼，考慮是編碼問題。使用<code>curl -fsL URL | grep charset</code>返回的數據中有<code>charset=gb2312</code>，即頁面採用<code>GB2312</code>編碼。</p>
+
+<p>解決方案是使用<code>iconv</code>命令進行編碼轉換，格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">iconv -f fromcode -t tocode [file ...]</pre></td></tr></table>
+</div>
+</div>
+<p>使用命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">iconv -l <span class="p">|</span> grep -Ei <span class="s1">&#39;^(gb|utf)&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>返回的編碼集中有<code>GB2312</code>、<code>GBK</code>、<code>UTF8</code>、<code>UTF-8</code>。經過測試源編碼可使用<code>GB2312</code>或<code>GBK</code>，目標編碼可使用<code>UTF8</code>或<code>UTF-8</code>。</p>
+
+<p>即使用<code>curl -fsL URL | iconv -f GBK -t UTF-8</code>。</p>
+
+<blockquote>
+<p>-s quiet靜默模式 &ndash;retry 重試次數 &ndash;retry-delay 間隔時間 -x 代理 -o保存路徑 ipaddr 代理IP port 代理端口</p>
+</blockquote>
+
+<p>使用代理進行抓取操作，如 <code>curl -fsL --retry 5 --retry-delay 5 -x ipaddr:port | iconv -f GBK -t UTF-8</code></p>
+
+<p>使用<code>sed -r 's@&lt;[^&gt;]*&gt;@@g;'</code>去除HTML頁面中標籤。</p>
+
+<h2 id="official-page-analysis">Official Page Analysis</h2>
+
+<p>對 <a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html">2016年統計用區劃代碼和城鄉劃分代碼(</a> 相關頁面進行分析。</p>
+
+<p>HTML標籤class類</p>
+
+<ul>
+<li>省級: <code>&lt;tr class='provincetr'&gt;&lt;/tr&gt;</code></li>
+<li>地級: <code>&lt;tr class='citytr'&gt;&lt;/tr&gt;</code></li>
+<li>縣級: <code>&lt;tr class='countytr'&gt;&lt;/tr&gt;</code></li>
+<li>鄉級: <code>&lt;tr class='towntr'&gt;&lt;/tr&gt;</code></li>
+<li>村級: <code>&lt;tr class='villagetr'&gt;&lt;/tr&gt;</code></li>
+</ul>
+
+<h3 id="url-analysis">URL Analysis</h3>
+
+<p><strong>首頁地址</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>省級列表地址</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13.html</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>13</code>是省級區劃代碼，如河北省<code>13</code>，對應替換為其它省份代碼</p>
+
+<p><strong>地級列表地址</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13/1306.html</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>13</code>是河北省，<code>1306</code>是保定市，格式是<code>2位省份代碼/地級市代碼</code></p>
+
+<p><strong>縣級列表地址</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13/06/130637.html</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>13</code>是河北省，<code>06</code>在河北省下代表保定，<code>130637</code>是河北省保定市博野縣，格式是<code>2位省份代碼/2位所屬地級市代碼/縣級代碼</code></p>
+
+<p><strong>鄉級列表地址</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13/06/37/130637100.html</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>13</code>是河北省，<code>06</code>在河北省下代表保定，<code>s</code>在保定下代表博野縣，<code>130637100</code>河北省保定市博野縣博野鎮，顯示具體村莊列表信息，格式是<code>2位省份代碼/2位所屬地級市代碼/2位縣級代碼/鄉級代碼</code></p>
+
+<h3 id="crawler-codes">Crawler Codes</h3>
+
+<p>首頁地址: <code>index.html</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html <span class="p">|</span> iconv -f GBK -t UTF-8 <span class="m">2</span>&gt; /dev/null <span class="p">|</span> sed -n <span class="s2">&#34;/class=&#39;provincetr&#39;/{s@&#39;@@g;s@&lt;td&gt;@\n@g;p}&#34;</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;/href/{s@.*href=([[:digit:]]+)[^&gt;]*&gt;([^&lt;]*)&lt;.*@\1|\2|&amp;@g;p}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>省級列表地址: <code>13.html</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13.html <span class="p">|</span> iconv -f GBK -t UTF-8 <span class="p">|</span> sed -r -n <span class="s2">&#34;/class=&#39;citytr&#39;/{s@&lt;/tr&gt;@\n@g;s@&lt;\/td&gt;@ @g;s@[&#39;\&#39;&#39;|\&#34;]@@g;s@[[:space:]]*&lt;a href=[^&gt;]*&gt;([[:digit:]]+)&lt;\/a&gt;[[:space:]]@\1@g;s@(href=)([^&gt;]+)@\1&gt;\2&lt;@g;s@&lt;[^&gt;]*&gt;@ @g;s@[[:blank:]]+@ @g;p}&#34;</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;/^[[:space:]]*$/d;s@^[[:space:]]*@@g;s@[[:space:]]*$@@g;p&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>地級列表地址: <code>13/1306.html</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13/1306.html  <span class="p">|</span> iconv -f GBK -t UTF-8 <span class="p">|</span> sed -r -n <span class="s2">&#34;/class=&#39;countytr&#39;/{s@&lt;/tr&gt;@\n@g;s@&lt;\/td&gt;@ @g;s@[&#39;\&#39;&#39;|\&#34;]@@g;s@[[:space:]]*&lt;a href=[^&gt;]*&gt;([[:digit:]]+)&lt;\/a&gt;[[:space:]]@\1@g;s@(href=)([^&gt;]+)@\1&gt;\2&lt;@g;s@&lt;[^&gt;]*&gt;@ @g;s@[[:blank:]]+@ @g;p}&#34;</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;/^[[:space:]]*$/d;s@^[[:space:]]*@@g;s@[[:space:]]*$@@g;p&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>縣級列表地址: <code>13/06/130637.html</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13/06/130637.html  <span class="p">|</span> iconv -f GBK -t UTF-8 <span class="p">|</span> sed -r -n <span class="s2">&#34;/class=&#39;towntr&#39;/{s@&lt;/tr&gt;@\n@g;s@&lt;\/td&gt;@ @g;s@[&#39;\&#39;&#39;|\&#34;]@@g;s@[[:space:]]*&lt;a href=[^&gt;]*&gt;([[:digit:]]+)&lt;\/a&gt;[[:space:]]@\1@g;s@(href=)([^&gt;]+)@\1&gt;\2&lt;@g;s@&lt;[^&gt;]*&gt;@ @g;s@[[:blank:]]+@ @g;p}&#34;</span> <span class="p">|</span> sed -r -n <span class="s1">&#39;/^[[:space:]]*$/d;s@^[[:space:]]*@@g;s@[[:space:]]*$@@g;p&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>鄉級列表地址: <code>13/06/37/130637100.html</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/13/06/37/130637100.html  <span class="p">|</span> iconv -f GBK -t UTF-8 <span class="p">|</span> sed -r -n <span class="s2">&#34;/class=&#39;villagetr&#39;/{s@&lt;/tr&gt;@\n@g;s@&lt;\/td&gt;@ @g;s@&lt;[^&gt;]*&gt;@@g;p}&#34;</span> <span class="p">|</span> sed -r <span class="s1">&#39;/^[[:digit:]]+/!d;s@[[:blank:]]*$@@g&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="code-design-architecture">Code Design Architecture</h2>
+
+<p>代碼架構設計</p>
+
+<p>按照 <code>省級</code> &ndash;&gt; <code>地級</code> &ndash;&gt; <code>縣級</code> &ndash;&gt; <code>鄉級</code> &ndash;&gt; <code>村級</code> 層級,逐級操作。為提高操作效率，通過命令<code>parallel</code>進行多進程操作。數據寫入文本文件，待數據抓取完畢後，導入數據庫。</p>
+
+<p>為簡化操作，不配置代理IP。</p>
+
+<p>共3個核心文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>/tmp/CADC<span class="o">]</span>
+└──╼ <span class="nv">$tree</span>
+.
+├── cadc_database_table.sql
+├── cadc_crawler.sh
+└── cadc_import_database.sh
+
+<span class="m">0</span> directories, <span class="m">3</span> files
+┌─<span class="o">[</span>maxdsre@Stretch<span class="o">]</span>─<span class="o">[</span>/tmp/CADC<span class="o">]</span>
+└──╼ $</code></pre></td></tr></table>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>cadc_extraction.sh</td>
+<td>數據抓取腳本</td>
+</tr>
+
+<tr>
+<td>cadc_database_table.sql</td>
+<td>數據表建表語句</td>
+</tr>
+
+<tr>
+<td>cadc_import_database.sh</td>
+<td>數據導入至數據庫腳本</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="sql-design">SQL Design</h3>
+
+<p>文件<code>cadc_database_table.sql</code>， 存放數據表建表語句，共5張表，關聯表之間有外間約束。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 數據庫名 cadc
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">database</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">cadc</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">database</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">cadc</span> <span class="nb">character</span> <span class="k">set</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span><span class="p">;</span>
+<span class="n">use</span> <span class="n">cadc</span>
+
+<span class="c1">-- province省、直轄市、自治區
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">table</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">province</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">province</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">tinyint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;省級列表自增id&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;省份名稱&#39;</span><span class="p">,</span>
+    <span class="n">code</span> <span class="n">tinyint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;行政區劃代碼(共12位)，前2位指定，第1-2位為省級代碼&#39;</span><span class="p">,</span>
+    <span class="n">region</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;華北&#39;</span><span class="p">,</span><span class="s1">&#39;東北&#39;</span><span class="p">,</span><span class="s1">&#39;華東&#39;</span><span class="p">,</span><span class="s1">&#39;中南&#39;</span><span class="p">,</span><span class="s1">&#39;西南&#39;</span><span class="p">,</span><span class="s1">&#39;西北&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;省所屬地理區域:1華北、2東北、3華東、4中南(華中,華南)、5西南、6西北&#39;</span><span class="p">,</span>
+    <span class="n">createTime</span> <span class="k">timestamp</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據入庫時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updateTime</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="n">in_name</span> <span class="p">(</span><span class="n">name</span><span class="p">),</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="n">in_code</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span><span class="o">=</span><span class="s1">&#39;中國大陸地區省份列表&#39;</span><span class="p">;</span>
+<span class="c1">-- alter table province add index in_name (name);
+</span><span class="c1"></span>
+<span class="c1">--  city地市級
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">table</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">city</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">city</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;地級市列表自增id&#39;</span><span class="p">,</span>
+    <span class="n">province_id</span> <span class="n">tinyint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;省級id，對應表province，外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;地級市名稱&#39;</span><span class="p">,</span>
+    <span class="n">code</span> <span class="nb">char</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;行政區劃代碼(共12位)，由前4位指定，第3-4位為地級代碼&#39;</span><span class="p">,</span>
+    <span class="n">createTime</span> <span class="k">timestamp</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據入庫時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updateTime</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="n">in_name</span> <span class="p">(</span><span class="n">name</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span>
+    <span class="k">key</span> <span class="n">in_fk_province</span> <span class="p">(</span><span class="n">province_id</span><span class="p">),</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="n">in_code</span> <span class="p">(</span><span class="n">code</span><span class="p">),</span>
+    <span class="k">constraint</span> <span class="n">fk_province_city</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">province_id</span><span class="p">)</span> <span class="k">references</span> <span class="n">province</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span><span class="o">=</span><span class="s1">&#39;中國大陸地區地級市列表&#39;</span><span class="p">;</span>
+<span class="c1">-- alter table city add constraint fk_province_city foreign key(province_id) references province(id) on update cascade;
+</span><span class="c1"></span>
+<span class="c1">--  country縣級
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">table</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">country</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">country</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;縣級列表自增id&#39;</span><span class="p">,</span>
+    <span class="n">city_id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;地級市id，對應表city，外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;縣級市名稱&#39;</span><span class="p">,</span>
+    <span class="n">code</span> <span class="nb">char</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;行政區劃代碼(共12位)，由前6位指定，第5-6位為縣級代碼&#39;</span><span class="p">,</span>
+    <span class="n">createTime</span> <span class="k">timestamp</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據入庫時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updateTime</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="n">in_name</span> <span class="p">(</span><span class="n">name</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span>
+    <span class="k">key</span> <span class="n">in_fk_city</span> <span class="p">(</span><span class="n">city_id</span><span class="p">),</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="n">in_code</span> <span class="p">(</span><span class="n">code</span><span class="p">),</span>
+    <span class="k">constraint</span> <span class="n">fk_city_country</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">city_id</span><span class="p">)</span> <span class="k">references</span> <span class="n">city</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span><span class="o">=</span><span class="s1">&#39;中國大陸地區縣級列表&#39;</span><span class="p">;</span>
+
+<span class="c1">--  town鄉級
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">table</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">town</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">town</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;鄉鎮列表自增id&#39;</span><span class="p">,</span>
+    <span class="n">coutnry_id</span> <span class="nb">smallint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;縣級市id，對應表country，外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;鄉鎮名稱&#39;</span><span class="p">,</span>
+    <span class="n">code</span> <span class="nb">char</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;行政區劃代碼(共12位)，由前9位指定，第7-9位為鄉級代碼&#39;</span><span class="p">,</span>
+    <span class="n">code_type</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;街道&#39;</span><span class="p">,</span><span class="s1">&#39;鎮&#39;</span><span class="p">,</span><span class="s1">&#39;鄉&#39;</span><span class="p">,</span><span class="s1">&#39;類似鄉級單位&#39;</span><span class="p">)</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;鄉級代碼分類(第7-9位指定)，1為街道 001~099，2為鎮 100~199，3為鄉 200~399, 4為類似鄉級單位 400~599&#39;</span><span class="p">,</span>
+    <span class="n">createTime</span> <span class="k">timestamp</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據入庫時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updateTime</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="n">in_name</span> <span class="p">(</span><span class="n">name</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span>
+    <span class="k">key</span> <span class="n">in_fk_country</span> <span class="p">(</span><span class="n">coutnry_id</span><span class="p">),</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="n">in_code</span> <span class="p">(</span><span class="n">code</span><span class="p">),</span>
+    <span class="k">constraint</span> <span class="n">fk_country_town</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">coutnry_id</span><span class="p">)</span> <span class="k">references</span> <span class="n">country</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span><span class="o">=</span><span class="s1">&#39;中國大陸地區鄉鎮列表&#39;</span><span class="p">;</span>
+
+<span class="c1">--  village村級
+</span><span class="c1"></span><span class="k">drop</span> <span class="k">table</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">village</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="k">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">village</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span> <span class="k">primary</span> <span class="k">key</span> <span class="k">comment</span> <span class="s1">&#39;村級列表自增id&#39;</span><span class="p">,</span>
+    <span class="n">town_id</span> <span class="n">mediumint</span> <span class="n">unsigned</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;鄉鎮id，對應表town，外鍵約束&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">char</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;村莊名稱&#39;</span><span class="p">,</span>
+    <span class="n">code</span> <span class="nb">char</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;行政區劃代碼(共12位)，第10-12位為村級代碼&#39;</span><span class="p">,</span>
+    <span class="n">code_type</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;居民委員會&#39;</span><span class="p">,</span> <span class="s1">&#39;村民委員會&#39;</span><span class="p">,</span> <span class="s1">&#39;類似居民委員會&#39;</span><span class="p">,</span><span class="s1">&#39;類似村民委員會&#39;</span><span class="p">,</span><span class="s1">&#39;498虛擬社區&#39;</span><span class="p">,</span><span class="s1">&#39;598虛擬社區&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;村級代碼分類(第10-12位指定)，: 1 居民委員會 001~199, 2 村民委員會 200~399, 3 類似居民委員會（不含498代碼） 400~499, 4 類似村民委員會（不含598代碼） 500~599, 5 虛擬社區 498, 6 虛擬社區 598&#39;</span><span class="p">,</span>
+    <span class="c1">-- town_attr enum(&#39;縣級政府駐地&#39;,&#39;連接的鄉級區域&#39;,&#39;其他鄉級區域&#39;) not null comment &#39;城鄉屬性代碼鄉級屬性(由第13位決定): 1 縣級政府駐地, 2 連接的鄉級區域, 3 其他鄉級區域&#39;,
+</span><span class="c1"></span>    <span class="c1">-- village_attr enum(&#39;鄉級政府駐地&#39;,&#39;完全連接的村級地域&#39;,&#39;部分連接的村級地域&#39;,&#39;與其他區、市完全連接的村級地域&#39;,&#39;與其他區、市部分連接的村級地域&#39;,&#39;與其他鎮完全連接的村級地域&#39;,&#39;與其他鎮部分連接的村級地域&#39;,&#39;特殊地域&#39;,&#39;其他村級地域&#39;) not null comment &#39;城鄉屬性代碼村級屬性(由第14位決定): 1 鄉級政府駐地, 2 完全連接的村級地域, 3 部分連接的村級地域, 4 與其他區、市完全連接的村級地域, 5 與其他區、市部分連接的村級地域, 6 與其他鎮完全連接的村級地域, 7 與其他鎮部分連接的村級地域, 8 特殊地域, 9 其他村級地域&#39;,
+</span><span class="c1"></span>    <span class="n">classification</span> <span class="n">enum</span><span class="p">(</span><span class="s1">&#39;主城區&#39;</span><span class="p">,</span><span class="s1">&#39;城鄉結合區&#39;</span><span class="p">,</span><span class="s1">&#39;鎮中心區&#39;</span><span class="p">,</span><span class="s1">&#39;鎮鄉結合區&#39;</span><span class="p">,</span><span class="s1">&#39;特殊地區&#39;</span><span class="p">,</span><span class="s1">&#39;鄉中心區&#39;</span><span class="p">,</span><span class="s1">&#39;村莊&#39;</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="k">comment</span> <span class="s1">&#39;城鄉分類,由第15-17位代碼指定,頁面中為3個獨立的數字(第15位代碼指定城鄉分類，1為城鎮，2為鄉村)：主城區 111，城鄉結合區 112，鎮中心區 121，鎮鄉結合區 122，特殊地區 123，鄉中心區 210，村莊 220&#39;</span><span class="p">,</span>
+    <span class="n">createTime</span> <span class="k">timestamp</span> <span class="k">default</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據入庫時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="n">updateTime</span> <span class="k">timestamp</span> <span class="k">null</span> <span class="k">on</span> <span class="k">update</span> <span class="k">current_timestamp</span> <span class="k">comment</span> <span class="s1">&#39;數據更新時間 YYYY-MM-DD HH:MM:SS&#39;</span><span class="p">,</span>
+    <span class="k">key</span> <span class="n">in_name</span> <span class="p">(</span><span class="n">name</span><span class="p">(</span><span class="mi">15</span><span class="p">)),</span>
+    <span class="k">key</span> <span class="n">in_fk_town</span> <span class="p">(</span><span class="n">town_id</span><span class="p">),</span>
+    <span class="k">unique</span> <span class="k">key</span> <span class="n">in_code</span> <span class="p">(</span><span class="n">code</span><span class="p">),</span>
+    <span class="k">constraint</span> <span class="n">fk_town_village</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">town_id</span><span class="p">)</span> <span class="k">references</span> <span class="n">town</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span>
+<span class="p">)</span><span class="n">engine</span><span class="o">=</span><span class="n">innodb</span> <span class="k">default</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf8</span> <span class="k">collate</span><span class="o">=</span><span class="n">utf8_general_ci</span> <span class="k">comment</span><span class="o">=</span><span class="s1">&#39;中國大陸地區村級列表&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="data-presentation">Data Presentation</h2>
+
+<table>
+<thead>
+<tr>
+<th>year</th>
+<th>province</th>
+<th>city</th>
+<th>country</th>
+<th>town</th>
+<th>village</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2013</td>
+<td>31</td>
+<td>345</td>
+<td>3136</td>
+<td>43854</td>
+<td>694691</td>
+</tr>
+
+<tr>
+<td>2014</td>
+<td>31</td>
+<td>346</td>
+<td>3139</td>
+<td>40053</td>
+<td>670427</td>
+</tr>
+
+<tr>
+<td>2015</td>
+<td>31</td>
+<td>346</td>
+<td>3137</td>
+<td>39928</td>
+<td>667511</td>
+</tr>
+
+<tr>
+<td>2016</td>
+<td>31</td>
+<td>344</td>
+<td>3133</td>
+<td>42866</td>
+<td>666612</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">databases</span> <span class="k">like</span> <span class="s1">&#39;cadc%&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="k">Database</span> <span class="p">(</span><span class="n">cadc</span><span class="o">%</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">cadc_2013</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="n">cadc_2014</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="n">cadc_2015</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="n">cadc_2016</span>        <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------------+
+</span><span class="c1"></span><span class="mi">4</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">cadc_2016</span>
+<span class="n">Reading</span> <span class="k">table</span> <span class="n">information</span> <span class="k">for</span> <span class="k">completion</span> <span class="k">of</span> <span class="k">table</span> <span class="k">and</span> <span class="k">column</span> <span class="k">names</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">turn</span> <span class="k">off</span> <span class="n">this</span> <span class="n">feature</span> <span class="k">to</span> <span class="k">get</span> <span class="n">a</span> <span class="n">quicker</span> <span class="n">startup</span> <span class="k">with</span> <span class="o">-</span><span class="n">A</span>
+
+<span class="k">Database</span> <span class="n">changed</span>
+<span class="n">MySQL</span> <span class="p">[</span><span class="n">cadc_2016</span><span class="p">]</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">---------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">Tables_in_cadc_2016</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">---------------------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">city</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">country</span>             <span class="o">|</span>
+<span class="o">|</span> <span class="n">province</span>            <span class="o">|</span>
+<span class="o">|</span> <span class="n">town</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">village</span>             <span class="o">|</span>
+<span class="o">+</span><span class="c1">---------------------+
+</span><span class="c1"></span><span class="mi">5</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[</span><span class="n">cadc_2016</span><span class="p">]</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="p">))</span> <span class="k">as</span> <span class="n">province</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="p">))</span> <span class="k">as</span> <span class="n">city</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">))</span> <span class="k">as</span> <span class="n">country</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">))</span> <span class="k">as</span> <span class="n">town</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">id</span><span class="p">))</span> <span class="k">as</span> <span class="n">village</span> <span class="k">from</span> <span class="n">province</span> <span class="n">a</span>
+    <span class="o">-&gt;</span> <span class="k">left</span> <span class="k">join</span> <span class="n">city</span> <span class="n">b</span> <span class="k">on</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">province_id</span>
+    <span class="o">-&gt;</span> <span class="k">left</span> <span class="k">join</span> <span class="n">country</span> <span class="k">c</span> <span class="k">on</span> <span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">city_id</span>
+    <span class="o">-&gt;</span> <span class="k">left</span> <span class="k">join</span> <span class="n">town</span> <span class="n">d</span> <span class="k">on</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">coutnry_id</span>
+    <span class="o">-&gt;</span> <span class="k">left</span> <span class="k">join</span> <span class="n">village</span> <span class="n">e</span> <span class="k">on</span> <span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">town_id</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----------+------+---------+-------+---------+
+</span><span class="c1"></span><span class="o">|</span> <span class="n">province</span> <span class="o">|</span> <span class="n">city</span> <span class="o">|</span> <span class="n">country</span> <span class="o">|</span> <span class="n">town</span>  <span class="o">|</span> <span class="n">village</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------+------+---------+-------+---------+
+</span><span class="c1"></span><span class="o">|</span>       <span class="mi">31</span> <span class="o">|</span>  <span class="mi">344</span> <span class="o">|</span>    <span class="mi">3133</span> <span class="o">|</span> <span class="mi">42866</span> <span class="o">|</span>  <span class="mi">666612</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------+------+---------+-------+---------+
+</span><span class="c1"></span><span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">63</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">MySQL</span> <span class="p">[</span><span class="n">cadc_2016</span><span class="p">]</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="interesting-name">Interesting Name</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">database_name</span><span class="o">=</span><span class="s1">&#39;cadc_2016&#39;</span>
+
+mysql -D <span class="s2">&#34;</span><span class="si">${</span><span class="nv">database_name</span><span class="si">}</span><span class="s2">&#34;</span> -se <span class="s2">&#34;select a.name province, b.name city, c.name country, d.name as town, e.name as village from province a left join city b on a.id=b.province_id left join country c on b.id=c.city_id left join town d on c.id=d.coutnry_id left join village e on d.id=e.town_id where e.name like &#39;佛祖%&#39;;&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>以<code>佛祖</code>二字開頭的村子</p>
+
+<table>
+<thead>
+<tr>
+<th>province</th>
+<th>city</th>
+<th>country</th>
+<th>town</th>
+<th>village</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>四川省</td>
+<td>內江市</td>
+<td>東興區</td>
+<td>同福鎮</td>
+<td>佛祖巖村村委會</td>
+</tr>
+
+<tr>
+<td>湖北省</td>
+<td>武漢市</td>
+<td>江夏區</td>
+<td>佛祖嶺街道辦事處</td>
+<td>佛祖嶺村村委會</td>
+</tr>
+
+<tr>
+<td>湖北省</td>
+<td>武漢市</td>
+<td>江夏區</td>
+<td>佛祖嶺街道辦事處</td>
+<td>佛祖嶺社區一區居民委員會</td>
+</tr>
+
+<tr>
+<td>湖北省</td>
+<td>武漢市</td>
+<td>江夏區</td>
+<td>佛祖嶺街道辦事處</td>
+<td>佛祖嶺社區三區居民委員會</td>
+</tr>
+
+<tr>
+<td>湖北省</td>
+<td>武漢市</td>
+<td>江夏區</td>
+<td>佛祖嶺街道辦事處</td>
+<td>佛祖嶺社區二區居民委員會</td>
+</tr>
+
+<tr>
+<td>湖北省</td>
+<td>武漢市</td>
+<td>江夏區</td>
+<td>佛祖嶺街道辦事處</td>
+<td>佛祖嶺社區四區居民委員會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>郴州市</td>
+<td>臨武縣</td>
+<td>鎮南鄉</td>
+<td>佛祖村村委會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>綿陽市</td>
+<td>遊仙區</td>
+<td>太平鎮</td>
+<td>佛祖村民委員會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>南充市</td>
+<td>南部縣</td>
+<td>碾埡鄉</td>
+<td>佛祖溝村村委會</td>
+</tr>
+
+<tr>
+<td>廣東省</td>
+<td>清遠市</td>
+<td>清城區</td>
+<td>橫荷街道辦事處</td>
+<td>佛祖社區居委會</td>
+</tr>
+</tbody>
+</table>
+
+<p>以<code>菩薩</code>二字開頭的村子</p>
+
+<table>
+<thead>
+<tr>
+<th>province</th>
+<th>city</th>
+<th>country</th>
+<th>town</th>
+<th>village</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>山西省</td>
+<td>臨汾市</td>
+<td>蒲縣</td>
+<td>黑龍關鎮</td>
+<td>菩薩凹村委會</td>
+</tr>
+
+<tr>
+<td>河南省</td>
+<td>南陽市</td>
+<td>淅川縣</td>
+<td>荊紫關鎮</td>
+<td>菩薩堂村民委員會</td>
+</tr>
+
+<tr>
+<td>河北省</td>
+<td>邢臺市</td>
+<td>內丘縣</td>
+<td>南賽鄉</td>
+<td>菩薩嶺村委會</td>
+</tr>
+
+<tr>
+<td>河北省</td>
+<td>保定市</td>
+<td>淶水縣</td>
+<td>趙各莊鎮</td>
+<td>菩薩峪村村委會</td>
+</tr>
+
+<tr>
+<td>河北省</td>
+<td>石家莊市</td>
+<td>井陘縣</td>
+<td>辛莊鄉</td>
+<td>菩薩崖村委會</td>
+</tr>
+
+<tr>
+<td>遼寧省</td>
+<td>丹東市</td>
+<td>東港市</td>
+<td>菩薩廟鎮</td>
+<td>菩薩廟村委會</td>
+</tr>
+
+<tr>
+<td>山東省</td>
+<td>青島市</td>
+<td>膠州市</td>
+<td>三里河街道辦事處</td>
+<td>菩薩廟村委會</td>
+</tr>
+
+<tr>
+<td>河北省</td>
+<td>衡水市</td>
+<td>武強縣</td>
+<td>武強鎮</td>
+<td>菩薩村委會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>南充市</td>
+<td>高坪區</td>
+<td>御史鄉</td>
+<td>菩薩村村民委員會</td>
+</tr>
+
+<tr>
+<td>陝西省</td>
+<td>商洛市</td>
+<td>鎮安縣</td>
+<td>月河鎮</td>
+<td>菩薩殿村委會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>資陽市</td>
+<td>樂至縣</td>
+<td>佛星鎮</td>
+<td>菩薩灣村村民委員會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>涼山彝族自治州</td>
+<td>會東縣</td>
+<td>堵格鎮</td>
+<td>菩薩箐村村民委員會</td>
+</tr>
+
+<tr>
+<td>北京市</td>
+<td>市轄區</td>
+<td>昌平區</td>
+<td>流村鎮</td>
+<td>菩薩鹿村委會</td>
+</tr>
+</tbody>
+</table>
+
+<p>以<code>閻王</code>二字開頭的村子</p>
+
+<table>
+<thead>
+<tr>
+<th>province</th>
+<th>city</th>
+<th>country</th>
+<th>town</th>
+<th>village</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>四川省</td>
+<td>南充市</td>
+<td>儀隴縣</td>
+<td>瓦子鎮</td>
+<td>閻王坡村委會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>南充市</td>
+<td>嘉陵區</td>
+<td>大通鎮</td>
+<td>閻王溝村村民委員會</td>
+</tr>
+
+<tr>
+<td>山東省</td>
+<td>萊蕪市</td>
+<td>萊城區</td>
+<td>羊裡鎮</td>
+<td>閻王石村委會</td>
+</tr>
+</tbody>
+</table>
+
+<p>以<code>神仙</code>二字開頭的村子</p>
+
+<table>
+<thead>
+<tr>
+<th>province</th>
+<th>city</th>
+<th>country</th>
+<th>town</th>
+<th>village</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>湖南省</td>
+<td>婁底市</td>
+<td>漣源市</td>
+<td>渡頭塘鎮</td>
+<td>神仙侖村</td>
+</tr>
+
+<tr>
+<td>湖北省</td>
+<td>黃岡市</td>
+<td>浠水縣</td>
+<td>關口鎮</td>
+<td>神仙衝村委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>長沙市</td>
+<td>瀏陽市</td>
+<td>集裡街道</td>
+<td>神仙坳社區居委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>永州市</td>
+<td>道縣</td>
+<td>仙子腳鎮</td>
+<td>神仙頭村委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>婁底市</td>
+<td>新化縣</td>
+<td>溫塘鎮</td>
+<td>神仙嶺村委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>永州市</td>
+<td>零陵區</td>
+<td>七裡店街道</td>
+<td>神仙嶺社區</td>
+</tr>
+
+<tr>
+<td>河南省</td>
+<td>南陽市</td>
+<td>南召縣</td>
+<td>四棵樹鄉</td>
+<td>神仙崖村委會</td>
+</tr>
+
+<tr>
+<td>貴州省</td>
+<td>銅仁市</td>
+<td>石阡縣</td>
+<td>龍塘鎮</td>
+<td>神仙廟村委會</td>
+</tr>
+
+<tr>
+<td>北京市</td>
+<td>市轄區</td>
+<td>通州區</td>
+<td>於家務回族鄉</td>
+<td>神仙村委會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>成都市</td>
+<td>武侯區</td>
+<td>芳草街道辦事處</td>
+<td>神仙樹社區居委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>常德市</td>
+<td>桃源縣</td>
+<td>陬市鎮</td>
+<td>神仙橋村委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>永州市</td>
+<td>東安縣</td>
+<td>白牙市鎮</td>
+<td>神仙橋村村委會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>成都市</td>
+<td>金堂縣</td>
+<td>轉龍鎮</td>
+<td>神仙橋村民委員會</td>
+</tr>
+
+<tr>
+<td>四川省</td>
+<td>瀘州市</td>
+<td>瀘縣</td>
+<td>太伏鎮</td>
+<td>神仙橋社區居民委員會</td>
+</tr>
+
+<tr>
+<td>吉林省</td>
+<td>延邊朝鮮族自治州</td>
+<td>汪清縣</td>
+<td>天橋嶺鎮</td>
+<td>神仙洞村委會</td>
+</tr>
+
+<tr>
+<td>河南省</td>
+<td>鄭州市</td>
+<td>新密市</td>
+<td>尖山風景區管理委員會</td>
+<td>神仙洞村委會</td>
+</tr>
+
+<tr>
+<td>湖南省</td>
+<td>永州市</td>
+<td>江華瑤族自治縣</td>
+<td>白芒營鎮</td>
+<td>神仙洞村委會</td>
+</tr>
+
+<tr>
+<td>廣東省</td>
+<td>汕頭市</td>
+<td>潮南區</td>
+<td>仙城鎮</td>
+<td>神仙裡村委會</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="problems">Problems</h2>
+
+<ul>
+<li>文末<code>^M</code>出現，使用<code>tr -s &quot;\r\n&quot; &quot;\n&quot;</code>將其去除</li>
+<li>Shell腳本中自定義函數必須先定義，而後才能調用，位置有先後。將函數返回值賦值給變量，可使用&rsquo;<code>function_name</code>&lsquo;實現，反引號包裹函數名</li>
+</ul>
+
+<h2 id="change-log">Change Log</h2>
+
+<ul>
+<li>2016.03.14 00:01 Mon Asia/Beijing
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2016.03.17 20:34 Thu Asia/Beijing
+
+<ul>
+<li>數據表設計優化</li>
+</ul></li>
+<li>2016.11.11 09:10 Fri Asia/Shanghai
+
+<ul>
+<li>數據源更新、數據表結構優化、代碼優化</li>
+</ul></li>
+<li>2018.04.22 20:20 Sun America/Boston
+
+<ul>
+<li>勘誤，重構，更新，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- end -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-22</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/sed/">sed</a>
+          
+          <a href="/tags/awk/">awk</a>
+          
+          <a href="/tags/mysql/">MySQL</a>
+          
+          <a href="/tags/shell-script/">Shell Script</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/building-docker-private-registry-with-self-signed-certificate/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Building Docker Private Registry With Self-signed Certificate</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/lemp-stack-installation-and-configuration-on-centos-7/">
+            <span class="next-text nav-default">LEMP Stack Installation And Configuration On CentOS 7</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

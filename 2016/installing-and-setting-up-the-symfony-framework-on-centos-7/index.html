@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Installing And Setting Up The Symfony Framework On CentOS 7 - MetaDefine - A super concise theme for Hugo</title>
+  <link rel="alternate" hreflang="en" href="/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="mitui" /><meta name="description" content="Full recording of Symfony installation on CentOS 7" />
+<meta name="keywords" content="AxdLog, Symfony, PHP, LEMP, Twig" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.39" />
+
+
+<link rel="canonical" href="/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Installing And Setting Up The Symfony Framework On CentOS 7" />
+<meta property="og:description" content="Full recording of Symfony installation on CentOS 7" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/" />
+
+
+
+<meta property="article:published_time" content="2016-08-23T21:03:16&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-14T13:28:16-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Installing And Setting Up The Symfony Framework On CentOS 7">
+<meta itemprop="description" content="Full recording of Symfony installation on CentOS 7">
+
+
+<meta itemprop="datePublished" content="2016-08-23T21:03:16&#43;08:00" />
+<meta itemprop="dateModified" content="2016-08-23T21:03:16&#43;08:00" />
+<meta itemprop="wordCount" content="2580">
+
+
+
+<meta itemprop="keywords" content="Symfony,PHP," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Installing And Setting Up The Symfony Framework On CentOS 7"/>
+<meta name="twitter:description" content="Full recording of Symfony installation on CentOS 7"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">MetaDefine</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        <a href="/">
+          Home
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/tags/">
+          Tags
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/post/">
+          Archives
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/categories/">
+          Categories
+        </a>
+      </li><li class="mobile-menu-item">
+        <a href="/about/">
+          About
+        </a>
+      </li>
+  </ul>
+</nav>
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      MetaDefine
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Installing And Setting Up The Symfony Framework On CentOS 7</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-08-23 </span>
+        <div class="post-category">
+            
+              <a href="/categories/php/"> PHP </a>
+            
+          </div>
+        <span class="more-meta"> 2580 words </span>
+        <span class="more-meta"> 6 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#php-installation">PHP Installation</a></li>
+<li><a href="#composer-installation">Composer Installation</a></li>
+<li><a href="#symfony">Symfony</a>
+<ul>
+<li><a href="#new-symfony-project">New Symfony Project</a></li>
+<li><a href="#existing-symfony-project">Existing Symfony Project</a></li>
+<li><a href="#running">Running</a></li>
+</ul></li>
+<li><a href="#create-first-page-in-symfony">Create First Page in Symfony</a>
+<ul>
+<li><a href="#route-and-controller">Route and Controller</a></li>
+<li><a href="#annotation-routes">Annotation Routes</a></li>
+<li><a href="#rendering-a-template">Rendering a Template</a></li>
+</ul></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#web-server-configuration">Web Server Configuration</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>是一款<a href="https://secure.php.net" title="PHP is a popular general-purpose scripting language that is especially suited to web development.">PHP</a>開發框架，目前最新版本是<code>4.0</code>，長期支持版是<code>3.4</code>。本文記錄如何在<code>CentOS 7</code>中安裝、配置Symfony 4。</p>
+
+<p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>官方文檔頁 <a href="https://symfony.com/doc/current/index.html">https://symfony.com/doc/current/index.html</a></p>
+
+<p></p>
+
+<p>操作系統信息</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Info</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">OS Version</td>
+<td align="left"><code>CentOS Linux release 7.4.1708 (Core)</code></td>
+</tr>
+
+<tr>
+<td align="left">Kernel Version</td>
+<td align="left"><code>3.10.0-693.21.1.el7.x86_64</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>已啓用<code>SELinux</code>和<code>Firewalld</code>防火牆</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ sestatus
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      <span class="m">28</span>
+
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ sudo firewall-cmd --list-all
+public <span class="o">(</span>active<span class="o">)</span>
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0 eth1
+  sources:
+  services: dhcpv6-client
+  ports: <span class="m">22</span>/tcp <span class="m">80</span>/tcp <span class="m">443</span>/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks: echo-request echo-reply timestamp-reply timestamp-request
+  rich rules:
+
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="requirements">Requirements</h2>
+
+<p>Symfony 4.0</p>
+
+<blockquote>
+<p>Symfony 4.0 requires PHP 7.1.3 or higher to run, in addition to other minor requirements. &ndash; <a href="https://symfony.com/doc/master/reference/requirements.html">Requirements for Running Symfony</a></p>
+</blockquote>
+
+<p>Symfony application</p>
+
+<blockquote>
+<p>To create your new Symfony application, first make sure you&rsquo;re using PHP 7.1 or higher and have <a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a> installed. &ndash; <a href="https://symfony.com/doc/current/setup.html">Installing &amp; Setting up the Symfony Framework</a></p>
+</blockquote>
+
+<p>Composer</p>
+
+<blockquote>
+<p>Composer requires PHP 5.3.2+ to run. A few sensitive php settings and compile flags are also required, but when using the installer you will be warned about any incompatibilities. &ndash; <a href="https://getcomposer.org/doc/00-intro.md#system-requirements">System Requirements</a></p>
+</blockquote>
+
+<h2 id="php-installation">PHP Installation</h2>
+
+<p><code>LEMP</code>開發環境的安裝、配置可參考本人Blog <a href="/2016/lemp-stack-installation-and-configuration-on-centos-7/">LEMP Stack Installation And Configuration On CentOS 7
+</a></p>
+
+<p>版本信息</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Info</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Nginx</td>
+<td align="left"><code>1.13.12</code></td>
+</tr>
+
+<tr>
+<td align="left">MySQL</td>
+<td align="left"><code>5.7.21</code></td>
+</tr>
+
+<tr>
+<td align="left">PHP</td>
+<td align="left"><code>7.2.4</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ nginx -v
+nginx version: nginx/1.13.12
+
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ mysql --version
+mysql  Ver <span class="m">14</span>.14 Distrib <span class="m">5</span>.7.21, <span class="k">for</span> Linux <span class="o">(</span>x86_64<span class="o">)</span> using  EditLine wrapper
+
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ php --version
+PHP <span class="m">7</span>.2.4 <span class="o">(</span>cli<span class="o">)</span> <span class="o">(</span>built: Mar <span class="m">27</span> <span class="m">2018</span> <span class="m">17</span>:23:35<span class="o">)</span> <span class="o">(</span> NTS <span class="o">)</span>
+Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">1997</span>-2018 The PHP Group
+Zend Engine v3.2.0, Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">1998</span>-2018 Zend Technologies
+    with Zend OPcache v7.2.4, Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">1999</span>-2018, by Zend Technologies
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="composer-installation">Composer Installation</h2>
+
+<p>安裝方案來自<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>官方文檔 <a href="https://getcomposer.org/download/">Download Composer</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Download the installer to the current directory
+</span><span class="c1"></span>php -r <span class="s2">&#34;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&#34;</span>
+
+<span class="c1"># Verify the installer SHA-384
+</span><span class="c1"></span>php -r <span class="s2">&#34;if (hash_file(&#39;SHA384&#39;, &#39;composer-setup.php&#39;) === &#39;544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061&#39;) { echo &#39;Installer verified&#39;; } else { echo &#39;Installer corrupt&#39;; unlink(&#39;composer-setup.php&#39;); } echo PHP_EOL;&#34;</span>
+
+<span class="c1"># Run the installer
+</span><span class="c1"></span>php composer-setup.php
+
+<span class="c1"># Remove the installer
+</span><span class="c1"></span>php -r <span class="s2">&#34;unlink(&#39;composer-setup.php&#39;);&#34;</span>
+
+<span class="c1"># move composer.phar to executed path
+</span><span class="c1"></span>sudo mv composer.phar /usr/local/bin/composer
+sudo chown root:root /usr/local/bin/composer</code></pre></td></tr></table>
+</div>
+</div>
+<p>版本信息</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Info</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Composer</td>
+<td align="left"><code>1.6.4</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ composer -V
+Composer version <span class="m">1</span>.6.4 <span class="m">2018</span>-04-13 <span class="m">12</span>:04:24
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$ composer --version
+Composer version <span class="m">1</span>.6.4 <span class="m">2018</span>-04-13 <span class="m">12</span>:04:24
+<span class="o">[</span>maxdsre@CentOS ~<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="symfony">Symfony</h2>
+
+<p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>官方文檔 <a href="https://symfony.com/doc/current/setup.html">Installing &amp; Setting up the Symfony Framework</a>。</p>
+
+<p>Symfony 4不需要單獨安裝Symfony，直接通過<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>創建項目。</p>
+
+<h3 id="new-symfony-project">New Symfony Project</h3>
+
+<p>此處假設項目名爲<code>axdlog</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create new project
+</span><span class="c1"></span>composer create-project symfony/website-skeleton axdlog
+
+<span class="c1"># Checking for Security Vulnerabilities
+</span><span class="c1"></span><span class="nb">cd</span> axdlog
+composer require sec-checker --dev</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>：<a href="https://getcomposer.org" title="Dependency Manager for PHP">Composer</a>需要啓用函數<code>proc_open</code>、<code>proc_get_status</code>，相關設置在文件<code>/etc/php.ini</code>的<code>disable_functions</code>中，執行如下命令即可啓用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -r -i <span class="s1">&#39;/disable_functions[[:space:]]*=/{s@(proc_open|proc_get_status),?@@g;}&#39;</span> /etc/php.ini
+<span class="c1"># restart php-fpm service
+</span><span class="c1"></span>sudo systemctl restart php-fpm</code></pre></td></tr></table>
+</div>
+</div>
+<p>否則會出現報錯</p>
+
+<p>proc_open</p>
+
+<blockquote>
+<p>Failed to download symfony/website-skeleton from dist: The Process class relies on proc_open, which is not available on your PHP installation.</p>
+</blockquote>
+
+<p>proc_get_status</p>
+
+<blockquote>
+<p>Warning: proc_get_status() has been disabled for security reasons in phar:///usr/local/bin/composer/vendor/symfony/process/Process.php on line 1279</p>
+
+<p>PHP Warning:  proc_get_status() has been disabled for security reasons in phar:///usr/local/bin/composer/vendor/symfony/process/Process.php on line 1279</p>
+</blockquote>
+
+<p>安裝完成後，出現提示信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Some files may have been created or updated to configure your new packages.
+Please review, edit and commit them: these files are yours.
+
+
+ What&#39;s next?
+
+
+  * Run your application:
+    1. Change to the project directory
+    2. Execute the php -S 127.0.0.1:8000 -t public command;
+    3. Browse to the http://localhost:8000/ URL.
+
+       Quit the server with CTRL-C.
+       Run composer require server --dev for a better web server.
+
+  * Read the documentation at https://symfony.com/doc
+
+
+ Database Configuration
+
+
+  * Modify your DATABASE_URL config in .env
+
+  * Configure the driver (mysql) and
+    server_version (5.7) in config/packages/doctrine.yaml
+
+
+ How to test?
+
+
+  * Write test cases in the tests/ folder
+  * Run php bin/phpunit</pre></td></tr></table>
+</div>
+</div>
+<p>當前目錄創建了一個名爲<code>axdlog</code>的目錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$ <span class="nb">echo</span> <span class="nv">$PWD</span>
+/home/maxdsre/axdlog
+<span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$ tree -L <span class="m">2</span>
+.
+├── assets
+├── bin
+│   ├── console
+│   └── phpunit
+├── composer.json
+├── composer.lock
+├── config
+│   ├── bundles.php
+│   ├── packages
+│   ├── routes
+│   ├── routes.yaml
+│   ├── services_test.yaml
+│   └── services.yaml
+├── package.json
+├── phpunit.xml.dist
+├── public
+│   └── index.php
+├── src
+│   ├── Controller
+│   ├── Entity
+│   ├── Kernel.php
+│   ├── Migrations
+│   └── Repository
+├── symfony.lock
+├── templates
+│   └── base.html.twig
+├── tests
+├── translations
+├── var
+│   ├── cache
+│   └── log
+├── vendor
+│   ├── autoload.php
+│   ├── bin
+│   ├── composer
+│   ├── doctrine
+│   ├── easycorp
+│   ├── egulias
+│   ├── fig
+│   ├── jdorn
+│   ├── monolog
+│   ├── nikic
+│   ├── ocramius
+│   ├── phpdocumentor
+│   ├── psr
+│   ├── sensio
+│   ├── sensiolabs
+│   ├── swiftmailer
+│   ├── symfony
+│   ├── twig
+│   ├── webmozart
+│   └── zendframework
+└── webpack.config.js
+
+<span class="m">37</span> directories, <span class="m">16</span> files
+<span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="existing-symfony-project">Existing Symfony Project</h3>
+
+<p>對於已存在的Symfony項目，參考 <a href="https://symfony.com/doc/current/setup.html#installing-an-existing-symfony-application">Installing an Existing Symfony Application</a> 進行相關操作。</p>
+
+<h3 id="running">Running</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># move into your new project and install the server
+</span><span class="c1"></span><span class="nb">cd</span> axdlog
+composer require server --dev
+
+<span class="c1"># start the server
+</span><span class="c1"></span>php bin/console server:run</code></pre></td></tr></table>
+</div>
+</div>
+<p>操作過程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$ composer require server --dev
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies <span class="o">(</span>including require-dev<span class="o">)</span>
+Nothing to install or update
+Generating autoload files
+ocramius/package-versions:  Generating version class...
+ocramius/package-versions: ...done generating version class
+Executing script cache:clear <span class="o">[</span>OK<span class="o">]</span>
+Executing script assets:install --symlink --relative public <span class="o">[</span>OK<span class="o">]</span>
+Executing script security-checker security:check <span class="o">[</span>OK<span class="o">]</span>
+
+<span class="o">[</span>maxdsre@CentOS axdlog<span class="o">]</span>$ php bin/console server:run
+
+ <span class="o">[</span>OK<span class="o">]</span> Server listening on http://127.0.0.1:8000                                                         
+
+ // Quit the server with CONTROL-C.                                                                     
+
+PHP <span class="m">7</span>.2.4 Development Server started at Sat Apr <span class="m">14</span> <span class="m">13</span>:26:34 <span class="m">2018</span>
+Listening on http://127.0.0.1:8000
+Document root is /home/maxdsre/axdlog/public
+Press Ctrl-C to quit.</code></pre></td></tr></table>
+</div>
+</div>
+<p>本地監聽了<code>8000</code>端口，通過SSH端口轉發，將遠程主機的<code>8000</code>端口轉發到本地<code>8000</code>端口。</p>
+
+<p>瀏覽器中輸入<code>127.0.0.1:8000/config.php</code> 可檢測Symfony的應用程序配置情況。</p>
+
+<p>打開<code>127.0.0.1:8000</code>，顯示如下</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_21-59-00_welcome_info.png" alt="" /></p>
+
+<p>Symfony Profiler</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-00-10_profiler.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-00-29_profiler.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-00-57_profiler.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-01-18_profiler.png" alt="" /></p>
+
+<h2 id="create-first-page-in-symfony">Create First Page in Symfony</h2>
+
+<p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>官方文檔 <a href="https://symfony.com/doc/current/page_creation.html">Create your First Page in Symfony
+</a>。</p>
+
+<h3 id="route-and-controller">Route and Controller</h3>
+
+<p>推薦使用<code>Annotation Routes</code>，詳見<a href="https://symfony.com/doc/current/routing.html">Routing</a>。</p>
+
+<p>操作分2步驟</p>
+
+<ul>
+<li>Create a route</li>
+<li>Create a controller</li>
+</ul>
+
+<p>進入目錄<code>axdlog</code></p>
+
+<p>在目錄<code>src/AppBundle/Controller</code>創建測試文件<code>LuckyController.php</code>，寫入如下信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;?php
+// src/Controller/LuckyController.php
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+
+class LuckyController
+{
+    public function number()
+    {
+        $number = mt_rand(0, 100);
+
+        return new Response(
+            &#39;&lt;html&gt;&lt;body&gt;Lucky number: &#39;.$number.&#39;&lt;/body&gt;&lt;/html&gt;&#39;
+        );
+    }
+}</pre></td></tr></table>
+</div>
+</div>
+<p>在文件<code>config/routes.yaml</code>中配置URL路由地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># config/routes.yaml</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># the &#34;app_lucky_number&#34; route name is not important yet</span><span class="w">
+</span><span class="w"></span>app_lucky_number<span class="p">:</span><span class="w">
+</span><span class="w">    </span>path<span class="p">:</span><span class="w"> </span>/lucky/number<span class="w">
+</span><span class="w">    </span>controller<span class="p">:</span><span class="w"> </span>App\Controller\LuckyController<span class="p">::</span>number</code></pre></td></tr></table>
+</div>
+</div>
+<p>瀏覽器中輸入 <code>127.0.0.1:8000/lucky/number</code>，出現如下信息</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-20-50_lucky_num.png" alt="" /></p>
+
+<h3 id="annotation-routes">Annotation Routes</h3>
+
+<p>URL路由地址可通過<code>config/routes.yaml</code>配置，也可通過<code>annotation</code>實現</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># install annotations package
+</span><span class="c1"></span>composer require annotations</code></pre></td></tr></table>
+</div>
+</div>
+<p>將文件<code>LuckyController.php</code>內容修改如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;?php
+// src/Controller/LuckyController.php
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class LuckyController
+{
+    /**
+    * @Route(&#34;/lucky_number&#34;)
+    */
+    public function number()
+    {
+        $number = mt_rand(0, 100);
+
+        return new Response(
+            &#39;&lt;html&gt;&lt;body&gt;Lucky number: &#39;.$number.&#39;&lt;/body&gt;&lt;/html&gt;&#39;
+        );
+    }
+}</pre></td></tr></table>
+</div>
+</div>
+<p>註釋<code>config/routes.yaml</code>中的配置，瀏覽器中輸入 <code>127.0.0.1:8000/lucky_number</code>，出現如下信息</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-32-42_lucky_num.png" alt="" /></p>
+
+<h3 id="rendering-a-template">Rendering a Template</h3>
+
+<blockquote>
+<p>If you&rsquo;re returning HTML from your controller, you&rsquo;ll probably want to render a template. Fortunately, Symfony comes with <a href="http://twig.sensiolabs.org">Twig</a>: a templating language that&rsquo;s easy, powerful and actually quite fun.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> axdlog
+
+<span class="c1"># install Twig
+</span><span class="c1"></span>composer require twig</code></pre></td></tr></table>
+</div>
+</div>
+<p>使用函數<code>render()</code>渲染template(模板)，將文件<code>LuckyController.php</code>內容修改如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&lt;?php
+// src/Controller/LuckyController.php
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+// class LuckyController
+class LuckyController extends Controller
+{
+    /**
+    * @Route(&#34;/twig/lucky_number&#34;)
+    */
+    public function number()
+    {
+        $number = mt_rand(0, 100);
+
+        return $this-&gt;render(&#39;lucky/number.html.twig&#39;, array(
+            &#39;number&#39; =&gt; $number,
+        ));
+    }
+}</pre></td></tr></table>
+</div>
+</div>
+<p>模板文件存放在目錄<code>templates/</code>中，創建文件<code>templates/lucky/number.html.twig</code>，寫入如下內容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-twig" data-lang="twig"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-twig" data-lang="twig"><span class="c">{# templates/lucky/number.html.twig #}</span><span class="x">
+</span><span class="x">
+</span><span class="x">&lt;h1&gt;Your lucky number is </span><span class="cp">{{</span> <span class="nv">number</span> <span class="cp">}}</span><span class="x">&lt;/h1&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>瀏覽器中輸入 <code>127.0.0.1:8000/twig/lucky_number</code>，出現如下信息</p>
+
+<p><img src="https://raw.githubusercontent.com/MaxdSre/maxdsre.github.io/image/blog-image/2016-08-23_symfony_install_setup_centos7/2018-04-12_22-44-37_twig.png" alt="" /></p>
+
+<p>有關template的詳細說明參見官方文檔 <a href="https://symfony.com/doc/master/templating.html">Creating and Using Templates</a>。</p>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">directory</th>
+<th align="left">explanation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>config/</code></td>
+<td align="left">配置文件存放路徑</td>
+</tr>
+
+<tr>
+<td align="left"><code>src/</code></td>
+<td align="left">PHP代碼存放路徑</td>
+</tr>
+
+<tr>
+<td align="left"><code>templates/</code></td>
+<td align="left">Twig模板文件</td>
+</tr>
+
+<tr>
+<td align="left"><code>bin/</code></td>
+<td align="left">可執行文件，如<code>bin/console</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>var/</code></td>
+<td align="left">緩存(<code>var/cache/</code>)和日誌(<code>var/logs/</code>)</td>
+</tr>
+
+<tr>
+<td align="left"><code>vendor/</code></td>
+<td align="left">第三方庫存放路徑</td>
+</tr>
+
+<tr>
+<td align="left"><code>public/</code></td>
+<td align="left">項目文檔路徑</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="web-server-configuration">Web Server Configuration</h2>
+
+<p><a href="https://symfony.com" title="High Performance PHP Framework for Web Development">Symfony</a>官方文檔 <a href="https://symfony.com/doc/current/setup/web_server_configuration.html">Configuring a Web Server
+</a>。</p>
+
+<p>此處暫不討論。</p>
+
+<h2 id="change-logs">Change Logs</h2>
+
+<ul>
+<li>2016.08.23 21:06 Tue Asia/Shanghai
+
+<ul>
+<li>初稿完成</li>
+</ul></li>
+<li>2018.04.12 22:57 Thu America/Boston
+
+<ul>
+<li>內容更新，勘誤，遷移到新Blog</li>
+</ul></li>
+</ul>
+
+<!-- End -->
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitui</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-14</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/symfony/">Symfony</a>
+          
+          <a href="/tags/php/">PHP</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Using Doctrine DBAL To Work With Database In Symfony 4</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/using-awk-to-extract-statistic-results-from-multiple-log-files/">
+            <span class="next-text nav-default">Using Awk To Extract Statistic Results From Multiple Log Files</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+      Show Disqus Comments
+    </div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function load_disqus() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'MetaDefine';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        $('#load_disqus').remove();
+    };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jason.chansz@gmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+  <a href="/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">mitui</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+</body>
+</html>

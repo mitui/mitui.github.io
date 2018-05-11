@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on MetaDefine - A super concise theme for Hugo</title>
+    <link>/categories/blog/</link>
+    <description>Recent content in Blog on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Apr 2018 13:31:34 -0400</lastBuildDate>
+    
+	<atom:link href="/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Slack Build Notification in Travis CI for Github Project</title>
+      <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</guid>
+      <description>&lt;p&gt;By default, &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt; uses email to send build notification, it also support other method, e.g. &lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;. This article documents how to set up &lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt; notification for &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt; project integrated &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲集成了Travis CI的GitHub項目配置Slack信息推送</title>
+      <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
+      <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
+      
+      <guid>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;默認通過郵件發送構建信息，&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;也支持通過其它方式發送信息，如&lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;。本文記錄如何已集成&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;的&lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;項目配置&lt;a href=&#34;https://slack.com&#34; title=&#34;Where work happens&#34;&gt;Slack&lt;/a&gt;信息推送。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Cloudflare Free SSL In GitHub Pages With Custom Domain</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;I have succeed in migrating my blog from &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt; to &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; platform, new domain is &lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;. As &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt; doesn&amp;rsquo;t provide SSL certificate for custom domain, so I need to deploy it separately. &lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; provides free SSL certificate, and it has the ability of anti-ddos.&lt;/p&gt;
+
+&lt;p&gt;This article documents how to configure
+&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; free SSL certificate in &lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爲GitHub Pages配置Cloudflare的免費SSL數字證書</title>
+      <link>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</link>
+      <pubDate>Wed, 11 Apr 2018 15:16:42 -0400</pubDate>
+      
+      <guid>/2018/using-cloudflare-free-ssl-in-github-pages-with-custom-domain/</guid>
+      <description>&lt;p&gt;Blog已成功從&lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;遷移到&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;，新域名&lt;a href=&#34;https://axdlog.com&#34;&gt;&lt;strong&gt;AxdLog&lt;/strong&gt;&lt;/a&gt;。由於&lt;a href=&#34;https://pages.github.com&#34; title=&#34;Hosted directly from your GitHub repository. Just edit, push, and your changes are live.&#34;&gt;Github Pages&lt;/a&gt;對自有域名不提供SSL證書，故須額外部署。&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;提供免費的SSL證書，並且提供防DDOS攻擊功能。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何配置並使用&lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt;的SSL證書。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically</title>
+      <link>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</link>
+      <pubDate>Wed, 11 Apr 2018 00:20:07 -0400</pubDate>
+      
+      <guid>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</guid>
+      <description>&lt;p&gt;My personal static blog is hosted on &lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;. I used &lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt; before, but as its complicated package dependence and cumbersome deployment process, I have to encapsulated the whole deploying environment into Docker image for rapid deployment. But it was still too complex. Now I switch to &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; which is faster, simpler.&lt;/p&gt;
+
+&lt;p&gt;This article documents how to automatically synchronize blog contents generated by &lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt; to &lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt; through &lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Attention&lt;/strong&gt;: The following operation process will not involve account registration, Git configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利用Travis CI和Hugo將Blog自動部署到Github Pages</title>
+      <link>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</link>
+      <pubDate>Wed, 11 Apr 2018 00:20:07 -0400</pubDate>
+      
+      <guid>/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/</guid>
+      <description>&lt;p&gt;個人Blog採用靜態Blog形式託管在&lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;上。此前使用的是&lt;a href=&#34;https://hexo.io&#34; title=&#34;A fast, simple &amp;amp; powerful blog framework&#34;&gt;Hexo&lt;/a&gt;，因其包依賴關係複雜，部署流程繁瑣，故將整個部署環境封裝到Docker鏡像中以實現快速部署，但仍較爲繁瑣。現轉用執行速度快、操作簡便的&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;。本文記錄如何在GNU/Linux中通過&lt;a href=&#34;https://travis-ci.org&#34; title=&#34;Test and Deploy with Confidence&#34;&gt;Travis CI&lt;/a&gt;將&lt;a href=&#34;https://gohugo.io&#34; title=&#34;The world’s fastest framework for building websites&#34;&gt;Hugo&lt;/a&gt;生成的Blog內容自動同步到&lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;，實現持續集成、部署。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：本文旨在記錄關鍵操作，不涉及帳號註冊、Git安裝配置等過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

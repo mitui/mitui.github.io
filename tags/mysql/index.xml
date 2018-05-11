@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/mysql/</link>
+    <description>Recent content in Mysql on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Dec 2016 07:43:08 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Analying The Change Frequency Of Active Users Tokens From Tomcat Logs</title>
+      <link>/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/</link>
+      <pubDate>Mon, 05 Dec 2016 07:43:08 +0800</pubDate>
+      
+      <guid>/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/</guid>
+      <description>&lt;p&gt;接到Java開發人員的需求,從Tomcat日誌中提取最近一個月查詢、購票活躍度最高的5位iOS用戶的token變更頻率。日誌文件在線上生產服務器中，單個文件高達十數GB，無法使用&lt;code&gt;vim&lt;/code&gt;打開，只能下載到本機後再進行數據提取操作，以下是完整的記錄。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Crawling China Administrative Division Code</title>
+      <link>/2016/crawling-china-administrative-division-code/</link>
+      <pubDate>Mon, 14 Mar 2016 00:01:59 +0800</pubDate>
+      
+      <guid>/2016/crawling-china-administrative-division-code/</guid>
+      <description>&lt;p&gt;本文記錄如何從&lt;a href=&#34;http://www.stats.gov.cn&#34;&gt;中華人民共和國國家統計局&lt;/a&gt;官網提取中國大陸地區的行政區劃信息，數據入庫，並通過Shell腳本實現整個過程。項目代碼託管在&lt;a href=&#34;https://github.com/MaxdSre/Shell-script-web-crawler/tree/master/project/CADC&#34;&gt;GitHub&lt;/a&gt;，包含Shell腳本、數據庫數據表、文本數據、從MySQL中導出的SQL數據。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LEMP Stack Installation And Configuration On CentOS 7</title>
+      <link>/2016/lemp-stack-installation-and-configuration-on-centos-7/</link>
+      <pubDate>Fri, 11 Mar 2016 18:31:58 +0800</pubDate>
+      
+      <guid>/2016/lemp-stack-installation-and-configuration-on-centos-7/</guid>
+      <description>&lt;p&gt;This article documents how to install, configure &lt;strong&gt;LEMP&lt;/strong&gt; (&lt;a href=&#34;https://www.nginx.com&#34; title=&#34;High Performance Load Balancer, Web Server, &amp;amp; Reverse Proxy&#34;&gt;Nginx&lt;/a&gt;、&lt;a href=&#34;https://www.mysql.com&#34; title=&#34;MySQL is the world&#39;s most popular open source database.&#34;&gt;MySQL&lt;/a&gt;、&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;) stack in &lt;code&gt;CentOS 7&lt;/code&gt; which &lt;code&gt;SELinux&lt;/code&gt;、&lt;code&gt;Firewalld&lt;/code&gt; has been enabled.&lt;/p&gt;
+
+&lt;p&gt;I wrote some shell script to automate operation, the project is hosted on &lt;a href=&#34;https://github.com/MaxdSre/axd-ShellScript&#34; title=&#34;axd Shell Script&#34;&gt;GitHub&lt;/a&gt;. But &lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt; is still need to installed manually currently.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在CentOS 7中配置LEMP開發環境全記錄</title>
+      <link>/2016/lemp-stack-installation-and-configuration-on-centos-7/</link>
+      <pubDate>Fri, 11 Mar 2016 18:31:58 +0800</pubDate>
+      
+      <guid>/2016/lemp-stack-installation-and-configuration-on-centos-7/</guid>
+      <description>&lt;p&gt;本文記錄如何在已啓用&lt;code&gt;SELinux&lt;/code&gt;、&lt;code&gt;Firewalld&lt;/code&gt;防火牆的&lt;code&gt;CentOS 7&lt;/code&gt;系統中安裝、配置 &lt;strong&gt;LEMP&lt;/strong&gt; (&lt;a href=&#34;https://www.nginx.com&#34; title=&#34;High Performance Load Balancer, Web Server, &amp;amp; Reverse Proxy&#34;&gt;Nginx&lt;/a&gt;、&lt;a href=&#34;https://www.mysql.com&#34; title=&#34;MySQL is the world&#39;s most popular open source database.&#34;&gt;MySQL&lt;/a&gt;、&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;)套件。&lt;/p&gt;
+
+&lt;p&gt;本人寫了一些Shell腳本用以實現操作的自動化，項目代碼託管在&lt;a href=&#34;https://github.com/MaxdSre/axd-ShellScript&#34; title=&#34;axd Shell Script&#34;&gt;GitHub&lt;/a&gt;。已實現 系統初始化，&lt;a href=&#34;https://www.nginx.com&#34; title=&#34;High Performance Load Balancer, Web Server, &amp;amp; Reverse Proxy&#34;&gt;Nginx&lt;/a&gt;、&lt;a href=&#34;https://www.mysql.com&#34; title=&#34;MySQL is the world&#39;s most popular open source database.&#34;&gt;MySQL&lt;/a&gt;的腳本化操作，但&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;暫時仍需要手動安裝。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

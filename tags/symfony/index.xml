@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Symfony on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/symfony/</link>
+    <description>Recent content in Symfony on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 15 Nov 2016 17:54:13 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/symfony/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Self-Developing Asset Management Platform Based On Symfony Framework</title>
+      <link>/2016/self-developing-asset-management-platform-based-on-symfony-framework/</link>
+      <pubDate>Tue, 15 Nov 2016 17:54:13 +0800</pubDate>
+      
+      <guid>/2016/self-developing-asset-management-platform-based-on-symfony-framework/</guid>
+      <description>&lt;p&gt;根據公司直屬領導指示，進行 &lt;strong&gt;資產管理系統平臺&lt;/strong&gt; 的開發，整個項目由本人獨立完成，項目週期2個月左右，現已部署上線，可通過公司內網訪問。&lt;/p&gt;
+
+&lt;p&gt;因本人此前從事&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;開發，故選擇&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;做爲開發語言，開發框架選擇&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony&lt;/a&gt;。如何部署Symfony項目，詳見本人 &lt;a href=&#34;/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/&#34;&gt;blog&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Configuring Nginx Web Server For Symfony Framework On GNU Linux</title>
+      <link>/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/</link>
+      <pubDate>Tue, 15 Nov 2016 17:18:20 +0800</pubDate>
+      
+      <guid>/2016/configuring-nginx-web-server-for-symfony-framework-on-gnu-linux/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony&lt;/a&gt;是一款&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;開發框架，具體安裝、配置可參閱本人之前 &lt;a href=&#34;/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/&#34;&gt;blog&lt;/a&gt;。本文記錄如何在&lt;a href=&#34;https://www.nginx.com&#34; title=&#34;High Performance Load Balancer, Web Server, &amp;amp; Reverse Proxy&#34;&gt;Nginx&lt;/a&gt;中部署&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony&lt;/a&gt;項目。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;說明&lt;/strong&gt;：文中的操作、配置基於&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony 3&lt;/a&gt;（2016年11月），不一定適用於&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony 4&lt;/a&gt;。此次遷移只做勘誤，不做具體配置的更新（2018年04月16日）。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Doctrine DBAL To Work With Database In Symfony 4</title>
+      <link>/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/</link>
+      <pubDate>Wed, 24 Aug 2016 04:38:08 +0800</pubDate>
+      
+      <guid>/2016/using-doctrine-dbal-to-work-with-database-in-symfony-4/</guid>
+      <description>&lt;p&gt;Web應用通常使用數據庫存儲數據，&lt;a href=&#34;https://lemp.io/&#34;&gt;&lt;strong&gt;LEMP&lt;/strong&gt;&lt;/a&gt;中的 &lt;strong&gt;M&lt;/strong&gt; 即指數據庫（默認爲 &lt;a href=&#34;https://www.mysql.com&#34; title=&#34;MySQL is the world&#39;s most popular open source database.&#34;&gt;MySQL&lt;/a&gt;）。PHP框架&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony&lt;/a&gt;是通過集成的第三方庫 &lt;a href=&#34;https://www.doctrine-project.org&#34; title=&#34;The Open-Source PHP ORM and Persistence Tools Project&#34;&gt;Doctrine&lt;/a&gt; 與數據庫交互（通過&lt;a href=&#34;https://getcomposer.org&#34; title=&#34;Dependency Manager for PHP&#34;&gt;Composer&lt;/a&gt;安裝）。&lt;a href=&#34;https://www.doctrine-project.org&#34; title=&#34;The Open-Source PHP ORM and Persistence Tools Project&#34;&gt;Doctrine&lt;/a&gt;支持2中形式 &lt;a href=&#34;https://symfony.com/doc/master/doctrine.html&#34;&gt;Doctrine ORM&lt;/a&gt; 和 &lt;a href=&#34;https://www.doctrine-project.org/projects/dbal.html&#34; title=&#34;Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection, schema management and PDO abstraction.&#34;&gt;Doctrine DBAL&lt;/a&gt;。&lt;code&gt;DBAL&lt;/code&gt;是&lt;code&gt;Database Abstraction Layer&lt;/code&gt;（數據庫抽象層）的縮寫，&lt;a href=&#34;https://www.doctrine-project.org/projects/dbal.html&#34; title=&#34;Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection, schema management and PDO abstraction.&#34;&gt;Doctrine DBAL&lt;/a&gt;支持原生的SQL語句。&lt;/p&gt;
+
+&lt;p&gt;本文記錄如何在&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony 4&lt;/a&gt;中通過&lt;a href=&#34;https://www.doctrine-project.org/projects/dbal.html&#34; title=&#34;Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection, schema management and PDO abstraction.&#34;&gt;Doctrine DBAL&lt;/a&gt;進行數據庫的&lt;a href=&#34;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&#34; title=&#34;wikipedia&#34;&gt;CRUD&lt;/a&gt;操作。（與Symfony 3相比，變動很大）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Installing And Setting Up The Symfony Framework On CentOS 7</title>
+      <link>/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/</link>
+      <pubDate>Tue, 23 Aug 2016 21:03:16 +0800</pubDate>
+      
+      <guid>/2016/installing-and-setting-up-the-symfony-framework-on-centos-7/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony&lt;/a&gt;是一款&lt;a href=&#34;https://secure.php.net&#34; title=&#34;PHP is a popular general-purpose scripting language that is especially suited to web development.&#34;&gt;PHP&lt;/a&gt;開發框架，目前最新版本是&lt;code&gt;4.0&lt;/code&gt;，長期支持版是&lt;code&gt;3.4&lt;/code&gt;。本文記錄如何在&lt;code&gt;CentOS 7&lt;/code&gt;中安裝、配置Symfony 4。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://symfony.com&#34; title=&#34;High Performance PHP Framework for Web Development&#34;&gt;Symfony&lt;/a&gt;官方文檔頁 &lt;a href=&#34;https://symfony.com/doc/current/index.html&#34;&gt;https://symfony.com/doc/current/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

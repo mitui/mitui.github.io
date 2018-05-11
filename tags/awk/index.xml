@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Awk on MetaDefine - A super concise theme for Hugo</title>
+    <link>/tags/awk/</link>
+    <description>Recent content in Awk on MetaDefine - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 09 Mar 2018 01:26:21 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/awk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cleaning Text Data Which Delimiter Is Special Character Using Sed &amp; Awk</title>
+      <link>/2018/cleaning-text-data-which-delimiter-is-special-character-using-sed-and-awk/</link>
+      <pubDate>Fri, 09 Mar 2018 01:26:21 -0400</pubDate>
+      
+      <guid>/2018/cleaning-text-data-which-delimiter-is-special-character-using-sed-and-awk/</guid>
+      <description>&lt;p&gt;需要對一份招聘相關的數據樣本(160多萬行)進行數據分析，妻子在用Python處理時出現報錯。經過分析,原因出在&lt;code&gt;分隔符&lt;/code&gt;、&lt;code&gt;換行符&lt;/code&gt;等特殊符號上，此外還有一條數據分散爲兩行的情況。本人通過對異常數據進行分析，整理出特殊情況類別，在GNU/Linux系統下用&lt;code&gt;sed&lt;/code&gt;和&lt;code&gt;awk&lt;/code&gt;對數據進行初步清洗，實現預期要求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extracting API Requests Counts From Nginx Access Log Per week</title>
+      <link>/2017/extracting-api-requests-counts-from-nginx-access-log-per-week/</link>
+      <pubDate>Tue, 12 Dec 2017 19:58:34 +0800</pubDate>
+      
+      <guid>/2017/extracting-api-requests-counts-from-nginx-access-log-per-week/</guid>
+      <description>&lt;p&gt;2017年7月3日寫過一篇 &lt;code&gt;Extracting API Requests Info From Nginx Access Log&lt;/code&gt;，主要記錄從Nginx日誌中提取各自有API的請求頻次。最近一段時間，線上環境服務器的CPU、內存時常會被佔滿，導致線上服務宕掉。爲了解決該問題，其中一項舉措是要求運維這邊每週提取一次各API接口的請求數據，該任務仍有本人來操作。本文主要記錄在當前需求下，數據的提取過程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Splitting Nginx Log By Date Via GNU Awk</title>
+      <link>/2017/splitting-nginx-log-by-date-via-gnu-awk/</link>
+      <pubDate>Thu, 10 Aug 2017 16:40:24 +0800</pubDate>
+      
+      <guid>/2017/splitting-nginx-log-by-date-via-gnu-awk/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.nginx.com/&#34; title=&#34;Nginx&#34;&gt;Nginx&lt;/a&gt;在運行過程中會生成大量&lt;code&gt;access&lt;/code&gt;和&lt;code&gt;error&lt;/code&gt;日誌，默認情況下日誌文件大小持續增長。爲方便操作(如打開、查詢)，需對Nginx日誌進行切割，如按日期，而&lt;a href=&#34;https://www.nginx.com/&#34; title=&#34;Nginx&#34;&gt;Nginx&lt;/a&gt;本身並不提供該功能。&lt;/p&gt;
+
+&lt;p&gt;網路上的方案千篇一律：利用&lt;a href=&#34;https://www.nginx.com/&#34; title=&#34;Nginx&#34;&gt;Nginx&lt;/a&gt;的&lt;a href=&#34;https://www.nginx.com/resources/wiki/start/topics/examples/logrotation/&#34; title=&#34;Nginx&#34;&gt;Log Rotation&lt;/a&gt;功能，操作日誌後，通過&lt;code&gt;USR1&lt;/code&gt;信號重新打開日誌；將操作命令寫入腳本，通過cron任務定時執行。對於該種方案，本人不做任何評價。&lt;/p&gt;
+
+&lt;p&gt;本文主要記錄如何通過&lt;a href=&#34;https://www.gnu.org/software/gawk/&#34; title=&#34;GNU awk&#34;&gt;awk&lt;/a&gt;實現Nginx日誌按年分、月份、周、天、小時等預定方式進行切割。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extracting API Requests Info From Nginx Access Log</title>
+      <link>/2017/extracting-api-requests-info-from-nginx-access-log/</link>
+      <pubDate>Mon, 03 Jul 2017 11:43:21 +0800</pubDate>
+      
+      <guid>/2017/extracting-api-requests-info-from-nginx-access-log/</guid>
+      <description>&lt;p&gt;運維部接到研發經理的需求，從Nginx日誌中提取某一天API接口調用信息，並根據指定的維度進行彙總。因日誌文件在線上生產環境中，且單個文件大小達數GB，爲了減少操作對生產環境的穩定性造成影響。將初步提取的數據下載到本地環境，進行進一步的彙總分析。&lt;/p&gt;
+
+&lt;p&gt;以前是將提取的數據導入MySQL數據庫，通過SQL進行提取分析，雖方便但數據導入過程過於漫長。本文
+操作主要使用&lt;code&gt;sed&lt;/code&gt;、&lt;code&gt;awk&lt;/code&gt;命令，並大量使用了一些高級特性，如&lt;code&gt;sed&lt;/code&gt;的添加行號、&lt;a href=&#34;https://www.gnu.org/software/sed/manual/html_node/Character-Classes-and-Bracket-Expressions.html&#34; title=&#34;Character Class&#34;&gt;字符类&lt;/a&gt;、正则、&lt;a href=&#34;https://www.gnu.org/software/sed/manual/html_node/Back_002dreferences-and-Subexpressions.html&#34; title=&#34;Back-references and Subexpressions&#34;&gt;後向引用&lt;/a&gt;；&lt;code&gt;awk&lt;/code&gt;的getline、&lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Controlling-Scanning.html&#34; title=&#34;Controlling Array Traversal&#34;&gt;預定義數組掃描排序&lt;/a&gt;、&lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Multidimensional.html&#34; title=&#34;Multidimensional Arrays&#34;&gt;多維數組&lt;/a&gt;等，算是後積薄發的一次展現。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Printing The Previous Or Next Line Of The Matched Line Using Sed OR Awk</title>
+      <link>/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/</link>
+      <pubDate>Wed, 15 Mar 2017 14:57:39 +0800</pubDate>
+      
+      <guid>/2017/printing-the-previous-or-next-line-of-the-matched-line-using-sed-or-awk/</guid>
+      <description>&lt;p&gt;在GNU/Linux中，&lt;a href=&#34;https://www.gnu.org/software/gawk/&#34; title=&#34;GNU awk&#34;&gt;awk(gawk)&lt;/a&gt;和&lt;a href=&#34;https://www.gnu.org/software/sed/&#34; title=&#34;GNU sed&#34;&gt;sed&lt;/a&gt;可用於處理文本數據。本文討論的是如何使用二者提取匹配數據行的前一行或後一行數據。如果匹配數據行出現多次，則只輸出第一次匹配到的數據行。&lt;/p&gt;
+
+&lt;p&gt;本文採用真實案例進行討論&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(匹配行的前一行) 提取&lt;a href=&#34;https://nginx.org/&#34; title=&#34;Nginx Web Server&#34;&gt;Nginx&lt;/a&gt;的最新版本號；&lt;/li&gt;
+&lt;li&gt;(匹配行的後一行) 提取&lt;a href=&#34;https://www.kernel.org&#34; title=&#34;Linux Kernel&#34;&gt;Linux Kernel&lt;/a&gt;的最新版本號；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Analying The Change Frequency Of Active Users Tokens From Tomcat Logs</title>
+      <link>/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/</link>
+      <pubDate>Mon, 05 Dec 2016 07:43:08 +0800</pubDate>
+      
+      <guid>/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/</guid>
+      <description>&lt;p&gt;接到Java開發人員的需求,從Tomcat日誌中提取最近一個月查詢、購票活躍度最高的5位iOS用戶的token變更頻率。日誌文件在線上生產服務器中，單個文件高達十數GB，無法使用&lt;code&gt;vim&lt;/code&gt;打開，只能下載到本機後再進行數據提取操作，以下是完整的記錄。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Awk To Extract Statistic Results From Multiple Log Files</title>
+      <link>/2016/using-awk-to-extract-statistic-results-from-multiple-log-files/</link>
+      <pubDate>Wed, 13 Jul 2016 12:36:37 +0800</pubDate>
+      
+      <guid>/2016/using-awk-to-extract-statistic-results-from-multiple-log-files/</guid>
+      <description>&lt;p&gt;工作中遇到一個需求：從日誌文件中提取符合指定條件的數據，獲取其出現頻次(條件有多種、日誌有多個)。存有日誌的服務器是線上運行的服務器，直接在其上進行操作會對服務器造成較大壓力。故需對日誌進行轉移，而其又是內網服務器，只能通過跳板機登錄，故將相關日誌複製到跳板機中再進行操作。&lt;/p&gt;
+
+&lt;p&gt;個人研究後，使用&lt;code&gt;awk&lt;/code&gt;命令解決，以下是操作過程和撰寫的Shell腳本。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Crawling China Administrative Division Code</title>
+      <link>/2016/crawling-china-administrative-division-code/</link>
+      <pubDate>Mon, 14 Mar 2016 00:01:59 +0800</pubDate>
+      
+      <guid>/2016/crawling-china-administrative-division-code/</guid>
+      <description>&lt;p&gt;本文記錄如何從&lt;a href=&#34;http://www.stats.gov.cn&#34;&gt;中華人民共和國國家統計局&lt;/a&gt;官網提取中國大陸地區的行政區劃信息，數據入庫，並通過Shell腳本實現整個過程。項目代碼託管在&lt;a href=&#34;https://github.com/MaxdSre/Shell-script-web-crawler/tree/master/project/CADC&#34;&gt;GitHub&lt;/a&gt;，包含Shell腳本、數據庫數據表、文本數據、從MySQL中導出的SQL數據。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
