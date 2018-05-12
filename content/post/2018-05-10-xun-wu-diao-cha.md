@@ -1,3 +1,25 @@
+---
+title: "xun wu diao cha"
+slug: "xun wu diao cha"
+date: 2018-05-12T17:43:34+08:00
+lastmod: 2018-05-12T17:43:34+08:00
+draft: false
+keywords: []
+description: ""
+tags: []
+categories: []
+author: "Mitui"
+
+# You can also close(false) or open(true) something for this content.
+# P.S. comment can only be closed
+comment: true
+toc: true
+autoCollapseToc: true
+contentCopyright: true
+reward: false
+mathjax: true
+---
+
 # 寻乌调查
 毛泽东 
 
