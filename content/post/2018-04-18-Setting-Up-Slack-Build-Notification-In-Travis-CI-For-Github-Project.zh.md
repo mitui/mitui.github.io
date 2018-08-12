@@ -1,5 +1,5 @@
 ---
-title: 爲集成了Travis CI的GitHub項目配置Slack信息推送
+title: 爲集成了Travis CI的GitHub項目配置Slack信息推送zh
 slug: Setting Up Slack Build Notification in Travis CI for Github Project
 date: 2018-04-18T13:31:34-04:00
 lastmod: 2018-04-18T13:31:34-04:00
