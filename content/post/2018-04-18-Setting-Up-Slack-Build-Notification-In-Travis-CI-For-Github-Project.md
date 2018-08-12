@@ -1,5 +1,5 @@
 ---
-title: Setting Up Slack Build Notificatsgd官方订购梵蒂冈的ion in Travis CI for Github Projectsss
+title: Setting Up Slack Build Notificatsgdion in Travis CI for Github Projectsss
 slug: Setting Up Slack Build Notification in Travis CI for Github Project
 date: 2018-04-18T13:31:34-04:00
 lastmod: 2018-04-18T13:31:34-04:00
