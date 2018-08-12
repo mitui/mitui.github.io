@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>在GNU/Linux中安裝配置Oracle JDK - MetaDefine - A super concise theme for Hugo</title>
+  <title>Setting Up Oracle JDK On GNU/Linux - MetaDefine - A super concise theme for Hugo</title>
   <link rel="alternate" hreflang="en" href="/" />
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="mitui" /><meta name="description" content="如何在GNU/Linux中安裝Oracle JDK，並通過Shell腳本實現整個操作過程。" />
+<meta name="author" content="mitui" /><meta name="description" content="How to set up Oracle JDK on GNU/Linux via Shell script" />
 <meta name="keywords" content="AxdLog, Java SE, JDK, Java, Shell script" />
 
 
@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.40.3" />
+<meta name="generator" content="Hugo 0.46" />
 
 
 <link rel="canonical" href="/2018/setting-up-oracle-jdk-on-gnu-linux/" />
@@ -56,8 +56,8 @@
 
 
 
-<meta property="og:title" content="在GNU/Linux中安裝配置Oracle JDK" />
-<meta property="og:description" content="如何在GNU/Linux中安裝Oracle JDK，並通過Shell腳本實現整個操作過程。" />
+<meta property="og:title" content="Setting Up Oracle JDK On GNU/Linux" />
+<meta property="og:description" content="How to set up Oracle JDK on GNU/Linux via Shell script" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2018/setting-up-oracle-jdk-on-gnu-linux/" />
 
@@ -77,20 +77,20 @@
 
 
 
-<meta itemprop="name" content="在GNU/Linux中安裝配置Oracle JDK">
-<meta itemprop="description" content="如何在GNU/Linux中安裝Oracle JDK，並通過Shell腳本實現整個操作過程。">
+<meta itemprop="name" content="Setting Up Oracle JDK On GNU/Linux">
+<meta itemprop="description" content="How to set up Oracle JDK on GNU/Linux via Shell script">
 
 
 <meta itemprop="datePublished" content="2018-04-19T15:37:16-04:00" />
 <meta itemprop="dateModified" content="2018-04-19T15:37:16-04:00" />
-<meta itemprop="wordCount" content="1414">
+<meta itemprop="wordCount" content="816">
 
 
 
 <meta itemprop="keywords" content="Oracle,JDK,Shell Script," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="在GNU/Linux中安裝配置Oracle JDK"/>
-<meta name="twitter:description" content="如何在GNU/Linux中安裝Oracle JDK，並通過Shell腳本實現整個操作過程。"/>
+<meta name="twitter:title" content="Setting Up Oracle JDK On GNU/Linux"/>
+<meta name="twitter:description" content="How to set up Oracle JDK on GNU/Linux via Shell script"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -280,7 +280,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">在GNU/Linux中安裝配置Oracle JDK</h1>
+      <h1 class="post-title">Setting Up Oracle JDK On GNU/Linux</h1>
       
       <div class="post-meta">
         <span class="post-time"> 2018-04-19 </span>
@@ -289,8 +289,8 @@
               <a href="/categories/gnu/linux/"> GNU/Linux </a>
             
           </div>
-        <span class="more-meta"> 1414 words </span>
-        <span class="more-meta"> 3 min read </span>
+        <span class="more-meta"> 816 words </span>
+        <span class="more-meta"> 4 min read </span>
       </div>
     </header>
 
@@ -303,21 +303,21 @@
 <ul>
 <li>
 <ul>
-<li><a href="#shell-腳本">Shell 腳本</a></li>
-<li><a href="#支持週期">支持週期</a>
+<li><a href="#shell-script">Shell Script</a></li>
+<li><a href="#support-life-cycle">Support Life Cycle</a>
 <ul>
-<li><a href="#java-se-公共更新">Java SE 公共更新</a></li>
-<li><a href="#java-se-支持路線圖">Java SE 支持路線圖</a></li>
+<li><a href="#java-se-public-updates">Java SE Public Updates</a></li>
+<li><a href="#java-se-support-roadmap">Java SE Support Roadmap</a></li>
 </ul></li>
-<li><a href="#下載">下載</a></li>
-<li><a href="#安裝">安裝</a></li>
-<li><a href="#配置">配置</a>
+<li><a href="#downloading">Downloading</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a>
 <ul>
 <li><a href="#path">$PATH</a></li>
 <li><a href="#aalternatives">Aalternatives</a></li>
 </ul></li>
-<li><a href="#測試">測試</a></li>
-<li><a href="#更新日誌">更新日誌</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#change-logs">Change Logs</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -326,19 +326,19 @@
 
     
     <div class="post-content">
-      <p><code>Java SE</code>是<code>Java Platform, Standard Edition</code>的縮寫，而<code>JDK</code>是<code>Java SE Development Kit</code>的縮寫，JDK爲<a href="http://www.oracle.com/technetwork/java/">Java</a>應用提供環境支持。本文記錄如何在GNU/Linux中安裝、配置 Oracle JDK，並通過Shell腳本實現整個過程。</p>
+      <p><code>Java SE</code> is an abbreviation for <code>Java Platform, Standard Edition</code>, and <code>JDK</code> is an abbreviation for <code>Java SE Development Kit</code>. JDK provides running environment for <a href="http://www.oracle.com/technetwork/java/">Java</a> applications. This article documents how to set up Oracle JDK on GNU/Linux, then implement the entire process through Shell script.</p>
 
 <p></p>
 
-<p><strong>注意</strong>：從2019年1月起，<a href="https://www.oracle.com">Oracle</a>將不再對普通用戶(非商用)提供 <strong>Java SE 8</strong> 的更新支持。</p>
+<p><strong>Attention</strong>： Oracle will not post further updates of <strong><code>Java SE 8</code></strong> to its public download sites for commercial use after <strong><code>January 2019</code></strong>.</p>
 
 <blockquote>
-<p>Oracle will not post further updates of Java SE 8 to its public download sites for commercial use after January 2019. Customers who need continued access to critical bug fixes and security fixes as well as general maintenance for Java SE 8 or previous versions can get long term support through Oracle Java SE Advanced, Oracle Java SE Advanced Desktop, or Oracle Java SE Suite. For more information, and details on how to receive longer term support for Oracle JDK 8, please see the Oracle Java SE Support Roadmap. &ndash; <a href="http://www.oracle.com/technetwork/java/javase/overview/index.html">http://www.oracle.com/technetwork/java/javase/overview/index.html</a></p>
+<p>Customers who need continued access to critical bug fixes and security fixes as well as general maintenance for Java SE 8 or previous versions can get long term support through Oracle Java SE Advanced, Oracle Java SE Advanced Desktop, or Oracle Java SE Suite. For more information, and details on how to receive longer term support for Oracle JDK 8, please see the Oracle Java SE Support Roadmap. &ndash; <a href="http://www.oracle.com/technetwork/java/javase/overview/index.html">http://www.oracle.com/technetwork/java/javase/overview/index.html</a></p>
 </blockquote>
 
-<h2 id="shell-腳本">Shell 腳本</h2>
+<h2 id="shell-script">Shell Script</h2>
 
-<p>整個安裝、配置過程已通過Shell腳本實現，代碼託管在<a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/OracleSEJDK.sh">GitHub</a>，通過如下命令執行</p>
+<p>The entire installation and configuration process has been implemented through a shell script, the code is hosted on <a href="https://github.com/MaxdSre/axd-ShellScript/blob/master/assets/software/OracleSEJDK.sh">GitHub</a>, usage info</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -355,11 +355,11 @@
 </div>
 <script src="https://asciinema.org/a/177211.js" id="asciicast-177211" async></script>
 
-<h2 id="支持週期">支持週期</h2>
+<h2 id="support-life-cycle">Support Life Cycle</h2>
 
-<p><a href="https://www.oracle.com">Oracle</a>對各JDK版本的支持週期，詳見官方文檔 <a href="http://www.oracle.com/technetwork/java/javase/eol-135779.html">Oracle Java SE Support Roadmap</a></p>
+<p>The support life cycly of per JDK release version is list on official page <a href="http://www.oracle.com/technetwork/java/javase/eol-135779.html">Oracle Java SE Support Roadmap</a></p>
 
-<h3 id="java-se-公共更新">Java SE 公共更新</h3>
+<h3 id="java-se-public-updates">Java SE Public Updates</h3>
 
 <table>
 <thead>
@@ -402,7 +402,7 @@
 </tbody>
 </table>
 
-<h3 id="java-se-支持路線圖">Java SE 支持路線圖</h3>
+<h3 id="java-se-support-roadmap">Java SE Support Roadmap</h3>
 
 <table>
 <thead>
@@ -466,26 +466,28 @@
 </tbody>
 </table>
 
-<h2 id="下載">下載</h2>
+<h2 id="downloading">Downloading</h2>
 
-<p>JDK官方下載頁 <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE Downloads</a></p>
+<p>Official download page <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE Downloads</a></p>
 
-<p><a href="https://www.oracle.com">Oracle</a>對下載做了設置，必須得同意其許可 <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle Binary Code License Agreement for Java SE</a> 才能下載。勾選<code>Accept License Agreement</code>後，會出現如下信息</p>
+<p>If you wanna download JDK from <a href="https://www.oracle.com">Oracle</a> official site, you must accept is license <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle Binary Code License Agreement for Java SE</a> firstly. After checking <code>Accept License Agreement</code>, the page will show the following info</p>
 
 <blockquote>
 <p>Thank you for accepting the Oracle Binary Code License Agreement for Java SE; you may now download this software.</p>
 </blockquote>
 
-<p>這爲通過命令行或Shell腳本下載設置了障礙。參考</p>
+<p>How do I download jdk package directly from official site in command line or shell script?</p>
+
+<p>Reference</p>
 
 <ul>
 <li><a href="https://www.tecmint.com/install-java-jdk-jre-in-linux/">How to Install Java 9 JDK on Linux Systems</a></li>
 <li><a href="https://gist.github.com/P7h/9741922">P7h/jdk_download.sh</a></li>
 </ul>
 
-<p><a href="https://www.oracle.com">Oracle</a>在cookie中設置了指令<code>oraclelicense</code>，通過它判斷用戶是否已同意其許可協議，完整參數爲<code>oraclelicense=accept-securebackup-cookie</code>。</p>
+<p><a href="https://www.oracle.com">Oracle</a> makes sure user has agree the license via directive <code>oraclelicense</code> which is setted in cookie. The complete parameter is <code>oraclelicense=accept-securebackup-cookie</code>.</p>
 
-<p>可通過如下命令實現非交互操作</p>
+<p>Downloading in silent mode</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -494,9 +496,9 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsL -O -H <span class="s2">&#34;Cookie: oraclelicense=accept-securebackup-cookie&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">pack_download_link</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="安裝">安裝</h2>
+<h2 id="installation">Installation</h2>
 
-<p>安裝包後綴<code>.tar.gz</code>，可通過如下命令解壓並安裝到目標目錄</p>
+<p>Suffix of package is <code>.tar.gz</code>, use the following command to extract its contents to target directory</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -511,9 +513,9 @@
 tar xf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">source_pack_path</span><span class="si">}</span><span class="s2">&#34;</span> -C <span class="s2">&#34;</span><span class="si">${</span><span class="nv">installation_dir</span><span class="si">}</span><span class="s2">&#34;</span> --strip-components<span class="o">=</span><span class="m">1</span> <span class="m">2</span>&gt; /dev/null</code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="配置">配置</h2>
+<h2 id="configuration">Configuration</h2>
 
-<p>解壓後，文件目錄信息如下</p>
+<p>File tree</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -564,9 +566,9 @@ tar xf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">s
 </div>
 <h3 id="path">$PATH</h3>
 
-<p>可執行文件存放在<code>bin/</code>目錄中，須將該路徑添加到環境變量<code>$PATH</code>中。</p>
+<p>Execution files are listed in directory <code>bin/</code>, you need to add this path into environment parameter <code>$PATH</code>.</p>
 
-<p>個人建議將配置信息存放在目錄<code>/etc/profile.d/</code>中，此處假設文件名爲<code>oracle_se_jdk.sh</code></p>
+<p>But personal advice is put this directive under directory <code>/etc/profile.d/</code>, here assume the file is called <code>oracle_se_jdk.sh</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -581,9 +583,9 @@ tar xf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">s
 </div>
 <h3 id="aalternatives">Aalternatives</h3>
 
-<p>如果系統安裝有多個版本的JDK，可通過<code>alternatives</code>或<code>update-alternatives</code>爲<code>java</code>設置默認的可執行路徑。</p>
+<p>If your system has more than one JDK version, you can use <code>alternatives</code> or <code>update-alternatives</code> to set default execution path for <code>java</code>.</p>
 
-<p>代碼實現</p>
+<p>shell code</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -652,9 +654,9 @@ funcAlternativeModeConfiguration <span class="s1">&#39;java&#39;</span> <span cl
 </span><span class="c1"></span># funcAlternativeModeConfiguration <span class="s1">&#39;jar&#39;</span> <span class="s1">&#39;remove&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="測試">測試</h2>
+<h2 id="testing">Testing</h2>
 
-<p>演示示例</p>
+<p>Demostration example</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
@@ -701,13 +703,13 @@ java - manual mode
 └──╼ $</code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="更新日誌">更新日誌</h2>
+<h2 id="change-logs">Change Logs</h2>
 
 <ul>
 <li>2018.04.19 16:48 Wed America/Boston
 
 <ul>
-<li>初稿完成</li>
+<li>first draft</li>
 </ul></li>
 </ul>
 
@@ -749,14 +751,14 @@ java - manual mode
       
       <nav class="post-nav">
         
-          <a class="prev" href="/2018/setting-up-oracle-jdk-on-gnu-linux/">
+          <a class="prev" href="/2018/xun-wu-diao-cha/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Setting Up Oracle JDK On GNU/Linux</span>
+            <span class="prev-text nav-default">xun wu diao cha</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/2018/setting-up-anaconda-and-jupyter-notebook-on-gnu-linux/">
-            <span class="next-text nav-default">Setting Up Anaconda And Jupyter Notebook On GNU/Linux</span>
+          <a class="next" href="/2018/setting-up-oracle-jdk-on-gnu-linux/">
+            <span class="next-text nav-default">在GNU/Linux中安裝配置Oracle JDK</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

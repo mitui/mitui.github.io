@@ -3658,7 +3658,7 @@ https://127.0.0.1:33525/Jupyter/?token&lt;span class=&#34;o&#34;&gt;=&lt;/span&g
     </item>
     
     <item>
-      <title>Setting Up Slack Build Notification in Travis CI for Github Project</title>
+      <title>Setting Up Slack Build Notificatsgdion in Travis CI for Github Projectsss</title>
       <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
       <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
       
@@ -3838,7 +3838,7 @@ root@a24abf051547:/#&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;o5TEEslShhI5AGKaVMbV5bPT7Hkh/lQkqd2T76fXfgXVGpxGWY&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;rQmijyh4hm7APKzOwxw64J/L7rTVKlW14QlCXe4ff8&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;diooG365g6j9h8esuXpJhRDtP72SrPHkAOwo8loX72DR7uazRUYSs0AOGwmYHyctLnhNOmWPVkp3ISAK9unEOIZ0UJ7381rZVWTiVReAVrbpe5jlX3nSbBdineKVar&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;511&lt;/span&gt;BHO&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;eKTU28AlCFgUSG3isvV1dUhZZfHHUaOx3ApzZAmx7GYDBIIqcfZ6r5x1PmZIDjnH3v4TvxRhUpAp6L5IGbpqhAps5dg73nZfzJz4&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;bM4ruMRBo9PDfgVbA&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;zMpN8/yBL6E/OS2u045TJ491n8PE/&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;GoajMCzijuoKgHjTzWyVhIV9dEmVOpjOZL9rv6R1mqKoUwbV8rs8WjqciBlfoC6WwZOAWTcXok5RIMmSQ94oBZEtGSmTtALS5D0D7uCuHJt2Nz&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;GhrKbuwM/eSRYUwyWvNJdqSTbFnEJp27AhP5hxHrzg7uEv9cablPNf1NTFquZJH/ROUf0nKqsVZOJMQElRdcr37Es4tSg6WTKYs4XIeh1R9Yjws53KLOv2phTvFzhGPmycgPrADhHVnGoWtePyNCwASc&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;x7HQJQoUM6Y2i9AVruHN3XmsXq7dSIu3srqPy2lRw&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;o5TEEslShhI5AGKaVMbV5bPT7Hkh/lQkqd2T76fXfgXVGpxGWY+rQmijyh4hm7APKzOwxw64J/L7rTVKlW14QlCXe4ff8+diooG365g6j9h8esuXpJhRDtP72SrPHkAOwo8loX72DR7uazRUYSs0AOGwmYHyctLnhNOmWPVkp3ISAK9unEOIZ0UJ7381rZVWTiVReAVrbpe5jlX3nSbBdineKVar+511BHO+eKTU28AlCFgUSG3isvV1dUhZZfHHUaOx3ApzZAmx7GYDBIIqcfZ6r5x1PmZIDjnH3v4TvxRhUpAp6L5IGbpqhAps5dg73nZfzJz4+bM4ruMRBo9PDfgVbA+9zMpN8/yBL6E/OS2u045TJ491n8PE/+GoajMCzijuoKgHjTzWyVhIV9dEmVOpjOZL9rv6R1mqKoUwbV8rs8WjqciBlfoC6WwZOAWTcXok5RIMmSQ94oBZEtGSmTtALS5D0D7uCuHJt2Nz+GhrKbuwM/eSRYUwyWvNJdqSTbFnEJp27AhP5hxHrzg7uEv9cablPNf1NTFquZJH/ROUf0nKqsVZOJMQElRdcr37Es4tSg6WTKYs4XIeh1R9Yjws53KLOv2phTvFzhGPmycgPrADhHVnGoWtePyNCwASc+x7HQJQoUM6Y2i9AVruHN3XmsXq7dSIu3srqPy2lRw=&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;travis-yml&#34;&gt;.travis.yml&lt;/h2&gt;
@@ -3947,7 +3947,7 @@ root@a24abf051547:/#&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt
     </item>
     
     <item>
-      <title>爲集成了Travis CI的GitHub項目配置Slack信息推送</title>
+      <title>爲集成了Travis CI的GitHub項目配置Slack信息推送zh</title>
       <link>/2018/setting-up-slack-build-notification-in-travis-ci-for-github-project/</link>
       <pubDate>Wed, 18 Apr 2018 13:31:34 -0400</pubDate>
       
@@ -4127,7 +4127,7 @@ root@a24abf051547:/#&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;o5TEEslShhI5AGKaVMbV5bPT7Hkh/lQkqd2T76fXfgXVGpxGWY&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;rQmijyh4hm7APKzOwxw64J/L7rTVKlW14QlCXe4ff8&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;diooG365g6j9h8esuXpJhRDtP72SrPHkAOwo8loX72DR7uazRUYSs0AOGwmYHyctLnhNOmWPVkp3ISAK9unEOIZ0UJ7381rZVWTiVReAVrbpe5jlX3nSbBdineKVar&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;511&lt;/span&gt;BHO&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;eKTU28AlCFgUSG3isvV1dUhZZfHHUaOx3ApzZAmx7GYDBIIqcfZ6r5x1PmZIDjnH3v4TvxRhUpAp6L5IGbpqhAps5dg73nZfzJz4&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;bM4ruMRBo9PDfgVbA&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;zMpN8/yBL6E/OS2u045TJ491n8PE/&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;GoajMCzijuoKgHjTzWyVhIV9dEmVOpjOZL9rv6R1mqKoUwbV8rs8WjqciBlfoC6WwZOAWTcXok5RIMmSQ94oBZEtGSmTtALS5D0D7uCuHJt2Nz&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;GhrKbuwM/eSRYUwyWvNJdqSTbFnEJp27AhP5hxHrzg7uEv9cablPNf1NTFquZJH/ROUf0nKqsVZOJMQElRdcr37Es4tSg6WTKYs4XIeh1R9Yjws53KLOv2phTvFzhGPmycgPrADhHVnGoWtePyNCwASc&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;x7HQJQoUM6Y2i9AVruHN3XmsXq7dSIu3srqPy2lRw&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;o5TEEslShhI5AGKaVMbV5bPT7Hkh/lQkqd2T76fXfgXVGpxGWY+rQmijyh4hm7APKzOwxw64J/L7rTVKlW14QlCXe4ff8+diooG365g6j9h8esuXpJhRDtP72SrPHkAOwo8loX72DR7uazRUYSs0AOGwmYHyctLnhNOmWPVkp3ISAK9unEOIZ0UJ7381rZVWTiVReAVrbpe5jlX3nSbBdineKVar+511BHO+eKTU28AlCFgUSG3isvV1dUhZZfHHUaOx3ApzZAmx7GYDBIIqcfZ6r5x1PmZIDjnH3v4TvxRhUpAp6L5IGbpqhAps5dg73nZfzJz4+bM4ruMRBo9PDfgVbA+9zMpN8/yBL6E/OS2u045TJ491n8PE/+GoajMCzijuoKgHjTzWyVhIV9dEmVOpjOZL9rv6R1mqKoUwbV8rs8WjqciBlfoC6WwZOAWTcXok5RIMmSQ94oBZEtGSmTtALS5D0D7uCuHJt2Nz+GhrKbuwM/eSRYUwyWvNJdqSTbFnEJp27AhP5hxHrzg7uEv9cablPNf1NTFquZJH/ROUf0nKqsVZOJMQElRdcr37Es4tSg6WTKYs4XIeh1R9Yjws53KLOv2phTvFzhGPmycgPrADhHVnGoWtePyNCwASc+x7HQJQoUM6Y2i9AVruHN3XmsXq7dSIu3srqPy2lRw=&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;travis-yml&#34;&gt;.travis.yml&lt;/h2&gt;

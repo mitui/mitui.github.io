@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.40.3" />
+<meta name="generator" content="Hugo 0.46" />
 
 
 <link rel="canonical" href="/2016/analying-the-change-frequency-of-active-users-tokens-from-tomcat-logs/" />
@@ -405,8 +405,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-txt" data-lang="txt">flybus-provider <span class="ss">[</span><span class="mi">2016</span>-12-01 <span class="mi">00</span><span class="o">:</span><span class="mi">07</span><span class="o">:</span><span class="mi">39</span><span class="ss">]</span> <span class="mi">1480408150655</span>-2091 com<span class="p">.</span>raxtone<span class="p">.</span>utils<span class="p">.</span>spring<span class="p">.</span>logger<span class="p">.</span>LoggerAspect<span class="o">:</span><span class="mi">48</span>
-INFO <span class="o">:</span> <span class="ss">(</span>LoggerAspect<span class="p">.</span>java<span class="o">:</span><span class="mi">48</span><span class="ss">)</span>    请求方法<span class="err">：</span>void com<span class="p">.</span>raxtone<span class="p">.</span>flybus<span class="p">.</span>rpc<span class="p">.</span>rmi<span class="p">.</span>user<span class="p">.</span>IPushTSRmiService<span class="p">.</span>sendTokenToSerer<span class="ss">(</span>TokenParam<span class="p">,</span>String<span class="p">,</span>Integer<span class="p">,</span>Integer<span class="ss">)</span><span class="err">，</span>请求参数<span class="err">：</span><span class="ss">[{</span>&#34;cityId&#34;<span class="o">:</span><span class="mi">0</span><span class="p">,</span>&#34;token&#34;<span class="o">:</span>&#34;80275d72bebcbf9c0d9d5c4f62c7b15e90c6795c5a4a58af79f4f57f47a7590f&#34;<span class="ss">}</span><span class="p">,</span>&#34;cb0eeb6990335140b8f65fb3fc9a3f522de48b35&#34;<span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">100</span><span class="ss">]</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-txt" data-lang="txt">flybus-provider [2016-12-01 00:07:39] 1480408150655-2091 com.raxtone.utils.spring.logger.LoggerAspect:48
+INFO : (LoggerAspect.java:48)    请求方法：void com.raxtone.flybus.rpc.rmi.user.IPushTSRmiService.sendTokenToSerer(TokenParam,String,Integer,Integer)，请求参数：[{&#34;cityId&#34;:0,&#34;token&#34;:&#34;80275d72bebcbf9c0d9d5c4f62c7b15e90c6795c5a4a58af79f4f57f47a7590f&#34;},&#34;cb0eeb6990335140b8f65fb3fc9a3f522de48b35&#34;,11,100]</code></pre></td></tr></table>
 </div>
 </div>
 <p>按如下要求在日誌文件中查詢匹配數據</p>
@@ -518,10 +518,10 @@ total 16G
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-txt" data-lang="txt">flybus-provider <span class="ss">[</span><span class="mi">2016</span>-11-30 <span class="mi">00</span><span class="o">:</span><span class="mi">45</span><span class="o">:</span><span class="mi">32</span><span class="ss">]</span> <span class="mi">1480408150487</span>-2087 com<span class="p">.</span>raxtone<span class="p">.</span>utils<span class="p">.</span>spring<span class="p">.</span>logger<span class="p">.</span>LoggerAspect<span class="o">:</span><span class="mi">48</span>
-INFO <span class="o">:</span> <span class="ss">(</span>LoggerAspect<span class="p">.</span>java<span class="o">:</span><span class="mi">48</span><span class="ss">)</span>    请求方法<span class="err">：</span>void com<span class="p">.</span>raxtone<span class="p">.</span>flybus<span class="p">.</span>rpc<span class="p">.</span>rmi<span class="p">.</span>user<span class="p">.</span>IPushTSRmiService<span class="p">.</span>sendTokenToServer<span class="ss">(</span>TokenParam<span class="p">,</span>String<span class="p">,</span>Integer<span class="p">,</span>Integer<span class="ss">)</span><span class="err">，</span>请求参数
-<span class="err">：</span><span class="ss">[{</span>&#34;cityId&#34;<span class="o">:</span><span class="mi">0</span><span class="p">,</span>&#34;token&#34;<span class="o">:</span>&#34;843edf6bfd3df2b448f58b762a2e6c06cfae05b0c44ac088edce81dd50c5d4bc&#34;<span class="ss">}</span><span class="p">,</span>&#34;bed8a36e77253e1e16972e73b2c8743def6356e7&#34;<span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">100</span><span class="ss">]</span>
-flybus-provider <span class="ss">[</span><span class="mi">2016</span>-11-30 <span class="mi">00</span><span class="o">:</span><span class="mi">45</span><span class="o">:</span><span class="mi">32</span><span class="ss">]</span> <span class="mi">1480408150487</span>-2087 PushTSLogger<span class="o">:</span><span class="mi">119</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-txt" data-lang="txt">flybus-provider [2016-11-30 00:45:32] 1480408150487-2087 com.raxtone.utils.spring.logger.LoggerAspect:48
+INFO : (LoggerAspect.java:48)    请求方法：void com.raxtone.flybus.rpc.rmi.user.IPushTSRmiService.sendTokenToServer(TokenParam,String,Integer,Integer)，请求参数
+：[{&#34;cityId&#34;:0,&#34;token&#34;:&#34;843edf6bfd3df2b448f58b762a2e6c06cfae05b0c44ac088edce81dd50c5d4bc&#34;},&#34;bed8a36e77253e1e16972e73b2c8743def6356e7&#34;,11,100]
+flybus-provider [2016-11-30 00:45:32] 1480408150487-2087 PushTSLogger:119</code></pre></td></tr></table>
 </div>
 </div>
 <p>期望的數據格式(將兩行合併成一行)</p>
